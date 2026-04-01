@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxford A1 Gujarati Dictionary</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;700&display=swap');
+:root{
+  --bg-1:#fff6ea;
+  --bg-2:#ffe5c6;
+  --bg-3:#d8f0ee;
+  --ink:#1c2a37;
+  --muted:#5f6a77;
+  --card:#ffffffcc;
+  --line:#d4dbe3;
+  --chip:#f7efe4;
+  --chip-active:#1f8a8a;
+  --chip-active-ink:#f7fffd;
+  --accent:#ef6c2f;
+  --shadow:0 12px 34px rgba(13, 43, 54, 0.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  font-family:'Manrope',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 8% -2%,var(--bg-2) 0%,rgba(255,229,198,0) 36%),
+    radial-gradient(circle at 93% 5%,var(--bg-3) 0%,rgba(216,240,238,0) 42%),
+    linear-gradient(180deg,#fffdf8 0%,#fff8ef 45%,#f6fbff 100%);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(135deg,rgba(31,138,138,0.04) 0 2px,rgba(31,138,138,0) 2px 16px);
+  opacity:.28;
+}
+.page{
+  position:relative;
+  z-index:1;
+  max-width:1140px;
+  margin:0 auto;
+  padding:clamp(20px,3vw,38px) clamp(14px,2.4vw,26px) 34px;
+}
+.hero{
+  margin-bottom:18px;
+  padding:clamp(20px,3.4vw,30px);
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,252,246,.82));
+  box-shadow:var(--shadow);
+}
+.hero-kicker{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#0f6c75;
+  background:#dff4f5;
+  border:1px solid #b8dbdf;
+  padding:4px 10px;
+  border-radius:999px;
+}
+.hero h1{
+  margin-top:12px;
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.55rem,4vw,2.6rem);
+  line-height:1.15;
+  color:#123347;
+}
+.hero-copy{
+  margin-top:10px;
+  max-width:68ch;
+  color:var(--muted);
+  line-height:1.6;
+  font-size:.97rem;
+}
+.hero-meta{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  border-radius:12px;
+  border:1px solid #f2b287;
+  background:#fff1e6;
+  color:#a44f13;
+  font-size:12px;
+  font-weight:700;
+  padding:5px 10px;
+}
+#cnt2{
+  font-size:13px;
+  color:#516375;
+  font-weight:600;
+}
+.panel{
+  padding:clamp(14px,2.5vw,22px);
+  border-radius:24px;
+  background:var(--card);
+  border:1px solid var(--line);
+  backdrop-filter:blur(8px);
+  box-shadow:0 14px 28px rgba(18, 51, 71, 0.08);
+}
+.searchbar{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  margin-bottom:14px;
+}
+#search{
+  width:100%;
+  padding:13px 15px;
+  font-size:15px;
+  border:1px solid #cdd8e3;
+  border-radius:14px;
+  background:#fff;
+  color:var(--ink);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+  transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+#search:focus{
+  outline:none;
+  border-color:#47a5b2;
+  box-shadow:0 0 0 4px rgba(71,165,178,.14);
+  transform:translateY(-1px);
+}
+#clearSearch{
+  border:1px solid #d3dbe6;
+  background:#fff;
+  color:#3c4f63;
+  font-weight:600;
+  font-size:13px;
+  border-radius:12px;
+  padding:0 14px;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+#clearSearch:hover{
+  background:#f2f7ff;
+  border-color:#b7c8df;
+  color:#153f66;
+}
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:14px;
+}
+.fbtn{
+  border:1px solid #d7dee7;
+  background:var(--chip);
+  color:#3f5369;
+  font-size:12px;
+  font-weight:600;
+  border-radius:999px;
+  padding:7px 12px;
+  cursor:pointer;
+  transition:transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+.fbtn:hover{
+  transform:translateY(-1px);
+  border-color:#b9cad8;
+}
+.fbtn.active{
+  background:var(--chip-active);
+  color:var(--chip-active-ink);
+  border-color:#146f6f;
+}
+.cnt{
+  margin-bottom:14px;
+  color:#526273;
+  font-size:13px;
+  font-weight:600;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:12px;
+}
+.card{
+  position:relative;
+  border:1px solid #dbe2eb;
+  border-radius:16px;
+  padding:14px 14px 13px;
+  background:
+    linear-gradient(180deg,#ffffff 0%,#fbfcff 100%);
+  box-shadow:0 8px 22px rgba(20, 47, 68, 0.06);
+  overflow:hidden;
+  animation:rise .45s ease both;
+  animation-delay:calc(var(--i, 0) * 26ms);
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,#f18b4c,#f2c561,#52a7a7);
+}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:#c5d1de;
+  box-shadow:0 14px 26px rgba(22, 53, 77, 0.11);
+}
+.wr{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:7px;
+}
+.wrd{
+  font-family:'Fraunces',serif;
+  font-size:1.15rem;
+  line-height:1.22;
+  color:#1c2f45;
+}
+.pos{
+  white-space:nowrap;
+  font-size:11px;
+  font-weight:700;
+  color:#51667c;
+  border:1px solid #d7e1eb;
+  border-radius:8px;
+  padding:3px 6px;
+  background:#f7fbff;
+}
+.guj{
+  margin-bottom:8px;
+  color:#27495f;
+  line-height:1.45;
+  font-family:'Noto Sans Gujarati','Manrope',sans-serif;
+  font-size:14px;
+}
+.tag{
+  display:inline-block;
+  margin-right:7px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#0f6c75;
+  background:#e1f5f6;
+  border:1px solid #c5e6e8;
+  border-radius:6px;
+  padding:1px 5px;
+  vertical-align:middle;
+}
+.mng{
+  font-size:13px;
+  color:#44586f;
+  margin-bottom:8px;
+  line-height:1.52;
+}
+.ex{
+  font-size:12px;
+  color:#637285;
+  line-height:1.5;
+  padding-left:10px;
+  border-left:2px solid #e6ecf3;
+  font-style:italic;
+}
+.nr{
+  grid-column:1/-1;
+  text-align:center;
+  padding:38px 14px;
+  border:1px dashed #cfdae5;
+  border-radius:14px;
+  color:#596c7f;
+  background:rgba(255,255,255,.66);
+  font-size:14px;
+}
+@keyframes rise{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media (max-width:740px){
+  .hero{border-radius:20px}
+  .panel{border-radius:20px}
+  .searchbar{grid-template-columns:1fr}
+  #clearSearch{padding:10px 14px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <p class="hero-kicker">Oxford 3000</p>
+    <h1>A1 English-Gujarati Dictionary</h1>
+    <p class="hero-copy">Search beginner-friendly vocabulary with quick part-of-speech filters, Gujarati meanings, and short example sentences.</p>
+    <div class="hero-meta">
+      <span class="badge">A1 Level</span>
+      <span id="cnt2"></span>
+    </div>
+  </header>
+
+  <section class="panel">
+    <div class="searchbar">
+      <input type="text" id="search" placeholder="Search in English or Gujarati..." autocomplete="off">
+      <button id="clearSearch" type="button">Reset</button>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="cnt" id="cnt"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+<script>
+const data=[
+{w:"a / an",p:"article",g:"એક (Ek)",m:"Used before a noun to refer to any one thing.",e:"I saw a dog in the park."},
+{w:"about",p:"prep./adv.",g:"વિશે (Vishe)",m:"On the subject of; approximately.",e:"Tell me about your day."},
+{w:"above",p:"prep./adv.",g:"ઉપર (Upar)",m:"At a higher level or position than.",e:"The birds flew above the clouds."},
+{w:"across",p:"prep./adv.",g:"આ-પાર / પેલે-પાર (Ā-pār)",m:"From one side to the other side of.",e:"She walked across the road."},
+{w:"action",p:"n.",g:"ક્રિયા (Kriyā)",m:"Something done; the process of doing something.",e:"We need to take action immediately."},
+{w:"activity",p:"n.",g:"પ્રવૃત્તિ (Pravṛtti)",m:"A thing that someone does for a purpose.",e:"Swimming is a great outdoor activity."},
+{w:"actor",p:"n.",g:"અભિનેતા (Abhinetā)",m:"A man who performs in films or plays.",e:"He is a famous actor in Bollywood."},
+{w:"actress",p:"n.",g:"અભિનેત્રી (Abhinetrī)",m:"A woman who performs in films or plays.",e:"The actress won a national award."},
+{w:"add",p:"v.",g:"ઉમેરવું (Umeravuṃ)",m:"To put something with something else to increase the amount.",e:"Add some salt to the soup."},
+{w:"address",p:"n.",g:"સરનામું (Saranāmuṃ)",m:"The details of where someone lives or works.",e:"Please write your address on the form."},
+{w:"adult",p:"n.",g:"પુખ્ત (Pukht)",m:"A fully grown person.",e:"Only adults are allowed in this area."},
+{w:"advice",p:"n.",g:"સલાહ (Salāh)",m:"An opinion about what someone should do.",e:"She gave me good advice about my career."},
+{w:"afraid",p:"adj.",g:"ડરેલ (Darel)",m:"Feeling fear or worry.",e:"He is afraid of the dark."},
+{w:"after",p:"prep.",g:"પછી (Pachī)",m:"Later in time; following.",e:"We went for a walk after dinner."},
+{w:"afternoon",p:"n.",g:"બપોર (Bapor)",m:"The time between noon and evening.",e:"I have a class this afternoon."},
+{w:"again",p:"adv.",g:"ફરી (Pharī)",m:"One more time; another time.",e:"Please say that again."},
+{w:"age",p:"n.",g:"ઉંમર (Ummar)",m:"The length of time a person has lived.",e:"What is your age?"},
+{w:"ago",p:"adv.",g:"પહેલાં (Pahelāṃ)",m:"In the past; before the present time.",e:"I met him two years ago."},
+{w:"agree",p:"v.",g:"સહમત થવું (Sahamat thavuṃ)",m:"To have the same opinion as someone.",e:"I agree with your idea."},
+{w:"air",p:"n.",g:"હવા (Havā)",m:"The mixture of gases we breathe.",e:"The air in the mountains is very fresh."},
+{w:"airport",p:"n.",g:"એરપોર્ટ (Eraporṭ)",m:"A place where aircraft take off and land.",e:"We reached the airport two hours early."},
+{w:"all",p:"det./pron.",g:"બધું (Badhuṃ)",m:"The whole amount or number of something.",e:"All the students passed the exam."},
+{w:"also",p:"adv.",g:"પણ (Pan)",m:"In addition; too.",e:"She speaks Hindi and also Gujarati."},
+{w:"always",p:"adv.",g:"હંમેશા (Hammeśā)",m:"At all times; every time.",e:"He always wakes up early."},
+{w:"amazing",p:"adj.",g:"અદ્ભુત (Adbhut)",m:"Very surprising and impressive.",e:"The view from the mountain was amazing."},
+{w:"and",p:"conj.",g:"અને (Ane)",m:"Used to connect words or phrases.",e:"I like tea and coffee."},
+{w:"angry",p:"adj.",g:"ગુસ્સો (Gusso)",m:"Feeling or showing anger.",e:"She was angry because he was late."},
+{w:"animal",p:"n.",g:"પ્રાણી (Prāṇī)",m:"A living creature that is not a plant.",e:"A lion is a wild animal."},
+{w:"another",p:"det./pron.",g:"બીજો (Bījo)",m:"One more; a different one.",e:"Can I have another glass of water?"},
+{w:"answer",p:"n./v.",g:"જવાબ (Javāb)",m:"A reply to a question; to reply.",e:"He gave the correct answer."},
+{w:"any",p:"det./pron.",g:"કોઈ પણ (Koī pan)",m:"Used in questions and negatives; one or some.",e:"Do you have any questions?"},
+{w:"anyone",p:"pron.",g:"કોઈ પણ (Koī pan)",m:"Any person at all.",e:"Is there anyone at home?"},
+{w:"anything",p:"pron.",g:"કઈ પણ (Kaī pan)",m:"Any thing at all.",e:"I will do anything to help you."},
+{w:"apartment",p:"n.",g:"ફ્લૅટ (Phlæṭ)",m:"A set of rooms for living in, inside a building.",e:"We live in a small apartment."},
+{w:"apple",p:"n.",g:"સફરજન (Saparajana)",m:"A round red or green fruit.",e:"An apple a day keeps the doctor away."},
+{w:"April",p:"n.",g:"એપ્રિલ (Epril)",m:"The fourth month of the year.",e:"My birthday is in April."},
+{w:"area",p:"n.",g:"વિસ્તાર (Vistār)",m:"A part of a place or region.",e:"This is a quiet residential area."},
+{w:"arm",p:"n.",g:"હાથ (Hāth)",m:"The part of the body from shoulder to hand.",e:"She broke her arm while playing."},
+{w:"around",p:"prep./adv.",g:"આસ-પાસ (Ās-pās)",m:"On every side of; approximately.",e:"There are trees around the house."},
+{w:"arrive",p:"v.",g:"પહોંચવું (Pahoṃchavuṃ)",m:"To reach a place.",e:"When will you arrive at the station?"},
+{w:"art",p:"n.",g:"કલા (Kalā)",m:"Creative work such as painting or drawing.",e:"She studies art at college."},
+{w:"article",p:"n.",g:"લેખ (Lekh)",m:"A piece of writing in a newspaper or magazine.",e:"I read an interesting article today."},
+{w:"artist",p:"n.",g:"કલાકાર (Kalākār)",m:"A person who creates art.",e:"My sister is a talented artist."},
+{w:"as",p:"prep.",g:"જેમ / તરીકે (Jem)",m:"Used for comparison or to give a role.",e:"She works as a teacher."},
+{w:"ask",p:"v.",g:"પૂછવું (Pūchavuṃ)",m:"To say something as a question.",e:"He asked me for directions."},
+{w:"at",p:"prep.",g:"પર / માં (Par / Māṃ)",m:"Used to show position or time.",e:"She is at school right now."},
+{w:"August",p:"n.",g:"ઓગસ્ટ (Ogasṭ)",m:"The eighth month of the year.",e:"School starts again in August."},
+{w:"aunt",p:"n.",g:"કાકી / મામી (Kākī / Māmī)",m:"The sister of your parent.",e:"My aunt makes delicious food."},
+{w:"autumn",p:"n.",g:"પાનખર (Pānakhar)",m:"The season between summer and winter.",e:"Leaves fall from trees in autumn."},
+{w:"away",p:"adv.",g:"દૂર (Dūr)",m:"To or at a distance from a place.",e:"He moved away from his hometown."},
+{w:"baby",p:"n.",g:"બાળક (Bāḷak)",m:"A very young child.",e:"The baby is sleeping in the cot."},
+{w:"back",p:"n./adv.",g:"પીઠ / પાછળ (Pīṭh / Pāchaḷ)",m:"The rear part; to return.",e:"I will be back in five minutes."},
+{w:"bad",p:"adj.",g:"ખરાબ (Kharāb)",m:"Not good; of poor quality.",e:"He got a bad result in the exam."},
+{w:"bag",p:"n.",g:"થેલો (Thelo)",m:"A container made of cloth, paper, or leather.",e:"She carries her books in a bag."},
+{w:"ball",p:"n.",g:"દડો (Daḍo)",m:"A round object used in sports.",e:"Kick the ball into the goal."},
+{w:"banana",p:"n.",g:"કેળું (Keḷuṃ)",m:"A long curved yellow fruit.",e:"I eat a banana every morning."},
+{w:"band",p:"n.",g:"સ્ટ્રૅપ / બૅન્ડ (Bænd)",m:"A group of musicians; a strip of material.",e:"The band played music all night."},
+{w:"bank",p:"n.",g:"બૅન્ક (Bænk)",m:"A place where people keep money.",e:"I need to go to the bank today."},
+{w:"bath",p:"n.",g:"સ્નાન (Snān)",m:"The act of washing your whole body.",e:"He has a bath every morning."},
+{w:"bathroom",p:"n.",g:"બાથરૂમ (Bātharūm)",m:"A room with a bath or shower and sink.",e:"The bathroom is on the second floor."},
+{w:"be",p:"v.",g:"હોવું (Hovuṃ)",m:"To exist; to have a particular quality.",e:"She wants to be a doctor."},
+{w:"beach",p:"n.",g:"દરિયા કિનારો (Dariyā kināro)",m:"An area of sand or stones by the sea.",e:"We spent the day at the beach."},
+{w:"beautiful",p:"adj.",g:"સુંદર (Sundar)",m:"Very attractive to look at.",e:"The flowers in the garden are beautiful."},
+{w:"because",p:"conj.",g:"કારણ કે (Kāraṇ ke)",m:"For the reason that.",e:"I stayed home because it was raining."},
+{w:"become",p:"v.",g:"બની જવું (Banī javuṃ)",m:"To start to be something.",e:"She became a famous singer."},
+{w:"bed",p:"n.",g:"પલંગ (Palaṃg)",m:"A piece of furniture you sleep on.",e:"I go to bed at ten o'clock."},
+{w:"bedroom",p:"n.",g:"શયનકક્ષ (Śayankakṣ)",m:"A room used for sleeping.",e:"My bedroom has a big window."},
+{w:"beer",p:"n.",g:"બિયર (Biyar)",m:"An alcoholic drink made from grain.",e:"He ordered a cold beer at the restaurant."},
+{w:"before",p:"prep.",g:"પહેલાં (Pahelāṃ)",m:"Earlier than; in front of.",e:"Wash your hands before eating."},
+{w:"begin",p:"v.",g:"શરૂ કરવું (Śarū karavuṃ)",m:"To start.",e:"The class will begin at nine."},
+{w:"beginning",p:"n.",g:"શરૂઆત (Śarūāt)",m:"The first part of something.",e:"Read from the beginning of the chapter."},
+{w:"behind",p:"prep./adv.",g:"પાછળ (Pāchaḷ)",m:"At the back of something.",e:"The garden is behind the house."},
+{w:"believe",p:"v.",g:"માનવું (Mānavuṃ)",m:"To think something is true.",e:"I believe she is telling the truth."},
+{w:"below",p:"adv./prep.",g:"નીચે (Nīche)",m:"At a lower level or position.",e:"Your name is below mine on the list."},
+{w:"best",p:"adj.",g:"શ્રેષ્ઠ (Śreṣṭh)",m:"Of the highest quality.",e:"She is the best student in the class."},
+{w:"better",p:"adj.",g:"સારું (Sāruṃ)",m:"Of higher quality than another.",e:"This plan is better than the last one."},
+{w:"between",p:"prep.",g:"વચ્ચે (Vacce)",m:"In the space separating two things.",e:"The shop is between the bank and the school."},
+{w:"bicycle",p:"n.",g:"સાઇકલ (Sāikal)",m:"A two-wheeled vehicle you pedal.",e:"He rides his bicycle to school."},
+{w:"big",p:"adj.",g:"મોટો (Moṭo)",m:"Large in size.",e:"They live in a big house."},
+{w:"bike",p:"n.",g:"બાઇક (Bāik)",m:"Informal word for bicycle or motorbike.",e:"She cycles to work on her bike."},
+{w:"bill",p:"n.",g:"બિલ (Bil)",m:"A list of things bought and their price.",e:"Can we have the bill, please?"},
+{w:"bird",p:"n.",g:"પક્ષી (Pakṣī)",m:"A feathered animal with wings.",e:"A colourful bird sat on the branch."},
+{w:"birthday",p:"n.",g:"જન્મ-દિવસ (Janm-divas)",m:"The anniversary of the day you were born.",e:"Happy birthday to you!"},
+{w:"black",p:"adj./n.",g:"કાળો (Kāḷo)",m:"The darkest colour, like coal.",e:"She wore a black dress to the party."},
+{w:"blog",p:"n.",g:"બ્લોગ (Blog)",m:"A website where someone regularly writes.",e:"He writes a travel blog."},
+{w:"blonde",p:"adj.",g:"સોનેરી (Sonerī)",m:"Having light yellow or golden hair.",e:"She has long blonde hair."},
+{w:"blue",p:"adj./n.",g:"વાદળી (Vādaḷī)",m:"The colour of a clear sky.",e:"The sky is bright blue today."},
+{w:"boat",p:"n.",g:"હોડી (Hoḍī)",m:"A small vessel for travelling on water.",e:"We took a boat across the lake."},
+{w:"body",p:"n.",g:"શરીર (Śarīr)",m:"The whole physical structure of a person.",e:"Exercise keeps your body healthy."},
+{w:"book",p:"n.",g:"પુસ્તક (Pustak)",m:"A set of printed pages held together.",e:"I read a book every week."},
+{w:"boot",p:"n.",g:"બૂટ (Būṭ)",m:"A type of shoe that covers the ankle.",e:"Wear boots if you walk in mud."},
+{w:"bored",p:"adj.",g:"કંટાળેલ (Kaṃṭāḷel)",m:"Feeling uninterested because nothing is happening.",e:"She felt bored during the long meeting."},
+{w:"boring",p:"adj.",g:"કંટાળાજનક (Kaṃṭāḷājanaka)",m:"Not interesting or exciting.",e:"The film was really boring."},
+{w:"born",p:"v.",g:"જન્મ (Janm)",m:"To come into the world at birth.",e:"She was born in Ahmedabad."},
+{w:"both",p:"det./pron.",g:"બંને (Baṃne)",m:"The two; not just one.",e:"Both sisters are good at singing."},
+{w:"bottle",p:"n.",g:"બોટલ (Boṭal)",m:"A glass or plastic container for liquids.",e:"Please bring a bottle of water."},
+{w:"box",p:"n.",g:"ડબ્બો (Dabbo)",m:"A container with flat sides.",e:"Put the books in that box."},
+{w:"boy",p:"n.",g:"છોકરો (Chokaro)",m:"A male child.",e:"That boy plays cricket every day."},
+{w:"boyfriend",p:"n.",g:"બોયફ્રૅન્ડ (Boyaphrænd)",m:"A male romantic partner.",e:"She introduced her boyfriend to the family."},
+{w:"bread",p:"n.",g:"રોટી / બ્રૅડ (Roṭī / Bræḍ)",m:"A food made from baked dough.",e:"I eat bread and butter for breakfast."},
+{w:"break",p:"v./n.",g:"વિરામ / તૂટવું (Virām)",m:"A pause; to separate into pieces.",e:"Let's take a break from work."},
+{w:"breakfast",p:"n.",g:"સવારનો નાસ્તો (Savārno nāsto)",m:"The first meal of the day.",e:"I always eat breakfast before school."},
+{w:"bring",p:"v.",g:"લાવવું (Lāvavuṃ)",m:"To carry or take something to a place.",e:"Please bring your book tomorrow."},
+{w:"brother",p:"n.",g:"ભાઈ (Bhāī)",m:"A male sibling.",e:"My brother is two years older than me."},
+{w:"brown",p:"adj./n.",g:"ભૂરો (Bhūro)",m:"A colour like chocolate or earth.",e:"He has brown eyes."},
+{w:"build",p:"v.",g:"બાંધવું (Bāṃdhavuṃ)",m:"To make something by putting parts together.",e:"They are going to build a new school."},
+{w:"building",p:"n.",g:"ઇમારત (Imārat)",m:"A structure with walls and a roof.",e:"That old building is a historic monument."},
+{w:"bus",p:"n.",g:"બસ (Bas)",m:"A large road vehicle for passengers.",e:"I take the bus to work every day."},
+{w:"business",p:"n.",g:"ધંધો (Dhaṃdho)",m:"A commercial activity; trade.",e:"He started his own business last year."},
+{w:"busy",p:"adj.",g:"વ્યસ્ત (Vyast)",m:"Occupied with work or activity.",e:"She is very busy this week."},
+{w:"but",p:"conj.",g:"પરંતુ (Paraṃtu)",m:"Used to introduce a contrast.",e:"I like coffee but not tea."},
+{w:"butter",p:"n.",g:"માખણ (Mākhaṇ)",m:"A yellow fat made from cream.",e:"Spread butter on the toast."},
+{w:"buy",p:"v.",g:"ખરીદવું (Kharīdavuṃ)",m:"To get something by paying money.",e:"I want to buy a new phone."},
+{w:"by",p:"prep.",g:"દ્વારા (Dvārā)",m:"Used to show how, when, or who did something.",e:"The book was written by Premchand."},
+{w:"bye",p:"exclam.",g:"આવજો (Āvajo)",m:"Informal word for goodbye.",e:"Bye! See you tomorrow."},
+{w:"cafe",p:"n.",g:"કૅફે (Kæfe)",m:"A small restaurant serving drinks and snacks.",e:"Let's meet at the cafe near the park."},
+{w:"cake",p:"n.",g:"કૅક (Kæk)",m:"A sweet baked food.",e:"She made a chocolate cake for the birthday."},
+{w:"call",p:"v./n.",g:"ફોન કરવો / બોલાવવું (Phon karvo)",m:"To phone someone; to give a name.",e:"Call me when you reach home."},
+{w:"camera",p:"n.",g:"કૅમેરા (Kæmerā)",m:"A device used for taking photographs.",e:"She took photos with her camera."},
+{w:"can",p:"modal v.",g:"શકવું (Śakavuṃ)",m:"To be able to do something.",e:"She can speak three languages."},
+{w:"cannot",p:"modal v.",g:"નથી શકતો (Nathī śakato)",m:"To not be able to do something.",e:"I cannot come to the party tonight."},
+{w:"capital",p:"n./adj.",g:"રાજધાની (Rājdhānī)",m:"The most important city of a country.",e:"New Delhi is the capital of India."},
+{w:"car",p:"n.",g:"કાર (Kār)",m:"A motor vehicle with four wheels.",e:"My father drives a red car."},
+{w:"card",p:"n.",g:"કાર્ડ (Kārḍ)",m:"A small flat piece of paper with information or a message.",e:"She sent me a birthday card."},
+{w:"career",p:"n.",g:"કારકિર્દી (Kārakirdī)",m:"A job or profession over a long period.",e:"She has a successful career in medicine."},
+{w:"carrot",p:"n.",g:"ગાજર (Gājar)",m:"An orange root vegetable.",e:"Rabbits love to eat carrots."},
+{w:"carry",p:"v.",g:"ઊંચકવું (Ūṃchakavuṃ)",m:"To hold something and take it somewhere.",e:"Can you carry this bag for me?"},
+{w:"cat",p:"n.",g:"બિલાડી (Bilāḍī)",m:"A small furry pet animal.",e:"Our cat sleeps all day."},
+{w:"cent",p:"n.",g:"સૅન્ટ (Sænṭ)",m:"A unit of money equal to one hundredth of a dollar.",e:"The price was ninety-nine cents."},
+{w:"centre",p:"n.",g:"કેન્દ્ર (Kendra)",m:"The middle point of something.",e:"The city centre is always busy."},
+{w:"century",p:"n.",g:"સદી (Sadī)",m:"A period of one hundred years.",e:"This building is over a century old."},
+{w:"chair",p:"n.",g:"ખુરશી (Khuraśī)",m:"A piece of furniture for sitting on.",e:"Please sit on the chair."},
+{w:"change",p:"v./n.",g:"બદલાવ (Badalāv)",m:"To make or become different.",e:"The weather can change quickly here."},
+{w:"chart",p:"n.",g:"ચાર્ટ (Cārṭ)",m:"A diagram showing information.",e:"The teacher drew a chart on the board."},
+{w:"cheap",p:"adj.",g:"સસ્તું (Sastuṃ)",m:"Low in price.",e:"This market sells cheap vegetables."},
+{w:"check",p:"v.",g:"તપાસ કરવી (Tapās karavī)",m:"To examine to make sure something is correct.",e:"Please check your answer before submitting."},
+{w:"cheese",p:"n.",g:"ચીઝ (Cīj)",m:"A food made from pressed milk curds.",e:"She loves cheese on her pizza."},
+{w:"chicken",p:"n.",g:"મરઘી (Maraghī)",m:"A bird kept for eggs or meat.",e:"We had chicken curry for dinner."},
+{w:"child",p:"n.",g:"બાળક (Bāḷak)",m:"A young human being.",e:"Every child deserves a good education."},
+{w:"chocolate",p:"n.",g:"ચૉકલૅટ (Coklæṭ)",m:"A sweet food made from cocoa.",e:"She gifted me a box of chocolates."},
+{w:"choose",p:"v.",g:"પસંદ કરવું (Pasaṃd karavuṃ)",m:"To pick or select something.",e:"Choose any colour you like."},
+{w:"cinema",p:"n.",g:"સિનેમા (Sinemā)",m:"A building where films are shown.",e:"Let's go to the cinema tonight."},
+{w:"city",p:"n.",g:"શહેર (Śaher)",m:"A large and important town.",e:"Mumbai is the largest city in India."},
+{w:"class",p:"n.",g:"વર્ગ (Varg)",m:"A group of students who learn together.",e:"Our English class starts at nine."},
+{w:"classroom",p:"n.",g:"વર્ગખંડ (Vargakhaṃḍ)",m:"A room in a school where lessons happen.",e:"The classroom has thirty desks."},
+{w:"clean",p:"adj./v.",g:"સ્વચ્છ (Svachch)",m:"Free from dirt; to remove dirt.",e:"Please clean your room before guests arrive."},
+{w:"climb",p:"v.",g:"ચઢવું (Caḍhavuṃ)",m:"To go up something using hands and feet.",e:"We climbed the mountain in the morning."},
+{w:"clock",p:"n.",g:"ઘડિયાળ (Ghaḍiyāḷ)",m:"A device that shows the time.",e:"The clock on the wall shows three o'clock."},
+{w:"close",p:"v.",g:"બંધ કરવું (Baṃdh karavuṃ)",m:"To shut something.",e:"Please close the door when you leave."},
+{w:"clothes",p:"n.",g:"કપડાં (Kapaḍāṃ)",m:"Things you wear on your body.",e:"She bought new clothes for the festival."},
+{w:"club",p:"n.",g:"ક્લબ (Klab)",m:"A group of people who share an interest.",e:"He joined the chess club at school."},
+{w:"coat",p:"n.",g:"કોટ (Koṭ)",m:"A warm outer garment.",e:"Wear your coat; it is cold outside."},
+{w:"coffee",p:"n.",g:"કૉફી (Kophī)",m:"A hot drink made from roasted beans.",e:"I drink coffee every morning."},
+{w:"cold",p:"adj./n.",g:"ઠંડું (Ṭhaṃḍuṃ)",m:"Having a low temperature; an illness.",e:"It is very cold in December."},
+{w:"college",p:"n.",g:"કૉલેજ (Kolej)",m:"A place for education after school.",e:"She studies at a college in Surat."},
+{w:"colour",p:"n.",g:"રંગ (Raṃg)",m:"The quality of something like red, blue, or green.",e:"What is your favourite colour?"},
+{w:"come",p:"v.",g:"આવવું (Āvavuṃ)",m:"To move toward the speaker.",e:"Come inside; it is raining."},
+{w:"common",p:"adj.",g:"સામાન્ય (Sāmānya)",m:"Happening often; found in many places.",e:"Mango is a common fruit in India."},
+{w:"company",p:"n.",g:"કંપની (Kaṃpanī)",m:"A business organisation.",e:"She works for a software company."},
+{w:"compare",p:"v.",g:"સરખાવવું (Sarakhāvavuṃ)",m:"To examine the similarities and differences.",e:"Compare prices before you buy."},
+{w:"complete",p:"adj./v.",g:"પૂર્ણ (Pūrṇ)",m:"Having all parts; to finish.",e:"Have you completed your homework?"},
+{w:"computer",p:"n.",g:"કૉમ્પ્યૂટર (Kompyūṭar)",m:"An electronic device that processes data.",e:"I use a computer for my work."},
+{w:"concert",p:"n.",g:"સંગીત-સભા (Saṃgīt-sabhā)",m:"A live music performance.",e:"We went to a classical music concert."},
+{w:"conversation",p:"n.",g:"વાર્તાલાપ (Vārtalāp)",m:"A talk between two or more people.",e:"We had a long conversation about the trip."},
+{w:"cook",p:"v.",g:"રાંધવું (Rāṃdhavuṃ)",m:"To prepare food by heating it.",e:"My mother cooks delicious food."},
+{w:"cooking",p:"n.",g:"રસોઈ (Rasoī)",m:"The activity of preparing food.",e:"Cooking is my favourite hobby."},
+{w:"cool",p:"adj.",g:"ઠંડો (Ṭhaṃḍo)",m:"Slightly cold; informal for impressive.",e:"The evening breeze feels cool."},
+{w:"correct",p:"adj./v.",g:"સાચો (Sāco)",m:"Right; without mistakes.",e:"All your answers are correct."},
+{w:"cost",p:"n./v.",g:"કિંમત (Kiṃmat)",m:"The amount of money needed; to have a price.",e:"How much does this dress cost?"},
+{w:"could",p:"modal v.",g:"શકતો (Śakato)",m:"Past form of can; used for possibility.",e:"She could swim when she was five."},
+{w:"country",p:"n.",g:"દેશ (Deś)",m:"A nation with its own government.",e:"India is a large and beautiful country."},
+{w:"course",p:"n.",g:"અભ્યાસક્રમ (Abhyāsakram)",m:"A series of lessons; a path.",e:"She is taking an English language course."},
+{w:"cousin",p:"n.",g:"પિત્રાઈ (Pitrāī)",m:"A child of your uncle or aunt.",e:"My cousin lives in Vadodara."},
+{w:"cow",p:"n.",g:"ગાય (Gāy)",m:"A large female farm animal that gives milk.",e:"The cow is sacred in Indian culture."},
+{w:"cream",p:"n.",g:"ક્રીમ (Krīm)",m:"A thick white liquid from milk; a pale colour.",e:"Add cream to make the soup rich."},
+{w:"create",p:"v.",g:"બનાવવું (Banāvavuṃ)",m:"To make or produce something.",e:"She created a beautiful painting."},
+{w:"culture",p:"n.",g:"સંસ્કૃતિ (Saṃskṛti)",m:"The customs and traditions of a group of people.",e:"India has a rich and diverse culture."},
+{w:"cup",p:"n.",g:"કપ (Kap)",m:"A small container for drinking.",e:"She had a cup of tea in the morning."},
+{w:"customer",p:"n.",g:"ગ્રાહક (Grāhak)",m:"A person who buys something.",e:"The customer asked for a refund."},
+{w:"cut",p:"v.",g:"કાપવું (Kāpavuṃ)",m:"To divide with a knife or scissors.",e:"Cut the vegetables into small pieces."},
+{w:"dad",p:"n.",g:"પપ્પા (Pappā)",m:"An informal word for father.",e:"My dad takes me to school every day."},
+{w:"dance",p:"n./v.",g:"નૃત્ય (Nṛtya)",m:"Moving your body to music; the act of dancing.",e:"She loves to dance at festivals."},
+{w:"dancer",p:"n.",g:"નૃત્યકાર (Nṛtyakār)",m:"A person who dances.",e:"She is a professional classical dancer."},
+{w:"dancing",p:"n.",g:"નૃત્ય (Nṛtya)",m:"The activity of dancing.",e:"Dancing is good exercise."},
+{w:"dangerous",p:"adj.",g:"ખતરનાક (Khatarnāk)",m:"Likely to cause harm.",e:"Driving too fast is dangerous."},
+{w:"dark",p:"adj.",g:"અંધારું (Aṃdhāruṃ)",m:"Without light; deep in colour.",e:"It gets dark very early in winter."},
+{w:"date",p:"n.",g:"તારીખ (Tārīkh)",m:"A specific day in a month or year.",e:"What is today's date?"},
+{w:"daughter",p:"n.",g:"દીકરી (Dīkarī)",m:"A female child.",e:"Their daughter is studying medicine."},
+{w:"day",p:"n.",g:"દિવસ (Divas)",m:"A period of 24 hours.",e:"Today is a beautiful day."},
+{w:"dear",p:"adj.",g:"પ્રિય (Priya)",m:"Loved; used as a greeting.",e:"Dear friends, welcome to our event."},
+{w:"December",p:"n.",g:"ડિસેમ્બર (Ḍisembar)",m:"The twelfth month of the year.",e:"Christmas is celebrated in December."},
+{w:"decide",p:"v.",g:"નક્કી કરવું (Nakkī karavuṃ)",m:"To make a choice or judgement.",e:"Have you decided what to eat?"},
+{w:"delicious",p:"adj.",g:"સ્વાદિષ્ટ (Svādiṣṭ)",m:"Having a very pleasant taste.",e:"The food at this restaurant is delicious."},
+{w:"describe",p:"v.",g:"વર્ણન કરવું (Varṇan karavuṃ)",m:"To say what something is like.",e:"Can you describe your lost bag?"},
+{w:"description",p:"n.",g:"વર્ણન (Varṇan)",m:"A spoken or written account of something.",e:"Give a description of what happened."},
+{w:"design",p:"n./v.",g:"ડિઝાઇન (Ḍizāin)",m:"A plan or drawing; to create a plan.",e:"She designed the logo for the company."},
+{w:"desk",p:"n.",g:"મેઝ (Mej)",m:"A table used for writing or working.",e:"Her desk is always very neat."},
+{w:"detail",p:"n.",g:"વિગત (Vigat)",m:"A small fact or piece of information.",e:"Please give me all the details."},
+{w:"dialogue",p:"n.",g:"સંવાદ (Saṃvād)",m:"A conversation between two people.",e:"The dialogue in the film was very natural."},
+{w:"dictionary",p:"n.",g:"શબ્દ-કોષ (Śabd-koṣ)",m:"A book explaining the meanings of words.",e:"Look up the word in a dictionary."},
+{w:"die",p:"v.",g:"મૃત્યુ પામવું (Mṛtyu pāmavuṃ)",m:"To stop living.",e:"The old tree died last winter."},
+{w:"diet",p:"n.",g:"આહાર (Āhār)",m:"The food a person usually eats.",e:"A healthy diet includes fruits and vegetables."},
+{w:"difference",p:"n.",g:"તફાવત (Taphāvat)",m:"A way in which things are unlike.",e:"There is a big difference in their ages."},
+{w:"different",p:"adj.",g:"અલગ (Alag)",m:"Not the same as another.",e:"These two dresses are very different."},
+{w:"difficult",p:"adj.",g:"મુશ્કેલ (Muśkel)",m:"Not easy; hard to do.",e:"This maths problem is very difficult."},
+{w:"dinner",p:"n.",g:"રાત્રિ ભોજન (Rātri bhojan)",m:"The main meal of the day, usually in the evening.",e:"We had dinner together as a family."},
+{w:"dirty",p:"adj.",g:"ગંદો (Gaṃdo)",m:"Not clean; covered in dirt.",e:"Change your dirty clothes after playing."},
+{w:"discuss",p:"v.",g:"ચર્ચા કરવી (Carcā karavī)",m:"To talk about something with others.",e:"We need to discuss the project plan."},
+{w:"dish",p:"n.",g:"વાનગી (Vānagī)",m:"Food prepared in a particular way; a plate.",e:"What is your favourite dish?"},
+{w:"do",p:"v.",g:"કરવું (Karavuṃ)",m:"To perform an action.",e:"What do you do on weekends?"},
+{w:"doctor",p:"n.",g:"ડૉક્ટર (Ḍokṭar)",m:"A person trained to treat sick people.",e:"The doctor advised me to rest for a week."},
+{w:"dog",p:"n.",g:"કૂતરો (Kūtaro)",m:"A common domestic animal.",e:"Our dog runs to the door when I come home."},
+{w:"dollar",p:"n.",g:"ડૉલર (Ḍolar)",m:"The currency of the USA and other countries.",e:"The ticket costs ten dollars."},
+{w:"door",p:"n.",g:"દરવાજો (Daravājo)",m:"A panel that opens and closes an entrance.",e:"Please close the door behind you."},
+{w:"down",p:"adv./prep.",g:"નીચે (Nīche)",m:"To or at a lower level.",e:"The cat jumped down from the wall."},
+{w:"downstairs",p:"adv.",g:"નીચલા માળે (Nīchalā māḷe)",m:"On or to a lower floor.",e:"The kitchen is downstairs."},
+{w:"draw",p:"v.",g:"દોરવું (Doravuṃ)",m:"To make a picture using a pencil or pen.",e:"She loves to draw animals."},
+{w:"dress",p:"n./v.",g:"ડ્રેસ / કપડાં પહેરવાં (Ḍres)",m:"A piece of clothing; to put on clothes.",e:"She wore a pink dress to the party."},
+{w:"drink",p:"n./v.",g:"પીણું / પીવું (Pīṇuṃ / Pīvuṃ)",m:"A liquid for drinking; to swallow liquid.",e:"Drink plenty of water every day."},
+{w:"drive",p:"v.",g:"ગાડી ચલાવવી (Gāḍī calāvavī)",m:"To operate and control a vehicle.",e:"He drives to work every morning."},
+{w:"driver",p:"n.",g:"ડ્રાઇવર (Ḍrāivar)",m:"A person who drives a vehicle.",e:"The bus driver was very friendly."},
+{w:"during",p:"prep.",g:"દરમ્યાન (Daramyān)",m:"Throughout or at some point in a period.",e:"She fell asleep during the film."},
+{w:"DVD",p:"n.",g:"ડીવીડી (Ḍīvīḍī)",m:"A disc used to store films or data.",e:"Let's watch the DVD tonight."},
+{w:"each",p:"det./pron.",g:"દરેક (Darek)",m:"Every one of two or more people or things.",e:"Each student got a prize."},
+{w:"ear",p:"n.",g:"કાન (Kān)",m:"The organ of the body used for hearing.",e:"She wore gold earrings on each ear."},
+{w:"early",p:"adj./adv.",g:"વહેલો (Vahelo)",m:"Before the usual or expected time.",e:"She arrived early for the interview."},
+{w:"east",p:"n./adj./adv.",g:"પૂર્વ (Pūrv)",m:"The direction where the sun rises.",e:"The sun rises in the east."},
+{w:"easy",p:"adj.",g:"સહેલો (Sahelo)",m:"Not difficult.",e:"This exercise is easy for me."},
+{w:"eat",p:"v.",g:"ખાવું (Khāvuṃ)",m:"To put food in your mouth and swallow it.",e:"We eat three meals a day."},
+{w:"egg",p:"n.",g:"ઈંડું (Īṃḍuṃ)",m:"A round object laid by a bird, used as food.",e:"She had a boiled egg for breakfast."},
+{w:"eight",p:"number",g:"આઠ (Āṭh)",m:"The number 8.",e:"There are eight planets in our solar system."},
+{w:"eighteen",p:"number",g:"અઢાર (Aḍhār)",m:"The number 18.",e:"You can vote when you are eighteen."},
+{w:"eighty",p:"number",g:"એંસી (Eṃsī)",m:"The number 80.",e:"My grandfather is eighty years old."},
+{w:"elephant",p:"n.",g:"હાથી (Hāthī)",m:"A very large grey animal with a long trunk.",e:"The elephant is the largest land animal."},
+{w:"eleven",p:"number",g:"અગિયાર (Agiyār)",m:"The number 11.",e:"A football team has eleven players."},
+{w:"else",p:"adv.",g:"બીજું (Bījuṃ)",m:"In addition; other.",e:"Would you like anything else?"},
+{w:"email",p:"n./v.",g:"ઈ-મેઇલ (Ī-meil)",m:"An electronic message sent over the internet.",e:"Send me an email with the details."},
+{w:"end",p:"n./v.",g:"અંત (Aṃt)",m:"The final part; to finish.",e:"The film has a happy end."},
+{w:"enjoy",p:"v.",g:"માણવું (Māṇavuṃ)",m:"To get pleasure from something.",e:"I enjoy reading books in the evening."},
+{w:"enough",p:"det./pron./adv.",g:"પૂરતું (Pūratuṃ)",m:"As much as is needed.",e:"Have you had enough to eat?"},
+{w:"euro",p:"n.",g:"યુરો (Yuro)",m:"The currency used in many European countries.",e:"This bag costs fifty euros."},
+{w:"even",p:"adv.",g:"તો પણ (To pan)",m:"Used to emphasise something unexpected.",e:"Even a child can understand this."},
+{w:"evening",p:"n.",g:"સાંજ (Sāṃj)",m:"The part of the day between afternoon and night.",e:"We go for a walk every evening."},
+{w:"event",p:"n.",g:"ઘટના / કાર્યક્રમ (Ghaṭanā)",m:"A thing that happens; a planned occasion.",e:"The sports event was very exciting."},
+{w:"ever",p:"adv.",g:"ક્યારેય (Kyārey)",m:"At any time.",e:"Have you ever visited Goa?"},
+{w:"every",p:"det.",g:"દરેક (Darek)",m:"All of a group without exception.",e:"She reads every day."},
+{w:"everybody",p:"pron.",g:"બધા (Badhā)",m:"All people.",e:"Everybody enjoyed the party."},
+{w:"everyone",p:"pron.",g:"બધા (Badhā)",m:"All people.",e:"Everyone is invited to the wedding."},
+{w:"everything",p:"pron.",g:"બધું (Badhuṃ)",m:"All things.",e:"Everything is ready for the journey."},
+{w:"exam",p:"n.",g:"પરીક્ષા (Parīkṣā)",m:"A formal test of knowledge.",e:"I have a maths exam tomorrow."},
+{w:"example",p:"n.",g:"ઉદાહરણ (Udāharaṇ)",m:"Something used to illustrate a rule or idea.",e:"Give me an example of a verb."},
+{w:"excited",p:"adj.",g:"ઉત્સાહિત (Utsāhit)",m:"Feeling happy and enthusiastic.",e:"She was excited about the trip."},
+{w:"exciting",p:"adj.",g:"રોમાંચક (Romāṃcak)",m:"Causing excitement.",e:"The cricket match was very exciting."},
+{w:"exercise",p:"n./v.",g:"કસરત (Kasarat)",m:"Physical activity done to stay healthy.",e:"Do exercise every morning to stay fit."},
+{w:"expensive",p:"adj.",g:"મોઘું (Moghuṃ)",m:"Costing a lot of money.",e:"This restaurant is too expensive for me."},
+{w:"explain",p:"v.",g:"સમજાવવું (Samajāvavuṃ)",m:"To make something clear.",e:"Can you explain this rule to me?"},
+{w:"extra",p:"adj.",g:"વધારાનો (Vadhārāno)",m:"More than is usual or expected.",e:"I need an extra chair for the guest."},
+{w:"eye",p:"n.",g:"આંખ (Āṃkh)",m:"The organ used for seeing.",e:"She has beautiful brown eyes."},
+{w:"face",p:"n.",g:"ચહેરો (Cahero)",m:"The front of a person's head.",e:"She had a smile on her face."},
+{w:"fact",p:"n.",g:"હકીકત (Hakīkat)",m:"Something that is known to be true.",e:"That is an interesting scientific fact."},
+{w:"fall",p:"v.",g:"પડવું (Paḍavuṃ)",m:"To move downward; to drop.",e:"He fell off the bicycle."},
+{w:"false",p:"adj.",g:"ખોટું (Khoṭuṃ)",m:"Not true; incorrect.",e:"That statement is completely false."},
+{w:"family",p:"n.",g:"કુટુંબ (Kuṭuṃb)",m:"A group of related people.",e:"We had a family dinner last night."},
+{w:"famous",p:"adj.",g:"પ્રખ્યાત (Prakhyāt)",m:"Known by many people.",e:"Amitabh Bachchan is a famous actor."},
+{w:"fantastic",p:"adj.",g:"અદ્ભુત (Adbhut)",m:"Extremely good.",e:"The food at the festival was fantastic."},
+{w:"far",p:"adv.",g:"દૂર (Dūr)",m:"At a great distance.",e:"The school is not far from here."},
+{w:"farm",p:"n.",g:"ખેતર (Khetar)",m:"Land used for growing crops or raising animals.",e:"My uncle owns a farm in the village."},
+{w:"farmer",p:"n.",g:"ખેડૂત (Kheḍūt)",m:"A person who works on a farm.",e:"The farmer woke up before sunrise."},
+{w:"fast",p:"adj./adv.",g:"ઝડપી (Jaḍapī)",m:"Moving or happening quickly.",e:"She is a very fast runner."},
+{w:"fat",p:"adj.",g:"જાડો (Jāḍo)",m:"Having a lot of extra weight.",e:"Too much sugar can make you fat."},
+{w:"father",p:"n.",g:"પિતા (Pitā)",m:"A male parent.",e:"My father is a school teacher."},
+{w:"favourite",p:"adj./n.",g:"પ્રિય (Priya)",m:"The one liked most.",e:"Cricket is my favourite sport."},
+{w:"February",p:"n.",g:"ફેબ્રુઆરી (Phebruārī)",m:"The second month of the year.",e:"Valentine's Day is in February."},
+{w:"feel",p:"v.",g:"અનુભવ (Anubhav)",m:"To experience an emotion or sensation.",e:"I feel happy today."},
+{w:"feeling",p:"n.",g:"લાગણી (Lāgaṇī)",m:"An emotion; something experienced.",e:"She had a strange feeling about the meeting."},
+{w:"festival",p:"n.",g:"તહેવાર (Tahevār)",m:"A day or period of celebration.",e:"Diwali is a festival of lights."},
+{w:"few",p:"det./adj./pron.",g:"થોડા (Thoḍā)",m:"A small number of.",e:"I have a few questions for you."},
+{w:"fifteen",p:"number",g:"પંદર (Paṃdar)",m:"The number 15.",e:"She is fifteen years old."},
+{w:"fifth",p:"number",g:"પાંચમો (Pāṃcamo)",m:"Coming after the fourth in order.",e:"His birthday is on the fifth of June."},
+{w:"fifty",p:"number",g:"પચાસ (Pacās)",m:"The number 50.",e:"She saved fifty rupees last week."},
+{w:"fill",p:"v.",g:"ભરવું (Bharavuṃ)",m:"To put as much as possible into something.",e:"Fill the bottle with water."},
+{w:"film",p:"n.",g:"ફિલ્મ (Philm)",m:"A story told through moving pictures.",e:"Let's watch a film this evening."},
+{w:"final",p:"adj.",g:"અંતિમ (Aṃtim)",m:"Last; happening at the end.",e:"The final match is tomorrow."},
+{w:"find",p:"v.",g:"શોધવું (Śodhavuṃ)",m:"To discover or locate.",e:"Did you find your lost keys?"},
+{w:"fine",p:"adj.",g:"સારું (Sāruṃ)",m:"In good health; of good quality.",e:"I am fine, thank you."},
+{w:"finish",p:"v.",g:"પૂર્ણ કરવું (Pūrṇ karavuṃ)",m:"To complete something.",e:"Finish your homework before dinner."},
+{w:"fire",p:"n.",g:"આગ (Āg)",m:"Burning flames that produce heat and light.",e:"Sit near the fire to keep warm."},
+{w:"first",p:"det./number/adv.",g:"પ્રથમ (Pratham)",m:"Coming before all others in order.",e:"She came first in the race."},
+{w:"fish",p:"n.",g:"માછલી (Māchhalī)",m:"A water animal with fins and scales.",e:"We had fish and rice for lunch."},
+{w:"five",p:"number",g:"પાંચ (Pāṃc)",m:"The number 5.",e:"There are five fingers on each hand."},
+{w:"flat",p:"n.",g:"ફ્લૅટ (Phlaèṭ)",m:"An apartment; a level surface.",e:"She lives in a flat on the third floor."},
+{w:"flight",p:"n.",g:"ઉડ્ડયન (Uḍḍayan)",m:"A journey by aeroplane.",e:"Our flight to Delhi leaves at six."},
+{w:"floor",p:"n.",g:"ફर्श / માળ (Pharś / Māḷ)",m:"The surface you walk on; a level of a building.",e:"The bathroom is on the ground floor."},
+{w:"flower",p:"n.",g:"ફૂલ (Phūl)",m:"The colourful part of a plant.",e:"She put flowers in a vase on the table."},
+{w:"fly",p:"v.",g:"ઊડવું (Ūḍavuṃ)",m:"To move through the air.",e:"Birds fly south in winter."},
+{w:"follow",p:"v.",g:"અનુસરવું (Anusaravuṃ)",m:"To go or come after.",e:"Follow the path to reach the village."},
+{w:"food",p:"n.",g:"ખોરાક (Khorāk)",m:"Things that people or animals eat.",e:"Gujarati food is very tasty."},
+{w:"foot",p:"n.",g:"પગ (Pag)",m:"The part of the leg at the bottom.",e:"My foot hurts after the long walk."},
+{w:"football",p:"n.",g:"ફૂટબૉલ (Phūṭbol)",m:"A sport played by kicking a ball.",e:"We play football on Sundays."},
+{w:"for",p:"prep.",g:"માટે (Māṭe)",m:"Intended for; in order to get.",e:"This gift is for you."},
+{w:"forget",p:"v.",g:"ભૂલી જવું (Bhūlī javuṃ)",m:"To fail to remember.",e:"Don't forget to call me tonight."},
+{w:"form",p:"n./v.",g:"ફૉર્મ (Phorm)",m:"A document to fill in; to make or shape something.",e:"Please fill in this form with your details."},
+{w:"forty",p:"number",g:"ચાળીસ (Cāḷīs)",m:"The number 40.",e:"My father is forty years old."},
+{w:"four",p:"number",g:"ચાર (Cār)",m:"The number 4.",e:"A table has four legs."},
+{w:"fourteen",p:"number",g:"ચૌદ (Caud)",m:"The number 14.",e:"He is fourteen years old."},
+{w:"fourth",p:"number",g:"ચોથો (Cotho)",m:"Coming after the third in order.",e:"April is the fourth month of the year."},
+{w:"free",p:"adj.",g:"મફત / સ્વતંત્ર (Maphata / Svataṃtra)",m:"Costing nothing; not restricted.",e:"The entry to the museum is free today."},
+{w:"Friday",p:"n.",g:"શુક્રવાર (Śukravār)",m:"The sixth day of the week.",e:"We finish school early on Friday."},
+{w:"friend",p:"n.",g:"મિત્ર (Mitra)",m:"A person you like and know well.",e:"She is my best friend."},
+{w:"friendly",p:"adj.",g:"મૈત્રીપૂર્ણ (Maitripūrṇ)",m:"Behaving in a kind, pleasant way.",e:"Everyone in this office is very friendly."},
+{w:"from",p:"prep.",g:"થી (Thī)",m:"Indicating a starting point.",e:"I am from Ahmedabad."},
+{w:"front",p:"n./adj.",g:"સામે (Sāme)",m:"The side that faces forward.",e:"Please sit in the front row."},
+{w:"fruit",p:"n.",g:"ફળ (Phaḷ)",m:"The sweet produce of a plant.",e:"Eat fruit every day to stay healthy."},
+{w:"full",p:"adj.",g:"ભરેલ (Bharel)",m:"Containing as much as possible.",e:"The bus was full of passengers."},
+{w:"fun",p:"n.",g:"મજા (Majā)",m:"Enjoyment and amusement.",e:"The party was a lot of fun."},
+{w:"funny",p:"adj.",g:"રમૂજી (Ramūjī)",m:"Causing laughter.",e:"He told a very funny joke."},
+{w:"future",p:"n.",g:"ભવિષ્ય (Bhaviṣya)",m:"The time that is yet to come.",e:"No one knows what the future holds."},
+{w:"game",p:"n.",g:"રમત (Ramat)",m:"An activity done for fun or competition.",e:"Let's play a board game tonight."},
+{w:"garden",p:"n.",g:"બગીચો (Bagīco)",m:"A piece of land where plants are grown.",e:"She grows roses in her garden."},
+{w:"geography",p:"n.",g:"ભૂગોળ (Bhūgoḷ)",m:"The study of the Earth and its features.",e:"Geography is my favourite subject."},
+{w:"get",p:"v.",g:"મળવું / લેવું (Maḷavuṃ / Levuṃ)",m:"To receive or obtain.",e:"I got a new book from the library."},
+{w:"girl",p:"n.",g:"છોકરી (Chokarī)",m:"A female child.",e:"The little girl played in the park."},
+{w:"girlfriend",p:"n.",g:"ગર્લફ્રૅન્ડ (Garlaphrænd)",m:"A female romantic partner.",e:"He introduced his girlfriend to his parents."},
+{w:"give",p:"v.",g:"આપવું (Āpavuṃ)",m:"To hand something to someone.",e:"Please give me the pen."},
+{w:"glass",p:"n.",g:"ગ્લાસ (Glās)",m:"A container for drinking; a hard clear material.",e:"May I have a glass of juice?"},
+{w:"go",p:"v.",g:"જવું (Javuṃ)",m:"To move or travel.",e:"Let's go to the beach tomorrow."},
+{w:"good",p:"adj.",g:"સારો (Sāro)",m:"Of high quality; positive.",e:"You did a good job today."},
+{w:"goodbye",p:"exclam./n.",g:"આવજો (Āvajo)",m:"A word used when parting from someone.",e:"She waved goodbye at the station."},
+{w:"grandfather",p:"n.",g:"દાદા (Dādā)",m:"The father of your parent.",e:"My grandfather tells wonderful stories."},
+{w:"grandmother",p:"n.",g:"દાદી (Dādī)",m:"The mother of your parent.",e:"My grandmother makes the best rotis."},
+{w:"grandparent",p:"n.",g:"દાદા-દાદી (Dādā-dādī)",m:"A parent of your mother or father.",e:"I visit my grandparents every summer."},
+{w:"great",p:"adj.",g:"મહાન (Mahān)",m:"Very large, important, or good.",e:"Gandhi was a great leader."},
+{w:"green",p:"adj./n.",g:"લીલો (Līlo)",m:"The colour of grass or leaves.",e:"She wore a beautiful green saree."},
+{w:"grey",p:"adj./n.",g:"ભૂખરો (Bhūkharo)",m:"A colour between black and white.",e:"The sky turned grey before the rain."},
+{w:"group",p:"n.",g:"જૂથ (Jūth)",m:"A number of people or things together.",e:"We worked on the project as a group."},
+{w:"grow",p:"v.",g:"ઊગવું (Ūgavuṃ)",m:"To increase in size; to develop.",e:"These plants grow very fast."},
+{w:"guess",p:"v./n.",g:"અનુમાન (Anumān)",m:"To give an answer without being certain.",e:"Can you guess how old I am?"},
+{w:"guitar",p:"n.",g:"ગિટાર (Giṭār)",m:"A musical instrument with strings.",e:"He plays the guitar at the school concert."},
+{w:"gym",p:"n.",g:"વ્યાયામ-શાળા (Vyāyāma-śāḷā)",m:"A room or building for physical exercise.",e:"She goes to the gym every morning."},
+{w:"hair",p:"n.",g:"વાળ (Vāḷ)",m:"The threads growing on the head.",e:"She has long black hair."},
+{w:"half",p:"n./det./pron.",g:"અડધું (Aḍadhuṃ)",m:"One of two equal parts.",e:"Give me half of the bread."},
+{w:"hand",p:"n.",g:"હાથ (Hāth)",m:"The part of the body at the end of the arm.",e:"Raise your hand if you know the answer."},
+{w:"happen",p:"v.",g:"થવું (Thavuṃ)",m:"To take place; to occur.",e:"What happened at the meeting?"},
+{w:"happy",p:"adj.",g:"ખુશ (Khuś)",m:"Feeling pleasure or contentment.",e:"She was happy to see her old friend."},
+{w:"hard",p:"adj./adv.",g:"મુશ્કેલ / સખત (Muśkel / Sakhat)",m:"Difficult; with great effort.",e:"He works very hard every day."},
+{w:"hat",p:"n.",g:"ટોપી (Ṭopī)",m:"A covering worn on the head.",e:"She wore a straw hat to the beach."},
+{w:"hate",p:"v.",g:"નફરત (Napharat)",m:"To strongly dislike something.",e:"I hate waking up late."},
+{w:"have",p:"v.",g:"પાસે હોવું (Pāse hovuṃ)",m:"To possess something.",e:"I have two brothers and one sister."},
+{w:"have to",p:"modal v.",g:"પડે (Paḍe)",m:"To be required or forced to do something.",e:"You have to finish this by Friday."},
+{w:"he",p:"pron.",g:"તે (Te)",m:"Used to refer to a male person.",e:"He is my best friend."},
+{w:"head",p:"n.",g:"માથું (Māth)",m:"The top part of the body.",e:"She nodded her head in agreement."},
+{w:"health",p:"n.",g:"સ્વાસ્થ્ય (Svāsthya)",m:"The condition of a person's body or mind.",e:"Good food is important for your health."},
+{w:"healthy",p:"adj.",g:"સ્વસ્થ (Svasth)",m:"In good physical condition.",e:"Eat healthy food and exercise regularly."},
+{w:"hear",p:"v.",g:"સાંભળવું (Sāṃbhaḷavuṃ)",m:"To receive sound through the ears.",e:"I can hear music from next door."},
+{w:"hello",p:"exclam./n.",g:"નમસ્તે (Namaste)",m:"A greeting used when meeting someone.",e:"She smiled and said hello."},
+{w:"help",p:"v./n.",g:"મદદ (Madad)",m:"To make something easier; assistance.",e:"Can you help me carry these bags?"},
+{w:"her",p:"pron./det.",g:"તેણી (Teṇī)",m:"Used for a female person as object or possessive.",e:"Give her the book."},
+{w:"here",p:"adv.",g:"અહીં (Ahīṃ)",m:"In or at this place.",e:"Please sit here next to me."},
+{w:"hey",p:"exclam.",g:"અરે (Are)",m:"Used to attract attention informally.",e:"Hey, wait for me!"},
+{w:"hi",p:"exclam.",g:"હૅ (Hæ)",m:"An informal greeting.",e:"Hi! How are you doing today?"},
+{w:"high",p:"adj.",g:"ઊંચો (Ūṃco)",m:"At a great distance above the ground.",e:"The aeroplane flew at a very high altitude."},
+{w:"him",p:"pron.",g:"તેને (Tene)",m:"Object form used for a male person.",e:"I saw him at the market."},
+{w:"his",p:"det.",g:"તેનો (Teno)",m:"Belonging to a male person.",e:"That is his bicycle."},
+{w:"history",p:"n.",g:"ઇતિહાસ (Itihās)",m:"The study of past events.",e:"I love studying Indian history."},
+{w:"hobby",p:"n.",g:"શોખ (Śokh)",m:"An activity done for enjoyment.",e:"My hobby is painting."},
+{w:"holiday",p:"n.",g:"રજા (Rajā)",m:"A day or period of rest from work.",e:"We are going to Kerala for the holidays."},
+{w:"home",p:"n./adv.",g:"ઘર (Ghar)",m:"The place where you live.",e:"I will reach home by seven."},
+{w:"homework",p:"n.",g:"ગૃહ-કાર્ય (Gṛha-kārya)",m:"School work done at home.",e:"She finished her homework early."},
+{w:"hope",p:"v.",g:"આશા (Āśā)",m:"To want something to happen.",e:"I hope it does not rain today."},
+{w:"horse",p:"n.",g:"ઘોડો (Ghoḍo)",m:"A large animal used for riding.",e:"The farmer rides his horse every morning."},
+{w:"hospital",p:"n.",g:"હૉસ્પિટલ (Hospitala)",m:"A place where sick people receive treatment.",e:"She was taken to the hospital after the accident."},
+{w:"hot",p:"adj.",g:"ગરમ (Garam)",m:"Having a high temperature.",e:"Drink hot tea on a cold morning."},
+{w:"hotel",p:"n.",g:"હૉટેલ (Hoṭel)",m:"A building where people pay to stay.",e:"We booked a hotel near the beach."},
+{w:"hour",p:"n.",g:"કલાક (Kalāk)",m:"A period of sixty minutes.",e:"The train journey takes two hours."},
+{w:"house",p:"n.",g:"ઘર / મકાન (Ghar / Makān)",m:"A building where people live.",e:"They built a new house last year."},
+{w:"how",p:"adv.",g:"કેવી રીતે (Kevī rīte)",m:"In what way; to what extent.",e:"How do you make this dish?"},
+{w:"however",p:"adv.",g:"જો કે (Jo ke)",m:"Used to introduce a contrast.",e:"I wanted to come; however, I was busy."},
+{w:"hundred",p:"number",g:"સો (So)",m:"The number 100.",e:"There were a hundred people at the event."},
+{w:"hungry",p:"adj.",g:"ભૂખ્યો (Bhūkhyo)",m:"Feeling a need for food.",e:"I am very hungry after the long walk."},
+{w:"husband",p:"n.",g:"પતિ (Pati)",m:"A married male partner.",e:"Her husband cooks dinner on weekends."},
+{w:"I",p:"pron.",g:"હું (Huṃ)",m:"Used by the speaker to refer to themselves.",e:"I am a student at this college."},
+{w:"ice",p:"n.",g:"બરફ (Baraph)",m:"Frozen water.",e:"Add ice to the drink to make it cold."},
+{w:"ice cream",p:"n.",g:"આઇસ ક્રીમ (Āis krīm)",m:"A sweet frozen food made with cream.",e:"She loves chocolate ice cream."},
+{w:"idea",p:"n.",g:"વિચાર (Vicār)",m:"A thought or suggestion.",e:"That is a great idea!"},
+{w:"if",p:"conj.",g:"જો (Jo)",m:"On the condition that.",e:"I will come if I finish my work early."},
+{w:"imagine",p:"v.",g:"કલ્પના (Kalpanā)",m:"To form a picture of something in your mind.",e:"Imagine living by the sea."},
+{w:"important",p:"adj.",g:"મહત્ત્વપૂર્ણ (Mahattvaṃpūrṇ)",m:"Having great significance.",e:"Education is very important for success."},
+{w:"improve",p:"v.",g:"સુધારવું (Sudhāravuṃ)",m:"To make or become better.",e:"She is working hard to improve her English."},
+{w:"in",p:"prep./adv.",g:"માં (Māṃ)",m:"Inside; within.",e:"The keys are in the drawer."},
+{w:"include",p:"v.",g:"સામેલ (Sāmel)",m:"To contain as part of a whole.",e:"The price includes breakfast."},
+{w:"information",p:"n.",g:"માહિતી (Māhitī)",m:"Facts or knowledge about something.",e:"Please give me more information about the course."},
+{w:"interest",p:"n./v.",g:"રસ (Ras)",m:"A feeling of wanting to know more; to hold attention.",e:"She has a strong interest in music."},
+{w:"interested",p:"adj.",g:"રસ ધરાવતો (Ras dharāvato)",m:"Wanting to know or learn more.",e:"Are you interested in learning to paint?"},
+{w:"interesting",p:"adj.",g:"રસપ્રદ (Rasaprad)",m:"Holding attention; not boring.",e:"This book is very interesting."},
+{w:"internet",p:"n.",g:"ઇન્ટરનૅટ (Iṃṭarneṭ)",m:"A global network connecting computers.",e:"I found the answer on the internet."},
+{w:"interview",p:"n./v.",g:"ઇન્ટરવ્યૂ (Iṃṭarvyū)",m:"A meeting to assess someone; to question.",e:"She has a job interview tomorrow."},
+{w:"into",p:"prep.",g:"માં (Māṃ)",m:"Expressing movement toward the inside.",e:"Pour the milk into the cup."},
+{w:"introduce",p:"v.",g:"પરિચય (Paricay)",m:"To present someone for the first time.",e:"Let me introduce my friend to you."},
+{w:"island",p:"n.",g:"ટાપુ (Ṭāpu)",m:"A piece of land surrounded by water.",e:"Sri Lanka is an island near India."},
+{w:"it",p:"pron.",g:"તે (Te)",m:"Used to refer to a thing or animal.",e:"It is raining outside."},
+{w:"its",p:"det.",g:"તેનો (Teno)",m:"Belonging to a thing or animal.",e:"The cat licked its paw."},
+{w:"jacket",p:"n.",g:"જૅકેટ (Jækeṭ)",m:"A short coat.",e:"Wear a jacket because it is cold outside."},
+{w:"January",p:"n.",g:"જાન્યુઆરી (Jānyuārī)",m:"The first month of the year.",e:"New Year starts on the first of January."},
+{w:"jeans",p:"n.",g:"જીન્સ (Jīns)",m:"Trousers made of denim.",e:"She wore jeans and a T-shirt."},
+{w:"job",p:"n.",g:"નોકરી (Nokarī)",m:"Work done to earn money.",e:"He found a new job in Mumbai."},
+{w:"join",p:"v.",g:"જોડાવું (Joḍāvuṃ)",m:"To become a member of a group.",e:"I want to join the swimming club."},
+{w:"journey",p:"n.",g:"સફર (Saphar)",m:"Travel from one place to another.",e:"The journey from Delhi to Mumbai takes two hours by plane."},
+{w:"juice",p:"n.",g:"રસ (Ras)",m:"Liquid from fruit or vegetables.",e:"She drinks fresh orange juice every morning."},
+{w:"July",p:"n.",g:"જૂન (Jūlāī)",m:"The seventh month of the year.",e:"It rains a lot in July in Gujarat."},
+{w:"June",p:"n.",g:"જૂન (Jūn)",m:"The sixth month of the year.",e:"School exams usually end in June."},
+{w:"just",p:"adv.",g:"બસ / હમણાં (Bas / Hamaṇāṃ)",m:"Exactly; very recently.",e:"I just finished my homework."},
+{w:"keep",p:"v.",g:"રાખવું (Rākhavuṃ)",m:"To have and not give back.",e:"You can keep the book."},
+{w:"key",p:"n./adj.",g:"ચાવી / મહત્ત્વપૂર્ણ (Cāvī)",m:"A device for opening a lock; most important.",e:"I lost the key to my room."},
+{w:"kilometre",p:"n.",g:"કિલોમીટર (Kilomīṭar)",m:"A unit of distance equal to 1000 metres.",e:"The school is two kilometres from home."},
+{w:"kind",p:"n.",g:"પ્રકાર (Prakār)",m:"A type or sort.",e:"What kind of music do you like?"},
+{w:"kitchen",p:"n.",g:"રસોડું (Rasoḍuṃ)",m:"A room where food is prepared.",e:"She was cooking in the kitchen."},
+{w:"know",p:"v.",g:"જાણવું (Jāṇavuṃ)",m:"To have information or skill.",e:"Do you know how to drive?"},
+{w:"land",p:"n.",g:"જમીન (Jamīn)",m:"The solid ground; an area of ground.",e:"The farmers work on their land every day."},
+{w:"language",p:"n.",g:"ભાષા (Bhāṣā)",m:"A system of communication using words.",e:"Gujarati is my mother language."},
+{w:"large",p:"adj.",g:"મોટો (Moṭo)",m:"Big in size.",e:"They have a large house with a garden."},
+{w:"last",p:"det.",g:"છેલ્લો (Chelalo)",m:"Coming after all others.",e:"I was the last person to leave."},
+{w:"late",p:"adj./adv.",g:"મોડો (Moḍo)",m:"After the expected time.",e:"He arrived late to the meeting."},
+{w:"later",p:"adv.",g:"પછીથી (Pachīthī)",m:"After some time.",e:"I will call you later this evening."},
+{w:"laugh",p:"v./n.",g:"હસવું (Hasavuṃ)",m:"To make sounds showing amusement.",e:"The joke made everyone laugh."},
+{w:"learn",p:"v.",g:"શીખવું (Śīkhavuṃ)",m:"To gain knowledge or a skill.",e:"I want to learn to play the piano."},
+{w:"leave",p:"v.",g:"જવું / છોડવું (Javuṃ / Choḍavuṃ)",m:"To go away from; to stop attending.",e:"She leaves home at eight every morning."},
+{w:"left",p:"adj./adv./n.",g:"ડાબી (Ḍābī)",m:"The opposite side to right.",e:"Turn left at the traffic light."},
+{w:"leg",p:"n.",g:"પગ (Pag)",m:"The limb used for walking.",e:"He hurt his leg playing football."},
+{w:"lesson",p:"n.",g:"પાઠ (Pāṭh)",m:"A period of teaching.",e:"Today's lesson was about grammar."},
+{w:"let",p:"v.",g:"દેવું (Devuṃ)",m:"To allow someone to do something.",e:"Let me help you with those bags."},
+{w:"letter",p:"n.",g:"પત્ર / અક્ષર (Patra / Akṣar)",m:"A written message; a symbol in an alphabet.",e:"She wrote a letter to her friend."},
+{w:"library",p:"n.",g:"પુસ્તકાલય (Pustakālay)",m:"A place where books can be borrowed.",e:"I go to the library every Saturday."},
+{w:"life",p:"n.",g:"જીવન (Jīvan)",m:"The existence of a person or living thing.",e:"She leads a simple and happy life."},
+{w:"light",p:"n./adj.",g:"પ્રકાશ (Prakāś)",m:"The energy that makes things visible; not dark or heavy.",e:"Open the window to let in the light."},
+{w:"like",p:"prep.",g:"જેવો (Jevo)",m:"Similar to.",e:"She sings like a professional."},
+{w:"like",p:"v.",g:"ગમવું (Gamavuṃ)",m:"To find pleasant.",e:"I like eating mangoes in summer."},
+{w:"line",p:"n.",g:"રેખા / હાર (Rekhā)",m:"A long thin mark; a row.",e:"Draw a straight line across the page."},
+{w:"lion",p:"n.",g:"સિંહ (Siṃh)",m:"A large wild cat found in Africa and India.",e:"The Gir Forest has the Asiatic lion."},
+{w:"list",p:"n./v.",g:"યાદી (Yādī)",m:"A set of things written one after another.",e:"Write a list of things to buy."},
+{w:"listen",p:"v.",g:"સાંભળવું (Sāṃbhaḷavuṃ)",m:"To pay attention to a sound.",e:"Listen carefully to the teacher."},
+{w:"little",p:"adj./det./pron.",g:"નાનો / થોડો (Nāno / Thoḍo)",m:"Small in size or amount.",e:"She added a little sugar to the tea."},
+{w:"live",p:"v.",g:"રહેવું (Rahevuṃ)",m:"To have your home in a place.",e:"I live in Ahmedabad."},
+{w:"local",p:"adj.",g:"સ્થાનિક (Sthānik)",m:"Related to a nearby area.",e:"We shop at the local market."},
+{w:"long",p:"adj./adv.",g:"લાંબો (Lāṃbo)",m:"Measuring a great distance; for a great time.",e:"She has long straight hair."},
+{w:"look",p:"v.",g:"જોવું (Jovuṃ)",m:"To direct your eyes toward something.",e:"Look at the beautiful sunset."},
+{w:"lose",p:"v.",g:"હારવું / ગુમાવવું (Hāravuṃ)",m:"To not win; to be unable to find.",e:"I always lose my keys."},
+{w:"lot",p:"pron./det./adv.",g:"ઘણો (Ghaṇo)",m:"A large amount or number.",e:"She has a lot of friends."},
+{w:"love",p:"n./v.",g:"પ્રેમ (Prem)",m:"A strong feeling of affection.",e:"She loves her family very much."},
+{w:"lunch",p:"n.",g:"બપોરનું ભોજન (Baporanuṃ bhojan)",m:"The meal eaten in the middle of the day.",e:"We had vegetable curry for lunch."},
+{w:"machine",p:"n.",g:"મશીન (Maśīn)",m:"A device that does a specific job.",e:"This machine washes the clothes automatically."},
+{w:"magazine",p:"n.",g:"સામ-યિક (Sām-yik)",m:"A publication with articles and pictures.",e:"She reads a fashion magazine every month."},
+{w:"main",p:"adj.",g:"મુખ્ય (Mukhya)",m:"Most important.",e:"What is the main reason for your visit?"},
+{w:"make",p:"v.",g:"બનાવવું (Banāvavuṃ)",m:"To create or produce something.",e:"She can make delicious rotis."},
+{w:"man",p:"n.",g:"પુરુષ (Puruṣ)",m:"An adult male person.",e:"That man is a well-known artist."},
+{w:"many",p:"det./pron.",g:"ઘણા (Ghaṇā)",m:"A large number of.",e:"There are many students in this class."},
+{w:"map",p:"n.",g:"નકશો (Nakaśo)",m:"A diagram showing an area of land.",e:"Use a map to find the route."},
+{w:"March",p:"n.",g:"માર્ચ (Mārc)",m:"The third month of the year.",e:"Holi is celebrated in March."},
+{w:"market",p:"n.",g:"બજાર (Bajār)",m:"A place where things are bought and sold.",e:"She buys vegetables at the local market."},
+{w:"married",p:"adj.",g:"પરિણિત (Pariṇit)",m:"Having a husband or wife.",e:"They have been married for ten years."},
+{w:"match",p:"n./v.",g:"મૅચ / સામ (Mæc)",m:"A game or competition; to be similar.",e:"India won the cricket match."},
+{w:"May",p:"n.",g:"મે (Me)",m:"The fifth month of the year.",e:"The weather is warm in May."},
+{w:"maybe",p:"adv.",g:"કદાચ (Kadāc)",m:"Possibly; perhaps.",e:"Maybe we can go to the cinema tonight."},
+{w:"me",p:"pron.",g:"મને (Mane)",m:"Object form used by the speaker.",e:"Please help me."},
+{w:"meal",p:"n.",g:"ભોજન (Bhojan)",m:"Food eaten at a particular time.",e:"We had a lovely meal together."},
+{w:"mean",p:"v.",g:"અર્થ (Arth)",m:"To have a particular meaning.",e:"What does this word mean?"},
+{w:"meaning",p:"n.",g:"અર્થ (Arth)",m:"What a word or phrase signifies.",e:"Look up the meaning of this word."},
+{w:"meat",p:"n.",g:"માંસ (Māṃs)",m:"The flesh of an animal used as food.",e:"He does not eat meat."},
+{w:"meet",p:"v.",g:"મળવું (Maḷavuṃ)",m:"To come face to face with someone.",e:"I will meet you at the cafe at noon."},
+{w:"meeting",p:"n.",g:"સભા (Sabhā)",m:"An occasion when people come together.",e:"We have a team meeting every Monday."},
+{w:"member",p:"n.",g:"સભ્ય (Sabhya)",m:"A person who belongs to a group.",e:"She is a member of the reading club."},
+{w:"menu",p:"n.",g:"મૅન્યૂ (Mænyū)",m:"A list of food available in a restaurant.",e:"The waiter gave us the menu."},
+{w:"message",p:"n.",g:"સંદેશ (Saṃdeś)",m:"A piece of information sent to someone.",e:"She sent me a message on WhatsApp."},
+{w:"metre",p:"n.",g:"મીટર (Mīṭar)",m:"A unit of length equal to 100 centimetres.",e:"The room is five metres wide."},
+{w:"midnight",p:"n.",g:"મધ-રાત (Madha-rāt)",m:"Twelve o'clock at night.",e:"The party ended at midnight."},
+{w:"mile",p:"n.",g:"માઇલ (Māil)",m:"A unit of distance equal to about 1.6 kilometres.",e:"The village is three miles from here."},
+{w:"milk",p:"n.",g:"દૂધ (Dūdh)",m:"A white liquid produced by cows.",e:"She drinks a glass of milk every night."},
+{w:"million",p:"number",g:"દસ લાખ (Das lākh)",m:"The number 1,000,000.",e:"A million people visited the fair."},
+{w:"minute",p:"n.",g:"મિનિટ (Miniṭ)",m:"A unit of time equal to sixty seconds.",e:"I will be ready in five minutes."},
+{w:"miss",p:"v.",g:"ચૂકવું (Cūkavuṃ)",m:"To fail to catch or see; to feel sad about absence.",e:"I miss my grandmother very much."},
+{w:"mistake",p:"n.",g:"ભૂલ (Bhūl)",m:"Something wrong that was done unintentionally.",e:"Everyone makes mistakes when learning."},
+{w:"model",p:"n.",g:"આદર્શ (Ādarś)",m:"A copy; a person who poses for photos.",e:"She works as a fashion model."},
+{w:"modern",p:"adj.",g:"આધુ-નિક (Ādhunnik)",m:"Relating to the present time.",e:"This is a very modern office building."},
+{w:"moment",p:"n.",g:"ક્ષણ (Kṣaṇ)",m:"A very short period of time.",e:"Wait a moment; I will be right back."},
+{w:"Monday",p:"n.",g:"સોમ-વાર (Somvār)",m:"The first day of the working week.",e:"School starts again on Monday."},
+{w:"money",p:"n.",g:"પૈસા (Paisā)",m:"Coins and notes used to buy things.",e:"She saved money to buy a new laptop."},
+{w:"month",p:"n.",g:"મહિનો (Mahino)",m:"One of the twelve divisions of a year.",e:"We visit our village every month."},
+{w:"more",p:"det./pron./adv.",g:"વધારે (Vadhāre)",m:"A larger amount or degree.",e:"Can I have more rice, please?"},
+{w:"morning",p:"n.",g:"સવાર (Savār)",m:"The early part of the day.",e:"She exercises every morning."},
+{w:"most",p:"det./pron./adv.",g:"સૌ-થી વધારે (Sautī vadhāre)",m:"The greatest amount or number.",e:"Most students passed the exam."},
+{w:"mother",p:"n.",g:"માતા (Mātā)",m:"A female parent.",e:"My mother is a wonderful cook."},
+{w:"mountain",p:"n.",g:"પર્વત (Parvat)",m:"A very large natural hill.",e:"We trekked up the mountain."},
+{w:"mouse",p:"n.",g:"ઉં-દ (Uṃd)",m:"A small animal or computer input device.",e:"The cat chased the mouse around the room."},
+{w:"mouth",p:"n.",g:"મોઢું (Moḍhuṃ)",m:"The opening in the face used for eating and speaking.",e:"Open your mouth wide for the dentist."},
+{w:"move",p:"v.",g:"ખસેડ-વું (Khasedavuṃ)",m:"To change position.",e:"The train began to move slowly."},
+{w:"movie",p:"n.",g:"ચલ-ચિત્ર (Calacitra)",m:"A film shown at a cinema.",e:"Let's watch a Bollywood movie tonight."},
+{w:"much",p:"det./pron./adv.",g:"ઘ-ણો (Ghaṇo)",m:"A large amount.",e:"I don't have much time today."},
+{w:"mum",p:"n.",g:"મ-મ્મા (Mammā)",m:"An informal word for mother.",e:"Mum always makes my favourite dish."},
+{w:"museum",p:"n.",g:"સ-ં-ગ્ર-હા-લ-ય (Saṃgrahālay)",m:"A building where historical objects are kept.",e:"We visited the science museum yesterday."},
+{w:"music",p:"n.",g:"સ-ંગ-ીત (Saṃgīt)",m:"Sounds arranged in a pleasing way.",e:"She plays music on her guitar every evening."},
+{w:"must",p:"modal v.",g:"ચોક-્-ક-સ-પ-ણ-ે (Cokkas paṇe)",m:"Used to express obligation.",e:"You must wear a helmet while riding."},
+{w:"my",p:"det.",g:"મ-ારો (Māro)",m:"Belonging to the speaker.",e:"This is my book."},
+{w:"name",p:"n./v.",g:"ન-ામ (Nām)",m:"A word used to identify a person.",e:"My name is Priya."},
+{w:"natural",p:"adj.",g:"ક-ુ-દ-ર-તી (Kudartī)",m:"Existing in or caused by nature.",e:"This park has a natural spring."},
+{w:"near",p:"prep./adj./adv.",g:"ન-જ-ીક (Najīk)",m:"At a short distance.",e:"The hospital is near our school."},
+{w:"need",p:"v.",g:"જ-ો-ઈ-એ (Joīe)",m:"To require something.",e:"I need help with this exercise."},
+{w:"negative",p:"adj.",g:"ન-ક-ા-ર-ા-ત-્-મ-ક (Nakārātmak)",m:"Expressing denial; not positive.",e:"Try not to use negative sentences too often."},
+{w:"neighbour",p:"n.",g:"પ-ડ-ો-શ-ી (Paḍośī)",m:"A person living next to or near you.",e:"My neighbour helped me fix the door."},
+{w:"never",p:"adv.",g:"ક-્-ય-ા-ર-ે-ય ન-હ-ી (Kyārey nahī)",m:"At no time.",e:"He never forgets his mother's birthday."},
+{w:"new",p:"adj.",g:"ન-વ-ો (Navo)",m:"Not existing before; recently made.",e:"She bought a new laptop."},
+{w:"news",p:"n.",g:"સ-મ-ા-ચ-ા-ર (Samācār)",m:"Information about recent events.",e:"I watch the news every evening."},
+{w:"newspaper",p:"n.",g:"છ-ા-પ-ું (Chāpuṃ)",m:"A daily publication with news.",e:"My father reads the newspaper every morning."},
+{w:"next",p:"adj./adv.",g:"આ-ગ-લ-ો (Āgalo)",m:"Immediately following.",e:"See you next week!"},
+{w:"next to",p:"prep.",g:"બ-ા-જ-ુ-મ-ા-ં (Bājumāṃ)",m:"Beside something.",e:"The school is next to the park."},
+{w:"nice",p:"adj.",g:"સ-ુ-ં-દ-ર (Suṃdar)",m:"Pleasant or attractive.",e:"What a nice day!"},
+{w:"night",p:"n.",g:"ર-ા-ત (Rāt)",m:"The dark period between evening and morning.",e:"She reads before going to sleep at night."},
+{w:"nine",p:"number",g:"ન-વ (Nav)",m:"The number 9.",e:"The shop opens at nine o'clock."},
+{w:"nineteen",p:"number",g:"ઓ-ગ-ણ-ી-સ (Ogaṇīs)",m:"The number 19.",e:"She is nineteen years old."},
+{w:"ninety",p:"number",g:"ન-ે-વ-ુ-ં (Nevuṃ)",m:"The number 90.",e:"He scored ninety in the exam."},
+{w:"no",p:"exclam./det.",g:"ન-ા (Nā)",m:"Used to give a negative answer.",e:"No, I am not coming today."},
+{w:"no one",p:"pron.",g:"ક-ો-ઈ ન-હ-ી (Koī nahī)",m:"Not a single person.",e:"No one knew the answer."},
+{w:"nobody",p:"pron.",g:"ક-ો-ઈ ન-હ-ી (Koī nahī)",m:"No person.",e:"Nobody was home when I arrived."},
+{w:"north",p:"n./adj./adv.",g:"ઉ-ત-્-ત-ર (Uttar)",m:"The direction to the left when facing the sunrise.",e:"Kashmir is in the north of India."},
+{w:"nose",p:"n.",g:"ન-ા-ક (Nāk)",m:"The part of the face used for smelling.",e:"She had a cold and her nose was blocked."},
+{w:"not",p:"adv.",g:"ન-હ-ી (Nahī)",m:"Used to make a negative.",e:"I am not feeling well today."},
+{w:"note",p:"n.",g:"ન-ો-ધ (Nodh)",m:"A short written message.",e:"She left a note on the table."},
+{w:"nothing",p:"pron.",g:"ક-ઈ-ં ન-હ-ી (Kaīṃ nahī)",m:"Not anything.",e:"There is nothing left in the box."},
+{w:"November",p:"n.",g:"ન-વ-ે-મ-્-બ-ર (Navembar)",m:"The eleventh month of the year.",e:"Diwali often falls in November."},
+{w:"now",p:"adv.",g:"હ-મ-ણ-ા-ં (Hamaṇāṃ)",m:"At the present time.",e:"Please come here right now."},
+{w:"number",p:"n.",g:"સ-ં-ખ-્-ય-ા (Saṃkhyā)",m:"A symbol representing a quantity.",e:"What is your phone number?"},
+{w:"nurse",p:"n.",g:"ન-ર-્-સ (Nars)",m:"A person trained to care for sick people.",e:"The nurse checked my temperature."},
+{w:"object",p:"n.",g:"વ-સ-્-ત-ુ (Vastu)",m:"A physical thing.",e:"There is a strange object on the table."},
+{w:"o'clock",p:"adv.",g:"વ-ા-ગ-્-ય-ે (Vāgye)",m:"Used to say what time it is.",e:"The class starts at ten o'clock."},
+{w:"October",p:"n.",g:"ઓ-ક-્-ટ-ો-બ-ર (Okṭobar)",m:"The tenth month of the year.",e:"Navratri is celebrated in October."},
+{w:"of",p:"prep.",g:"ન-ો / ન-ી (No / Nī)",m:"Expressing a relationship between things.",e:"She is a friend of mine."},
+{w:"off",p:"adv./prep.",g:"ઓ-ફ (Oph)",m:"Away from; no longer on.",e:"Please turn off the lights."},
+{w:"office",p:"n.",g:"ઓ-ફ-િ-સ (Phis)",m:"A place where people work.",e:"She works in a busy office."},
+{w:"often",p:"adv.",g:"ઘ-ણ-ી-વ-ા-ર (Ghaṇīvār)",m:"Many times; frequently.",e:"We often go to the cinema on weekends."},
+{w:"oh",p:"exclam.",g:"ઓ-હ (Oh)",m:"Used to express surprise or realisation.",e:"Oh, I forgot my umbrella!"},
+{w:"OK",p:"exclam./adj./adv.",g:"ઠ-ી-ક (Ṭhīk)",m:"Acceptable; agreeing with something.",e:"Are you OK after the fall?"},
+{w:"old",p:"adj.",g:"જ-ૂ-ન-ો (Jūno)",m:"Having lived or existed for a long time.",e:"My grandfather is very old."},
+{w:"on",p:"prep./adv.",g:"પ-ર (Par)",m:"Touching a surface; about.",e:"The book is on the shelf."},
+{w:"once",p:"adv.",g:"એ-ક-વ-ા-ર (Ekvār)",m:"One time only.",e:"I visited that temple once."},
+{w:"one",p:"number/det./pron.",g:"એ-ક (Ek)",m:"The number 1.",e:"She has one sister."},
+{w:"onion",p:"n.",g:"ડ-ુ-ં-ગ-ળ-ી (Ḍuṃgaḷī)",m:"A round vegetable with a sharp smell.",e:"Add onion to the curry."},
+{w:"online",p:"adj./adv.",g:"ઓ-ન-લ-ા-ઇ-ન (Onlāin)",m:"Connected to the internet.",e:"I shop online every month."},
+{w:"only",p:"adj./adv.",g:"ફ-ક-્-ત (Phakt)",m:"No more than; just.",e:"She is the only child in the family."},
+{w:"open",p:"adj./v.",g:"ખ-ુ-લ-ો (Khulo)",m:"Not closed; to make accessible.",e:"The shop is open until eight."},
+{w:"opinion",p:"n.",g:"મ-ત (Mat)",m:"A personal view or judgement.",e:"In my opinion, this plan is excellent."},
+{w:"opposite",p:"adj./n./prep./adv.",g:"સ-ામ-ે (Sāme)",m:"On the other side; completely different.",e:"The school is opposite the park."},
+{w:"or",p:"conj.",g:"અ-થ-વ-ા (Athavā)",m:"Used to give alternatives.",e:"Would you like tea or coffee?"},
+{w:"orange",p:"n./adj.",g:"સ-ં-ત-ર-ા (Saṃtarā)",m:"A round citrus fruit; the colour orange.",e:"She eats an orange every day."},
+{w:"order",p:"n./v.",g:"ઓ-ર-્-ડ-ર (Orḍar)",m:"A request for food or goods; to give a command.",e:"I ordered a coffee and a sandwich."},
+{w:"other",p:"adj./pron.",g:"બ-ીજ-ો (Bījo)",m:"Not the same; different.",e:"Have you met the other students?"},
+{w:"our",p:"det.",g:"આ-પ-ણ-ો (Āpaṇo)",m:"Belonging to us.",e:"This is our school."},
+{w:"out",p:"adv./prep.",g:"બ-હ-ા-ર (Bahār)",m:"Away from the inside.",e:"She went out to buy vegetables."},
+{w:"outside",p:"adv.",g:"બ-હ-ા-ર (Bahār)",m:"Not inside.",e:"The children are playing outside."},
+{w:"over",p:"prep./adv.",g:"ઉ-પ-ર (Upar)",m:"Above; across.",e:"The bridge goes over the river."},
+{w:"own",p:"adj./pron.",g:"ખ-ુ-દ-ન-ો (Khudno)",m:"Belonging to oneself.",e:"She has her own car."},
+{w:"page",p:"n.",g:"પ-ા-ન-ું (Pānuṃ)",m:"One side of a sheet of paper in a book.",e:"Turn to page ten in your textbook."},
+{w:"paint",p:"v./n.",g:"ર-ં-ગ-ક-ા-મ (Raṃgkām)",m:"To apply colour to a surface; the substance used.",e:"She loves to paint landscapes."},
+{w:"painting",p:"n.",g:"ચ-િ-ત-્-ર (Citra)",m:"A picture made with paint.",e:"There is a beautiful painting on the wall."},
+{w:"pair",p:"n.",g:"જ-ો-ડ (Joḍ)",m:"Two things that belong together.",e:"She bought a new pair of shoes."},
+{w:"paper",p:"n.",g:"ક-ા-ગ-ળ (Kāgaḷ)",m:"Thin material used for writing.",e:"Write your name on a piece of paper."},
+{w:"paragraph",p:"n.",g:"ફ-ક-ર-ો (Phakaro)",m:"A group of sentences about one idea.",e:"Write a paragraph about your family."},
+{w:"parent",p:"n.",g:"વ-ા-લ-ી (Vālī)",m:"A mother or father.",e:"Both my parents are teachers."},
+{w:"park",p:"n./v.",g:"બ-ા-ગ (Bāg)",m:"A public area with grass and trees.",e:"We take a walk in the park every evening."},
+{w:"part",p:"n.",g:"ભ-ા-ગ (Bhāg)",m:"One piece of something.",e:"I read the first part of the book."},
+{w:"partner",p:"n.",g:"ભ-ા-ગ-ી-દ-ા-ર (Bhāgīdār)",m:"A person you work or do something with.",e:"She is my project partner."},
+{w:"party",p:"n.",g:"ઉ-જ-વ-ણ-ી (Ujavāṇī)",m:"A social event with people gathered for fun.",e:"We had a birthday party last Saturday."},
+{w:"passport",p:"n.",g:"પ-ા-સ-પ-ો-ર-્-ટ (Pāsaporṭ)",m:"An official document for international travel.",e:"Show your passport at the airport."},
+{w:"past",p:"adj./n./prep.",g:"ભ-ૂ-ત-ક-ા-ળ (Bhūtakāḷ)",m:"The time before now; gone by.",e:"She often talks about the past."},
+{w:"pay",p:"v.",g:"ચ-ૂ-ક-વ-વ-ું (Cūkavavuṃ)",m:"To give money for something.",e:"How would you like to pay?"},
+{w:"pen",p:"n.",g:"પ-ે-ન (Pen)",m:"A writing instrument that uses ink.",e:"Can I borrow your pen?"},
+{w:"pencil",p:"n.",g:"પ-ે-ન-્-સ-િ-લ (Pensil)",m:"A writing instrument with a graphite tip.",e:"She drew a sketch with a pencil."},
+{w:"people",p:"n.",g:"લ-ો-ક-ો (Loko)",m:"Human beings in general.",e:"Many people visited the exhibition."},
+{w:"pepper",p:"n.",g:"મ-ર-ી (Marī)",m:"A spice used in cooking.",e:"Add a pinch of pepper to the dish."},
+{w:"perfect",p:"adj.",g:"સ-ં-પ-ૂ-ર-્-ણ (Saṃpūrṇ)",m:"Without any faults; exactly right.",e:"Your pronunciation is perfect."},
+{w:"period",p:"n.",g:"સ-મ-ય-ગ-ા-ળ-ો (Samayagāḷo)",m:"A length of time.",e:"We studied for a long period."},
+{w:"person",p:"n.",g:"વ-્-ય-ક-્-ત-િ (Vyakti)",m:"A human being.",e:"She is a very kind person."},
+{w:"personal",p:"adj.",g:"અ-ં-ગ-ત (Aṃgat)",m:"Relating to a particular person.",e:"Please keep my personal details private."},
+{w:"phone",p:"n./v.",g:"ફ-ો-ન (Phon)",m:"A telephone; to call someone.",e:"She phoned her mother to share the good news."},
+{w:"photo",p:"n.",g:"ફ-ો-ટ-ો (Phoṭo)",m:"A picture taken by a camera.",e:"She posted a photo of the sunset."},
+{w:"photograph",p:"n.",g:"છ-ા-ય-ા-ચ-િ-ત-્-ર (Chāyācitra)",m:"A picture taken with a camera.",e:"There is a family photograph on the wall."},
+{w:"phrase",p:"n.",g:"વ-ા-ક-્-ય-ા-ં-શ (Vākyāṃś)",m:"A small group of words that form a unit.",e:"Learn common phrases to speak naturally."},
+{w:"piano",p:"n.",g:"પ-િ-ય-ા-ન-ો (Piyāno)",m:"A large keyboard musical instrument.",e:"She has been learning the piano for two years."},
+{w:"picture",p:"n.",g:"ચ-િ-ત-્-ર (Citra)",m:"A drawing, painting, or photograph.",e:"He drew a picture of his house."},
+{w:"piece",p:"n.",g:"ટ-ુ-ક-ડ-ો (Ṭukaḍo)",m:"A part separated from a whole.",e:"She ate a piece of cake."},
+{w:"pig",p:"n.",g:"ડ-ુ-ક-્-ક-ર (Ḍukkar)",m:"A farm animal with pink skin.",e:"The pig lives on the farm."},
+{w:"pink",p:"adj./n.",g:"ગ-ુ-લ-ા-બ-ી (Gulābī)",m:"A light red colour.",e:"She wore a pink kurta to the function."},
+{w:"place",p:"n.",g:"જ-ગ-્-ય-ા (Jagyā)",m:"A particular area or location.",e:"This is a beautiful place to visit."},
+{w:"plan",p:"n./v.",g:"ય-ો-જ-ન-ા (Yojanā)",m:"An intention; to decide what to do.",e:"What is your plan for the weekend?"},
+{w:"plane",p:"n.",g:"વ-િ-મ-ા-ન (Vimān)",m:"An aircraft.",e:"We took a plane to reach Mumbai."},
+{w:"plant",p:"n.",g:"છ-ો-ડ (Choḍ)",m:"A living organism that grows in soil.",e:"Water the plants every morning."},
+{w:"play",p:"v./n.",g:"ર-મ-વ-ું (Ramavuṃ)",m:"To take part in a game; a drama.",e:"Children love to play in the garden."},
+{w:"player",p:"n.",g:"ખ-ે-લ-ા-ડ-ી (Khelāḍī)",m:"A person who plays a game.",e:"He is the best player on the team."},
+{w:"please",p:"exclam.",g:"મ-હ-ે-ર-બ-ા-ન-ી (Meharbānī)",m:"Used to make a polite request.",e:"Please pass me the salt."},
+{w:"point",p:"n.",g:"મ-ુ-દ-્-દ-ો (Muddo)",m:"A fact or idea; a sharp tip.",e:"That is a very important point."},
+{w:"police",p:"n.",g:"પ-ો-લ-ી-સ (Polīs)",m:"The organisation responsible for law.",e:"Call the police if you see anything suspicious."},
+{w:"policeman",p:"n.",g:"પ-ો-લ-ી-સ-ક-ર-્-મ-ી (Polīskarmī)",m:"A male police officer.",e:"The policeman helped the lost child."},
+{w:"pool",p:"n.",g:"ત-ળ-ા-વ (Taḷāv)",m:"A place for swimming.",e:"She swims in the pool every morning."},
+{w:"poor",p:"adj.",g:"ગ-ર-ી-બ (Garīb)",m:"Having very little money.",e:"We should help poor families."},
+{w:"popular",p:"adj.",g:"લ-ો-ક-પ-્-ર-િ-ય (Lokpriy)",m:"Liked by many people.",e:"Cricket is the most popular sport in India."},
+{w:"positive",p:"adj.",g:"હ-ક-ા-ર-ા-ત-્-મ-ક (Hakārātmak)",m:"Hopeful; a good reply.",e:"Try to have a positive attitude."},
+{w:"possible",p:"adj.",g:"શ-ક-્-ય (Śakya)",m:"Able to happen or be done.",e:"Is it possible to finish by Friday?"},
+{w:"post",p:"n./v.",g:"ટ-પ-ા-લ (Tapāl)",m:"Letters and parcels; to send or publish.",e:"She posted the letter yesterday."},
+{w:"potato",p:"n.",g:"બ-ટ-ા-ટ-ા (Baṭāṭā)",m:"A starchy vegetable grown underground.",e:"Batata nu shaak is made with potatoes."},
+{w:"pound",p:"n.",g:"પ-ા-ઉ-ન-્-ડ (Pāuṇḍ)",m:"The currency of the United Kingdom.",e:"It costs five pounds to enter the museum."},
+{w:"practice",p:"n.",g:"અ-ભ-્-ય-ા-સ (Abhyās)",m:"The act of repeatedly doing something to improve.",e:"Regular practice is the key to success."},
+{w:"practise",p:"v.",g:"અ-ભ-્-ય-ા-સ ક-ર-વ-ો (Abhyās karvo)",m:"To do something repeatedly to improve.",e:"Practise speaking English every day."},
+{w:"prefer",p:"v.",g:"વ-ધ-ુ ગ-મ-વ-ું (Vadhu gamavuṃ)",m:"To like one thing more than another.",e:"I prefer tea to coffee."},
+{w:"prepare",p:"v.",g:"ત-ૈ-ય-ા-ર-ી ક-ર-વ-ી (Taiyārī karavī)",m:"To get something ready.",e:"She prepared dinner for the whole family."},
+{w:"present",p:"adj./n.",g:"ભ-ે-ટ / હ-ા-જ-ર (Bheṭ / Hājar)",m:"Existing now; a gift; being in a place.",e:"He gave her a birthday present."},
+{w:"pretty",p:"adj./adv.",g:"સ-ુ-ં-દ-ર (Suṃdar)",m:"Attractive; fairly.",e:"She has a pretty smile."},
+{w:"price",p:"n.",g:"ભ-ા-વ (Bhāv)",m:"The amount of money required to buy something.",e:"What is the price of this saree?"},
+{w:"probably",p:"adv.",g:"ક-દ-ા-ચ (Kadāc)",m:"Almost certainly.",e:"She will probably arrive by evening."},
+{w:"problem",p:"n.",g:"સ-મ-સ-્-ય-ા (Samasya)",m:"A difficult situation or matter.",e:"I need help solving this maths problem."},
+{w:"product",p:"n.",g:"ઉ-ત-્-પ-ા-દ-ન (Utpādan)",m:"Something made to be sold.",e:"This company makes excellent products."},
+{w:"programme",p:"n.",g:"ક-ા-ર-્-ય-ક-્-ર-મ (Kāryakram)",m:"A set of events or a TV show.",e:"I watched an interesting programme on TV."},
+{w:"project",p:"n.",g:"પ-્-ર-ો-જ-ે-ક-્-ટ (Projekt)",m:"A planned piece of work.",e:"We are working on a group project."},
+{w:"purple",p:"adj./n.",g:"જ-ા-મ-્-બ-લ-ી (Jāmbalī)",m:"A colour made by mixing red and blue.",e:"She wore a purple scarf today."},
+{w:"put",p:"v.",g:"મ-ૂ-ક-વ-ું (Mūkavuṃ)",m:"To place something somewhere.",e:"Put the books on the shelf."},
+{w:"quarter",p:"n.",g:"ચ-ો-થ-ો ભ-ા-ગ (Cotho bhāg)",m:"One of four equal parts.",e:"A quarter of the students were absent."},
+{w:"question",p:"n.",g:"સ-વ-ા-લ (Savāl)",m:"A sentence asking for information.",e:"Do you have any questions?"},
+{w:"quick",p:"adj.",g:"ઝ-ડ-પ-ી (Jaḍapī)",m:"Moving or happening fast.",e:"She is a quick learner."},
+{w:"quickly",p:"adv.",g:"ઝ-ડ-પ-થ-ી (Jaḍapathī)",m:"In a fast manner.",e:"She finished the test quickly."},
+{w:"quiet",p:"adj.",g:"શ-ા-ં-ત (Śāṃt)",m:"Making little or no noise.",e:"Please keep quiet in the library."},
+{w:"quite",p:"adv.",g:"ઘ-ણ-ો (Ghaṇo)",m:"To a fairly great degree.",e:"The film was quite interesting."},
+{w:"radio",p:"n.",g:"ર-ે-ડ-િ-ય-ો (Reḍiyo)",m:"A device that receives and plays audio broadcasts.",e:"She listens to the radio while cooking."},
+{w:"rain",p:"n./v.",g:"વ-ર-સ-ા-દ (Varasād)",m:"Water falling from the sky; to fall as rain.",e:"It rains a lot in Gujarat during monsoon."},
+{w:"read",p:"v.",g:"વ-ા-ં-ચ-વ-ું (Vāṃcavuṃ)",m:"To look at and understand written words.",e:"I read a newspaper every morning."},
+{w:"reader",p:"n.",g:"વ-ા-ં-ચ-ક (Vāṃcak)",m:"A person who reads.",e:"She is an avid reader of novels."},
+{w:"reading",p:"n.",g:"વ-ા-ં-ચ-ન (Vāṃcan)",m:"The activity of reading.",e:"Reading is a great way to learn new words."},
+{w:"ready",p:"adj.",g:"ત-ૈ-ય-ા-ર (Taiyār)",m:"Prepared for something.",e:"Are you ready to go?"},
+{w:"real",p:"adj.",g:"સ-ા-ચ-ો / વ-ા-સ-્-ત-વ-િ-ક (Sāco)",m:"Actually existing; not imaginary.",e:"Is this story real or made up?"},
+{w:"really",p:"adv.",g:"ખ-ર-ે-ખ-ર (Kharekhar)",m:"Very; in a real way.",e:"This cake is really delicious."},
+{w:"reason",p:"n.",g:"ક-ા-ર-ણ (Kāraṇ)",m:"Why something happened.",e:"What is the reason for your absence?"},
+{w:"red",p:"adj./n.",g:"લ-ા-લ (Lāl)",m:"The colour of blood or a ripe tomato.",e:"She wore a red saree on her wedding day."},
+{w:"relax",p:"v.",g:"આ-ર-ા-મ (Ārām)",m:"To rest and feel calm.",e:"I relax by listening to music."},
+{w:"remember",p:"v.",g:"ય-ા-દ ક-ર-વ-ું (Yād karavuṃ)",m:"To keep something in mind.",e:"Remember to bring your ID card."},
+{w:"repeat",p:"v.",g:"ફ-ર-ી ક-હ-ે-વ-ું (Pharī kahevuṃ)",m:"To say or do something again.",e:"Please repeat the question slowly."},
+{w:"report",p:"n.",g:"અ-હ-ે-વ-ા-લ (Ahevāl)",m:"A written or spoken account of something.",e:"She wrote a report on the school trip."},
+{w:"restaurant",p:"n.",g:"ર-ે-સ-્-ટ-ો-ર-ા-ં (Resṭorāṃ)",m:"A place where people pay to eat meals.",e:"We ate at a Gujarati restaurant last night."},
+{w:"result",p:"n.",g:"પ-ર-િ-ણ-ા-મ (Pariṇām)",m:"The outcome of something.",e:"She was happy with her exam result."},
+{w:"return",p:"v./n.",g:"પ-ા-છ-ા ફ-ર-વ-ું (Pāchā pharavuṃ)",m:"To come or go back.",e:"What time will you return home?"},
+{w:"rice",p:"n.",g:"ચ-ો-ખ-ા (Cokhā)",m:"A grain used as a staple food.",e:"We eat rice and dal every day."},
+{w:"rich",p:"adj.",g:"ધ-ન-ી (Dhanī)",m:"Having a lot of money.",e:"He is a rich businessman from Surat."},
+{w:"ride",p:"v.",g:"સ-વ-ા-ર-ી (Savārī)",m:"To sit on and control a vehicle or animal.",e:"She learned to ride a bicycle last summer."},
+{w:"right",p:"adj./adv./n.",g:"જ-મ-ણ-ી / સ-ા-ચ-ો (Jamaṇī / Sāco)",m:"Correct; the opposite direction to left.",e:"Turn right at the next junction."},
+{w:"river",p:"n.",g:"ન-દ-ી (Nadī)",m:"A large natural flow of water.",e:"The Sabarmati River flows through Ahmedabad."},
+{w:"road",p:"n.",g:"ર-સ-્-ત-ો (Rasto)",m:"A path for vehicles to travel on.",e:"Be careful when crossing the road."},
+{w:"room",p:"n.",g:"ઓ-ર-ડ-ો (Oraḍo)",m:"A space within a building.",e:"She has a tidy room."},
+{w:"routine",p:"n.",g:"ન-િ-ત-ી-ક-ર-્-મ (Nitīkarm)",m:"A regular fixed way of doing things.",e:"Exercise is part of her morning routine."},
+{w:"rule",p:"n.",g:"ન-િ-ય-મ (Niyam)",m:"A statement of what must be done.",e:"Follow the rules of the school."},
+{w:"run",p:"v.",g:"દ-ો-ડ-વ-ું (Doḍavuṃ)",m:"To move quickly on foot.",e:"She runs five kilometres every morning."},
+{w:"sad",p:"adj.",g:"દ-ુ-ઃ-ખ-ી (Duḥkhī)",m:"Feeling unhappy.",e:"She felt sad when she missed the bus."},
+{w:"salad",p:"n.",g:"સ-ે-લ-ે-ડ (Seleḍ)",m:"A mixture of raw vegetables.",e:"He eats a salad for lunch every day."},
+{w:"salt",p:"n.",g:"મ-ી-ઠ-ુ-ં (Mīṭhuṃ)",m:"A white substance used to flavour food.",e:"Add salt to taste while cooking."},
+{w:"same",p:"adj./pron./adv.",g:"સ-મ-ા-ન (Samān)",m:"Exactly like another.",e:"We like the same kind of music."},
+{w:"sandwich",p:"n.",g:"સ-ે-ન-્-ડ-વ-િ-ચ (Senḍavic)",m:"Two slices of bread with a filling.",e:"She made a cheese sandwich for lunch."},
+{w:"Saturday",p:"n.",g:"શ-ન-િ-વ-ા-ર (Śanivār)",m:"The seventh day of the week.",e:"We go to the market on Saturday."},
+{w:"say",p:"v.",g:"ક-હ-ે-વ-ું (Kahevuṃ)",m:"To speak words.",e:"What did she say?"},
+{w:"school",p:"n.",g:"શ-ા-ળ-ા (Śāḷā)",m:"A place where children are educated.",e:"She walks to school every day."},
+{w:"science",p:"n.",g:"વ-િ-જ-્-ઞ-ા-ન (Vijñān)",m:"The study of the natural world.",e:"Science is her favourite subject."},
+{w:"scientist",p:"n.",g:"વ-ૈ-જ-્-ઞ-ા-ન-િ-ક (Vaijñānik)",m:"A person who studies science.",e:"She wants to be a scientist."},
+{w:"sea",p:"n.",g:"સ-મ-ુ-દ-્-ર (Samudr)",m:"A large body of salt water.",e:"We could see the sea from the hotel window."},
+{w:"second",p:"det./number",g:"બ-ી-જ-ો (Bījo)",m:"Coming after the first in order.",e:"She finished second in the race."},
+{w:"second",p:"n.",g:"સ-ે-ક-ન-્-ડ (Sekaṇḍ)",m:"A unit of time equal to 1/60 of a minute.",e:"She answered in less than a second."},
+{w:"section",p:"n.",g:"ભ-ા-ગ (Bhāg)",m:"A part of something.",e:"Read the first section of the chapter."},
+{w:"see",p:"v.",g:"જ-ો-વ-ું (Jovuṃ)",m:"To look at or notice.",e:"Can you see the mountains from here?"},
+{w:"sell",p:"v.",g:"વ-ે-ચ-વ-ું (Vecavuṃ)",m:"To give something in exchange for money.",e:"She sells homemade pickles."},
+{w:"send",p:"v.",g:"મ-ો-ક-લ-વ-ું (Mokalavuṃ)",m:"To cause something to go to another place.",e:"Please send me the details by email."},
+{w:"sentence",p:"n.",g:"વ-ા-ક-્-ય (Vākya)",m:"A group of words expressing a complete idea.",e:"Write a sentence using the word 'happy'."},
+{w:"September",p:"n.",g:"સ-ે-પ-્-ટ-ે-મ-્-બ-ર (Sepṭembar)",m:"The ninth month of the year.",e:"Schools reopen after summer in September."},
+{w:"seven",p:"number",g:"સ-ા-ત (Sāt)",m:"The number 7.",e:"There are seven days in a week."},
+{w:"seventeen",p:"number",g:"સ-ત-ર (Satar)",m:"The number 17.",e:"My cousin is seventeen years old."},
+{w:"seventy",p:"number",g:"સ-િ-ત-ે-ર (Siter)",m:"The number 70.",e:"She scored seventy per cent in the exam."},
+{w:"share",p:"v.",g:"વ-હ-ે-ં-ચ-વ-ું (Vaheṃcavuṃ)",m:"To give a part of something to others.",e:"Please share your notes with me."},
+{w:"she",p:"pron.",g:"ત-ે (Te)",m:"Used to refer to a female person.",e:"She is a very good teacher."},
+{w:"sheep",p:"n.",g:"ઘ-ે-ટ-ુ-ં (Gheṭuṃ)",m:"A farm animal with wool.",e:"The shepherd looks after the sheep."},
+{w:"shirt",p:"n.",g:"ખ-મ-ી-સ (Khamīs)",m:"A garment for the upper body with buttons.",e:"He wore a white shirt to the interview."},
+{w:"shoe",p:"n.",g:"જ-ૂ-ત-ો (Jūto)",m:"A covering for the foot.",e:"She bought a pair of new shoes."},
+{w:"shop",p:"n./v.",g:"દ-ુ-ક-ા-ન (Dukān)",m:"A place where things are sold; to buy things.",e:"She shops at the local market."},
+{w:"shopping",p:"n.",g:"ખ-ર-ી-દ-ી (Kharīdī)",m:"The activity of buying things.",e:"We go shopping every Sunday."},
+{w:"short",p:"adj.",g:"ટ-ૂ-ં-ક-ુ-ં (Ṭūṃkuṃ)",m:"Not long or not tall.",e:"She has a short and curly hair."},
+{w:"should",p:"modal v.",g:"જ-ો-ઈ-એ (Joīe)",m:"Used to give advice or say what is right.",e:"You should drink more water."},
+{w:"show",p:"v./n.",g:"બ-ત-ા-વ-વ-ું (Batāvavuṃ)",m:"To let someone see; a performance.",e:"Can you show me the way to the station?"},
+{w:"shower",p:"n.",g:"ફ-ુ-વ-ા-ર-ો (Phuvāro)",m:"A device for washing by spraying water.",e:"She takes a shower every morning."},
+{w:"sick",p:"adj.",g:"બ-ી-મ-ા-ર (Bīmār)",m:"Unwell; not in good health.",e:"He stayed at home because he was sick."},
+{w:"similar",p:"adj.",g:"સ-મ-ા-ન (Samān)",m:"Almost the same as another.",e:"These two bags are very similar."},
+{w:"sing",p:"v.",g:"ગ-ા-વ-વ-ું (Gāvavuṃ)",m:"To produce musical sounds with your voice.",e:"She loves to sing classical songs."},
+{w:"singer",p:"n.",g:"ગ-ા-ય-ક (Gāyak)",m:"A person who sings.",e:"He is a famous classical singer."},
+{w:"sister",p:"n.",g:"બ-હ-ે-ન (Bahen)",m:"A female sibling.",e:"My sister is studying in Vadodara."},
+{w:"sit",p:"v.",g:"બ-ે-સ-વ-ું (Besavuṃ)",m:"To rest on your bottom.",e:"Please sit down and wait."},
+{w:"situation",p:"n.",g:"પ-ર-િ-સ-્-થ-િ-ત-િ (Paristhiti)",m:"The circumstances at a particular time.",e:"She handled the difficult situation calmly."},
+{w:"six",p:"number",g:"છ (Ch)",m:"The number 6.",e:"There are six people in my family."},
+{w:"sixteen",p:"number",g:"સ-ો-ળ (Soḷ)",m:"The number 16.",e:"She is sixteen years old."},
+{w:"sixty",p:"number",g:"સ-ા-ઠ (Sāṭh)",m:"The number 60.",e:"My grandmother is sixty years old."},
+{w:"skill",p:"n.",g:"ક-ૌ-શ-લ-્-ય (Kauśalya)",m:"The ability to do something well.",e:"Communication is an important skill."},
+{w:"skirt",p:"n.",g:"સ-્-ક-ર-્-ટ (Skarṭ)",m:"A garment hanging from the waist.",e:"She wore a colourful skirt to the festival."},
+{w:"sleep",p:"v.",g:"સ-ૂ-વ-ું (Sūvuṃ)",m:"To rest with your eyes closed.",e:"I sleep for eight hours every night."},
+{w:"slow",p:"adj.",g:"ધ-ી-મ-ો (Dhīmo)",m:"Not fast.",e:"The traffic was very slow this morning."},
+{w:"small",p:"adj.",g:"ન-ા-ન-ો (Nāno)",m:"Little in size.",e:"She lives in a small but cosy flat."},
+{w:"snake",p:"n.",g:"સ-ા-પ (Sāp)",m:"A long reptile without legs.",e:"A snake was found in the garden."},
+{w:"snow",p:"n./v.",g:"બ-ર-ફ (Baraph)",m:"Frozen water that falls from the sky.",e:"It snowed heavily in Shimla last winter."},
+{w:"so",p:"adv./conj.",g:"ત-ો / એ-ટ-લ-ા મ-ા-ટ-ે (To / Eṭalā māṭe)",m:"Therefore; to such a degree.",e:"She studied hard so she passed the exam."},
+{w:"some",p:"det./pron.",g:"ક-ે-ટ-લ-ા-ક (Keṭalāk)",m:"An unspecified amount.",e:"Would you like some water?"},
+{w:"somebody",p:"pron.",g:"ક-ો-ઈ (Koī)",m:"An unknown or unspecified person.",e:"Somebody left a bag at the door."},
+{w:"someone",p:"pron.",g:"ક-ો-ઈ (Koī)",m:"A person who is not known or named.",e:"Someone called while you were out."},
+{w:"something",p:"pron.",g:"ક-ઈ-ક (Kaīk)",m:"An unspecified thing.",e:"Something smells really good in the kitchen."},
+{w:"sometimes",p:"adv.",g:"ક-ે-ટ-લ-ી-ક-વ-ા-ર (Keṭalīkvār)",m:"On some occasions but not always.",e:"She sometimes walks to school."},
+{w:"son",p:"n.",g:"દ-ી-ક-ર-ો (Dīkaro)",m:"A male child.",e:"Their son is studying engineering."},
+{w:"song",p:"n.",g:"ગ-ી-ત (Gīt)",m:"A piece of music with words.",e:"She sang a beautiful Gujarati song."},
+{w:"soon",p:"adv.",g:"જ-લ-્-દ-ી (Jaldī)",m:"In a short time from now.",e:"The bus will arrive soon."},
+{w:"sorry",p:"adj./exclam.",g:"મ-ા-ફ ક-ર-ો (Māph karo)",m:"Feeling regret; an apology.",e:"Sorry, I am late for the meeting."},
+{w:"sound",p:"n./v.",g:"અ-વ-ા-જ (Avāj)",m:"Something heard; to make a noise.",e:"I heard a strange sound outside."},
+{w:"soup",p:"n.",g:"સ-ૂ-પ (Sūp)",m:"A liquid food made by boiling ingredients.",e:"She had tomato soup for dinner."},
+{w:"south",p:"n./adj./adv.",g:"દ-ક-્-ષ-િ-ણ (Dakṣiṇ)",m:"The direction opposite to north.",e:"Kerala is in the south of India."},
+{w:"space",p:"n.",g:"જ-ગ-્-ય-ા / અ-ં-ત-ર-િ-ક-્-ષ (Jagyā)",m:"An empty area; outer space.",e:"Is there space for one more person?"},
+{w:"speak",p:"v.",g:"બ-ો-લ-વ-ું (Bolavuṃ)",m:"To say words; to talk.",e:"She speaks four languages fluently."},
+{w:"special",p:"adj.",g:"ખ-ા-સ (Khās)",m:"Better or more important than usual.",e:"Today is a very special occasion."},
+{w:"spell",p:"v.",g:"જ-ો-ડ-ણ (Joḍaṇ)",m:"To write or say the letters of a word.",e:"Can you spell your surname for me?"},
+{w:"spelling",p:"n.",g:" જ-ો-ડ-ણ (Joḍaṇ)",m:"The way a word is spelt.",e:"Check the spelling of every word."},
+{w:"spend",p:"v.",g:"ખ-ર-્-ચ ક-ર-વ-ો (Kharca karavo)",m:"To use money or time.",e:"Don't spend too much on clothes."},
+{w:"sport",p:"n.",g:"ર-મ-ત (Ramat)",m:"An activity requiring physical effort.",e:"Cricket is the most popular sport here."},
+{w:"spring",p:"n.",g:"વ-સ-ં-ત (Vasaṃt)",m:"The season after winter.",e:"Flowers bloom in spring."},
+{w:"stand",p:"v.",g:"ઊ-ભ-ા ર-હ-ે-વ-ું (Ūbhā rahevuṃ)",m:"To be upright on your feet.",e:"Please stand in a line."},
+{w:"star",p:"n.",g:"ત-ા-ર-ો (Tāro)",m:"A ball of gas that shines in the night sky.",e:"You can see many stars on a clear night."},
+{w:"start",p:"v.",g:"શ-ર-ૂ ક-ર-વ-ું (Śarū karavuṃ)",m:"To begin.",e:"The match will start at five."},
+{w:"statement",p:"n.",g:"ન-િ-વ-े-દ-ન (Nivedana)",m:"Something said or written officially.",e:"She made a statement to the police."},
+{w:"station",p:"n.",g:"સ-્-ટ-ે-શ-ન (Steśan)",m:"A place where trains or buses stop.",e:"I will meet you at the railway station."},
+{w:"stay",p:"v.",g:"ર-હ-ે-વ-ું (Rahevuṃ)",m:"To remain in a place.",e:"She stayed at her aunt's house for a week."},
+{w:"still",p:"adv.",g:"હ-જ-ી (Hajī)",m:"Continuing to happen; without movement.",e:"She is still waiting for his reply."},
+{w:"stop",p:"v./n.",g:"ઊ-ભ-ા ર-હ-ે-વ-ું (Ūbhā rahevuṃ)",m:"To end movement or an activity.",e:"The bus stops near my house."},
+{w:"story",p:"n.",g:"વ-ા-ર-્-ત-ા (Vārtā)",m:"A narrative of events.",e:"My grandmother tells wonderful stories."},
+{w:"street",p:"n.",g:"ગ-લ-ી (Galī)",m:"A road in a town with buildings.",e:"She lives on a quiet street."},
+{w:"strong",p:"adj.",g:"મ-જ-બ-ૂ-ત (Majabūt)",m:"Having great physical power.",e:"He is strong enough to lift heavy boxes."},
+{w:"student",p:"n.",g:"વ-િ-દ-્-ય-ા-ર-્-થ-ી (Vidyārthī)",m:"A person who studies.",e:"She is a hardworking student."},
+{w:"study",p:"n./v.",g:"અ-ભ-્-ય-ા-સ (Abhyās)",m:"To learn about a subject.",e:"She studies for two hours every evening."},
+{w:"style",p:"n.",g:"ઢ-બ (Ḍhab)",m:"A way of doing something; fashion.",e:"She has a very elegant style of dressing."},
+{w:"subject",p:"n.",g:"વ-િ-ષ-ય (Viṣay)",m:"An area of study.",e:"Mathematics is my weakest subject."},
+{w:"success",p:"n.",g:"સ-ફ-ળ-ત-ા (Saphaḷatā)",m:"Achieving a goal.",e:"Hard work leads to success."},
+{w:"sugar",p:"n.",g:"ખ-ા-ં-ડ (Khāṃḍ)",m:"A sweet substance used in cooking.",e:"She takes two spoons of sugar in her tea."},
+{w:"summer",p:"n.",g:"ઉ-ન-ા-ળ-ો (Unāḷo)",m:"The hottest season of the year.",e:"Mangoes are available in summer."},
+{w:"sun",p:"n.",g:"સ-ૂ-ર-્-ય (Sūrya)",m:"The star at the centre of our solar system.",e:"The sun rises in the east every morning."},
+{w:"Sunday",p:"n.",g:"ર-વ-િ-વ-ા-ર (Ravivār)",m:"The seventh day of the week.",e:"We go to temple on Sunday."},
+{w:"supermarket",p:"n.",g:"સ-ુ-પ-ર-મ-ા-ર-્-ક-ે-ટ (Suparamārkeṭ)",m:"A large shop selling food and other goods.",e:"She buys groceries at the supermarket."},
+{w:"sure",p:"adj.",g:"ખ-ા-ત-ર-ી (Khātarī)",m:"Certain; having no doubt.",e:"Are you sure about the answer?"},
+{w:"sweater",p:"n.",g:"સ-ુ-ઇ-ટ-ર (Suiṭar)",m:"A warm knitted garment.",e:"Wear a sweater; it is cold outside."},
+{w:"swim",p:"v.",g:"ત-ર-વ-ું (Taravuṃ)",m:"To move through water using your body.",e:"She loves to swim in the sea."},
+{w:"swimming",p:"n.",g:"ત-ર-ણ (Taraṇ)",m:"The activity of swimming.",e:"Swimming is excellent exercise."},
+{w:"table",p:"n.",g:"ટ-ે-બ-લ (Ṭebal)",m:"A piece of furniture with a flat top.",e:"Put the books on the table."},
+{w:"take",p:"v.",g:"લ-ે-વ-ું (Levuṃ)",m:"To carry or move something.",e:"Take an umbrella; it might rain."},
+{w:"talk",p:"v.",g:"વ-ા-ત ક-ર-વ-ી (Vāt karavī)",m:"To speak to someone.",e:"Can we talk after class?"},
+{w:"tall",p:"adj.",g:"ઊ-ં-ચ-ો (Ūṃco)",m:"Of great height.",e:"He is the tallest student in class."},
+{w:"taxi",p:"n.",g:"ટ-ે-ક-્-સ-ી (Ṭeksī)",m:"A car hired to carry passengers.",e:"We took a taxi from the airport."},
+{w:"tea",p:"n.",g:"ચ-ા (Cā)",m:"A hot drink made from dried leaves.",e:"Gujaratis love to drink masala tea."},
+{w:"teach",p:"v.",g:"ભ-ણ-ા-વ-વ-ું (Bhaṇāvavuṃ)",m:"To give knowledge to someone.",e:"She teaches mathematics at the school."},
+{w:"teacher",p:"n.",g:"શ-િ-ક-્-ષ-ક (Śikṣak)",m:"A person who teaches.",e:"My teacher is very kind and patient."},
+{w:"team",p:"n.",g:"ટ-ી-મ (Ṭīm)",m:"A group working together.",e:"Our cricket team won the match."},
+{w:"teenager",p:"n.",g:"ત-ર-ુ-ણ (Taruṇ)",m:"A person aged 13 to 19.",e:"Many teenagers enjoy playing video games."},
+{w:"telephone",p:"n./v.",g:"ટ-ે-લ-િ-ફ-ો-ન (Ṭeliphone)",m:"A device for speaking to someone at a distance.",e:"The telephone rang while she was cooking."},
+{w:"television",p:"n.",g:"ટ-ે-લ-િ-વ-િ-ઝ-ન (Ṭelivijan)",m:"A device that shows pictures and sound.",e:"We watched the news on television."},
+{w:"tell",p:"v.",g:"ક-હ-ે-વ-ું (Kahevuṃ)",m:"To give information to someone.",e:"Tell me what happened yesterday."},
+{w:"ten",p:"number",g:"દ-સ (Das)",m:"The number 10.",e:"She has been studying English for ten years."},
+{w:"tennis",p:"n.",g:"ટ-ે-ન-િ-સ (Ṭenis)",m:"A sport played with rackets and a ball.",e:"She plays tennis every Saturday."},
+{w:"terrible",p:"adj.",g:"ભ-ય-ા-ન-ક (Bhayānak)",m:"Very bad; causing fear.",e:"The storm last night was terrible."},
+{w:"test",p:"n./v.",g:"ક-સ-ો-ટ-ી (Kasoṭī)",m:"An examination; to check something.",e:"We have an English test tomorrow."},
+{w:"text",p:"n.",g:"લ-ખ-ા-ણ (Lakhāṇ)",m:"Written words; a text message.",e:"Read the text carefully before answering."},
+{w:"than",p:"conj.",g:"ક-ર-ત-ા-ં (Karatāṃ)",m:"Used for comparison.",e:"She is taller than her brother."},
+{w:"thank",p:"v.",g:"આ-ભ-ા-ર (Ābhār)",m:"To express gratitude.",e:"Thank you for your help."},
+{w:"thanks",p:"exclam./n.",g:"ધ-ન-્-ય-વ-ા-દ (Dhanyavāda)",m:"An expression of gratitude.",e:"Thanks for helping me carry this."},
+{w:"that",p:"det./pron./conj.",g:"ત-ે / ક-ે (Te / Ke)",m:"Used to identify something; introducing a clause.",e:"I think that she is right."},
+{w:"the",p:"definite article",g:"(a specific reference marker)",m:"Used to refer to a specific noun.",e:"Please open the window."},
+{w:"theatre",p:"n.",g:"ન-ા-ટ-ય-ા-ગ-ા-ર (Nāṭyāgār)",m:"A building where plays are performed.",e:"We saw a play at the theatre."},
+{w:"their",p:"det.",g:"ત-ે-ઓ-ન-ો (Teonno)",m:"Belonging to them.",e:"Their house is near the river."},
+{w:"them",p:"pron.",g:"ત-ે-ઓ-ન-ે (Teone)",m:"Object form for a group of people or things.",e:"Please give them the message."},
+{w:"then",p:"adv.",g:"પ-છ-ી (Pachī)",m:"After that; at that time.",e:"We had dinner and then went for a walk."},
+{w:"there",p:"adv.",g:"ત-્-ય-ા-ં (Tyāṃ)",m:"In or at that place.",e:"Put the chair over there."},
+{w:"they",p:"pron.",g:"ત-ે-ઓ (Teo)",m:"Used to refer to a group of people or things.",e:"They are coming to visit us tomorrow."},
+{w:"thing",p:"n.",g:"વ-સ-્-ત-ુ (Vastu)",m:"An object or item.",e:"What is that thing on the table?"},
+{w:"think",p:"v.",g:"વ-િ-ચ-ા-ર-વ-ું (Vicāravuṃ)",m:"To use the mind to consider something.",e:"Think carefully before you answer."},
+{w:"third",p:"number",g:"ત-્-ર-ી-જ-ો (Trījo)",m:"Coming after the second in order.",e:"She lives on the third floor."},
+{w:"thirsty",p:"adj.",g:"ત-ર-સ-્-ય-ો (Tarashyo)",m:"Feeling a need for water.",e:"I am very thirsty after the run."},
+{w:"thirteen",p:"number",g:"ત-ે-ર (Ter)",m:"The number 13.",e:"He will turn thirteen next month."},
+{w:"thirty",p:"number",g:"ત-્-ર-ી-સ (Trīs)",m:"The number 30.",e:"She completed thirty laps of the pool."},
+{w:"this",p:"det./pron.",g:"આ (Ā)",m:"Used to identify something nearby.",e:"This is my favourite book."},
+{w:"thousand",p:"number",g:"હ-જ-ા-ર (Hajār)",m:"The number 1000.",e:"A thousand people attended the event."},
+{w:"three",p:"number",g:"ત-્-ર-ણ (Traṇ)",m:"The number 3.",e:"I have three sisters."},
+{w:"through",p:"prep./adv.",g:"ઉ-ભ-ા-ઉ-ભ-ા-ઉ-ભ-ા (Madhyethī)",m:"From one side to the other.",e:"She walked through the forest."},
+{w:"Thursday",p:"n.",g:"ગ-ુ-ર-ુ-વ-ા-ર (Guruvār)",m:"The fifth day of the week.",e:"We have art class on Thursday."},
+{w:"ticket",p:"n.",g:"ટ-િ-ક-િ-ટ (Ṭikiṭ)",m:"A piece of paper allowing entry.",e:"Have you bought your train ticket?"},
+{w:"time",p:"n.",g:"સ-મ-ય (Samay)",m:"The measurement of when things happen.",e:"What time does the film start?"},
+{w:"tired",p:"adj.",g:"થ-ા-ક-ે-લ (Thākel)",m:"Feeling a need to rest or sleep.",e:"She was tired after the long journey."},
+{w:"title",p:"n.",g:"શ-ી-ર-્-ષ-ક (Śīrṣak)",m:"The name of a book, film, or person.",e:"What is the title of the book you are reading?"},
+{w:"to",p:"prep.",g:"ન-ે / -ત-ર-ફ (Ne / Taraph)",m:"In the direction of; introducing infinitives.",e:"I want to go to the library."},
+{w:"today",p:"adv./n.",g:"આ-જ (Āj)",m:"On this day.",e:"Today is a public holiday."},
+{w:"together",p:"adv.",g:"સ-ા-થ-ે (Sāthe)",m:"With each other.",e:"We cooked dinner together."},
+{w:"toilet",p:"n.",g:"ટ-ો-ઇ-લ-ે-ટ (Ṭoileṭ)",m:"A room with a basin for washing and a lavatory.",e:"Where is the nearest toilet?"},
+];
+
+const posMap={
+  'n':'Noun','v':'Verb','adj':'Adjective','adv':'Adverb','prep':'Preposition',
+  'pron':'Pronoun','conj':'Conjunction','modal':'Modal','det':'Determiner',
+  'exclam':'Exclamation','number':'Number','article':'Article'
+};
+
+let activeFilter='All';
+const filters=document.getElementById('filters');
+const grid=document.getElementById('grid');
+const countEl=document.getElementById('cnt');
+const search=document.getElementById('search');
+const clearSearch=document.getElementById('clearSearch');
+const totalEl=document.getElementById('cnt2');
+
+const allBtn=document.createElement('button');
+allBtn.className='fbtn active';
+allBtn.type='button';
+allBtn.textContent='All';
+allBtn.onclick=()=>setFilter('All',allBtn);
+filters.appendChild(allBtn);
+
+const posSet=new Set();
+data.forEach(d=>{
+  d.p.replace(/[^a-z]/gi,' ').trim().split(/\s+/).forEach(t=>posSet.add(t.toLowerCase()));
+});
+const posOrder=['n','v','adj','adv','prep','pron','conj','modal','det','exclam','number','article'];
+posOrder.forEach(p=>{
+  if(!posSet.has(p))return;
+  const btn=document.createElement('button');
+  btn.className='fbtn';
+  btn.type='button';
+  btn.textContent=posMap[p]||p;
+  btn.dataset.pos=p;
+  btn.onclick=()=>setFilter(p,btn);
+  filters.appendChild(btn);
+});
+
+function setFilter(f,btn){
+  activeFilter=f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function render(){
+  const q=search.value.trim().toLowerCase();
+  const filtered=data.filter(d=>{
+    const ms=!q||d.w.toLowerCase().includes(q)||d.g.toLowerCase().includes(q)||d.m.toLowerCase().includes(q);
+    const mp=activeFilter==='All'||d.p.toLowerCase().includes(activeFilter);
+    return ms&&mp;
+  });
+
+  const baseCount=filtered.length+' word'+(filtered.length!==1?'s':'')+' found';
+  countEl.textContent=activeFilter==='All'?baseCount:baseCount+' in '+activeFilter.toUpperCase();
+  totalEl.textContent='Total: '+data.length+' words';
+
+  grid.innerHTML='';
+  if(!filtered.length){
+    grid.innerHTML='<div class="nr">No words found. Try a different search term.</div>';
+    return;
+  }
+
+  filtered.forEach((d,i)=>{
+    const c=document.createElement('div');
+    c.className='card';
+    c.style.setProperty('--i',String(i));
+    c.innerHTML=`<div class="wr"><span class="wrd">${d.w}</span><span class="pos">${d.p}</span></div><div class="guj"><span class="tag">Gujarati</span>${d.g}</div><div class="mng">${d.m}</div><div class="ex">${d.e}</div>`;
+    grid.appendChild(c);
+  });
+}
+
+search.addEventListener('input',render);
+search.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    search.value='';
+    render();
+  }
+});
+clearSearch.addEventListener('click',()=>{
+  search.value='';
+  search.focus();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
