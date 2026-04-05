@@ -30,6 +30,317 @@
       --hero-title: #123347;
     }
 
+    /* Dark Mode */
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --ink: #e7edf5;
+      --muted: #a7b3c2;
+      --line: #2f3b4c;
+      --panel: rgba(12, 18, 28, 0.82);
+      --chip: #182232;
+      --active: #31a5a5;
+      --active-ink: #f7fffd;
+      --accent: #ff9b5f;
+      --shadow: 0 18px 40px rgba(1, 8, 15, 0.55);
+      --box-shadow: 0 12px 30px rgba(1, 8, 15, 0.42);
+      --bg-base: #0b1118;
+      --bg-radial-1: #152235;
+      --bg-radial-2: #11313a;
+      --stripe: rgba(31, 138, 138, 0.08);
+      --hero-bg-1: rgba(16, 25, 37, 0.95);
+      --hero-bg-2: rgba(9, 16, 25, 0.86);
+      --hero-title: #f0f6ff;
+    }
+
+    html[data-theme="dark"] body {
+      background-color: #0b1118;
+    }
+
+    html[data-theme="dark"] #searchInput,
+    html[data-theme="dark"] .quiz-select,
+    html[data-theme="dark"] #spellInput {
+      background-color: #131d2b;
+      border-color: #2f3b4c;
+      color: #e7edf5;
+    }
+
+    html[data-theme="dark"] #searchInput:focus,
+    html[data-theme="dark"] .quiz-select:focus,
+    html[data-theme="dark"] #spellInput:focus {
+      border-color: #47a5b2;
+      box-shadow: 0 0 0 4px rgba(71, 165, 178, 0.2);
+    }
+
+    html[data-theme="dark"] #clearSearch,
+    html[data-theme="dark"] #savedToggle,
+    html[data-theme="dark"] .page-btn {
+      background-color: #182232;
+      border-color: #2f3b4c;
+      color: #a7b3c2;
+    }
+
+    html[data-theme="dark"] #clearSearch:hover,
+    html[data-theme="dark"] #savedToggle:hover,
+    html[data-theme="dark"] .page-btn:hover {
+      background-color: #223147;
+      border-color: #3b4f66;
+    }
+
+    html[data-theme="dark"] .filter-btn,
+    html[data-theme="dark"] .pos-filters .filter-btn {
+      background-color: #1b2738;
+      border-color: #2f3b4c;
+      color: #afbdd0;
+    }
+
+    html[data-theme="dark"] .filter-btn:hover {
+      border-color: #41566e;
+    }
+
+    html[data-theme="dark"] .card {
+      background: linear-gradient(180deg, #152131 0%, #101a28 100%);
+      border-color: #2f3b4c;
+    }
+
+    html[data-theme="dark"] .card:hover {
+      border-color: #41566e;
+      box-shadow: 0 16px 30px rgba(1, 8, 15, 0.45);
+    }
+
+    html[data-theme="dark"] .quiz-word-card,
+    html[data-theme="dark"] .spell-clue-card {
+      background: linear-gradient(160deg, #152131 0%, #101a28 100%);
+      border-color: #2f3b4c;
+    }
+
+    html[data-theme="dark"] .quiz-opt,
+    html[data-theme="dark"] .spell-tile {
+      background-color: #131d2b;
+      border-color: #2f3b4c;
+      color: #e7edf5;
+    }
+
+    html[data-theme="dark"] .quiz-opt:hover:not(:disabled) {
+      background-color: #223147;
+      border-color: #3b4f66;
+    }
+
+    html[data-theme="dark"] .pos,
+    html[data-theme="dark"] .spell-chip {
+      background-color: #131d2b;
+      border-color: #2f3b4c;
+      color: #a7b3c2;
+    }
+
+    html[data-theme="dark"] .mode-tab {
+      background-color: #1b2738;
+      border-color: #2f3b4c;
+      color: #afbdd0;
+    }
+
+    html[data-theme="dark"] .mode-tab:hover {
+      background-color: #223147;
+      border-color: #3b4f66;
+    }
+
+    .dark-mode-toggle {
+      border: 1px solid var(--line);
+      background: var(--chip);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 12px;
+      padding: 8px 12px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: background .18s ease, border-color .18s ease, color .18s ease;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--active);
+      border-color: #146f6f;
+      color: var(--active-ink);
+    }
+
+    html[data-theme="dark"] .dark-mode-toggle {
+      background: #1b2738;
+      border-color: #2f3b4c;
+    }
+
+    html[data-theme="dark"] .dark-mode-toggle:hover {
+      background: var(--active);
+      border-color: #146f6f;
+      color: var(--active-ink);
+    }
+
+    html[data-theme="dark"] #searchInput::placeholder,
+    html[data-theme="dark"] #spellInput::placeholder {
+      color: #7f8ea2;
+    }
+
+    html[data-theme="dark"] .hero-kicker {
+      color: #89dbe2;
+      background: #103541;
+      border-color: #1d5a69;
+    }
+
+    html[data-theme="dark"] .badge {
+      background: #392517;
+      border-color: #855438;
+      color: #ffc8a0;
+    }
+
+    html[data-theme="dark"] .filter-title,
+    html[data-theme="dark"] .pos-title,
+    html[data-theme="dark"] .meta,
+    html[data-theme="dark"] .quiz-settings label,
+    html[data-theme="dark"] .page-ellipsis {
+      color: #97a7bb;
+    }
+
+    html[data-theme="dark"] .word,
+    html[data-theme="dark"] .quiz-word,
+    html[data-theme="dark"] .quiz-result-title,
+    html[data-theme="dark"] .spell-clue-meaning {
+      color: #f0f6ff;
+    }
+
+    html[data-theme="dark"] .card:hover .word {
+      color: #8cccf8;
+    }
+
+    html[data-theme="dark"] .gujarati,
+    html[data-theme="dark"] .quiz-opt-gujarati {
+      color: #9ebdd8;
+    }
+
+    html[data-theme="dark"] .level-tag {
+      border-color: #1d5a69;
+      background: #103541;
+      color: #89dbe2;
+    }
+
+    html[data-theme="dark"] .quiz-word-pos,
+    html[data-theme="dark"] .quiz-word-level,
+    html[data-theme="dark"] .spell-chip {
+      background: #121d2c;
+      border-color: #2f3b4c;
+      color: #a7b3c2;
+    }
+
+    html[data-theme="dark"] .quiz-word-level {
+      border-color: #1d5a69;
+      background: #103541;
+      color: #89dbe2;
+    }
+
+    html[data-theme="dark"] .spell-chip.level {
+      border-color: #1d5a69;
+      background: #103541;
+      color: #89dbe2;
+    }
+
+    html[data-theme="dark"] .example {
+      border-left-color: #31526b;
+    }
+
+    html[data-theme="dark"] .quiz-score-badge {
+      background: #0f3a33;
+      border-color: #1d6f61;
+      color: #95f1d8;
+    }
+
+    html[data-theme="dark"] .quiz-progress-bar {
+      background: #1b2635;
+    }
+
+    html[data-theme="dark"] .quiz-prompt,
+    html[data-theme="dark"] .spell-clue-label {
+      color: #85d8df;
+    }
+
+    html[data-theme="dark"] .spell-clue-example {
+      border-left-color: #4f5e8b;
+    }
+
+    html[data-theme="dark"] .save-btn,
+    html[data-theme="dark"] .pronounce-btn,
+    html[data-theme="dark"] .speak-btn,
+    html[data-theme="dark"] .quiz-btn-ghost,
+    html[data-theme="dark"] .spell-btn-skip {
+      background: #182232;
+      border-color: #2f3b4c;
+      color: #c6d4e7;
+    }
+
+    html[data-theme="dark"] .save-btn:hover,
+    html[data-theme="dark"] .pronounce-btn:hover,
+    html[data-theme="dark"] .speak-btn:hover:not(:disabled),
+    html[data-theme="dark"] .quiz-btn-ghost:hover,
+    html[data-theme="dark"] .spell-btn-skip:hover:not(:disabled) {
+      background: #223147;
+      border-color: #3b4f66;
+      color: #e7edf5;
+    }
+
+    html[data-theme="dark"] .spell-btn-hint {
+      background: #3f3018;
+      border-color: #9e7834;
+      color: #ffd7a8;
+    }
+
+    html[data-theme="dark"] .spell-btn-hint:hover:not(:disabled) {
+      background: #564223;
+      border-color: #be9448;
+    }
+
+    html[data-theme="dark"] .quiz-opt.correct,
+    html[data-theme="dark"] .quiz-opt.reveal-correct,
+    html[data-theme="dark"] .spell-feedback.correct,
+    html[data-theme="dark"] .quiz-feedback.correct,
+    html[data-theme="dark"] .spell-tile.correct {
+      background: linear-gradient(135deg, #0f3f34, #14503f);
+      border-color: #2ca47f;
+      color: #b8f4df;
+    }
+
+    html[data-theme="dark"] .quiz-opt.wrong,
+    html[data-theme="dark"] .spell-feedback.wrong,
+    html[data-theme="dark"] .quiz-feedback.wrong,
+    html[data-theme="dark"] .spell-tile.wrong {
+      background: linear-gradient(135deg, #4a1f28, #5d2731);
+      border-color: #d06774;
+      color: #ffd1d5;
+    }
+
+    html[data-theme="dark"] .spell-tile.reveal {
+      background: #513a16;
+      border-color: #b88a41;
+      color: #ffe1b2;
+    }
+
+    html[data-theme="dark"] .spell-tile.filled {
+      border-color: #536983;
+      background: #1b2738;
+    }
+
+    html[data-theme="dark"] #spellInput:disabled {
+      background: #172130;
+      color: #8292a7;
+    }
+
+    html[data-theme="dark"] .spell-hint-used {
+      color: #f4bd8a;
+    }
+
+    html[data-theme="dark"] .quiz-result-stat .val {
+      color: #d9e4f1;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -696,7 +1007,15 @@
       margin-bottom: 8px;
     }
 
-    .quiz-word-pos {
+    .quiz-word-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quiz-word-pos,
+    .quiz-word-level {
       font-size: 12px;
       font-weight: 700;
       color: #51667c;
@@ -705,6 +1024,14 @@
       border-radius: 8px;
       padding: 4px 10px;
       display: inline-block;
+    }
+
+    .quiz-word-level {
+      border-color: #c5e6e8;
+      background: #e1f5f6;
+      color: #0f6c75;
+      font-weight: 800;
+      letter-spacing: .03em;
     }
 
     .speak-btn {
@@ -1279,6 +1606,7 @@
     <section class="hero">
       <div class="hero-top">
         <span class="hero-kicker">Oxford 3000</span>
+        <button class="dark-mode-toggle" id="darkModeToggle" type="button" title="Toggle dark mode">🌙 Dark</button>
       </div>
       <h1>English-Gujarati Dictionary</h1>
       <p>Search beginner-friendly vocabulary with quick part-of-speech filters, Gujarati meanings, and short example
@@ -1338,6 +1666,13 @@
           <option value="word2meaning">Word -> Meaning</option>
           <option value="meaning2word">Meaning -> Word</option>
         </select>
+        <label for="quizLimit">Questions:</label>
+        <select id="quizLimit" class="quiz-select">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
         <button class="quiz-btn quiz-btn-ghost" id="quizRestartBtn" type="button">Restart</button>
       </div>
 
@@ -1350,7 +1685,10 @@
         <div class="quiz-word-card">
           <p class="quiz-prompt" id="quizPrompt">What does this word mean?</p>
           <div class="quiz-word" id="quizWordDisplay"></div>
-          <span class="quiz-word-pos" id="quizPosDisplay"></span>
+          <div class="quiz-word-meta">
+            <span class="quiz-word-pos" id="quizPosDisplay"></span>
+            <span class="quiz-word-level" id="quizLevelDisplay"></span>
+          </div>
           <div>
             <button id="quizSpeakBtn" class="speak-btn" type="button">Pronounce</button>
           </div>
@@ -1366,7 +1704,7 @@
       <div class="quiz-results" id="quizResults">
         <div class="quiz-result-emoji" id="quizResultEmoji"></div>
         <h2 class="quiz-result-title">Quiz Complete!</h2>
-        <p class="quiz-result-score">You scored <strong id="quizFinalScore"></strong> out of 10</p>
+        <p class="quiz-result-score">You scored <strong id="quizFinalScore"></strong> out of <span id="quizTotalDisplay">10</span></p>
         <div class="quiz-result-bars">
           <div class="quiz-result-stat good">
             <span class="val" id="quizCorrectCount">0</span>
@@ -1498,6 +1836,8 @@
     const pageNumbers = document.getElementById("pageNumbers");
     const pageNextBtn = document.getElementById("pageNextBtn");
     const statusEl = document.getElementById("status");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const DARK_MODE_KEY = "darkMode";
     const SAVED_KEY = "savedWords";
     const SEARCH_DEBOUNCE_MS = 120;
     const PAGE_SIZE = 60;
@@ -1992,6 +2332,7 @@
     const quizPrompt = document.getElementById("quizPrompt");
     const quizWordDisplay = document.getElementById("quizWordDisplay");
     const quizPosDisplay = document.getElementById("quizPosDisplay");
+    const quizLevelDisplay = document.getElementById("quizLevelDisplay");
     const quizSpeakBtn = document.getElementById("quizSpeakBtn");
     const quizOptions = document.getElementById("quizOptions");
     const quizFeedback = document.getElementById("quizFeedback");
@@ -1999,15 +2340,17 @@
     const quizResults = document.getElementById("quizResults");
     const quizLevelSel = document.getElementById("quizLevel");
     const quizTypeSel = document.getElementById("quizType");
+    const quizLimitSel = document.getElementById("quizLimit");
     const quizRestartBtn = document.getElementById("quizRestartBtn");
     const quizPlayAgainBtn = document.getElementById("quizPlayAgainBtn");
     const quizResultEmoji = document.getElementById("quizResultEmoji");
     const quizFinalScore = document.getElementById("quizFinalScore");
+    const quizTotalDisplay = document.getElementById("quizTotalDisplay");
     const quizCorrectCount = document.getElementById("quizCorrectCount");
     const quizWrongCount = document.getElementById("quizWrongCount");
     const quizAccuracy = document.getElementById("quizAccuracy");
 
-    const QUIZ_TOTAL = 10;
+    const QUIZ_DEFAULT_TOTAL = 10;
     const QUIZ_AUTO_NEXT_DELAY_MS = 1100;
     let quizAutoNextTimerId = null;
 
@@ -2035,11 +2378,20 @@
       return pool.length >= 4 ? pool : state.allWords;
     }
 
-    function buildQuizQuestions() {
+    function getQuizQuestionLimit() {
+      const requested = Number(quizLimitSel.value);
+      if (!Number.isFinite(requested) || requested < 1) {
+        return QUIZ_DEFAULT_TOTAL;
+      }
+      return Math.round(requested);
+    }
+
+    function buildQuizQuestions(limit) {
       const pool = getQuizPool();
       const shuffled = shuffleArray(pool);
       const questions = [];
-      for (let i = 0; i < Math.min(QUIZ_TOTAL, shuffled.length); i++) {
+      const targetTotal = Math.max(1, limit);
+      for (let i = 0; i < Math.min(targetTotal, shuffled.length); i++) {
         const correct = shuffled[i];
         // pick 3 unique distractors
         const distractors = shuffleArray(
@@ -2053,10 +2405,11 @@
 
     function startQuiz() {
       clearQuizRevealTimers();
-      quizState.questions = buildQuizQuestions();
+      quizState.questions = buildQuizQuestions(getQuizQuestionLimit());
       quizState.current = 0;
       quizState.score = 0;
       quizState.answered = false;
+      quizTotalDisplay.textContent = String(quizState.questions.length);
       quizResults.classList.remove("visible");
       quizQuestion.style.display = "block";
       renderQuizQuestion();
@@ -2112,12 +2465,12 @@
       if (isWord2Meaning) {
         quizPrompt.textContent = "What does this word mean?";
         quizWordDisplay.textContent = q.correct.word;
-        quizPosDisplay.textContent = q.correct.part_of_speech;
       } else {
         quizPrompt.textContent = "Which word matches this meaning?";
         quizWordDisplay.textContent = q.correct.english_meaning;
-        quizPosDisplay.textContent = q.correct.level;
       }
+      quizPosDisplay.textContent = `POS: ${q.correct.part_of_speech || "-"}`;
+      quizLevelDisplay.textContent = `Level: ${q.correct.level || "-"}`;
 
       quizSpeakBtn.dataset.word = q.correct.word || "";
       quizSpeakBtn.disabled = !isWord2Meaning;
@@ -2214,6 +2567,9 @@
 
     tabDictionary.addEventListener("click", () => switchMode("dictionary"));
     tabQuiz.addEventListener("click", () => switchMode("quiz"));
+    quizLevelSel.addEventListener("change", startQuiz);
+    quizTypeSel.addEventListener("change", startQuiz);
+    quizLimitSel.addEventListener("change", startQuiz);
     quizRestartBtn.addEventListener("click", startQuiz);
     quizPlayAgainBtn.addEventListener("click", startQuiz);
     quizSpeakBtn.addEventListener("click", () => {
@@ -2544,8 +2900,38 @@
 
     loadSavedWords();
     updateSavedToggle();
+
+    // Dark Mode Initialization and Toggle
+    function initializeDarkMode() {
+      const savedTheme = localStorage.getItem(DARK_MODE_KEY);
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
+      
+      setTheme(isDark ? "dark" : "light");
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem(DARK_MODE_KEY, theme);
+      updateDarkModeButton(theme === "dark");
+    }
+
+    function toggleDarkMode() {
+      const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      setTheme(newTheme);
+    }
+
+    function updateDarkModeButton(isDark) {
+      darkModeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+
+    darkModeToggle.addEventListener("click", toggleDarkMode);
+
+    initializeDarkMode();
     loadWords();
   </script>
 </body>
 
 </html>
+
