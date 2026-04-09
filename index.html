@@ -64,6 +64,13 @@
       color: #e7edf5;
     }
 
+    html[data-theme="dark"] .quiz-select:disabled {
+      background-color: #172130;
+      border-color: #2f3b4c;
+      color: #8393a8;
+      opacity: 1;
+    }
+
     html[data-theme="dark"] #searchInput:focus,
     html[data-theme="dark"] .quiz-select:focus,
     html[data-theme="dark"] #spellInput:focus {
@@ -285,6 +292,13 @@
       background: #223147;
       border-color: #3b4f66;
       color: #e7edf5;
+    }
+
+    html[data-theme="dark"] .quiz-btn-ghost.active,
+    html[data-theme="dark"] .quiz-btn-ghost.active:hover {
+      background: var(--active);
+      border-color: #146f6f;
+      color: #f7fffd;
     }
 
     html[data-theme="dark"] .spell-btn-hint {
@@ -948,10 +962,21 @@
       transition: border-color .2s ease, box-shadow .2s ease;
     }
 
+    .quiz-select:disabled {
+      cursor: not-allowed;
+      opacity: .72;
+      background: #f3f6fa;
+    }
+
     .quiz-select:focus {
       outline: none;
       border-color: #47a5b2;
       box-shadow: 0 0 0 3px rgba(71, 165, 178, .14);
+    }
+
+    #quizLimit {
+      width: 92px;
+      text-align: center;
     }
 
     .quiz-progress-bar {
@@ -1223,6 +1248,12 @@
     .quiz-btn-ghost:hover {
       background: #e4ecf5;
       border-color: #b7c8df;
+    }
+
+    .quiz-btn-ghost.active {
+      background: var(--active);
+      border-color: #146f6f;
+      color: #ffffff;
     }
 
     /* Results screen */
@@ -1660,6 +1691,7 @@
           <option value="A2">A2</option>
           <option value="B1">B1</option>
           <option value="B2">B2</option>
+          <option value="C1">C1</option>
         </select>
         <label for="quizType">Mode:</label>
         <select id="quizType" class="quiz-select">
@@ -1667,12 +1699,8 @@
           <option value="meaning2word">Meaning -> Word</option>
         </select>
         <label for="quizLimit">Questions:</label>
-        <select id="quizLimit" class="quiz-select">
-          <option value="5">5</option>
-          <option value="10" selected>10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-        </select>
+        <input id="quizLimit" class="quiz-select" type="number" min="1" step="1" value="10" inputmode="numeric">
+        <button class="quiz-btn quiz-btn-ghost active" id="quizAllBtn" type="button">All Words: On</button>
         <button class="quiz-btn quiz-btn-ghost" id="quizRestartBtn" type="button">Restart</button>
       </div>
 
@@ -2341,6 +2369,7 @@
     const quizLevelSel = document.getElementById("quizLevel");
     const quizTypeSel = document.getElementById("quizType");
     const quizLimitSel = document.getElementById("quizLimit");
+    const quizAllBtn = document.getElementById("quizAllBtn");
     const quizRestartBtn = document.getElementById("quizRestartBtn");
     const quizPlayAgainBtn = document.getElementById("quizPlayAgainBtn");
     const quizResultEmoji = document.getElementById("quizResultEmoji");
@@ -2353,6 +2382,7 @@
     const QUIZ_DEFAULT_TOTAL = 10;
     const QUIZ_AUTO_NEXT_DELAY_MS = 1100;
     let quizAutoNextTimerId = null;
+    let quizUseAllWords = true;
 
     const quizState = {
       questions: [],
@@ -2378,25 +2408,69 @@
       return pool.length >= 4 ? pool : state.allWords;
     }
 
-    function getQuizQuestionLimit() {
-      const requested = Number(quizLimitSel.value);
-      if (!Number.isFinite(requested) || requested < 1) {
-        return QUIZ_DEFAULT_TOTAL;
-      }
-      return Math.round(requested);
+    function setQuizAllMode(enabled) {
+      quizUseAllWords = Boolean(enabled);
+      quizLimitSel.disabled = quizUseAllWords;
+      quizAllBtn.classList.toggle("active", quizUseAllWords);
+      quizAllBtn.textContent = quizUseAllWords ? "All Words: On" : "All Words: Off";
     }
 
-    function buildQuizQuestions(limit) {
-      const pool = getQuizPool();
+    function normalizeQuizLimitInput() {
+      const requested = Number(quizLimitSel.value);
+      if (!Number.isFinite(requested) || requested < 1) {
+        quizLimitSel.value = String(QUIZ_DEFAULT_TOTAL);
+        return QUIZ_DEFAULT_TOTAL;
+      }
+      const rounded = Math.max(1, Math.round(requested));
+      quizLimitSel.value = String(rounded);
+      return rounded;
+    }
+
+    function getQuizQuestionLimit(poolSize) {
+      if (!Number.isFinite(poolSize) || poolSize < 1) {
+        return 1;
+      }
+      if (quizUseAllWords) {
+        return poolSize;
+      }
+      const requested = normalizeQuizLimitInput();
+      return Math.min(requested, poolSize);
+    }
+
+    function pickQuizDistractors(pool, correctId, count) {
+      if (!Array.isArray(pool) || pool.length <= 1 || count < 1) {
+        return [];
+      }
+      const distractors = [];
+      const usedIds = new Set([correctId]);
+      const maxNeeded = Math.min(count, Math.max(pool.length - 1, 0));
+      let attempts = 0;
+      const maxAttempts = pool.length * 8;
+      while (distractors.length < maxNeeded && attempts < maxAttempts) {
+        const candidate = pool[Math.floor(Math.random() * pool.length)];
+        attempts++;
+        if (!candidate || usedIds.has(candidate._id)) continue;
+        usedIds.add(candidate._id);
+        distractors.push(candidate);
+      }
+      if (distractors.length < maxNeeded) {
+        for (let i = 0; i < pool.length && distractors.length < maxNeeded; i++) {
+          const candidate = pool[i];
+          if (!candidate || usedIds.has(candidate._id)) continue;
+          usedIds.add(candidate._id);
+          distractors.push(candidate);
+        }
+      }
+      return distractors;
+    }
+
+    function buildQuizQuestions(pool, limit) {
       const shuffled = shuffleArray(pool);
       const questions = [];
       const targetTotal = Math.max(1, limit);
       for (let i = 0; i < Math.min(targetTotal, shuffled.length); i++) {
         const correct = shuffled[i];
-        // pick 3 unique distractors
-        const distractors = shuffleArray(
-          pool.filter(w => w._id !== correct._id)
-        ).slice(0, 3);
+        const distractors = pickQuizDistractors(pool, correct._id, 3);
         const options = shuffleArray([correct, ...distractors]);
         questions.push({ correct, options });
       }
@@ -2405,7 +2479,9 @@
 
     function startQuiz() {
       clearQuizRevealTimers();
-      quizState.questions = buildQuizQuestions(getQuizQuestionLimit());
+      const pool = getQuizPool();
+      const limit = getQuizQuestionLimit(pool.length);
+      quizState.questions = buildQuizQuestions(pool, limit);
       quizState.current = 0;
       quizState.score = 0;
       quizState.answered = false;
@@ -2569,12 +2645,26 @@
     tabQuiz.addEventListener("click", () => switchMode("quiz"));
     quizLevelSel.addEventListener("change", startQuiz);
     quizTypeSel.addEventListener("change", startQuiz);
-    quizLimitSel.addEventListener("change", startQuiz);
+    quizLimitSel.addEventListener("input", () => {
+      if (quizUseAllWords) {
+        setQuizAllMode(false);
+      }
+    });
+    quizLimitSel.addEventListener("change", () => {
+      setQuizAllMode(false);
+      normalizeQuizLimitInput();
+      startQuiz();
+    });
+    quizAllBtn.addEventListener("click", () => {
+      setQuizAllMode(!quizUseAllWords);
+      startQuiz();
+    });
     quizRestartBtn.addEventListener("click", startQuiz);
     quizPlayAgainBtn.addEventListener("click", startQuiz);
     quizSpeakBtn.addEventListener("click", () => {
       speakWord(quizSpeakBtn.dataset.word || "");
     });
+    setQuizAllMode(true);
 
     // Spelling Logic
     const spellPanel = document.getElementById("spellPanel");
