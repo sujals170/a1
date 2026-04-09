@@ -28865,6 +28865,29 @@
         "gujarati": "કાંડા",
         "example_sentence": "I wear a watch on my wrist."
       }
+    ],
+    "C1": [
+      {
+        "word": "abolish",
+        "part_of_speech": "v.",
+        "english_meaning": "to officially end a law, system, or practice",
+        "gujarati": "રદ કરવું",
+        "example_sentence": "Many countries have abolished the death penalty."
+      },
+      {
+        "word": "abortion",
+        "part_of_speech": "n.",
+        "english_meaning": "the deliberate ending of a pregnancy",
+        "gujarati": "ગર્ભપાત",
+        "example_sentence": "The debate on abortion continues worldwide."
+      },
+      {
+        "word": "absence",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of not being present",
+        "gujarati": "ગેરહાજરી",
+        "example_sentence": "His absence from the meeting was noticed."
+      }
     ]
   }
 }
