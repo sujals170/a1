@@ -23964,6 +23964,4906 @@
         "english_meaning": "an area with a special purpose",
         "gujarati": "વિસ્તાર",
         "example_sentence": "This is a no-parking zone."
+      },
+      {
+        "word": "absorb",
+        "part_of_speech": "v.",
+        "english_meaning": "to take in and hold something",
+        "gujarati": "શોષવું",
+        "example_sentence": "Plants absorb water from the soil."
+      },
+      {
+        "word": "abstract",
+        "part_of_speech": "adj.",
+        "english_meaning": "existing as an idea, not physical",
+        "gujarati": "વ્યાખ્યાત્મક",
+        "example_sentence": "The concept of love is very abstract."
+      },
+      {
+        "word": "accent",
+        "part_of_speech": "n.",
+        "english_meaning": "a way of pronouncing words that shows where someone is from",
+        "gujarati": "ઉચ્ચાર",
+        "example_sentence": "She speaks English with a Gujarati accent."
+      },
+      {
+        "word": "accidentally",
+        "part_of_speech": "adv.",
+        "english_meaning": "by chance or without intending to",
+        "gujarati": "આકસ્મિક રીતે",
+        "example_sentence": "I accidentally broke the glass."
+      },
+      {
+        "word": "accommodate",
+        "part_of_speech": "v.",
+        "english_meaning": "to provide space or help for someone",
+        "gujarati": "સમાવવું",
+        "example_sentence": "The hotel can accommodate 200 guests."
+      },
+      {
+        "word": "accomplish",
+        "part_of_speech": "v.",
+        "english_meaning": "to succeed in doing something",
+        "gujarati": "સફળતાપૂર્વક પૂરું કરવું",
+        "example_sentence": "She accomplished her goal of learning English."
+      },
+      {
+        "word": "accountant",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who keeps financial records",
+        "gujarati": "હિસાબી",
+        "example_sentence": "My accountant helps with my taxes."
+      },
+      {
+        "word": "accuracy",
+        "part_of_speech": "n.",
+        "english_meaning": "the quality of being exact",
+        "gujarati": "ચોકસાઈ",
+        "example_sentence": "The report was checked for accuracy."
+      },
+      {
+        "word": "accurately",
+        "part_of_speech": "adv.",
+        "english_meaning": "in an exact way",
+        "gujarati": "ચોકસાઈથી",
+        "example_sentence": "She answered the questions accurately."
+      },
+      {
+        "word": "acid",
+        "part_of_speech": "n.",
+        "english_meaning": "a chemical substance that can burn",
+        "gujarati": "એસિડ",
+        "example_sentence": "The acid burned through the metal."
+      },
+      {
+        "word": "activate",
+        "part_of_speech": "v.",
+        "english_meaning": "to make something start working",
+        "gujarati": "સક્રિય કરવું",
+        "example_sentence": "Press the button to activate the alarm."
+      },
+      {
+        "word": "addiction",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being unable to stop doing something",
+        "gujarati": "વ્યસન",
+        "example_sentence": "He is fighting his addiction to smoking."
+      },
+      {
+        "word": "additionally",
+        "part_of_speech": "adv.",
+        "english_meaning": "in addition",
+        "gujarati": "વધુમાં",
+        "example_sentence": "Additionally, we need more staff."
+      },
+      {
+        "word": "adequate",
+        "part_of_speech": "adj.",
+        "english_meaning": "enough for a purpose",
+        "gujarati": "પર્યાપ્ત",
+        "example_sentence": "The food was adequate but not great."
+      },
+      {
+        "word": "adequately",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a way that is enough",
+        "gujarati": "પર્યાપ્ત રીતે",
+        "example_sentence": "The room was not adequately heated."
+      },
+      {
+        "word": "adjust",
+        "part_of_speech": "v.",
+        "english_meaning": "to change something slightly",
+        "gujarati": "સમાયોજિત કરવું",
+        "example_sentence": "I need to adjust the chair height."
+      },
+      {
+        "word": "affordable",
+        "part_of_speech": "adj.",
+        "english_meaning": "cheap enough for people to buy",
+        "gujarati": "સસ્તું",
+        "example_sentence": "We are looking for affordable housing."
+      },
+      {
+        "word": "agriculture",
+        "part_of_speech": "n.",
+        "english_meaning": "the science or practice of farming",
+        "gujarati": "કૃષિ",
+        "example_sentence": "Agriculture is important in Gujarat."
+      },
+      {
+        "word": "AIDS",
+        "part_of_speech": "n.",
+        "english_meaning": "a serious disease that affects the immune system",
+        "gujarati": "એઈડ્સ",
+        "example_sentence": "Education helps prevent the spread of AIDS."
+      },
+      {
+        "word": "alien",
+        "part_of_speech": "n.",
+        "english_meaning": "a person from another country",
+        "gujarati": "વિદેશી",
+        "example_sentence": "Many aliens live and work in the city."
+      },
+      {
+        "word": "alongside",
+        "part_of_speech": "prep.",
+        "english_meaning": "next to or together with",
+        "gujarati": "સાથે સાથે",
+        "example_sentence": "The new building stands alongside the old one."
+      },
+      {
+        "word": "altogether",
+        "part_of_speech": "adv.",
+        "english_meaning": "completely or in total",
+        "gujarati": "કુલ મળીને",
+        "example_sentence": "Altogether, we spent ₹5000."
+      },
+      {
+        "word": "ambulance",
+        "part_of_speech": "n.",
+        "english_meaning": "a vehicle for carrying sick or injured people",
+        "gujarati": "એમ્બ્યુલન્સ",
+        "example_sentence": "The ambulance arrived in five minutes."
+      },
+      {
+        "word": "amusing",
+        "part_of_speech": "adj.",
+        "english_meaning": "funny or entertaining",
+        "gujarati": "મજાકીય",
+        "example_sentence": "The movie was very amusing."
+      },
+      {
+        "word": "analyst",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who examines information",
+        "gujarati": "વિશ્લેષક",
+        "example_sentence": "The financial analyst gave good advice."
+      },
+      {
+        "word": "ancestor",
+        "part_of_speech": "n.",
+        "english_meaning": "a person in your family who lived long ago",
+        "gujarati": "પૂર્વજ",
+        "example_sentence": "My ancestors came from Rajasthan."
+      },
+      {
+        "word": "animation",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of making moving cartoons",
+        "gujarati": "એનિમેશન",
+        "example_sentence": "Children love watching animation films."
+      },
+      {
+        "word": "annually",
+        "part_of_speech": "adv.",
+        "english_meaning": "every year",
+        "gujarati": "વાર્ષિક",
+        "example_sentence": "The festival is held annually."
+      },
+      {
+        "word": "anticipate",
+        "part_of_speech": "v.",
+        "english_meaning": "to expect something to happen",
+        "gujarati": "અનુમાન કરવું",
+        "example_sentence": "I anticipate a big crowd today."
+      },
+      {
+        "word": "anxiety",
+        "part_of_speech": "n.",
+        "english_meaning": "a feeling of worry or nervousness",
+        "gujarati": "ચિંતા",
+        "example_sentence": "She felt anxiety before the exam."
+      },
+      {
+        "word": "apology",
+        "part_of_speech": "n.",
+        "english_meaning": "a statement saying sorry",
+        "gujarati": "માફી",
+        "example_sentence": "He sent a written apology."
+      },
+      {
+        "word": "applicant",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who applies for something",
+        "gujarati": "અરજદાર",
+        "example_sentence": "There were 50 applicants for the job."
+      },
+      {
+        "word": "appropriately",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a suitable way",
+        "gujarati": "યોગ્ય રીતે",
+        "example_sentence": "Dress appropriately for the meeting."
+      },
+      {
+        "word": "arrow",
+        "part_of_speech": "n.",
+        "english_meaning": "a pointed stick shot from a bow",
+        "gujarati": "તીર",
+        "example_sentence": "The arrow hit the target."
+      },
+      {
+        "word": "artwork",
+        "part_of_speech": "n.",
+        "english_meaning": "paintings, drawings, or sculptures",
+        "gujarati": "કલાકૃતિ",
+        "example_sentence": "The gallery has beautiful artwork."
+      },
+      {
+        "word": "aside",
+        "part_of_speech": "adv.",
+        "english_meaning": "to one side",
+        "gujarati": "બાજુમાં",
+        "example_sentence": "She put the book aside."
+      },
+      {
+        "word": "asset",
+        "part_of_speech": "n.",
+        "english_meaning": "something valuable that a person owns",
+        "gujarati": "સંપત્તિ",
+        "example_sentence": "The house is his biggest asset."
+      },
+      {
+        "word": "assign",
+        "part_of_speech": "v.",
+        "english_meaning": "to give a task to someone",
+        "gujarati": "સોંપવું",
+        "example_sentence": "The teacher will assign homework."
+      },
+      {
+        "word": "assistance",
+        "part_of_speech": "n.",
+        "english_meaning": "help or support",
+        "gujarati": "મદદ",
+        "example_sentence": "I need some assistance with this form."
+      },
+      {
+        "word": "assumption",
+        "part_of_speech": "n.",
+        "english_meaning": "something believed to be true without proof",
+        "gujarati": "ધારણા",
+        "example_sentence": "That is only an assumption."
+      },
+      {
+        "word": "assure",
+        "part_of_speech": "v.",
+        "english_meaning": "to tell someone confidently",
+        "gujarati": "ખાતરી આપવી",
+        "example_sentence": "I assure you everything will be fine."
+      },
+      {
+        "word": "astonishing",
+        "part_of_speech": "adj.",
+        "english_meaning": "very surprising",
+        "gujarati": "આશ્ચર્યજનક",
+        "example_sentence": "The view from the top was astonishing."
+      },
+      {
+        "word": "attachment",
+        "part_of_speech": "n.",
+        "english_meaning": "a file sent with an email",
+        "gujarati": "જોડાણ",
+        "example_sentence": "I sent the report as an attachment."
+      },
+      {
+        "word": "auction",
+        "part_of_speech": "n.",
+        "english_meaning": "a sale where things are sold to the highest bidder",
+        "gujarati": "નીલામી",
+        "example_sentence": "The painting sold for ₹10 lakh at auction."
+      },
+      {
+        "word": "audio",
+        "part_of_speech": "adj.",
+        "english_meaning": "related to sound",
+        "gujarati": "ઓડિયો",
+        "example_sentence": "The audio quality of the video is excellent."
+      },
+      {
+        "word": "automatic",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening without human control",
+        "gujarati": "સ્વયંસ્ફુરિત",
+        "example_sentence": "The doors open automatically."
+      },
+      {
+        "word": "automatically",
+        "part_of_speech": "adv.",
+        "english_meaning": "without thinking or by machine",
+        "gujarati": "સ્વયંચાલિત રીતે",
+        "example_sentence": "The lights turn on automatically."
+      },
+      {
+        "word": "awareness",
+        "part_of_speech": "n.",
+        "english_meaning": "knowledge or understanding of something",
+        "gujarati": "જાગૃતિ",
+        "example_sentence": "We need more awareness about climate change."
+      },
+      {
+        "word": "awkward",
+        "part_of_speech": "adj.",
+        "english_meaning": "causing embarrassment or difficulty",
+        "gujarati": "અસ્વસ્થ",
+        "example_sentence": "There was an awkward silence."
+      },
+      {
+        "word": "badge",
+        "part_of_speech": "n.",
+        "english_meaning": "a small sign worn to show identity",
+        "gujarati": "બેજ",
+        "example_sentence": "All staff must wear a name badge."
+      },
+      {
+        "word": "balanced",
+        "part_of_speech": "adj.",
+        "english_meaning": "keeping equal amounts of different things",
+        "gujarati": "સંતુલિત",
+        "example_sentence": "A balanced diet is important for health."
+      },
+      {
+        "word": "ballet",
+        "part_of_speech": "n.",
+        "english_meaning": "a type of dancing with music",
+        "gujarati": "બેલે",
+        "example_sentence": "We watched a beautiful ballet performance."
+      },
+      {
+        "word": "balloon",
+        "part_of_speech": "n.",
+        "english_meaning": "a rubber bag filled with air",
+        "gujarati": "બલૂન",
+        "example_sentence": "The children played with colourful balloons."
+      },
+      {
+        "word": "barely",
+        "part_of_speech": "adv.",
+        "english_meaning": "only just or almost not",
+        "gujarati": "માત્ર",
+        "example_sentence": "I barely had time to eat."
+      },
+      {
+        "word": "bargain",
+        "part_of_speech": "n.",
+        "english_meaning": "something bought for a very low price",
+        "gujarati": "સોદો",
+        "example_sentence": "I got this shirt at a bargain price."
+      },
+      {
+        "word": "basement",
+        "part_of_speech": "n.",
+        "english_meaning": "the floor below ground level",
+        "gujarati": "બેસમેન્ટ",
+        "example_sentence": "The washing machine is in the basement."
+      },
+      {
+        "word": "basket",
+        "part_of_speech": "n.",
+        "english_meaning": "a container made of woven material",
+        "gujarati": "ટોપલી",
+        "example_sentence": "She carried the fruit in a basket."
+      },
+      {
+        "word": "bat",
+        "part_of_speech": "n.",
+        "english_meaning": "a piece of wood used to hit a ball in games",
+        "gujarati": "બેટ",
+        "example_sentence": "He hit the ball with his cricket bat."
+      },
+      {
+        "word": "beneficial",
+        "part_of_speech": "adj.",
+        "english_meaning": "helpful or useful",
+        "gujarati": "લાભદાયી",
+        "example_sentence": "Exercise is beneficial for health."
+      },
+      {
+        "word": "beside",
+        "part_of_speech": "prep.",
+        "english_meaning": "next to",
+        "gujarati": "પાસે",
+        "example_sentence": "She sat beside her friend."
+      },
+      {
+        "word": "besides",
+        "part_of_speech": "prep., adv.",
+        "english_meaning": "in addition to",
+        "gujarati": "વધુમાં",
+        "example_sentence": "Besides English, she speaks Gujarati."
+      },
+      {
+        "word": "bias",
+        "part_of_speech": "n.",
+        "english_meaning": "a strong feeling for or against something",
+        "gujarati": "પક્ષપાત",
+        "example_sentence": "The judge showed no bias."
+      },
+      {
+        "word": "bid",
+        "part_of_speech": "n., v.",
+        "english_meaning": "an offer to buy something; to offer",
+        "gujarati": "બોલી",
+        "example_sentence": "He made the highest bid at the auction."
+      },
+      {
+        "word": "biological",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to living things",
+        "gujarati": "જૈવિક",
+        "example_sentence": "The scientist studies biological processes."
+      },
+      {
+        "word": "blanket",
+        "part_of_speech": "n.",
+        "english_meaning": "a thick cover used on a bed",
+        "gujarati": "ધાબળો",
+        "example_sentence": "I covered myself with a warm blanket."
+      },
+      {
+        "word": "blow",
+        "part_of_speech": "n.",
+        "english_meaning": "a hard hit or disappointment",
+        "gujarati": "ફટકો",
+        "example_sentence": "Losing the match was a big blow."
+      },
+      {
+        "word": "bold",
+        "part_of_speech": "adj.",
+        "english_meaning": "confident and not afraid",
+        "gujarati": "હિંમતવાન",
+        "example_sentence": "She made a bold decision."
+      },
+      {
+        "word": "bombing",
+        "part_of_speech": "n.",
+        "english_meaning": "an attack with bombs",
+        "gujarati": "બોમ્બિંગ",
+        "example_sentence": "The city suffered heavy bombing."
+      },
+      {
+        "word": "booking",
+        "part_of_speech": "n.",
+        "english_meaning": "an arrangement to reserve something",
+        "gujarati": "બુકિંગ",
+        "example_sentence": "I made a booking for the hotel."
+      },
+      {
+        "word": "boost",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to increase or improve; an increase",
+        "gujarati": "વધારવું",
+        "example_sentence": "The new policy will boost sales."
+      },
+      {
+        "word": "bound",
+        "part_of_speech": "adj.",
+        "english_meaning": "certain to happen",
+        "gujarati": "નિશ્ચિત",
+        "example_sentence": "She is bound to succeed."
+      },
+      {
+        "word": "brick",
+        "part_of_speech": "n.",
+        "english_meaning": "a block used for building walls",
+        "gujarati": "ઈંટ",
+        "example_sentence": "The house is made of red brick."
+      },
+      {
+        "word": "briefly",
+        "part_of_speech": "adv.",
+        "english_meaning": "for a short time",
+        "gujarati": "ટૂંકમાં",
+        "example_sentence": "I will explain it briefly."
+      },
+      {
+        "word": "broadcaster",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who presents on radio or TV",
+        "gujarati": "પ્રસારક",
+        "example_sentence": "The broadcaster gave the latest news."
+      },
+      {
+        "word": "broadly",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a general way",
+        "gujarati": "વ્યાપક રીતે",
+        "example_sentence": "Broadly speaking, the plan is good."
+      },
+      {
+        "word": "bug",
+        "part_of_speech": "n.",
+        "english_meaning": "a small insect or a problem in a computer",
+        "gujarati": "કીટ",
+        "example_sentence": "There is a bug in the software."
+      },
+      {
+        "word": "cabin",
+        "part_of_speech": "n.",
+        "english_meaning": "a small room on a ship or plane",
+        "gujarati": "કેબિન",
+        "example_sentence": "The plane cabin was very comfortable."
+      },
+      {
+        "word": "canal",
+        "part_of_speech": "n.",
+        "english_meaning": "a man-made waterway",
+        "gujarati": "નહેર",
+        "example_sentence": "The boat sailed along the canal."
+      },
+      {
+        "word": "candle",
+        "part_of_speech": "n.",
+        "english_meaning": "a stick of wax with a wick that burns",
+        "gujarati": "મોમબત્તી",
+        "example_sentence": "She lit a candle on her birthday."
+      },
+      {
+        "word": "carbon",
+        "part_of_speech": "n.",
+        "english_meaning": "a chemical element found in all living things",
+        "gujarati": "કાર્બન",
+        "example_sentence": "Carbon is essential for life."
+      },
+      {
+        "word": "casual",
+        "part_of_speech": "adj.",
+        "english_meaning": "relaxed and informal",
+        "gujarati": "આકસ્મિક",
+        "example_sentence": "We had a casual chat."
+      },
+      {
+        "word": "cave",
+        "part_of_speech": "n.",
+        "english_meaning": "a large hole in the side of a hill",
+        "gujarati": "ગુફા",
+        "example_sentence": "The explorers entered the dark cave."
+      },
+      {
+        "word": "certainty",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being sure",
+        "gujarati": "ચોક્કસતા",
+        "example_sentence": "There is no certainty of rain."
+      },
+      {
+        "word": "certificate",
+        "part_of_speech": "n.",
+        "english_meaning": "an official document proving something",
+        "gujarati": "પ્રમાણપત્ર",
+        "example_sentence": "She received a certificate for her achievement."
+      },
+      {
+        "word": "challenging",
+        "part_of_speech": "adj.",
+        "english_meaning": "difficult but interesting",
+        "gujarati": "પડકારજનક",
+        "example_sentence": "The job is challenging but rewarding."
+      },
+      {
+        "word": "championship",
+        "part_of_speech": "n.",
+        "english_meaning": "a competition to find the best player or team",
+        "gujarati": "ચેમ્પિયનશિપ",
+        "example_sentence": "India won the cricket championship."
+      },
+      {
+        "word": "charming",
+        "part_of_speech": "adj.",
+        "english_meaning": "very pleasant and attractive",
+        "gujarati": "મોહક",
+        "example_sentence": "She has a charming smile."
+      },
+      {
+        "word": "chase",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to run after someone or something",
+        "gujarati": "પીછો કરવો",
+        "example_sentence": "The dog chased the cat."
+      },
+      {
+        "word": "cheek",
+        "part_of_speech": "n.",
+        "english_meaning": "the soft part of the face below the eye",
+        "gujarati": "ગાલ",
+        "example_sentence": "She kissed him on the cheek."
+      },
+      {
+        "word": "cheer",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to shout in support; a shout of support",
+        "gujarati": "ઉત્સાહિત કરવું",
+        "example_sentence": "The crowd cheered loudly."
+      },
+      {
+        "word": "choir",
+        "part_of_speech": "n.",
+        "english_meaning": "a group of people who sing together",
+        "gujarati": "ગાયક મંડળી",
+        "example_sentence": "The school choir performed beautifully."
+      },
+      {
+        "word": "chop",
+        "part_of_speech": "v.",
+        "english_meaning": "to cut something into pieces with a knife",
+        "gujarati": "કાપવું",
+        "example_sentence": "Chop the vegetables finely."
+      },
+      {
+        "word": "circuit",
+        "part_of_speech": "n.",
+        "english_meaning": "a path that electricity travels",
+        "gujarati": "સર્કિટ",
+        "example_sentence": "The circuit is broken."
+      },
+      {
+        "word": "civilization",
+        "part_of_speech": "n.",
+        "english_meaning": "a society with advanced culture",
+        "gujarati": "સભ્યતા",
+        "example_sentence": "Ancient civilization left many monuments."
+      },
+      {
+        "word": "clarify",
+        "part_of_speech": "v.",
+        "english_meaning": "to make something clearer",
+        "gujarati": "સ્પષ્ટ કરવું",
+        "example_sentence": "Can you clarify your point?"
+      },
+      {
+        "word": "classify",
+        "part_of_speech": "v.",
+        "english_meaning": "to arrange things into groups",
+        "gujarati": "વર્ગીકરણ કરવું",
+        "example_sentence": "Classify the books by subject."
+      },
+      {
+        "word": "clerk",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who works in an office",
+        "gujarati": "કારકુન",
+        "example_sentence": "The clerk helped me with the form."
+      },
+      {
+        "word": "cliff",
+        "part_of_speech": "n.",
+        "english_meaning": "a high steep rock face",
+        "gujarati": "કિનારો",
+        "example_sentence": "The cliff overlooks the sea."
+      },
+      {
+        "word": "clinic",
+        "part_of_speech": "n.",
+        "english_meaning": "a small hospital or medical centre",
+        "gujarati": "ક્લિનિક",
+        "example_sentence": "She works at a local clinic."
+      },
+      {
+        "word": "clip",
+        "part_of_speech": "n.",
+        "english_meaning": "a short piece of video",
+        "gujarati": "ક્લિપ",
+        "example_sentence": "Watch this funny clip."
+      },
+      {
+        "word": "coincidence",
+        "part_of_speech": "n.",
+        "english_meaning": "when two things happen at the same time by chance",
+        "gujarati": "સંયોગ",
+        "example_sentence": "What a coincidence we met here!"
+      },
+      {
+        "word": "collector",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who collects things",
+        "gujarati": "સંગ્રહક",
+        "example_sentence": "He is a stamp collector."
+      },
+      {
+        "word": "colony",
+        "part_of_speech": "n.",
+        "english_meaning": "a country controlled by another country",
+        "gujarati": "વસાહત",
+        "example_sentence": "India was once a British colony."
+      },
+      {
+        "word": "colourful",
+        "part_of_speech": "adj.",
+        "english_meaning": "having bright colours",
+        "gujarati": "રંગીન",
+        "example_sentence": "The festival was very colourful."
+      },
+      {
+        "word": "comic",
+        "part_of_speech": "adj., n.",
+        "english_meaning": "funny; a magazine with pictures",
+        "gujarati": "મજાકીય",
+        "example_sentence": "He reads comic books."
+      },
+      {
+        "word": "commander",
+        "part_of_speech": "n.",
+        "english_meaning": "a person in charge of a group",
+        "gujarati": "કમાન્ડર",
+        "example_sentence": "The commander led the team."
+      },
+      {
+        "word": "comparative",
+        "part_of_speech": "adj.",
+        "english_meaning": "involving comparison",
+        "gujarati": "તુલનાત્મક",
+        "example_sentence": "We made a comparative study."
+      },
+      {
+        "word": "completion",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of finishing something",
+        "gujarati": "પૂર્ણતા",
+        "example_sentence": "The project is near completion."
+      },
+      {
+        "word": "compose",
+        "part_of_speech": "v.",
+        "english_meaning": "to write music or create something",
+        "gujarati": "રચવું",
+        "example_sentence": "He composed a new song."
+      },
+      {
+        "word": "composer",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who writes music",
+        "gujarati": "સંગીતકાર",
+        "example_sentence": "Mozart was a famous composer."
+      },
+      {
+        "word": "compound",
+        "part_of_speech": "n.",
+        "english_meaning": "a substance made of two or more elements",
+        "gujarati": "સંયોજન",
+        "example_sentence": "Water is a chemical compound."
+      },
+      {
+        "word": "comprehensive",
+        "part_of_speech": "adj.",
+        "english_meaning": "including everything",
+        "gujarati": "વ્યાપક",
+        "example_sentence": "The report is very comprehensive."
+      },
+      {
+        "word": "comprise",
+        "part_of_speech": "v.",
+        "english_meaning": "to consist of",
+        "gujarati": "સમાવેશ કરવું",
+        "example_sentence": "The team comprises 12 players."
+      },
+      {
+        "word": "compulsory",
+        "part_of_speech": "adj.",
+        "english_meaning": "that must be done",
+        "gujarati": "ફરજિયાત",
+        "example_sentence": "School attendance is compulsory."
+      },
+      {
+        "word": "concrete",
+        "part_of_speech": "adj., n.",
+        "english_meaning": "real and specific; a building material",
+        "gujarati": "કોંક્રીટ",
+        "example_sentence": "We need concrete examples."
+      },
+      {
+        "word": "confess",
+        "part_of_speech": "v.",
+        "english_meaning": "to admit something wrong",
+        "gujarati": "કબૂલ કરવું",
+        "example_sentence": "He confessed his mistake."
+      },
+      {
+        "word": "confusion",
+        "part_of_speech": "n.",
+        "english_meaning": "a state of not understanding",
+        "gujarati": "ગૂંચવણ",
+        "example_sentence": "There was some confusion about the date."
+      },
+      {
+        "word": "consequently",
+        "part_of_speech": "adv.",
+        "english_meaning": "as a result",
+        "gujarati": "પરિણામે",
+        "example_sentence": "It rained; consequently, the match was cancelled."
+      },
+      {
+        "word": "conservation",
+        "part_of_speech": "n.",
+        "english_meaning": "the protection of the environment",
+        "gujarati": "સંરક્ષણ",
+        "example_sentence": "We support wildlife conservation."
+      },
+      {
+        "word": "considerable",
+        "part_of_speech": "adj.",
+        "english_meaning": "large in amount or importance",
+        "gujarati": "નોંધપાત્ર",
+        "example_sentence": "The project required considerable effort."
+      },
+      {
+        "word": "considerably",
+        "part_of_speech": "adv.",
+        "english_meaning": "to a large degree",
+        "gujarati": "નોંધપાત્ર રીતે",
+        "example_sentence": "Prices have risen considerably."
+      },
+      {
+        "word": "consistently",
+        "part_of_speech": "adv.",
+        "english_meaning": "in the same way all the time",
+        "gujarati": "સતત",
+        "example_sentence": "He has performed consistently well."
+      },
+      {
+        "word": "conspiracy",
+        "part_of_speech": "n.",
+        "english_meaning": "a secret plan by a group",
+        "gujarati": "કાવતરું",
+        "example_sentence": "They were accused of conspiracy."
+      },
+      {
+        "word": "consult",
+        "part_of_speech": "v.",
+        "english_meaning": "to ask for advice",
+        "gujarati": "સલાહ લેવી",
+        "example_sentence": "You should consult a doctor."
+      },
+      {
+        "word": "consultant",
+        "part_of_speech": "n.",
+        "english_meaning": "an expert who gives advice",
+        "gujarati": "સલાહકાર",
+        "example_sentence": "The company hired a consultant."
+      },
+      {
+        "word": "consumption",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of using or eating something",
+        "gujarati": "વપરાશ",
+        "example_sentence": "Reduce your energy consumption."
+      },
+      {
+        "word": "controversial",
+        "part_of_speech": "adj.",
+        "english_meaning": "causing disagreement",
+        "gujarati": "વિવાદાસ્પદ",
+        "example_sentence": "The decision was very controversial."
+      },
+      {
+        "word": "controversy",
+        "part_of_speech": "n.",
+        "english_meaning": "public disagreement",
+        "gujarati": "વિવાદ",
+        "example_sentence": "The book caused a lot of controversy."
+      },
+      {
+        "word": "convenience",
+        "part_of_speech": "n.",
+        "english_meaning": "the quality of being easy to use",
+        "gujarati": "સુવિધા",
+        "example_sentence": "The shop is open for your convenience."
+      },
+      {
+        "word": "convention",
+        "part_of_speech": "n.",
+        "english_meaning": "a large meeting or a usual way of behaving",
+        "gujarati": "સંમેલન",
+        "example_sentence": "The convention will be held in Mumbai."
+      },
+      {
+        "word": "conventional",
+        "part_of_speech": "adj.",
+        "english_meaning": "following what is usual",
+        "gujarati": "પરંપરાગત",
+        "example_sentence": "He has a very conventional approach."
+      },
+      {
+        "word": "convey",
+        "part_of_speech": "v.",
+        "english_meaning": "to communicate an idea or feeling",
+        "gujarati": "સંદેશ આપવો",
+        "example_sentence": "The painting conveys deep emotion."
+      },
+      {
+        "word": "convincing",
+        "part_of_speech": "adj.",
+        "english_meaning": "able to make someone believe something",
+        "gujarati": "માન્યતાપ્રેરક",
+        "example_sentence": "His argument was very convincing."
+      },
+      {
+        "word": "cope",
+        "part_of_speech": "v.",
+        "english_meaning": "to deal successfully with a difficult situation",
+        "gujarati": "સામનો કરવો",
+        "example_sentence": "She coped well with the stress."
+      },
+      {
+        "word": "corporation",
+        "part_of_speech": "n.",
+        "english_meaning": "a large company",
+        "gujarati": "નિગમ",
+        "example_sentence": "He works for a big corporation."
+      },
+      {
+        "word": "corridor",
+        "part_of_speech": "n.",
+        "english_meaning": "a long passage in a building",
+        "gujarati": "કોરિડોર",
+        "example_sentence": "The office is at the end of the corridor."
+      },
+      {
+        "word": "counter",
+        "part_of_speech": "n.",
+        "english_meaning": "a long flat surface in a shop",
+        "gujarati": "કાઉન્ટર",
+        "example_sentence": "Pay at the counter."
+      },
+      {
+        "word": "coverage",
+        "part_of_speech": "n.",
+        "english_meaning": "the reporting of news",
+        "gujarati": "કવરેજ",
+        "example_sentence": "The event received wide media coverage."
+      },
+      {
+        "word": "crack",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to break without separating completely",
+        "gujarati": "તરડવું",
+        "example_sentence": "There is a crack in the wall."
+      },
+      {
+        "word": "craft",
+        "part_of_speech": "n.",
+        "english_meaning": "an activity involving skill with the hands",
+        "gujarati": "હસ્તકલા",
+        "example_sentence": "She is learning a new craft."
+      },
+      {
+        "word": "creativity",
+        "part_of_speech": "n.",
+        "english_meaning": "the ability to create new ideas",
+        "gujarati": "સર્જનાત્મકતા",
+        "example_sentence": "Creativity is important in art."
+      },
+      {
+        "word": "critically",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a way that shows careful judgment",
+        "gujarati": "વિવેચનાત્મક રીતે",
+        "example_sentence": "She looked at the report critically."
+      },
+      {
+        "word": "cruise",
+        "part_of_speech": "n., v.",
+        "english_meaning": "a holiday on a ship; to travel by ship",
+        "gujarati": "ક્રુઝ",
+        "example_sentence": "We went on a cruise to Europe."
+      },
+      {
+        "word": "cue",
+        "part_of_speech": "n.",
+        "english_meaning": "a signal to do something",
+        "gujarati": "સંકેત",
+        "example_sentence": "The music was her cue to enter the stage."
+      },
+      {
+        "word": "curious",
+        "part_of_speech": "adj.",
+        "english_meaning": "wanting to know or learn about something",
+        "gujarati": "ઉત્સુક",
+        "example_sentence": "Children are naturally curious."
+      },
+      {
+        "word": "curriculum",
+        "part_of_speech": "n.",
+        "english_meaning": "the subjects taught in a school",
+        "gujarati": "અભ્યાસક્રમ",
+        "example_sentence": "The new curriculum includes coding."
+      },
+      {
+        "word": "cute",
+        "part_of_speech": "adj.",
+        "english_meaning": "attractive in a pretty way",
+        "gujarati": "સુંદર",
+        "example_sentence": "The puppy is so cute."
+      },
+      {
+        "word": "dairy",
+        "part_of_speech": "n., adj.",
+        "english_meaning": "milk and products made from milk",
+        "gujarati": "ડેરી",
+        "example_sentence": "I buy milk from the dairy farm."
+      },
+      {
+        "word": "dare",
+        "part_of_speech": "v.",
+        "english_meaning": "to be brave enough to do something",
+        "gujarati": "હિંમત કરવી",
+        "example_sentence": "I dare you to try it."
+      },
+      {
+        "word": "darkness",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being dark",
+        "gujarati": "અંધારું",
+        "example_sentence": "The darkness frightened the child."
+      },
+      {
+        "word": "database",
+        "part_of_speech": "n.",
+        "english_meaning": "a large collection of information in a computer",
+        "gujarati": "ડેટાબેઝ",
+        "example_sentence": "The company stores data in a database."
+      },
+      {
+        "word": "deadline",
+        "part_of_speech": "n.",
+        "english_meaning": "the latest time by which something must be done",
+        "gujarati": "સમયમર્યાદા",
+        "example_sentence": "The deadline is next Friday."
+      },
+      {
+        "word": "deadly",
+        "part_of_speech": "adj.",
+        "english_meaning": "able to cause death",
+        "gujarati": "ઘાતક",
+        "example_sentence": "The snake has a deadly bite."
+      },
+      {
+        "word": "dealer",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who buys and sells goods",
+        "gujarati": "વેપારી",
+        "example_sentence": "He is a car dealer."
+      },
+      {
+        "word": "deck",
+        "part_of_speech": "n.",
+        "english_meaning": "the floor of a ship or bus",
+        "gujarati": "ડેક",
+        "example_sentence": "We sat on the upper deck."
+      },
+      {
+        "word": "defender",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who protects something",
+        "gujarati": "રક્ષક",
+        "example_sentence": "He is a defender of human rights."
+      },
+      {
+        "word": "delete",
+        "part_of_speech": "v.",
+        "english_meaning": "to remove something",
+        "gujarati": "કાઢી નાખવું",
+        "example_sentence": "Please delete the old file."
+      },
+      {
+        "word": "democracy",
+        "part_of_speech": "n.",
+        "english_meaning": "a system of government by the people",
+        "gujarati": "લોકશાહી",
+        "example_sentence": "India is the largest democracy."
+      },
+      {
+        "word": "democratic",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to democracy",
+        "gujarati": "લોકશાહી વાળું",
+        "example_sentence": "We live in a democratic country."
+      },
+      {
+        "word": "demonstration",
+        "part_of_speech": "n.",
+        "english_meaning": "a public protest or a show of how something works",
+        "gujarati": "પ્રદર્શન",
+        "example_sentence": "There was a demonstration in the city."
+      },
+      {
+        "word": "depart",
+        "part_of_speech": "v.",
+        "english_meaning": "to leave a place",
+        "gujarati": "રવાના થવું",
+        "example_sentence": "The train will depart at 9 a.m."
+      },
+      {
+        "word": "dependent",
+        "part_of_speech": "adj.",
+        "english_meaning": "needing someone or something",
+        "gujarati": "આધારિત",
+        "example_sentence": "The child is dependent on his parents."
+      },
+      {
+        "word": "deposit",
+        "part_of_speech": "n.",
+        "english_meaning": "money paid in advance",
+        "gujarati": "જમા",
+        "example_sentence": "We paid a deposit for the flat."
+      },
+      {
+        "word": "depression",
+        "part_of_speech": "n.",
+        "english_meaning": "a feeling of sadness and hopelessness",
+        "gujarati": "ઉદાસીનતા",
+        "example_sentence": "He is suffering from depression."
+      },
+      {
+        "word": "derive",
+        "part_of_speech": "v.",
+        "english_meaning": "to get or obtain something from a source",
+        "gujarati": "પ્રાપ્ત કરવું",
+        "example_sentence": "The word derives from Latin."
+      },
+      {
+        "word": "desperately",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a way that shows great need",
+        "gujarati": "નિરાશાજનક રીતે",
+        "example_sentence": "She desperately needed help."
+      },
+      {
+        "word": "destruction",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of destroying something",
+        "gujarati": "વિનાશ",
+        "example_sentence": "The storm caused great destruction."
+      },
+      {
+        "word": "determination",
+        "part_of_speech": "n.",
+        "english_meaning": "the quality of continuing to try",
+        "gujarati": "નિશ્ચય",
+        "example_sentence": "Her determination helped her succeed."
+      },
+      {
+        "word": "devote",
+        "part_of_speech": "v.",
+        "english_meaning": "to give time or effort to something",
+        "gujarati": "સમર્પિત કરવું",
+        "example_sentence": "She devotes her life to helping others."
+      },
+      {
+        "word": "differ",
+        "part_of_speech": "v.",
+        "english_meaning": "to be different",
+        "gujarati": "અલગ હોવું",
+        "example_sentence": "Our opinions differ on this matter."
+      },
+      {
+        "word": "disability",
+        "part_of_speech": "n.",
+        "english_meaning": "a physical or mental condition that limits abilities",
+        "gujarati": "અપંગતા",
+        "example_sentence": "The company supports people with disabilities."
+      },
+      {
+        "word": "disabled",
+        "part_of_speech": "adj.",
+        "english_meaning": "having a disability",
+        "gujarati": "અપંગ",
+        "example_sentence": "The building is accessible for disabled people."
+      },
+      {
+        "word": "disagreement",
+        "part_of_speech": "n.",
+        "english_meaning": "a difference of opinion",
+        "gujarati": "મતભેદ",
+        "example_sentence": "There was a disagreement about the plan."
+      },
+      {
+        "word": "disappoint",
+        "part_of_speech": "v.",
+        "english_meaning": "to make someone sad by not doing what they expected",
+        "gujarati": "નિરાશ કરવું",
+        "example_sentence": "I don't want to disappoint you."
+      },
+      {
+        "word": "disappointment",
+        "part_of_speech": "n.",
+        "english_meaning": "the feeling of being disappointed",
+        "gujarati": "નિરાશા",
+        "example_sentence": "His failure caused great disappointment."
+      },
+      {
+        "word": "discourage",
+        "part_of_speech": "v.",
+        "english_meaning": "to make someone less confident",
+        "gujarati": "નિરાશ કરવું",
+        "example_sentence": "Don't let failure discourage you."
+      },
+      {
+        "word": "disorder",
+        "part_of_speech": "n.",
+        "english_meaning": "a medical condition or lack of order",
+        "gujarati": "વિકાર",
+        "example_sentence": "She has an eating disorder."
+      },
+      {
+        "word": "distant",
+        "part_of_speech": "adj.",
+        "english_meaning": "far away in space or time",
+        "gujarati": "દૂર",
+        "example_sentence": "The village is distant from the city."
+      },
+      {
+        "word": "distinct",
+        "part_of_speech": "adj.",
+        "english_meaning": "clearly different",
+        "gujarati": "વિશિષ્ટ",
+        "example_sentence": "The two ideas are quite distinct."
+      },
+      {
+        "word": "distinguish",
+        "part_of_speech": "v.",
+        "english_meaning": "to recognise the difference between things",
+        "gujarati": "તફાવત જાણવો",
+        "example_sentence": "Can you distinguish the two colours?"
+      },
+      {
+        "word": "distract",
+        "part_of_speech": "v.",
+        "english_meaning": "to take someone's attention away",
+        "gujarati": "વિચલિત કરવું",
+        "example_sentence": "Don't distract me while I am working."
+      },
+      {
+        "word": "disturb",
+        "part_of_speech": "v.",
+        "english_meaning": "to interrupt someone's peace",
+        "gujarati": "ખલેલ પહોંચાડવી",
+        "example_sentence": "Please do not disturb."
+      },
+      {
+        "word": "dive",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to jump into water head first",
+        "gujarati": "ડાઇવ કરવું",
+        "example_sentence": "She dived into the swimming pool."
+      },
+      {
+        "word": "diverse",
+        "part_of_speech": "adj.",
+        "english_meaning": "containing many different types",
+        "gujarati": "વિવિધતાપૂર્ણ",
+        "example_sentence": "India is a very diverse country."
+      },
+      {
+        "word": "diversity",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of having many different types",
+        "gujarati": "વિવિધતા",
+        "example_sentence": "We celebrate cultural diversity."
+      },
+      {
+        "word": "divorce",
+        "part_of_speech": "n., v.",
+        "english_meaning": "the legal ending of a marriage",
+        "gujarati": "લગ્નવિચ્છેદ",
+        "example_sentence": "They got a divorce last year."
+      },
+      {
+        "word": "dominant",
+        "part_of_speech": "adj.",
+        "english_meaning": "most important or powerful",
+        "gujarati": "પ્રભુત્વવાળું",
+        "example_sentence": "The company is the dominant player in the market."
+      },
+      {
+        "word": "donation",
+        "part_of_speech": "n.",
+        "english_meaning": "money or goods given to help",
+        "gujarati": "દાન",
+        "example_sentence": "Thank you for your generous donation."
+      },
+      {
+        "word": "dot",
+        "part_of_speech": "n.",
+        "english_meaning": "a small round mark",
+        "gujarati": "બિંદુ",
+        "example_sentence": "Put a dot on the paper."
+      },
+      {
+        "word": "downtown",
+        "part_of_speech": "n., adj., adv.",
+        "english_meaning": "the main business area of a city",
+        "gujarati": "શહેરનું કેન્દ્ર",
+        "example_sentence": "I work downtown."
+      },
+      {
+        "word": "dramatically",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a sudden and noticeable way",
+        "gujarati": "નાટ્યાત્મક રીતે",
+        "example_sentence": "Sales increased dramatically."
+      },
+      {
+        "word": "drought",
+        "part_of_speech": "n.",
+        "english_meaning": "a long period without rain",
+        "gujarati": "દુષ્કાળ",
+        "example_sentence": "The drought affected the farmers."
+      },
+      {
+        "word": "dull",
+        "part_of_speech": "adj.",
+        "english_meaning": "not interesting or bright",
+        "gujarati": "કંટાળાજનક",
+        "example_sentence": "The lecture was very dull."
+      },
+      {
+        "word": "dump",
+        "part_of_speech": "v.",
+        "english_meaning": "to throw something away carelessly",
+        "gujarati": "ફેંકી દેવું",
+        "example_sentence": "Don't dump rubbish here."
+      },
+      {
+        "word": "duration",
+        "part_of_speech": "n.",
+        "english_meaning": "the length of time something lasts",
+        "gujarati": "સમયગાળો",
+        "example_sentence": "The duration of the flight is two hours."
+      },
+      {
+        "word": "dynamic",
+        "part_of_speech": "adj.",
+        "english_meaning": "full of energy and new ideas",
+        "gujarati": "ગતિશીલ",
+        "example_sentence": "She has a dynamic personality."
+      },
+      {
+        "word": "economics",
+        "part_of_speech": "n.",
+        "english_meaning": "the study of how money and goods are used",
+        "gujarati": "અર્થશાસ્ત્ર",
+        "example_sentence": "I am studying economics."
+      },
+      {
+        "word": "economist",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who studies economics",
+        "gujarati": "અર્થશાસ્ત્રી",
+        "example_sentence": "The economist predicted the market trend."
+      },
+      {
+        "word": "editorial",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to an editor or a newspaper article giving opinion",
+        "gujarati": "સંપાદકીય",
+        "example_sentence": "Read the editorial page."
+      },
+      {
+        "word": "efficiently",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a way that wastes no time or energy",
+        "gujarati": "કાર્યક્ષમ રીતે",
+        "example_sentence": "The machine works efficiently."
+      },
+      {
+        "word": "elbow",
+        "part_of_speech": "n.",
+        "english_meaning": "the joint in the middle of the arm",
+        "gujarati": "કોણી",
+        "example_sentence": "I hurt my elbow."
+      },
+      {
+        "word": "electronics",
+        "part_of_speech": "n.",
+        "english_meaning": "devices that use electricity",
+        "gujarati": "ઇલેક્ટ્રોનિક્સ",
+        "example_sentence": "He works in the electronics industry."
+      },
+      {
+        "word": "elegant",
+        "part_of_speech": "adj.",
+        "english_meaning": "graceful and stylish",
+        "gujarati": "આકર્ષક",
+        "example_sentence": "She wore an elegant dress."
+      },
+      {
+        "word": "elementary",
+        "part_of_speech": "adj.",
+        "english_meaning": "basic or simple",
+        "gujarati": "પ્રાથમિક",
+        "example_sentence": "This is an elementary question."
+      },
+      {
+        "word": "eliminate",
+        "part_of_speech": "v.",
+        "english_meaning": "to remove or get rid of",
+        "gujarati": "દૂર કરવું",
+        "example_sentence": "We must eliminate poverty."
+      },
+      {
+        "word": "embrace",
+        "part_of_speech": "v.",
+        "english_meaning": "to accept something willingly",
+        "gujarati": "સ્વીકાર કરવો",
+        "example_sentence": "Embrace new technology."
+      },
+      {
+        "word": "emission",
+        "part_of_speech": "n.",
+        "english_meaning": "gas or something sent out into the air",
+        "gujarati": "ઉત્સર્જન",
+        "example_sentence": "Car emissions cause pollution."
+      },
+      {
+        "word": "emotionally",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a way that relates to feelings",
+        "gujarati": "લાગણીપૂર્વક",
+        "example_sentence": "She reacted emotionally to the news."
+      },
+      {
+        "word": "empire",
+        "part_of_speech": "n.",
+        "english_meaning": "a group of countries ruled by one leader",
+        "gujarati": "સામ્રાજ્ય",
+        "example_sentence": "The British Empire was very large."
+      },
+      {
+        "word": "enjoyable",
+        "part_of_speech": "adj.",
+        "english_meaning": "giving pleasure",
+        "gujarati": "આનંદદાયક",
+        "example_sentence": "The trip was very enjoyable."
+      },
+      {
+        "word": "entertaining",
+        "part_of_speech": "adj.",
+        "english_meaning": "amusing and interesting",
+        "gujarati": "મનોરંજક",
+        "example_sentence": "The show was very entertaining."
+      },
+      {
+        "word": "entrepreneur",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who starts a business",
+        "gujarati": "ઉદ્યોગસાહસિક",
+        "example_sentence": "He is a successful entrepreneur."
+      },
+      {
+        "word": "envelope",
+        "part_of_speech": "n.",
+        "english_meaning": "a paper cover for a letter",
+        "gujarati": "કવર",
+        "example_sentence": "Put the letter in the envelope."
+      },
+      {
+        "word": "equip",
+        "part_of_speech": "v.",
+        "english_meaning": "to provide with necessary things",
+        "gujarati": "સજ્જ કરવું",
+        "example_sentence": "The school is well equipped."
+      },
+      {
+        "word": "equivalent",
+        "part_of_speech": "n., adj.",
+        "english_meaning": "equal in value or meaning",
+        "gujarati": "સમકક્ષ",
+        "example_sentence": "₹100 is equivalent to about $1.20."
+      },
+      {
+        "word": "era",
+        "part_of_speech": "n.",
+        "english_meaning": "a long period of time in history",
+        "gujarati": "યુગ",
+        "example_sentence": "We are living in the digital era."
+      },
+      {
+        "word": "erupt",
+        "part_of_speech": "v.",
+        "english_meaning": "to suddenly become active (like a volcano)",
+        "gujarati": "ફાટવું",
+        "example_sentence": "The volcano may erupt soon."
+      },
+      {
+        "word": "essentially",
+        "part_of_speech": "adv.",
+        "english_meaning": "basically or in the most important way",
+        "gujarati": "મૂળભૂત રીતે",
+        "example_sentence": "The two plans are essentially the same."
+      },
+      {
+        "word": "ethic",
+        "part_of_speech": "n.",
+        "english_meaning": "a set of moral principles",
+        "gujarati": "નીતિ",
+        "example_sentence": "He has a strong work ethic."
+      },
+      {
+        "word": "ethnic",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to a particular culture or race",
+        "gujarati": "વંશીય",
+        "example_sentence": "The festival celebrates ethnic culture."
+      },
+      {
+        "word": "evaluation",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of judging something",
+        "gujarati": "મૂલ્યાંકન",
+        "example_sentence": "The teacher gave a fair evaluation."
+      },
+      {
+        "word": "evident",
+        "part_of_speech": "adj.",
+        "english_meaning": "clear and obvious",
+        "gujarati": "સ્પષ્ટ",
+        "example_sentence": "It is evident that he is tired."
+      },
+      {
+        "word": "evolution",
+        "part_of_speech": "n.",
+        "english_meaning": "the gradual development of something",
+        "gujarati": "વિકાસ",
+        "example_sentence": "Darwin studied the evolution of species."
+      },
+      {
+        "word": "evolve",
+        "part_of_speech": "v.",
+        "english_meaning": "to develop gradually",
+        "gujarati": "વિકસિત થવું",
+        "example_sentence": "Technology continues to evolve."
+      },
+      {
+        "word": "exceed",
+        "part_of_speech": "v.",
+        "english_meaning": "to be greater than something",
+        "gujarati": "વટાવવું",
+        "example_sentence": "Do not exceed the speed limit."
+      },
+      {
+        "word": "exception",
+        "part_of_speech": "n.",
+        "english_meaning": "something that does not follow the rule",
+        "gujarati": "અપવાદ",
+        "example_sentence": "There is no exception to this rule."
+      },
+      {
+        "word": "excessive",
+        "part_of_speech": "adj.",
+        "english_meaning": "more than is necessary",
+        "gujarati": "વધારે પડતું",
+        "example_sentence": "The price is excessive."
+      },
+      {
+        "word": "exclude",
+        "part_of_speech": "v.",
+        "english_meaning": "to leave out",
+        "gujarati": "બાકાત રાખવું",
+        "example_sentence": "Do not exclude anyone from the game."
+      },
+      {
+        "word": "exhibit",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to show publicly; a public display",
+        "gujarati": "પ્રદર્શિત કરવું",
+        "example_sentence": "The museum will exhibit new paintings."
+      },
+      {
+        "word": "exit",
+        "part_of_speech": "n.",
+        "english_meaning": "a way out",
+        "gujarati": "નિર્ગમ",
+        "example_sentence": "Take the next exit."
+      },
+      {
+        "word": "exotic",
+        "part_of_speech": "adj.",
+        "english_meaning": "unusual and exciting",
+        "gujarati": "વિદેશી",
+        "example_sentence": "She loves exotic fruits."
+      },
+      {
+        "word": "expansion",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of becoming bigger",
+        "gujarati": "વિસ્તાર",
+        "example_sentence": "The company is planning expansion."
+      },
+      {
+        "word": "expertise",
+        "part_of_speech": "n.",
+        "english_meaning": "special skill or knowledge",
+        "gujarati": "નિષ્ણાતતા",
+        "example_sentence": "She has great expertise in marketing."
+      },
+      {
+        "word": "exploit",
+        "part_of_speech": "v.",
+        "english_meaning": "to use something unfairly",
+        "gujarati": "શોષણ કરવું",
+        "example_sentence": "We must not exploit workers."
+      },
+      {
+        "word": "exposure",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being exposed to something",
+        "gujarati": "સંપર્ક",
+        "example_sentence": "Too much sun exposure is harmful."
+      },
+      {
+        "word": "extension",
+        "part_of_speech": "n.",
+        "english_meaning": "an extra part added to something",
+        "gujarati": "વિસ્તાર",
+        "example_sentence": "The hotel is building an extension."
+      },
+      {
+        "word": "extensive",
+        "part_of_speech": "adj.",
+        "english_meaning": "covering a large area or range",
+        "gujarati": "વ્યાપક",
+        "example_sentence": "The damage was extensive."
+      },
+      {
+        "word": "extensively",
+        "part_of_speech": "adv.",
+        "english_meaning": "to a large degree",
+        "gujarati": "વ્યાપક રીતે",
+        "example_sentence": "He has travelled extensively."
+      },
+      {
+        "word": "extract",
+        "part_of_speech": "n.",
+        "english_meaning": "a short part taken from a book or film",
+        "gujarati": "અંશ",
+        "example_sentence": "Read this extract from the novel."
+      },
+      {
+        "word": "fabric",
+        "part_of_speech": "n.",
+        "english_meaning": "material used for making clothes",
+        "gujarati": "કાપડ",
+        "example_sentence": "The fabric feels soft."
+      },
+      {
+        "word": "fabulous",
+        "part_of_speech": "adj.",
+        "english_meaning": "extremely good or impressive",
+        "gujarati": "અદ્ભુત",
+        "example_sentence": "The party was fabulous."
+      },
+      {
+        "word": "failed",
+        "part_of_speech": "adj.",
+        "english_meaning": "not successful",
+        "gujarati": "નિષ્ફળ",
+        "example_sentence": "It was a failed attempt."
+      },
+      {
+        "word": "fake",
+        "part_of_speech": "adj.",
+        "english_meaning": "not real or genuine",
+        "gujarati": "નકલી",
+        "example_sentence": "He was wearing a fake watch."
+      },
+      {
+        "word": "fame",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being known by many people",
+        "gujarati": "પ્રસિદ્ધિ",
+        "example_sentence": "She achieved fame at a young age."
+      },
+      {
+        "word": "fantasy",
+        "part_of_speech": "n.",
+        "english_meaning": "a pleasant situation that exists only in the imagination",
+        "gujarati": "કલ્પના",
+        "example_sentence": "The story is pure fantasy."
+      },
+      {
+        "word": "fare",
+        "part_of_speech": "n.",
+        "english_meaning": "the money paid for a journey",
+        "gujarati": "કિરાયો",
+        "example_sentence": "The bus fare has increased."
+      },
+      {
+        "word": "federal",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to a system of government with central and state powers",
+        "gujarati": "કેન્દ્રીય",
+        "example_sentence": "The federal government passed the law."
+      },
+      {
+        "word": "fever",
+        "part_of_speech": "n.",
+        "english_meaning": "a high body temperature",
+        "gujarati": "તાવ",
+        "example_sentence": "She has a high fever."
+      },
+      {
+        "word": "firefighter",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who fights fires",
+        "gujarati": "ફાયરફાઇટર",
+        "example_sentence": "The firefighter saved many lives."
+      },
+      {
+        "word": "firework",
+        "part_of_speech": "n.",
+        "english_meaning": "a device that explodes to make a display",
+        "gujarati": "આતશબાજી",
+        "example_sentence": "We watched fireworks on Diwali."
+      },
+      {
+        "word": "firm",
+        "part_of_speech": "adj.",
+        "english_meaning": "strong and steady",
+        "gujarati": "મક્કમ",
+        "example_sentence": "He gave a firm handshake."
+      },
+      {
+        "word": "firmly",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a strong and steady way",
+        "gujarati": "મક્કમતાથી",
+        "example_sentence": "She spoke firmly."
+      },
+      {
+        "word": "flavour",
+        "part_of_speech": "n.",
+        "english_meaning": "the taste of food or drink",
+        "gujarati": "સ્વાદ",
+        "example_sentence": "I like the flavour of mango."
+      },
+      {
+        "word": "fond",
+        "part_of_speech": "adj.",
+        "english_meaning": "having a liking for someone or something",
+        "gujarati": "પ્રેમાળ",
+        "example_sentence": "I am fond of reading."
+      },
+      {
+        "word": "fool",
+        "part_of_speech": "n.",
+        "english_meaning": "a silly person",
+        "gujarati": "મૂર્ખ",
+        "example_sentence": "Don't be a fool."
+      },
+      {
+        "word": "forbid",
+        "part_of_speech": "v.",
+        "english_meaning": "to not allow something",
+        "gujarati": "ના પાડવી",
+        "example_sentence": "The rules forbid smoking here."
+      },
+      {
+        "word": "forecast",
+        "part_of_speech": "n., v.",
+        "english_meaning": "a prediction of future events",
+        "gujarati": "આગાહી",
+        "example_sentence": "The weather forecast says it will rain."
+      },
+      {
+        "word": "format",
+        "part_of_speech": "n.",
+        "english_meaning": "the way something is arranged",
+        "gujarati": "ફોર્મેટ",
+        "example_sentence": "The document is in PDF format."
+      },
+      {
+        "word": "formation",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of forming something",
+        "gujarati": "રચના",
+        "example_sentence": "The formation of ice takes time."
+      },
+      {
+        "word": "formerly",
+        "part_of_speech": "adv.",
+        "english_meaning": "in the past",
+        "gujarati": "પહેલાં",
+        "example_sentence": "She was formerly a teacher."
+      },
+      {
+        "word": "fortunate",
+        "part_of_speech": "adj.",
+        "english_meaning": "lucky",
+        "gujarati": "નસીબદાર",
+        "example_sentence": "I was fortunate to win the prize."
+      },
+      {
+        "word": "forum",
+        "part_of_speech": "n.",
+        "english_meaning": "a place for public discussion",
+        "gujarati": "ફોરમ",
+        "example_sentence": "The forum discussed new ideas."
+      },
+      {
+        "word": "fossil",
+        "part_of_speech": "n.",
+        "english_meaning": "the remains of a plant or animal from long ago",
+        "gujarati": "ફોસિલ",
+        "example_sentence": "They found a dinosaur fossil."
+      },
+      {
+        "word": "foundation",
+        "part_of_speech": "n.",
+        "english_meaning": "the base on which something is built",
+        "gujarati": "પાયો",
+        "example_sentence": "The foundation of the building is strong."
+      },
+      {
+        "word": "founder",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who starts a company or organization",
+        "gujarati": "સ્થાપક",
+        "example_sentence": "He is the founder of the company."
+      },
+      {
+        "word": "fraction",
+        "part_of_speech": "n.",
+        "english_meaning": "a small part of something",
+        "gujarati": "ભાગ",
+        "example_sentence": "Only a fraction of the students passed."
+      },
+      {
+        "word": "fragment",
+        "part_of_speech": "n.",
+        "english_meaning": "a small piece of something",
+        "gujarati": "ટુકડો",
+        "example_sentence": "A fragment of the vase was found."
+      },
+      {
+        "word": "framework",
+        "part_of_speech": "n.",
+        "english_meaning": "a basic structure",
+        "gujarati": "ફ્રેમવર્ક",
+        "example_sentence": "The framework of the plan is ready."
+      },
+      {
+        "word": "fraud",
+        "part_of_speech": "n.",
+        "english_meaning": "the crime of cheating someone",
+        "gujarati": "કપટ",
+        "example_sentence": "He was arrested for fraud."
+      },
+      {
+        "word": "freely",
+        "part_of_speech": "adv.",
+        "english_meaning": "without restriction",
+        "gujarati": "મુક્તપણે",
+        "example_sentence": "You can speak freely here."
+      },
+      {
+        "word": "frequent",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening often",
+        "gujarati": "વારંવાર",
+        "example_sentence": "Frequent exercise is good for health."
+      },
+      {
+        "word": "fulfil",
+        "part_of_speech": "v.",
+        "english_meaning": "to achieve or complete something",
+        "gujarati": "પૂરું કરવું",
+        "example_sentence": "She fulfilled her dream."
+      },
+      {
+        "word": "full-time",
+        "part_of_speech": "adj./adv.",
+        "english_meaning": "working all normal working hours",
+        "gujarati": "પૂર્ણ સમય",
+        "example_sentence": "He has a full-time job."
+      },
+      {
+        "word": "fundamentally",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a basic and important way",
+        "gujarati": "મૂળભૂત રીતે",
+        "example_sentence": "The two ideas are fundamentally different."
+      },
+      {
+        "word": "furious",
+        "part_of_speech": "adj.",
+        "english_meaning": "extremely angry",
+        "gujarati": "ગુસ્સે",
+        "example_sentence": "He was furious when he heard the news."
+      },
+      {
+        "word": "gaming",
+        "part_of_speech": "n.",
+        "english_meaning": "playing computer games",
+        "gujarati": "ગેમિંગ",
+        "example_sentence": "Gaming is his favourite hobby."
+      },
+      {
+        "word": "gay",
+        "part_of_speech": "adj.",
+        "english_meaning": "homosexual",
+        "gujarati": "સમલિંગી",
+        "example_sentence": "He is open about being gay."
+      },
+      {
+        "word": "gender",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being male or female",
+        "gujarati": "લિંગ",
+        "example_sentence": "Gender equality is important."
+      },
+      {
+        "word": "gene",
+        "part_of_speech": "n.",
+        "english_meaning": "a unit of heredity",
+        "gujarati": "જીન",
+        "example_sentence": "Scientists study genes."
+      },
+      {
+        "word": "genetic",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to genes",
+        "gujarati": "જનીનિક",
+        "example_sentence": "The disease has a genetic cause."
+      },
+      {
+        "word": "genius",
+        "part_of_speech": "n.",
+        "english_meaning": "a very intelligent person",
+        "gujarati": "પ્રતિભાશાળી",
+        "example_sentence": "Einstein was a genius."
+      },
+      {
+        "word": "genuine",
+        "part_of_speech": "adj.",
+        "english_meaning": "real and honest",
+        "gujarati": "ખરું",
+        "example_sentence": "His apology was genuine."
+      },
+      {
+        "word": "genuinely",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a real and honest way",
+        "gujarati": "ખરેખર",
+        "example_sentence": "She was genuinely surprised."
+      },
+      {
+        "word": "gesture",
+        "part_of_speech": "n.",
+        "english_meaning": "a movement of the hand or body to show feeling",
+        "gujarati": "ઇશારો",
+        "example_sentence": "He made a friendly gesture."
+      },
+      {
+        "word": "gig",
+        "part_of_speech": "n.",
+        "english_meaning": "a live performance by musicians",
+        "gujarati": "ગીગ",
+        "example_sentence": "The band played a great gig."
+      },
+      {
+        "word": "globalization",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of becoming more connected worldwide",
+        "gujarati": "વૈશ્વિકરણ",
+        "example_sentence": "Globalization has changed business."
+      },
+      {
+        "word": "globe",
+        "part_of_speech": "n.",
+        "english_meaning": "a model of the Earth",
+        "gujarati": "વિશ્વ",
+        "example_sentence": "The globe shows all the countries."
+      },
+      {
+        "word": "golden",
+        "part_of_speech": "adj.",
+        "english_meaning": "made of or like gold",
+        "gujarati": "સોનેરી",
+        "example_sentence": "The golden ring is beautiful."
+      },
+      {
+        "word": "goodness",
+        "part_of_speech": "n.",
+        "english_meaning": "the quality of being good",
+        "gujarati": "સારાઈ",
+        "example_sentence": "She is known for her goodness."
+      },
+      {
+        "word": "gorgeous",
+        "part_of_speech": "adj.",
+        "english_meaning": "very beautiful",
+        "gujarati": "અદ્ભુત",
+        "example_sentence": "The sunset was gorgeous."
+      },
+      {
+        "word": "governor",
+        "part_of_speech": "n.",
+        "english_meaning": "the head of a state or province",
+        "gujarati": "રાજ્યપાલ",
+        "example_sentence": "The governor visited the school."
+      },
+      {
+        "word": "graphic",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to visual art or very clear and unpleasant",
+        "gujarati": "ગ્રાફિક",
+        "example_sentence": "The film contains graphic violence."
+      },
+      {
+        "word": "graphics",
+        "part_of_speech": "n.",
+        "english_meaning": "pictures or designs on a computer",
+        "gujarati": "ગ્રાફિક્સ",
+        "example_sentence": "The game has excellent graphics."
+      },
+      {
+        "word": "greatly",
+        "part_of_speech": "adv.",
+        "english_meaning": "very much",
+        "gujarati": "ઘણું",
+        "example_sentence": "I was greatly impressed."
+      },
+      {
+        "word": "greenhouse",
+        "part_of_speech": "n.",
+        "english_meaning": "a glass building for growing plants",
+        "gujarati": "ગ્રીનહાઉસ",
+        "example_sentence": "The plants grow well in the greenhouse."
+      },
+      {
+        "word": "grocery",
+        "part_of_speech": "n.",
+        "english_meaning": "a shop selling food and household goods",
+        "gujarati": "કરિયાણું",
+        "example_sentence": "I buy groceries every week."
+      },
+      {
+        "word": "guideline",
+        "part_of_speech": "n.",
+        "english_meaning": "a general rule or piece of advice",
+        "gujarati": "માર્ગદર્શિકા",
+        "example_sentence": "Follow the safety guidelines."
+      },
+      {
+        "word": "habitat",
+        "part_of_speech": "n.",
+        "english_meaning": "the natural home of a plant or animal",
+        "gujarati": "નિવાસસ્થાન",
+        "example_sentence": "The forest is the habitat of tigers."
+      },
+      {
+        "word": "harbour",
+        "part_of_speech": "n.",
+        "english_meaning": "a place where ships are kept",
+        "gujarati": "બંદર",
+        "example_sentence": "The ship entered the harbour."
+      },
+      {
+        "word": "headquarters",
+        "part_of_speech": "n.",
+        "english_meaning": "the main office of a company",
+        "gujarati": "મુખ્યાલય",
+        "example_sentence": "The headquarters is in Mumbai."
+      },
+      {
+        "word": "heal",
+        "part_of_speech": "v.",
+        "english_meaning": "to become healthy again",
+        "gujarati": "સાજા થવું",
+        "example_sentence": "The wound will heal soon."
+      },
+      {
+        "word": "healthcare",
+        "part_of_speech": "n.",
+        "english_meaning": "the services for maintaining health",
+        "gujarati": "આરોગ્ય સેવા",
+        "example_sentence": "Good healthcare is essential."
+      },
+      {
+        "word": "helmet",
+        "part_of_speech": "n.",
+        "english_meaning": "a hard hat worn for protection",
+        "gujarati": "હેલ્મેટ",
+        "example_sentence": "Always wear a helmet when riding."
+      },
+      {
+        "word": "hence",
+        "part_of_speech": "adv.",
+        "english_meaning": "for this reason",
+        "gujarati": "તેથી",
+        "example_sentence": "It is raining; hence we will stay inside."
+      },
+      {
+        "word": "herb",
+        "part_of_speech": "n.",
+        "english_meaning": "a plant used in cooking or medicine",
+        "gujarati": "ઔષધી",
+        "example_sentence": "Add fresh herbs to the dish."
+      },
+      {
+        "word": "hidden",
+        "part_of_speech": "adj.",
+        "english_meaning": "not easy to find",
+        "gujarati": "છુપાયેલું",
+        "example_sentence": "The treasure is hidden."
+      },
+      {
+        "word": "highway",
+        "part_of_speech": "n.",
+        "english_meaning": "a main road",
+        "gujarati": "હાઇવે",
+        "example_sentence": "The highway is busy."
+      },
+      {
+        "word": "hilarious",
+        "part_of_speech": "adj.",
+        "english_meaning": "extremely funny",
+        "gujarati": "હાસ્યાસ્પદ",
+        "example_sentence": "The joke was hilarious."
+      },
+      {
+        "word": "hip",
+        "part_of_speech": "n.",
+        "english_meaning": "the part of the body between the waist and the top of the leg",
+        "gujarati": "કુલ્લો",
+        "example_sentence": "She hurt her hip."
+      },
+      {
+        "word": "historian",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who studies history",
+        "gujarati": "ઇતિહાસકાર",
+        "example_sentence": "The historian wrote a book about the freedom struggle."
+      },
+      {
+        "word": "homeless",
+        "part_of_speech": "adj.",
+        "english_meaning": "having no home",
+        "gujarati": "બેઘર",
+        "example_sentence": "Many homeless people need help."
+      },
+      {
+        "word": "honesty",
+        "part_of_speech": "n.",
+        "english_meaning": "the quality of being truthful",
+        "gujarati": "પ્રામાણિકતા",
+        "example_sentence": "Honesty is the best policy."
+      },
+      {
+        "word": "hook",
+        "part_of_speech": "n.",
+        "english_meaning": "a curved piece of metal used for catching fish",
+        "gujarati": "હુક",
+        "example_sentence": "The fish took the hook."
+      },
+      {
+        "word": "hopefully",
+        "part_of_speech": "adv.",
+        "english_meaning": "used to express hope",
+        "gujarati": "આશા રાખીને",
+        "example_sentence": "Hopefully, it will stop raining soon."
+      },
+      {
+        "word": "hunger",
+        "part_of_speech": "n.",
+        "english_meaning": "the feeling of needing food",
+        "gujarati": "ભૂખ",
+        "example_sentence": "The poor suffer from hunger."
+      },
+      {
+        "word": "hypothesis",
+        "part_of_speech": "n.",
+        "english_meaning": "an idea that is tested",
+        "gujarati": "પરિકલ્પના",
+        "example_sentence": "The scientist tested the hypothesis."
+      },
+      {
+        "word": "icon",
+        "part_of_speech": "n.",
+        "english_meaning": "a famous person or symbol",
+        "gujarati": "આઇકોન",
+        "example_sentence": "Gandhi is an icon of peace."
+      },
+      {
+        "word": "ID",
+        "part_of_speech": "n.",
+        "english_meaning": "identification card",
+        "gujarati": "આઇડી",
+        "example_sentence": "Show your ID at the gate."
+      },
+      {
+        "word": "identical",
+        "part_of_speech": "adj.",
+        "english_meaning": "exactly the same",
+        "gujarati": "સરખું",
+        "example_sentence": "The twins look identical."
+      },
+      {
+        "word": "illusion",
+        "part_of_speech": "n.",
+        "english_meaning": "a false idea or appearance",
+        "gujarati": "ભ્રમ",
+        "example_sentence": "It was just an optical illusion."
+      },
+      {
+        "word": "immigration",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of moving to another country to live",
+        "gujarati": "ઇમિગ્રેશન",
+        "example_sentence": "Immigration rules have changed."
+      },
+      {
+        "word": "immune",
+        "part_of_speech": "adj.",
+        "english_meaning": "protected from a disease",
+        "gujarati": "રોગપ્રતિકારક",
+        "example_sentence": "She is immune to the flu."
+      },
+      {
+        "word": "implement",
+        "part_of_speech": "v.",
+        "english_meaning": "to put a plan into action",
+        "gujarati": "લાગુ કરવું",
+        "example_sentence": "The government will implement the new law."
+      },
+      {
+        "word": "implication",
+        "part_of_speech": "n.",
+        "english_meaning": "a possible result",
+        "gujarati": "પરિણામ",
+        "example_sentence": "The decision has serious implications."
+      },
+      {
+        "word": "incentive",
+        "part_of_speech": "n.",
+        "english_meaning": "something that encourages action",
+        "gujarati": "પ્રોત્સાહન",
+        "example_sentence": "The company offers a good incentive."
+      },
+      {
+        "word": "incorporate",
+        "part_of_speech": "v.",
+        "english_meaning": "to include something as part of a whole",
+        "gujarati": "સમાવેશ કરવો",
+        "example_sentence": "We will incorporate your ideas."
+      },
+      {
+        "word": "incorrect",
+        "part_of_speech": "adj.",
+        "english_meaning": "wrong",
+        "gujarati": "ખોટું",
+        "example_sentence": "Your answer is incorrect."
+      },
+      {
+        "word": "independence",
+        "part_of_speech": "n.",
+        "english_meaning": "freedom from control by others",
+        "gujarati": "સ્વાતંત્ર્ય",
+        "example_sentence": "India gained independence in 1947."
+      },
+      {
+        "word": "index",
+        "part_of_speech": "n.",
+        "english_meaning": "an alphabetical list in a book",
+        "gujarati": "સૂચિ",
+        "example_sentence": "Look in the index."
+      },
+      {
+        "word": "indication",
+        "part_of_speech": "n.",
+        "english_meaning": "a sign or piece of information",
+        "gujarati": "સંકેત",
+        "example_sentence": "There is no indication of rain."
+      },
+      {
+        "word": "inevitable",
+        "part_of_speech": "adj.",
+        "english_meaning": "certain to happen",
+        "gujarati": "અનિવાર્ય",
+        "example_sentence": "Change is inevitable."
+      },
+      {
+        "word": "inevitably",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a way that cannot be avoided",
+        "gujarati": "અનિવાર્ય રીતે",
+        "example_sentence": "Prices will inevitably rise."
+      },
+      {
+        "word": "infer",
+        "part_of_speech": "v.",
+        "english_meaning": "to guess something from evidence",
+        "gujarati": "અનુમાન કરવું",
+        "example_sentence": "I can infer that you are tired."
+      },
+      {
+        "word": "inflation",
+        "part_of_speech": "n.",
+        "english_meaning": "a rise in prices",
+        "gujarati": "મોંઘવારી",
+        "example_sentence": "Inflation is increasing."
+      },
+      {
+        "word": "info",
+        "part_of_speech": "n.",
+        "english_meaning": "short for information",
+        "gujarati": "માહિતી",
+        "example_sentence": "I need more info."
+      },
+      {
+        "word": "infrastructure",
+        "part_of_speech": "n.",
+        "english_meaning": "the basic systems of a country",
+        "gujarati": "માળખું",
+        "example_sentence": "The government is improving infrastructure."
+      },
+      {
+        "word": "inhabitant",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who lives in a place",
+        "gujarati": "નિવાસી",
+        "example_sentence": "The village has 500 inhabitants."
+      },
+      {
+        "word": "inherit",
+        "part_of_speech": "v.",
+        "english_meaning": "to receive money or property from someone who has died",
+        "gujarati": "વારસામાં મેળવવું",
+        "example_sentence": "He inherited a large fortune."
+      },
+      {
+        "word": "ink",
+        "part_of_speech": "n.",
+        "english_meaning": "a coloured liquid used for writing",
+        "gujarati": "શાહી",
+        "example_sentence": "The pen ran out of ink."
+      },
+      {
+        "word": "innovation",
+        "part_of_speech": "n.",
+        "english_meaning": "a new idea or invention",
+        "gujarati": "નવીનતા",
+        "example_sentence": "The company encourages innovation."
+      },
+      {
+        "word": "innovative",
+        "part_of_speech": "adj.",
+        "english_meaning": "new and original",
+        "gujarati": "નવીન",
+        "example_sentence": "She has an innovative approach."
+      },
+      {
+        "word": "input",
+        "part_of_speech": "n.",
+        "english_meaning": "information put into a computer",
+        "gujarati": "ઇનપુટ",
+        "example_sentence": "Enter the input data."
+      },
+      {
+        "word": "insert",
+        "part_of_speech": "v.",
+        "english_meaning": "to put something inside something else",
+        "gujarati": "દાખલ કરવું",
+        "example_sentence": "Insert the card into the machine."
+      },
+      {
+        "word": "inspector",
+        "part_of_speech": "n.",
+        "english_meaning": "an official who checks things",
+        "gujarati": "નિરીક્ષક",
+        "example_sentence": "The inspector checked the factory."
+      },
+      {
+        "word": "installation",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of putting equipment in place",
+        "gujarati": "સ્થાપન",
+        "example_sentence": "The installation of the new system is complete."
+      },
+      {
+        "word": "instant",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening immediately",
+        "gujarati": "ત્વરિત",
+        "example_sentence": "The response was instant."
+      },
+      {
+        "word": "instantly",
+        "part_of_speech": "adv.",
+        "english_meaning": "immediately",
+        "gujarati": "તરત",
+        "example_sentence": "The phone rang instantly."
+      },
+      {
+        "word": "integrate",
+        "part_of_speech": "v.",
+        "english_meaning": "to combine into a whole",
+        "gujarati": "એકીકૃત કરવું",
+        "example_sentence": "We need to integrate the new system."
+      },
+      {
+        "word": "intellectual",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to the mind and thinking",
+        "gujarati": "બૌદ્ધિક",
+        "example_sentence": "She enjoys intellectual discussions."
+      },
+      {
+        "word": "interact",
+        "part_of_speech": "v.",
+        "english_meaning": "to communicate with others",
+        "gujarati": "પરસ્પર ક્રિયા કરવી",
+        "example_sentence": "Children learn by interacting with others."
+      },
+      {
+        "word": "interaction",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of communicating",
+        "gujarati": "પરસ્પર ક્રિયા",
+        "example_sentence": "Social interaction is important."
+      },
+      {
+        "word": "interpretation",
+        "part_of_speech": "n.",
+        "english_meaning": "the explanation of the meaning of something",
+        "gujarati": "વ્યાખ્યા",
+        "example_sentence": "The interpretation of the law is difficult."
+      },
+      {
+        "word": "interval",
+        "part_of_speech": "n.",
+        "english_meaning": "a period of time between two events",
+        "gujarati": "અંતરાલ",
+        "example_sentence": "There is a short interval between classes."
+      },
+      {
+        "word": "invade",
+        "part_of_speech": "v.",
+        "english_meaning": "to enter a country by force",
+        "gujarati": "આક્રમણ કરવું",
+        "example_sentence": "The army invaded the country."
+      },
+      {
+        "word": "invasion",
+        "part_of_speech": "n.",
+        "english_meaning": "an act of invading",
+        "gujarati": "આક્રમણ",
+        "example_sentence": "The invasion was unexpected."
+      },
+      {
+        "word": "investor",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who puts money into a business",
+        "gujarati": "રોકાણકાર",
+        "example_sentence": "The investor funded the startup."
+      },
+      {
+        "word": "isolate",
+        "part_of_speech": "v.",
+        "english_meaning": "to separate from others",
+        "gujarati": "અલગ કરવું",
+        "example_sentence": "The doctor isolated the patient."
+      },
+      {
+        "word": "isolated",
+        "part_of_speech": "adj.",
+        "english_meaning": "far away from others",
+        "gujarati": "અલગ",
+        "example_sentence": "The village is isolated."
+      },
+      {
+        "word": "jail",
+        "part_of_speech": "n., v.",
+        "english_meaning": "prison; to put someone in prison",
+        "gujarati": "જેલ",
+        "example_sentence": "He was sent to jail."
+      },
+      {
+        "word": "jet",
+        "part_of_speech": "n.",
+        "english_meaning": "a fast plane",
+        "gujarati": "જેટ",
+        "example_sentence": "The jet flew overhead."
+      },
+      {
+        "word": "joint",
+        "part_of_speech": "adj., n.",
+        "english_meaning": "shared; a place where bones meet",
+        "gujarati": "સંયુક્ત",
+        "example_sentence": "It was a joint effort."
+      },
+      {
+        "word": "journalism",
+        "part_of_speech": "n.",
+        "english_meaning": "the work of collecting and writing news",
+        "gujarati": "પત્રકારત્વ",
+        "example_sentence": "She studied journalism."
+      },
+      {
+        "word": "jury",
+        "part_of_speech": "n.",
+        "english_meaning": "a group of people who decide a court case",
+        "gujarati": "જ્યુરી",
+        "example_sentence": "The jury found him guilty."
+      },
+      {
+        "word": "kit",
+        "part_of_speech": "n.",
+        "english_meaning": "a set of tools or equipment",
+        "gujarati": "કીટ",
+        "example_sentence": "The first-aid kit is in the cupboard."
+      },
+      {
+        "word": "ladder",
+        "part_of_speech": "n.",
+        "english_meaning": "a set of steps for climbing",
+        "gujarati": "નીસરણી",
+        "example_sentence": "He climbed the ladder."
+      },
+      {
+        "word": "landing",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of an aircraft coming down to the ground",
+        "gujarati": "ઉતરાણ",
+        "example_sentence": "The plane made a smooth landing."
+      },
+      {
+        "word": "lane",
+        "part_of_speech": "n.",
+        "english_meaning": "a narrow road or part of a road",
+        "gujarati": "લેન",
+        "example_sentence": "Stay in your lane."
+      },
+      {
+        "word": "lately",
+        "part_of_speech": "adv.",
+        "english_meaning": "recently",
+        "gujarati": "હમણાં જ",
+        "example_sentence": "I have been busy lately."
+      },
+      {
+        "word": "leaflet",
+        "part_of_speech": "n.",
+        "english_meaning": "a small printed sheet of paper",
+        "gujarati": "પત્રિકા",
+        "example_sentence": "Take a leaflet about the course."
+      },
+      {
+        "word": "legend",
+        "part_of_speech": "n.",
+        "english_meaning": "a very old story or a very famous person",
+        "gujarati": "દંતકથા",
+        "example_sentence": "The legend of King Arthur is famous."
+      },
+      {
+        "word": "lens",
+        "part_of_speech": "n.",
+        "english_meaning": "a piece of glass in a camera or glasses",
+        "gujarati": "લેન્સ",
+        "example_sentence": "Clean the camera lens."
+      },
+      {
+        "word": "lifetime",
+        "part_of_speech": "n.",
+        "english_meaning": "the time during which a person is alive",
+        "gujarati": "આયુષ્ય",
+        "example_sentence": "It was the chance of a lifetime."
+      },
+      {
+        "word": "lighting",
+        "part_of_speech": "n.",
+        "english_meaning": "the lights used in a place",
+        "gujarati": "લાઇટિંગ",
+        "example_sentence": "The lighting in the room is good."
+      },
+      {
+        "word": "likewise",
+        "part_of_speech": "adv.",
+        "english_meaning": "in the same way",
+        "gujarati": "તે જ રીતે",
+        "example_sentence": "He smiled and I smiled likewise."
+      },
+      {
+        "word": "limitation",
+        "part_of_speech": "n.",
+        "english_meaning": "a restriction or weakness",
+        "gujarati": "મર્યાદા",
+        "example_sentence": "We must accept our limitations."
+      },
+      {
+        "word": "literally",
+        "part_of_speech": "adv.",
+        "english_meaning": "exactly as said",
+        "gujarati": "શાબ્દિક રીતે",
+        "example_sentence": "I was literally freezing."
+      },
+      {
+        "word": "literary",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to literature",
+        "gujarati": "સાહિત્યિક",
+        "example_sentence": "She is a literary critic."
+      },
+      {
+        "word": "litre",
+        "part_of_speech": "n.",
+        "english_meaning": "a unit of liquid measurement",
+        "gujarati": "લિટર",
+        "example_sentence": "The bottle holds one litre."
+      },
+      {
+        "word": "litter",
+        "part_of_speech": "n.",
+        "english_meaning": "rubbish left in a public place",
+        "gujarati": "કચરો",
+        "example_sentence": "Do not throw litter on the ground."
+      },
+      {
+        "word": "logo",
+        "part_of_speech": "n.",
+        "english_meaning": "a symbol or design used by a company",
+        "gujarati": "લોગો",
+        "example_sentence": "The company logo is well known."
+      },
+      {
+        "word": "lottery",
+        "part_of_speech": "n.",
+        "english_meaning": "a game in which people buy tickets to win money",
+        "gujarati": "લોટરી",
+        "example_sentence": "He won the lottery."
+      },
+      {
+        "word": "loyal",
+        "part_of_speech": "adj.",
+        "english_meaning": "always supporting someone",
+        "gujarati": "વફાદાર",
+        "example_sentence": "He is a loyal friend."
+      },
+      {
+        "word": "lyric",
+        "part_of_speech": "n.",
+        "english_meaning": "the words of a song",
+        "gujarati": "ગીતના શબ્દો",
+        "example_sentence": "I love the lyrics of this song."
+      },
+      {
+        "word": "magnificent",
+        "part_of_speech": "adj.",
+        "english_meaning": "very beautiful or impressive",
+        "gujarati": "શાનદાર",
+        "example_sentence": "The palace is magnificent."
+      },
+      {
+        "word": "make-up",
+        "part_of_speech": "n.",
+        "english_meaning": "cosmetics for the face",
+        "gujarati": "મેકઅપ",
+        "example_sentence": "She wears light make-up."
+      },
+      {
+        "word": "making",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of producing something",
+        "gujarati": "બનાવવું",
+        "example_sentence": "The making of the film took two years."
+      },
+      {
+        "word": "manufacture",
+        "part_of_speech": "v.",
+        "english_meaning": "to produce goods in a factory",
+        "gujarati": "ઉત્પાદન કરવું",
+        "example_sentence": "The company manufactures cars."
+      },
+      {
+        "word": "manufacturing",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of making goods in a factory",
+        "gujarati": "ઉત્પાદન",
+        "example_sentence": "Manufacturing is a major industry."
+      },
+      {
+        "word": "marathon",
+        "part_of_speech": "n.",
+        "english_meaning": "a long-distance running race",
+        "gujarati": "મેરેથોન",
+        "example_sentence": "She ran her first marathon."
+      },
+      {
+        "word": "margin",
+        "part_of_speech": "n.",
+        "english_meaning": "the empty space at the side of a page",
+        "gujarati": "માર્જિન",
+        "example_sentence": "Write your notes in the margin."
+      },
+      {
+        "word": "marker",
+        "part_of_speech": "n.",
+        "english_meaning": "a pen with a thick tip",
+        "gujarati": "માર્કર",
+        "example_sentence": "Use a black marker."
+      },
+      {
+        "word": "martial",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to war or fighting",
+        "gujarati": "યુદ્ધ સંબંધી",
+        "example_sentence": "He studies martial arts."
+      },
+      {
+        "word": "mate",
+        "part_of_speech": "n., v.",
+        "english_meaning": "a friend; to come together to produce young",
+        "gujarati": "મિત્ર",
+        "example_sentence": "He is my best mate."
+      },
+      {
+        "word": "mayor",
+        "part_of_speech": "n.",
+        "english_meaning": "the head of a town or city",
+        "gujarati": "મેયર",
+        "example_sentence": "The mayor opened the new park."
+      },
+      {
+        "word": "mechanic",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who repairs machines",
+        "gujarati": "મિકેનિક",
+        "example_sentence": "The mechanic fixed my car."
+      },
+      {
+        "word": "mechanical",
+        "part_of_speech": "adj.",
+        "english_meaning": "operated by machines",
+        "gujarati": "યાંત્રિક",
+        "example_sentence": "The door has a mechanical lock."
+      },
+      {
+        "word": "mechanism",
+        "part_of_speech": "n.",
+        "english_meaning": "the parts of a machine",
+        "gujarati": "યંત્રવત્",
+        "example_sentence": "The mechanism is very complex."
+      },
+      {
+        "word": "medal",
+        "part_of_speech": "n.",
+        "english_meaning": "a metal disc given as a prize",
+        "gujarati": "મેડલ",
+        "example_sentence": "She won a gold medal."
+      },
+      {
+        "word": "medication",
+        "part_of_speech": "n.",
+        "english_meaning": "medicine",
+        "gujarati": "દવા",
+        "example_sentence": "Take your medication regularly."
+      },
+      {
+        "word": "membership",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being a member",
+        "gujarati": "સભ્યપદ",
+        "example_sentence": "Membership of the club is free."
+      },
+      {
+        "word": "memorable",
+        "part_of_speech": "adj.",
+        "english_meaning": "easy to remember",
+        "gujarati": "યાદગાર",
+        "example_sentence": "It was a memorable day."
+      },
+      {
+        "word": "metaphor",
+        "part_of_speech": "n.",
+        "english_meaning": "a word or phrase used to describe something by comparing it to something else",
+        "gujarati": "રૂપક",
+        "example_sentence": "Life is a journey is a metaphor."
+      },
+      {
+        "word": "miner",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who works in a mine",
+        "gujarati": "ખાણીયો",
+        "example_sentence": "The miner works underground."
+      },
+      {
+        "word": "miserable",
+        "part_of_speech": "adj.",
+        "english_meaning": "very unhappy",
+        "gujarati": "દુઃખી",
+        "example_sentence": "I felt miserable after the loss."
+      },
+      {
+        "word": "mode",
+        "part_of_speech": "n.",
+        "english_meaning": "a way of doing something",
+        "gujarati": "રીત",
+        "example_sentence": "Switch to silent mode."
+      },
+      {
+        "word": "modest",
+        "part_of_speech": "adj.",
+        "english_meaning": "not large or expensive",
+        "gujarati": "વિનમ્ર",
+        "example_sentence": "They live in a modest house."
+      },
+      {
+        "word": "monster",
+        "part_of_speech": "n.",
+        "english_meaning": "a large frightening creature",
+        "gujarati": "રાક્ષસ",
+        "example_sentence": "The story is about a monster."
+      },
+      {
+        "word": "monthly",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening once a month",
+        "gujarati": "માસિક",
+        "example_sentence": "We have a monthly meeting."
+      },
+      {
+        "word": "monument",
+        "part_of_speech": "n.",
+        "english_meaning": "a building or statue built to remember someone",
+        "gujarati": "સ્મારક",
+        "example_sentence": "The Taj Mahal is a famous monument."
+      },
+      {
+        "word": "moreover",
+        "part_of_speech": "adv.",
+        "english_meaning": "in addition",
+        "gujarati": "વધુમાં",
+        "example_sentence": "Moreover, the price is reasonable."
+      },
+      {
+        "word": "mortgage",
+        "part_of_speech": "n.",
+        "english_meaning": "a loan to buy a house",
+        "gujarati": "ગીરવે",
+        "example_sentence": "We took out a mortgage."
+      },
+      {
+        "word": "mosque",
+        "part_of_speech": "n.",
+        "english_meaning": "a building where Muslims pray",
+        "gujarati": "મસ્જિદ",
+        "example_sentence": "The mosque is very old."
+      },
+      {
+        "word": "motion",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of moving",
+        "gujarati": "ગતિ",
+        "example_sentence": "The motion of the train made me sleepy."
+      },
+      {
+        "word": "motivate",
+        "part_of_speech": "v.",
+        "english_meaning": "to make someone want to do something",
+        "gujarati": "પ્રેરણા આપવી",
+        "example_sentence": "The coach motivated the team."
+      },
+      {
+        "word": "motivation",
+        "part_of_speech": "n.",
+        "english_meaning": "the reason for doing something",
+        "gujarati": "પ્રેરણા",
+        "example_sentence": "Her motivation is to help others."
+      },
+      {
+        "word": "moving",
+        "part_of_speech": "adj.",
+        "english_meaning": "causing strong feelings",
+        "gujarati": "હૃદયસ્પર્શી",
+        "example_sentence": "It was a moving speech."
+      },
+      {
+        "word": "myth",
+        "part_of_speech": "n.",
+        "english_meaning": "an ancient story",
+        "gujarati": "પુરાણકથા",
+        "example_sentence": "The myth of Hercules is famous."
+      },
+      {
+        "word": "naked",
+        "part_of_speech": "adj.",
+        "english_meaning": "without clothes",
+        "gujarati": "નગ્ન",
+        "example_sentence": "The baby was naked."
+      },
+      {
+        "word": "nasty",
+        "part_of_speech": "adj.",
+        "english_meaning": "very unpleasant",
+        "gujarati": "ખરાબ",
+        "example_sentence": "He has a nasty temper."
+      },
+      {
+        "word": "navigation",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of finding your way",
+        "gujarati": "નેવિગેશન",
+        "example_sentence": "Use GPS for navigation."
+      },
+      {
+        "word": "nearby",
+        "part_of_speech": "adj., adv.",
+        "english_meaning": "not far away",
+        "gujarati": "નજીકમાં",
+        "example_sentence": "There is a shop nearby."
+      },
+      {
+        "word": "necessity",
+        "part_of_speech": "n.",
+        "english_meaning": "something that is needed",
+        "gujarati": "જરૂરિયાત",
+        "example_sentence": "Food is a necessity."
+      },
+      {
+        "word": "negotiate",
+        "part_of_speech": "v.",
+        "english_meaning": "to discuss to reach an agreement",
+        "gujarati": "વાટાઘાટ કરવી",
+        "example_sentence": "They negotiated a new contract."
+      },
+      {
+        "word": "negotiation",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of negotiating",
+        "gujarati": "વાટાઘાટ",
+        "example_sentence": "The negotiation took two weeks."
+      },
+      {
+        "word": "neutral",
+        "part_of_speech": "adj.",
+        "english_meaning": "not supporting any side",
+        "gujarati": "તટસ્થ",
+        "example_sentence": "The referee must remain neutral."
+      },
+      {
+        "word": "newly",
+        "part_of_speech": "adv.",
+        "english_meaning": "recently",
+        "gujarati": "નવીનતમ",
+        "example_sentence": "The newly built road is excellent."
+      },
+      {
+        "word": "norm",
+        "part_of_speech": "n.",
+        "english_meaning": "the usual way of doing something",
+        "gujarati": "માનક",
+        "example_sentence": "It is the social norm."
+      },
+      {
+        "word": "notebook",
+        "part_of_speech": "n.",
+        "english_meaning": "a small book for writing notes",
+        "gujarati": "નોટબુક",
+        "example_sentence": "I write in my notebook."
+      },
+      {
+        "word": "novelist",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who writes novels",
+        "gujarati": "ઉપન્યાસકાર",
+        "example_sentence": "She is a famous novelist."
+      },
+      {
+        "word": "nowadays",
+        "part_of_speech": "adv.",
+        "english_meaning": "at the present time",
+        "gujarati": "હમણાં",
+        "example_sentence": "Nowadays people use mobile phones."
+      },
+      {
+        "word": "nursing",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to the job of a nurse",
+        "gujarati": "નર્સિંગ",
+        "example_sentence": "She is studying nursing."
+      },
+      {
+        "word": "nutrition",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of getting food for health",
+        "gujarati": "પોષણ",
+        "example_sentence": "Good nutrition is important."
+      },
+      {
+        "word": "obesity",
+        "part_of_speech": "n.",
+        "english_meaning": "the condition of being very overweight",
+        "gujarati": "મેદસ્વિતા",
+        "example_sentence": "Obesity is a serious health problem."
+      },
+      {
+        "word": "observer",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who watches something",
+        "gujarati": "નિરીક્ષક",
+        "example_sentence": "The observer noted everything."
+      },
+      {
+        "word": "obstacle",
+        "part_of_speech": "n.",
+        "english_meaning": "something that blocks progress",
+        "gujarati": "અવરોધ",
+        "example_sentence": "Money is the main obstacle."
+      },
+      {
+        "word": "occupation",
+        "part_of_speech": "n.",
+        "english_meaning": "a job or profession",
+        "gujarati": "વ્યવસાય",
+        "example_sentence": "What is your occupation?"
+      },
+      {
+        "word": "occupy",
+        "part_of_speech": "v.",
+        "english_meaning": "to fill or use a space or time",
+        "gujarati": "કબજો કરવો",
+        "example_sentence": "The meeting occupied two hours."
+      },
+      {
+        "word": "offender",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who breaks the law",
+        "gujarati": "અપરાધી",
+        "example_sentence": "The offender was arrested."
+      },
+      {
+        "word": "ongoing",
+        "part_of_speech": "adj.",
+        "english_meaning": "continuing",
+        "gujarati": "ચાલુ",
+        "example_sentence": "The project is ongoing."
+      },
+      {
+        "word": "openly",
+        "part_of_speech": "adv.",
+        "english_meaning": "without hiding anything",
+        "gujarati": "ખુલ્લેઆમ",
+        "example_sentence": "She spoke openly about her feelings."
+      },
+      {
+        "word": "opera",
+        "part_of_speech": "n.",
+        "english_meaning": "a play in which the words are sung",
+        "gujarati": "ઓપેરા",
+        "example_sentence": "We went to see an opera."
+      },
+      {
+        "word": "operator",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who operates a machine",
+        "gujarati": "ઓપરેટર",
+        "example_sentence": "Call the operator for help."
+      },
+      {
+        "word": "optimistic",
+        "part_of_speech": "adj.",
+        "english_meaning": "believing that good things will happen",
+        "gujarati": "આશાવાદી",
+        "example_sentence": "I am optimistic about the future."
+      },
+      {
+        "word": "orchestra",
+        "part_of_speech": "n.",
+        "english_meaning": "a large group of musicians",
+        "gujarati": "ઓર્કેસ્ટ્રા",
+        "example_sentence": "The orchestra played beautifully."
+      },
+      {
+        "word": "organic",
+        "part_of_speech": "adj.",
+        "english_meaning": "produced without chemicals",
+        "gujarati": "ઓર્ગેનિક",
+        "example_sentence": "I buy organic vegetables."
+      },
+      {
+        "word": "outfit",
+        "part_of_speech": "n.",
+        "english_meaning": "a set of clothes",
+        "gujarati": "પોશાક",
+        "example_sentence": "She wore a beautiful outfit."
+      },
+      {
+        "word": "output",
+        "part_of_speech": "n.",
+        "english_meaning": "the amount produced",
+        "gujarati": "ઉત્પાદન",
+        "example_sentence": "The factory increased its output."
+      },
+      {
+        "word": "outstanding",
+        "part_of_speech": "adj.",
+        "english_meaning": "extremely good",
+        "gujarati": "ઉત્તમ",
+        "example_sentence": "Her performance was outstanding."
+      },
+      {
+        "word": "overcome",
+        "part_of_speech": "v.",
+        "english_meaning": "to succeed in dealing with a problem",
+        "gujarati": "પરાજિત કરવું",
+        "example_sentence": "She overcame many difficulties."
+      },
+      {
+        "word": "overnight",
+        "part_of_speech": "adv.",
+        "english_meaning": "during the night",
+        "gujarati": "રાતોરાત",
+        "example_sentence": "The temperature dropped overnight."
+      },
+      {
+        "word": "overseas",
+        "part_of_speech": "adv., adj.",
+        "english_meaning": "in or to another country",
+        "gujarati": "વિદેશમાં",
+        "example_sentence": "He is studying overseas."
+      },
+      {
+        "word": "ownership",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of owning something",
+        "gujarati": "માલિકી",
+        "example_sentence": "The ownership of the house is clear."
+      },
+      {
+        "word": "oxygen",
+        "part_of_speech": "n.",
+        "english_meaning": "the gas we need to breathe",
+        "gujarati": "ઓક્સિજન",
+        "example_sentence": "Plants produce oxygen."
+      },
+      {
+        "word": "packet",
+        "part_of_speech": "n.",
+        "english_meaning": "a small bag or box",
+        "gujarati": "પેકેટ",
+        "example_sentence": "Buy a packet of biscuits."
+      },
+      {
+        "word": "palm",
+        "part_of_speech": "n.",
+        "english_meaning": "the inside part of the hand",
+        "gujarati": "હથેળી",
+        "example_sentence": "He read my palm."
+      },
+      {
+        "word": "panic",
+        "part_of_speech": "n.",
+        "english_meaning": "a sudden feeling of fear",
+        "gujarati": "ગભરાટ",
+        "example_sentence": "Do not panic."
+      },
+      {
+        "word": "parade",
+        "part_of_speech": "n.",
+        "english_meaning": "a public procession",
+        "gujarati": "પરેડ",
+        "example_sentence": "We watched the parade."
+      },
+      {
+        "word": "parallel",
+        "part_of_speech": "adj., n.",
+        "english_meaning": "lines that are always the same distance apart",
+        "gujarati": "સમાંતર",
+        "example_sentence": "Draw two parallel lines."
+      },
+      {
+        "word": "participation",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of taking part",
+        "gujarati": "ભાગીદારી",
+        "example_sentence": "Your participation is appreciated."
+      },
+      {
+        "word": "partnership",
+        "part_of_speech": "n.",
+        "english_meaning": "a business relationship",
+        "gujarati": "ભાગીદારી",
+        "example_sentence": "We formed a partnership."
+      },
+      {
+        "word": "part-time",
+        "part_of_speech": "adj./adv.",
+        "english_meaning": "working for only part of the normal time",
+        "gujarati": "અંશકાલિક",
+        "example_sentence": "She has a part-time job."
+      },
+      {
+        "word": "passionate",
+        "part_of_speech": "adj.",
+        "english_meaning": "having strong feelings",
+        "gujarati": "ઉત્સાહી",
+        "example_sentence": "He is passionate about music."
+      },
+      {
+        "word": "password",
+        "part_of_speech": "n.",
+        "english_meaning": "a secret word to enter a computer",
+        "gujarati": "પાસવર્ડ",
+        "example_sentence": "Do not share your password."
+      },
+      {
+        "word": "patience",
+        "part_of_speech": "n.",
+        "english_meaning": "the ability to wait calmly",
+        "gujarati": "ધીરજ",
+        "example_sentence": "You need patience to learn."
+      },
+      {
+        "word": "pause",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to stop for a short time",
+        "gujarati": "થોભવું",
+        "example_sentence": "Pause the video."
+      },
+      {
+        "word": "peer",
+        "part_of_speech": "n.",
+        "english_meaning": "a person of the same age or status",
+        "gujarati": "સમકક્ષ",
+        "example_sentence": "She is respected by her peers."
+      },
+      {
+        "word": "penalty",
+        "part_of_speech": "n.",
+        "english_meaning": "a punishment",
+        "gujarati": "દંડ",
+        "example_sentence": "The penalty for late payment is high."
+      },
+      {
+        "word": "perceive",
+        "part_of_speech": "v.",
+        "english_meaning": "to notice or understand something",
+        "gujarati": "સમજવું",
+        "example_sentence": "I perceive a change in attitude."
+      },
+      {
+        "word": "perception",
+        "part_of_speech": "n.",
+        "english_meaning": "the way something is seen or understood",
+        "gujarati": "ધારણા",
+        "example_sentence": "Public perception is important."
+      },
+      {
+        "word": "permanently",
+        "part_of_speech": "adv.",
+        "english_meaning": "for all time",
+        "gujarati": "કાયમી રીતે",
+        "example_sentence": "The change is permanent."
+      },
+      {
+        "word": "pill",
+        "part_of_speech": "n.",
+        "english_meaning": "a small round piece of medicine",
+        "gujarati": "ગોળી",
+        "example_sentence": "Take one pill every day."
+      },
+      {
+        "word": "pity",
+        "part_of_speech": "n.",
+        "english_meaning": "a feeling of sadness for someone",
+        "gujarati": "દયા",
+        "example_sentence": "I feel pity for the poor."
+      },
+      {
+        "word": "placement",
+        "part_of_speech": "n.",
+        "english_meaning": "a job or position",
+        "gujarati": "પ્લેસમેન્ટ",
+        "example_sentence": "She got a good placement."
+      },
+      {
+        "word": "portion",
+        "part_of_speech": "n.",
+        "english_meaning": "a part of something",
+        "gujarati": "ભાગ",
+        "example_sentence": "I ate only a small portion."
+      },
+      {
+        "word": "potentially",
+        "part_of_speech": "adv.",
+        "english_meaning": "possibly",
+        "gujarati": "સંભવિત રીતે",
+        "example_sentence": "It is potentially dangerous."
+      },
+      {
+        "word": "precede",
+        "part_of_speech": "v.",
+        "english_meaning": "to come before something",
+        "gujarati": "પહેલાં આવવું",
+        "example_sentence": "The introduction precedes the main chapter."
+      },
+      {
+        "word": "precious",
+        "part_of_speech": "adj.",
+        "english_meaning": "of great value",
+        "gujarati": "કીમતી",
+        "example_sentence": "Time is precious."
+      },
+      {
+        "word": "precise",
+        "part_of_speech": "adj.",
+        "english_meaning": "exact and accurate",
+        "gujarati": "ચોક્કસ",
+        "example_sentence": "Give me precise instructions."
+      },
+      {
+        "word": "precisely",
+        "part_of_speech": "adv.",
+        "english_meaning": "exactly",
+        "gujarati": "ચોક્કસપણે",
+        "example_sentence": "That is precisely what I meant."
+      },
+      {
+        "word": "predictable",
+        "part_of_speech": "adj.",
+        "english_meaning": "easy to guess what will happen",
+        "gujarati": "અનુમાનિત",
+        "example_sentence": "The ending was predictable."
+      },
+      {
+        "word": "preference",
+        "part_of_speech": "n.",
+        "english_meaning": "a greater liking for one thing",
+        "gujarati": "પસંદગી",
+        "example_sentence": "My preference is for tea."
+      },
+      {
+        "word": "pride",
+        "part_of_speech": "n.",
+        "english_meaning": "a feeling of pleasure in your achievements",
+        "gujarati": "ગર્વ",
+        "example_sentence": "She took great pride in her work."
+      },
+      {
+        "word": "primarily",
+        "part_of_speech": "adv.",
+        "english_meaning": "mainly",
+        "gujarati": "મુખ્યત્વે",
+        "example_sentence": "The course is primarily for beginners."
+      },
+      {
+        "word": "principal",
+        "part_of_speech": "adj.",
+        "english_meaning": "most important",
+        "gujarati": "મુખ્ય",
+        "example_sentence": "The principal reason is cost."
+      },
+      {
+        "word": "prior",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening before something",
+        "gujarati": "પહેલાંનું",
+        "example_sentence": "Prior experience is required."
+      },
+      {
+        "word": "probability",
+        "part_of_speech": "n.",
+        "english_meaning": "how likely something is",
+        "gujarati": "સંભાવના",
+        "example_sentence": "The probability of rain is high."
+      },
+      {
+        "word": "probable",
+        "part_of_speech": "adj.",
+        "english_meaning": "likely to happen",
+        "gujarati": "સંભવિત",
+        "example_sentence": "It is probable that he will come."
+      },
+      {
+        "word": "proceed",
+        "part_of_speech": "v.",
+        "english_meaning": "to continue doing something",
+        "gujarati": "આગળ વધવું",
+        "example_sentence": "Please proceed with the plan."
+      },
+      {
+        "word": "programming",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of writing computer programs",
+        "gujarati": "પ્રોગ્રામિંગ",
+        "example_sentence": "He is learning programming."
+      },
+      {
+        "word": "progressive",
+        "part_of_speech": "adj.",
+        "english_meaning": "supporting new ideas and change",
+        "gujarati": "પ્રગતિશીલ",
+        "example_sentence": "She has progressive views."
+      },
+      {
+        "word": "prohibit",
+        "part_of_speech": "v.",
+        "english_meaning": "to forbid by law",
+        "gujarati": "પ્રતિબંધિત કરવું",
+        "example_sentence": "Smoking is prohibited here."
+      },
+      {
+        "word": "promising",
+        "part_of_speech": "adj.",
+        "english_meaning": "showing signs of future success",
+        "gujarati": "વચનબદ્ધ",
+        "example_sentence": "He is a promising young player."
+      },
+      {
+        "word": "promotion",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of raising someone to a higher position",
+        "gujarati": "પ્રમોશન",
+        "example_sentence": "He got a promotion."
+      },
+      {
+        "word": "prompt",
+        "part_of_speech": "v.",
+        "english_meaning": "to cause something to happen",
+        "gujarati": "પ્રેરિત કરવું",
+        "example_sentence": "The question prompted a long discussion."
+      },
+      {
+        "word": "proportion",
+        "part_of_speech": "n.",
+        "english_meaning": "a part of a whole",
+        "gujarati": "પ્રમાણ",
+        "example_sentence": "A large proportion of students passed."
+      },
+      {
+        "word": "protein",
+        "part_of_speech": "n.",
+        "english_meaning": "a substance in food that helps the body grow",
+        "gujarati": "પ્રોટીન",
+        "example_sentence": "Eggs are rich in protein."
+      },
+      {
+        "word": "protester",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who protests",
+        "gujarati": "વિરોધી",
+        "example_sentence": "The protesters marched peacefully."
+      },
+      {
+        "word": "psychological",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to the mind",
+        "gujarati": "માનસિક",
+        "example_sentence": "She has psychological problems."
+      },
+      {
+        "word": "publicity",
+        "part_of_speech": "n.",
+        "english_meaning": "attention from the public or media",
+        "gujarati": "પ્રચાર",
+        "example_sentence": "The event got a lot of publicity."
+      },
+      {
+        "word": "publishing",
+        "part_of_speech": "n.",
+        "english_meaning": "the business of producing books",
+        "gujarati": "પ્રકાશન",
+        "example_sentence": "She works in publishing."
+      },
+      {
+        "word": "punk",
+        "part_of_speech": "n.",
+        "english_meaning": "a style of loud rock music",
+        "gujarati": "પંક",
+        "example_sentence": "He loves punk music."
+      },
+      {
+        "word": "purely",
+        "part_of_speech": "adv.",
+        "english_meaning": "only and nothing else",
+        "gujarati": "ફક્ત",
+        "example_sentence": "It was purely by chance."
+      },
+      {
+        "word": "pursuit",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of trying to achieve something",
+        "gujarati": "પીછો",
+        "example_sentence": "He is in pursuit of happiness."
+      },
+      {
+        "word": "puzzle",
+        "part_of_speech": "n.",
+        "english_meaning": "a game or problem that is difficult to solve",
+        "gujarati": "પઝલ",
+        "example_sentence": "I love solving puzzles."
+      },
+      {
+        "word": "questionnaire",
+        "part_of_speech": "n.",
+        "english_meaning": "a set of questions for research",
+        "gujarati": "પ્રશ્નાવલિ",
+        "example_sentence": "Please fill in the questionnaire."
+      },
+      {
+        "word": "racial",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to race",
+        "gujarati": "વંશીય",
+        "example_sentence": "Racial discrimination is wrong."
+      },
+      {
+        "word": "racism",
+        "part_of_speech": "n.",
+        "english_meaning": "the belief that one race is better than another",
+        "gujarati": "વંશવાદ",
+        "example_sentence": "We must fight racism."
+      },
+      {
+        "word": "racist",
+        "part_of_speech": "adj., n.",
+        "english_meaning": "showing racism",
+        "gujarati": "વંશવાદી",
+        "example_sentence": "The comment was racist."
+      },
+      {
+        "word": "radiation",
+        "part_of_speech": "n.",
+        "english_meaning": "energy sent out from something",
+        "gujarati": "વિકિરણ",
+        "example_sentence": "The sun gives off radiation."
+      },
+      {
+        "word": "rail",
+        "part_of_speech": "n.",
+        "english_meaning": "a bar used for support or as part of a railway",
+        "gujarati": "રેલ",
+        "example_sentence": "Hold the rail."
+      },
+      {
+        "word": "random",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening without a plan",
+        "gujarati": "રેન્ડમ",
+        "example_sentence": "Choose a random number."
+      },
+      {
+        "word": "rat",
+        "part_of_speech": "n.",
+        "english_meaning": "a small animal with a long tail",
+        "gujarati": "ઉંદર",
+        "example_sentence": "The rat ran across the floor."
+      },
+      {
+        "word": "rating",
+        "part_of_speech": "n.",
+        "english_meaning": "a measurement of how good something is",
+        "gujarati": "રેટિંગ",
+        "example_sentence": "The film has a high rating."
+      },
+      {
+        "word": "reasonably",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a fair way",
+        "gujarati": "વાજબી રીતે",
+        "example_sentence": "The price is reasonably low."
+      },
+      {
+        "word": "rebuild",
+        "part_of_speech": "v.",
+        "english_meaning": "to build again",
+        "gujarati": "ફરીથી બાંધવું",
+        "example_sentence": "They will rebuild the school."
+      },
+      {
+        "word": "receiver",
+        "part_of_speech": "n.",
+        "english_meaning": "the part of a phone that you speak into",
+        "gujarati": "રિસીવર",
+        "example_sentence": "Pick up the receiver."
+      },
+      {
+        "word": "recession",
+        "part_of_speech": "n.",
+        "english_meaning": "a period when the economy is bad",
+        "gujarati": "મંદી",
+        "example_sentence": "The country is in recession."
+      },
+      {
+        "word": "reckon",
+        "part_of_speech": "v.",
+        "english_meaning": "to think or believe",
+        "gujarati": "માનવું",
+        "example_sentence": "I reckon it will rain."
+      },
+      {
+        "word": "recognition",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of knowing someone or something",
+        "gujarati": "ઓળખ",
+        "example_sentence": "He received recognition for his work."
+      },
+      {
+        "word": "recovery",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of becoming well again",
+        "gujarati": "પુનઃપ્રાપ્તિ",
+        "example_sentence": "His recovery was quick."
+      },
+      {
+        "word": "recruit",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to find new people to work for a company",
+        "gujarati": "ભરતી કરવી",
+        "example_sentence": "The company will recruit new staff."
+      },
+      {
+        "word": "recruitment",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of recruiting",
+        "gujarati": "ભરતી",
+        "example_sentence": "Recruitment is in progress."
+      },
+      {
+        "word": "referee",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who controls a sports game",
+        "gujarati": "રેફરી",
+        "example_sentence": "The referee blew the whistle."
+      },
+      {
+        "word": "refugee",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who leaves their country because of danger",
+        "gujarati": "શરણાર્થી",
+        "example_sentence": "The refugee camp is full."
+      },
+      {
+        "word": "registration",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of putting your name on an official list",
+        "gujarati": "નોંધણી",
+        "example_sentence": "Registration for the course is open."
+      },
+      {
+        "word": "regulate",
+        "part_of_speech": "v.",
+        "english_meaning": "to control something by rules",
+        "gujarati": "નિયમન કરવું",
+        "example_sentence": "The government regulates the market."
+      },
+      {
+        "word": "reinforce",
+        "part_of_speech": "v.",
+        "english_meaning": "to make something stronger",
+        "gujarati": "મજબૂત કરવું",
+        "example_sentence": "We need to reinforce the wall."
+      },
+      {
+        "word": "relieve",
+        "part_of_speech": "v.",
+        "english_meaning": "to make a bad situation less bad",
+        "gujarati": "રાહત આપવી",
+        "example_sentence": "The medicine relieved the pain."
+      },
+      {
+        "word": "relieved",
+        "part_of_speech": "adj.",
+        "english_meaning": "feeling happy because something bad did not happen",
+        "gujarati": "રાહત અનુભવવી",
+        "example_sentence": "I was relieved to hear the news."
+      },
+      {
+        "word": "remarkable",
+        "part_of_speech": "adj.",
+        "english_meaning": "unusual and surprising",
+        "gujarati": "નોંધપાત્ર",
+        "example_sentence": "It was a remarkable achievement."
+      },
+      {
+        "word": "remarkably",
+        "part_of_speech": "adv.",
+        "english_meaning": "in an unusual way",
+        "gujarati": "નોંધપાત્ર રીતે",
+        "example_sentence": "She performed remarkably well."
+      },
+      {
+        "word": "reporting",
+        "part_of_speech": "n.",
+        "english_meaning": "the activity of writing news",
+        "gujarati": "રિપોર્ટિંગ",
+        "example_sentence": "The reporting was accurate."
+      },
+      {
+        "word": "resign",
+        "part_of_speech": "v.",
+        "english_meaning": "to leave a job",
+        "gujarati": "રાજીનામું આપવું",
+        "example_sentence": "She decided to resign."
+      },
+      {
+        "word": "resolution",
+        "part_of_speech": "n.",
+        "english_meaning": "a firm decision",
+        "gujarati": "સંકલ્પ",
+        "example_sentence": "I made a New Year resolution."
+      },
+      {
+        "word": "restore",
+        "part_of_speech": "v.",
+        "english_meaning": "to bring back to a good condition",
+        "gujarati": "પુનઃસ્થાપિત કરવું",
+        "example_sentence": "They restored the old building."
+      },
+      {
+        "word": "restrict",
+        "part_of_speech": "v.",
+        "english_meaning": "to limit something",
+        "gujarati": "મર્યાદિત કરવું",
+        "example_sentence": "The rules restrict parking."
+      },
+      {
+        "word": "restriction",
+        "part_of_speech": "n.",
+        "english_meaning": "a rule that limits something",
+        "gujarati": "મર્યાદા",
+        "example_sentence": "There are travel restrictions."
+      },
+      {
+        "word": "retail",
+        "part_of_speech": "n.",
+        "english_meaning": "the business of selling goods to the public",
+        "gujarati": "છુટક વેચાણ",
+        "example_sentence": "She works in retail."
+      },
+      {
+        "word": "retirement",
+        "part_of_speech": "n.",
+        "english_meaning": "the time when you stop working",
+        "gujarati": "નિવૃત્તિ",
+        "example_sentence": "He is looking forward to retirement."
+      },
+      {
+        "word": "revenue",
+        "part_of_speech": "n.",
+        "english_meaning": "money received by a government or company",
+        "gujarati": "રેવન્યુ",
+        "example_sentence": "The government increased revenue."
+      },
+      {
+        "word": "revision",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of studying again before an exam",
+        "gujarati": "રિવિઝન",
+        "example_sentence": "I need to do some revision."
+      },
+      {
+        "word": "ridiculous",
+        "part_of_speech": "adj.",
+        "english_meaning": "very silly or unreasonable",
+        "gujarati": "હાસ્યાસ્પદ",
+        "example_sentence": "The idea is ridiculous."
+      },
+      {
+        "word": "risky",
+        "part_of_speech": "adj.",
+        "english_meaning": "involving the possibility of harm",
+        "gujarati": "જોખમી",
+        "example_sentence": "It is a risky investment."
+      },
+      {
+        "word": "rival",
+        "part_of_speech": "n., adj.",
+        "english_meaning": "a person or company competing with another",
+        "gujarati": "પ્રતિસ્પર્ધી",
+        "example_sentence": "The two teams are rivals."
+      },
+      {
+        "word": "rob",
+        "part_of_speech": "v.",
+        "english_meaning": "to steal from a person or place",
+        "gujarati": "લૂંટવું",
+        "example_sentence": "The bank was robbed."
+      },
+      {
+        "word": "robbery",
+        "part_of_speech": "n.",
+        "english_meaning": "the crime of stealing",
+        "gujarati": "લૂંટ",
+        "example_sentence": "There was a robbery last night."
+      },
+      {
+        "word": "rocket",
+        "part_of_speech": "n.",
+        "english_meaning": "a vehicle that goes into space",
+        "gujarati": "રોકેટ",
+        "example_sentence": "The rocket was launched."
+      },
+      {
+        "word": "romance",
+        "part_of_speech": "n.",
+        "english_meaning": "a love story",
+        "gujarati": "પ્રેમકથા",
+        "example_sentence": "The film is a romance."
+      },
+      {
+        "word": "rose",
+        "part_of_speech": "n.",
+        "english_meaning": "a beautiful flower",
+        "gujarati": "ગુલાબ",
+        "example_sentence": "He gave her a red rose."
+      },
+      {
+        "word": "roughly",
+        "part_of_speech": "adv.",
+        "english_meaning": "approximately",
+        "gujarati": "લગભગ",
+        "example_sentence": "It costs roughly ₹500."
+      },
+      {
+        "word": "ruin",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to destroy something; the remains of a building",
+        "gujarati": "વિનાશ",
+        "example_sentence": "The rain ruined the picnic."
+      },
+      {
+        "word": "satisfaction",
+        "part_of_speech": "n.",
+        "english_meaning": "the feeling of pleasure when you get what you want",
+        "gujarati": "સંતોષ",
+        "example_sentence": "The job gives me great satisfaction."
+      },
+      {
+        "word": "scandal",
+        "part_of_speech": "n.",
+        "english_meaning": "an event that shocks people",
+        "gujarati": "કૌતુક",
+        "example_sentence": "The scandal shocked the nation."
+      },
+      {
+        "word": "scare",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to frighten someone",
+        "gujarati": "ડરાવવું",
+        "example_sentence": "The noise scared the child."
+      },
+      {
+        "word": "scenario",
+        "part_of_speech": "n.",
+        "english_meaning": "a possible situation",
+        "gujarati": "સ્થિતિ",
+        "example_sentence": "In the worst-case scenario, we will cancel."
+      },
+      {
+        "word": "scholar",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who studies a subject",
+        "gujarati": "વિદ્વાન",
+        "example_sentence": "He is a famous scholar."
+      },
+      {
+        "word": "scholarship",
+        "part_of_speech": "n.",
+        "english_meaning": "money given to a student to study",
+        "gujarati": "શિષ્યવૃત્તિ",
+        "example_sentence": "She won a scholarship."
+      },
+      {
+        "word": "scratch",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to rub with something sharp",
+        "gujarati": "ખંજવાળવું",
+        "example_sentence": "The cat scratched the furniture."
+      },
+      {
+        "word": "screening",
+        "part_of_speech": "n.",
+        "english_meaning": "a medical test or showing of a film",
+        "gujarati": "સ્ક્રીનિંગ",
+        "example_sentence": "The film had its first screening."
+      },
+      {
+        "word": "seeker",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who is looking for something",
+        "gujarati": "શોધક",
+        "example_sentence": "He is a job seeker."
+      },
+      {
+        "word": "seminar",
+        "part_of_speech": "n.",
+        "english_meaning": "a meeting for discussion or training",
+        "gujarati": "સેમિનાર",
+        "example_sentence": "I attended a seminar on marketing."
+      },
+      {
+        "word": "settler",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who goes to live in a new place",
+        "gujarati": "વસાહતી",
+        "example_sentence": "Early settlers built the town."
+      },
+      {
+        "word": "severely",
+        "part_of_speech": "adv.",
+        "english_meaning": "very seriously",
+        "gujarati": "ગંભીર રીતે",
+        "example_sentence": "He was severely injured."
+      },
+      {
+        "word": "sexy",
+        "part_of_speech": "adj.",
+        "english_meaning": "sexually attractive",
+        "gujarati": "આકર્ષક",
+        "example_sentence": "She wore a sexy dress."
+      },
+      {
+        "word": "shaped",
+        "part_of_speech": "adj.",
+        "english_meaning": "having a particular shape",
+        "gujarati": "આકારવાળું",
+        "example_sentence": "The cake was heart-shaped."
+      },
+      {
+        "word": "shocking",
+        "part_of_speech": "adj.",
+        "english_meaning": "very surprising and upsetting",
+        "gujarati": "આઘાતજનક",
+        "example_sentence": "The news was shocking."
+      },
+      {
+        "word": "shore",
+        "part_of_speech": "n.",
+        "english_meaning": "the land along the edge of the sea",
+        "gujarati": "કિનારો",
+        "example_sentence": "We walked along the shore."
+      },
+      {
+        "word": "shortage",
+        "part_of_speech": "n.",
+        "english_meaning": "a lack of something",
+        "gujarati": "અછત",
+        "example_sentence": "There is a shortage of water."
+      },
+      {
+        "word": "shortly",
+        "part_of_speech": "adv.",
+        "english_meaning": "soon",
+        "gujarati": "ટૂંક સમયમાં",
+        "example_sentence": "I will call you shortly."
+      },
+      {
+        "word": "short-term",
+        "part_of_speech": "adj.",
+        "english_meaning": "lasting for a short time",
+        "gujarati": "ટૂંકા ગાળાનું",
+        "example_sentence": "This is a short-term solution."
+      },
+      {
+        "word": "sibling",
+        "part_of_speech": "n.",
+        "english_meaning": "a brother or sister",
+        "gujarati": "ભાઈ-બહેન",
+        "example_sentence": "I have two siblings."
+      },
+      {
+        "word": "signature",
+        "part_of_speech": "n.",
+        "english_meaning": "your name written in your own handwriting",
+        "gujarati": "સહી",
+        "example_sentence": "Put your signature here."
+      },
+      {
+        "word": "significance",
+        "part_of_speech": "n.",
+        "english_meaning": "the importance of something",
+        "gujarati": "મહત્ત્વ",
+        "example_sentence": "The discovery has great significance."
+      },
+      {
+        "word": "skilled",
+        "part_of_speech": "adj.",
+        "english_meaning": "having special ability",
+        "gujarati": "કુશળ",
+        "example_sentence": "He is a skilled worker."
+      },
+      {
+        "word": "skull",
+        "part_of_speech": "n.",
+        "english_meaning": "the bones of the head",
+        "gujarati": "ખોપરી",
+        "example_sentence": "The doctor examined the skull."
+      },
+      {
+        "word": "slogan",
+        "part_of_speech": "n.",
+        "english_meaning": "a short phrase used in advertising",
+        "gujarati": "સ્લોગન",
+        "example_sentence": "The slogan is 'Just do it'."
+      },
+      {
+        "word": "so-called",
+        "part_of_speech": "adj.",
+        "english_meaning": "used to show that something is not really what it is called",
+        "gujarati": "કહેવાતું",
+        "example_sentence": "The so-called expert was wrong."
+      },
+      {
+        "word": "somehow",
+        "part_of_speech": "adv.",
+        "english_meaning": "in a way that is not known",
+        "gujarati": "કોઈક રીતે",
+        "example_sentence": "Somehow we managed to finish."
+      },
+      {
+        "word": "sometime",
+        "part_of_speech": "adv.",
+        "english_meaning": "at a time that is not known",
+        "gujarati": "કોઈક વખતે",
+        "example_sentence": "I will visit sometime soon."
+      },
+      {
+        "word": "sophisticated",
+        "part_of_speech": "adj.",
+        "english_meaning": "clever and complicated",
+        "gujarati": "સુઘડ",
+        "example_sentence": "The phone is very sophisticated."
+      },
+      {
+        "word": "spare",
+        "part_of_speech": "adj.",
+        "english_meaning": "extra",
+        "gujarati": "વધારાનું",
+        "example_sentence": "Do you have a spare pen?"
+      },
+      {
+        "word": "specialize",
+        "part_of_speech": "v.",
+        "english_meaning": "to study or work in one particular area",
+        "gujarati": "વિશેષતા ધરાવવી",
+        "example_sentence": "She specializes in heart surgery."
+      },
+      {
+        "word": "specify",
+        "part_of_speech": "v.",
+        "english_meaning": "to give exact details",
+        "gujarati": "સ્પષ્ટ કરવું",
+        "example_sentence": "Please specify the colour."
+      },
+      {
+        "word": "spectacular",
+        "part_of_speech": "adj.",
+        "english_meaning": "very impressive",
+        "gujarati": "અદ્ભુત",
+        "example_sentence": "The view is spectacular."
+      },
+      {
+        "word": "spectator",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who watches an event",
+        "gujarati": "દર્શક",
+        "example_sentence": "The spectators cheered loudly."
+      },
+      {
+        "word": "speculate",
+        "part_of_speech": "v.",
+        "english_meaning": "to guess without facts",
+        "gujarati": "અનુમાન કરવું",
+        "example_sentence": "Do not speculate about the future."
+      },
+      {
+        "word": "speculation",
+        "part_of_speech": "n.",
+        "english_meaning": "guessing without facts",
+        "gujarati": "અનુમાન",
+        "example_sentence": "There is a lot of speculation in the media."
+      },
+      {
+        "word": "spice",
+        "part_of_speech": "n.",
+        "english_meaning": "a substance used to add flavour to food",
+        "gujarati": "મસાલો",
+        "example_sentence": "Indian food uses many spices."
+      },
+      {
+        "word": "spill",
+        "part_of_speech": "v.",
+        "english_meaning": "to pour out accidentally",
+        "gujarati": "વહેવું",
+        "example_sentence": "Don't spill the tea."
+      },
+      {
+        "word": "spite",
+        "part_of_speech": "n.",
+        "english_meaning": "a desire to hurt or annoy someone",
+        "gujarati": "દ્વેષ",
+        "example_sentence": "He did it out of spite."
+      },
+      {
+        "word": "spoil",
+        "part_of_speech": "v.",
+        "english_meaning": "to make something bad or to give a child too much",
+        "gujarati": "બગાડવું",
+        "example_sentence": "The rain spoiled our picnic."
+      },
+      {
+        "word": "spokesman",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who speaks for a group",
+        "gujarati": "પ્રવક્તા",
+        "example_sentence": "The spokesman gave a statement."
+      },
+      {
+        "word": "spokesperson",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who speaks for a group",
+        "gujarati": "પ્રવક્તા",
+        "example_sentence": "The spokesperson answered questions."
+      },
+      {
+        "word": "spokeswoman",
+        "part_of_speech": "n.",
+        "english_meaning": "a female person who speaks for a group",
+        "gujarati": "પ્રવક્તા",
+        "example_sentence": "The spokeswoman read the statement."
+      },
+      {
+        "word": "sponsorship",
+        "part_of_speech": "n.",
+        "english_meaning": "money given to support an event",
+        "gujarati": "પ્રાયોજકતા",
+        "example_sentence": "The event received sponsorship."
+      },
+      {
+        "word": "sporting",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to sport",
+        "gujarati": "રમતગમત",
+        "example_sentence": "The school has good sporting facilities."
+      },
+      {
+        "word": "stall",
+        "part_of_speech": "n.",
+        "english_meaning": "a small shop or stand",
+        "gujarati": "સ્ટોલ",
+        "example_sentence": "Buy fruits from the stall."
+      },
+      {
+        "word": "stance",
+        "part_of_speech": "n.",
+        "english_meaning": "an opinion or position",
+        "gujarati": "વલણ",
+        "example_sentence": "What is your stance on this issue?"
+      },
+      {
+        "word": "starve",
+        "part_of_speech": "v.",
+        "english_meaning": "to suffer or die from lack of food",
+        "gujarati": "ભૂખે મરવું",
+        "example_sentence": "Many people starve in poor countries."
+      },
+      {
+        "word": "steadily",
+        "part_of_speech": "adv.",
+        "english_meaning": "at a steady rate",
+        "gujarati": "સ્થિર રીતે",
+        "example_sentence": "Sales are increasing steadily."
+      },
+      {
+        "word": "steam",
+        "part_of_speech": "n.",
+        "english_meaning": "the gas that water becomes when heated",
+        "gujarati": "વરાળ",
+        "example_sentence": "Steam came out of the kettle."
+      },
+      {
+        "word": "stimulate",
+        "part_of_speech": "v.",
+        "english_meaning": "to make something more active",
+        "gujarati": "ઉત્તેજિત કરવું",
+        "example_sentence": "The teacher stimulated the students."
+      },
+      {
+        "word": "strengthen",
+        "part_of_speech": "v.",
+        "english_meaning": "to make something stronger",
+        "gujarati": "મજબૂત કરવું",
+        "example_sentence": "Exercise strengthens muscles."
+      },
+      {
+        "word": "strictly",
+        "part_of_speech": "adv.",
+        "english_meaning": "following rules exactly",
+        "gujarati": "સખત રીતે",
+        "example_sentence": "Smoking is strictly prohibited."
+      },
+      {
+        "word": "stroke",
+        "part_of_speech": "n.",
+        "english_meaning": "a sudden illness affecting the brain",
+        "gujarati": "સ્ટ્રોક",
+        "example_sentence": "He had a stroke."
+      },
+      {
+        "word": "stunning",
+        "part_of_speech": "adj.",
+        "english_meaning": "extremely beautiful",
+        "gujarati": "અદ્ભુત",
+        "example_sentence": "The view is stunning."
+      },
+      {
+        "word": "subsequent",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening after something",
+        "gujarati": "પછીનું",
+        "example_sentence": "Subsequent events proved him right."
+      },
+      {
+        "word": "subsequently",
+        "part_of_speech": "adv.",
+        "english_meaning": "afterwards",
+        "gujarati": "પછી",
+        "example_sentence": "He subsequently changed his mind."
+      },
+      {
+        "word": "suburb",
+        "part_of_speech": "n.",
+        "english_meaning": "an area outside the centre of a city",
+        "gujarati": "ઉપનગર",
+        "example_sentence": "I live in a quiet suburb."
+      },
+      {
+        "word": "suffering",
+        "part_of_speech": "n.",
+        "english_meaning": "pain or difficulty",
+        "gujarati": "દુઃખ",
+        "example_sentence": "The war caused great suffering."
+      },
+      {
+        "word": "sufficient",
+        "part_of_speech": "adj.",
+        "english_meaning": "enough",
+        "gujarati": "પર્યાપ્ત",
+        "example_sentence": "We have sufficient food."
+      },
+      {
+        "word": "sufficiently",
+        "part_of_speech": "adv.",
+        "english_meaning": "enough",
+        "gujarati": "પર્યાપ્ત રીતે",
+        "example_sentence": "The room is sufficiently large."
+      },
+      {
+        "word": "super",
+        "part_of_speech": "adj.",
+        "english_meaning": "excellent",
+        "gujarati": "સુપર",
+        "example_sentence": "The food was super."
+      },
+      {
+        "word": "surgeon",
+        "part_of_speech": "n.",
+        "english_meaning": "a doctor who performs operations",
+        "gujarati": "સર્જન",
+        "example_sentence": "The surgeon saved her life."
+      },
+      {
+        "word": "survival",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of continuing to live",
+        "gujarati": "ટકી રહેવું",
+        "example_sentence": "Survival is the main goal."
+      },
+      {
+        "word": "survivor",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who survives",
+        "gujarati": "ટકી રહેનાર",
+        "example_sentence": "He is a survivor of the accident."
+      },
+      {
+        "word": "suspend",
+        "part_of_speech": "v.",
+        "english_meaning": "to stop something for a time",
+        "gujarati": "સ્થગિત કરવું",
+        "example_sentence": "The game was suspended due to rain."
+      },
+      {
+        "word": "sustainable",
+        "part_of_speech": "adj.",
+        "english_meaning": "able to continue for a long time",
+        "gujarati": "ટકાઉ",
+        "example_sentence": "We need sustainable development."
+      },
+      {
+        "word": "swallow",
+        "part_of_speech": "v.",
+        "english_meaning": "to make food go down the throat",
+        "gujarati": "ગળવું",
+        "example_sentence": "Swallow the medicine."
+      },
+      {
+        "word": "sympathetic",
+        "part_of_speech": "adj.",
+        "english_meaning": "showing understanding and care",
+        "gujarati": "સહાનુભૂતિપૂર્ણ",
+        "example_sentence": "She is very sympathetic."
+      },
+      {
+        "word": "tackle",
+        "part_of_speech": "v.",
+        "english_meaning": "to deal with a problem",
+        "gujarati": "સામનો કરવો",
+        "example_sentence": "We must tackle the problem."
+      },
+      {
+        "word": "tag",
+        "part_of_speech": "n., v.",
+        "english_meaning": "a label; to label something",
+        "gujarati": "ટેગ",
+        "example_sentence": "Put a tag on the bag."
+      },
+      {
+        "word": "tap",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to hit lightly; a device that controls water",
+        "gujarati": "ટેપ",
+        "example_sentence": "Turn on the tap."
+      },
+      {
+        "word": "technological",
+        "part_of_speech": "adj.",
+        "english_meaning": "relating to technology",
+        "gujarati": "ટેક્નોલોજીકલ",
+        "example_sentence": "Technological advances are rapid."
+      },
+      {
+        "word": "teens",
+        "part_of_speech": "n.",
+        "english_meaning": "the period of life between 13 and 19",
+        "gujarati": "કિશોરાવસ્થા",
+        "example_sentence": "She is in her teens."
+      },
+      {
+        "word": "temple",
+        "part_of_speech": "n.",
+        "english_meaning": "a building for worship",
+        "gujarati": "મંદિર",
+        "example_sentence": "We visited a Hindu temple."
+      },
+      {
+        "word": "temporarily",
+        "part_of_speech": "adv.",
+        "english_meaning": "for a short time",
+        "gujarati": "કામચલાઉ",
+        "example_sentence": "The shop is temporarily closed."
+      },
+      {
+        "word": "tendency",
+        "part_of_speech": "n.",
+        "english_meaning": "a natural way of behaving",
+        "gujarati": "વલણ",
+        "example_sentence": "He has a tendency to be late."
+      },
+      {
+        "word": "tension",
+        "part_of_speech": "n.",
+        "english_meaning": "a feeling of worry or stress",
+        "gujarati": "તણાવ",
+        "example_sentence": "There is tension in the air."
+      },
+      {
+        "word": "terminal",
+        "part_of_speech": "n.",
+        "english_meaning": "a building at an airport or the end of a railway line",
+        "gujarati": "ટર્મિનલ",
+        "example_sentence": "Meet me at the airport terminal."
+      },
+      {
+        "word": "terms",
+        "part_of_speech": "n.",
+        "english_meaning": "the conditions of an agreement",
+        "gujarati": "શરતો",
+        "example_sentence": "Read the terms carefully."
+      },
+      {
+        "word": "terribly",
+        "part_of_speech": "adv.",
+        "english_meaning": "very badly or to a great degree",
+        "gujarati": "ભયંકર રીતે",
+        "example_sentence": "I am terribly sorry."
+      },
+      {
+        "word": "terrify",
+        "part_of_speech": "v.",
+        "english_meaning": "to make someone very frightened",
+        "gujarati": "ભયભીત કરવું",
+        "example_sentence": "The noise terrified the child."
+      },
+      {
+        "word": "territory",
+        "part_of_speech": "n.",
+        "english_meaning": "an area of land controlled by a country",
+        "gujarati": "પ્રદેશ",
+        "example_sentence": "This is Indian territory."
+      },
+      {
+        "word": "terror",
+        "part_of_speech": "n.",
+        "english_meaning": "extreme fear",
+        "gujarati": "ભય",
+        "example_sentence": "She was filled with terror."
+      },
+      {
+        "word": "terrorism",
+        "part_of_speech": "n.",
+        "english_meaning": "the use of violence to achieve political aims",
+        "gujarati": "આતંકવાદ",
+        "example_sentence": "We must fight terrorism."
+      },
+      {
+        "word": "terrorist",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who uses terrorism",
+        "gujarati": "આતંકવાદી",
+        "example_sentence": "The terrorist was arrested."
+      },
+      {
+        "word": "testing",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of checking something",
+        "gujarati": "પરીક્ષણ",
+        "example_sentence": "The testing phase is complete."
+      },
+      {
+        "word": "textbook",
+        "part_of_speech": "n.",
+        "english_meaning": "a book used for study",
+        "gujarati": "પાઠ્યપુસ્તક",
+        "example_sentence": "This is the textbook for the course."
+      },
+      {
+        "word": "theft",
+        "part_of_speech": "n.",
+        "english_meaning": "the crime of stealing",
+        "gujarati": "ચોરી",
+        "example_sentence": "Theft is a serious crime."
+      },
+      {
+        "word": "therapist",
+        "part_of_speech": "n.",
+        "english_meaning": "a person who treats mental or physical problems",
+        "gujarati": "થેરાપિસ્ટ",
+        "example_sentence": "She sees a therapist."
+      },
+      {
+        "word": "thesis",
+        "part_of_speech": "n.",
+        "english_meaning": "a long piece of writing for a university degree",
+        "gujarati": "થીસિસ",
+        "example_sentence": "He is writing his thesis."
+      },
+      {
+        "word": "thorough",
+        "part_of_speech": "adj.",
+        "english_meaning": "done very carefully",
+        "gujarati": "સંપૂર્ણ",
+        "example_sentence": "She did a thorough job."
+      },
+      {
+        "word": "thoroughly",
+        "part_of_speech": "adv.",
+        "english_meaning": "very carefully",
+        "gujarati": "સંપૂર્ણપણે",
+        "example_sentence": "Clean the room thoroughly."
+      },
+      {
+        "word": "thumb",
+        "part_of_speech": "n.",
+        "english_meaning": "the short thick finger on the hand",
+        "gujarati": "અંગૂઠો",
+        "example_sentence": "I hurt my thumb."
+      },
+      {
+        "word": "timing",
+        "part_of_speech": "n.",
+        "english_meaning": "the time when something happens",
+        "gujarati": "સમયસર",
+        "example_sentence": "The timing of the meeting is perfect."
+      },
+      {
+        "word": "tissue",
+        "part_of_speech": "n.",
+        "english_meaning": "soft thin paper used for wiping the nose",
+        "gujarati": "ટિશ્યુ",
+        "example_sentence": "Take a tissue."
+      },
+      {
+        "word": "ton",
+        "part_of_speech": "n.",
+        "english_meaning": "a unit of weight equal to 1000 kg",
+        "gujarati": "ટન",
+        "example_sentence": "The truck carries two tons."
+      },
+      {
+        "word": "tonne",
+        "part_of_speech": "n.",
+        "english_meaning": "a metric ton (1000 kg)",
+        "gujarati": "ટન",
+        "example_sentence": "It weighs one tonne."
+      },
+      {
+        "word": "tournament",
+        "part_of_speech": "n.",
+        "english_meaning": "a series of games to find the best player",
+        "gujarati": "ટુર્નામેન્ટ",
+        "example_sentence": "The tennis tournament starts tomorrow."
+      },
+      {
+        "word": "trace",
+        "part_of_speech": "v.",
+        "english_meaning": "to find the origin of something",
+        "gujarati": "શોધવું",
+        "example_sentence": "The police traced the call."
+      },
+      {
+        "word": "trading",
+        "part_of_speech": "n.",
+        "english_meaning": "the activity of buying and selling",
+        "gujarati": "વેપાર",
+        "example_sentence": "He works in stock trading."
+      },
+      {
+        "word": "tragedy",
+        "part_of_speech": "n.",
+        "english_meaning": "a very sad event",
+        "gujarati": "દુર્ઘટના",
+        "example_sentence": "The plane crash was a tragedy."
+      },
+      {
+        "word": "tragic",
+        "part_of_speech": "adj.",
+        "english_meaning": "very sad",
+        "gujarati": "દુઃખદ",
+        "example_sentence": "It was a tragic accident."
+      },
+      {
+        "word": "trait",
+        "part_of_speech": "n.",
+        "english_meaning": "a quality in a person's character",
+        "gujarati": "લક્ષણ",
+        "example_sentence": "Honesty is a good trait."
+      },
+      {
+        "word": "transmit",
+        "part_of_speech": "v.",
+        "english_meaning": "to send something from one place to another",
+        "gujarati": "પ્રસારિત કરવું",
+        "example_sentence": "The signal is transmitted by radio."
+      },
+      {
+        "word": "transportation",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of carrying people or goods",
+        "gujarati": "પરિવહન",
+        "example_sentence": "Public transportation is cheap."
+      },
+      {
+        "word": "trap",
+        "part_of_speech": "v., n.",
+        "english_meaning": "to catch something; a device for catching",
+        "gujarati": "ફસાવવું",
+        "example_sentence": "The mouse was caught in a trap."
+      },
+      {
+        "word": "treasure",
+        "part_of_speech": "n.",
+        "english_meaning": "a collection of valuable things",
+        "gujarati": "ખજાનો",
+        "example_sentence": "They found buried treasure."
+      },
+      {
+        "word": "tribe",
+        "part_of_speech": "n.",
+        "english_meaning": "a group of people with the same culture",
+        "gujarati": "કુળ",
+        "example_sentence": "The tribe lives in the forest."
+      },
+      {
+        "word": "trigger",
+        "part_of_speech": "v.",
+        "english_meaning": "to cause something to start",
+        "gujarati": "ઉત્તેજિત કરવું",
+        "example_sentence": "Stress can trigger headaches."
+      },
+      {
+        "word": "trillion",
+        "part_of_speech": "number",
+        "english_meaning": "the number 1,000,000,000,000",
+        "gujarati": "ટ્રિલિયન",
+        "example_sentence": "The national debt is over a trillion rupees."
+      },
+      {
+        "word": "troop",
+        "part_of_speech": "n.",
+        "english_meaning": "a group of soldiers",
+        "gujarati": "સૈન્ય ટુકડી",
+        "example_sentence": "The troops marched forward."
+      },
+      {
+        "word": "tsunami",
+        "part_of_speech": "n.",
+        "english_meaning": "a very large wave caused by an earthquake",
+        "gujarati": "સુનામી",
+        "example_sentence": "The tsunami destroyed the coast."
+      },
+      {
+        "word": "ultimate",
+        "part_of_speech": "adj.",
+        "english_meaning": "the most important or final",
+        "gujarati": "અંતિમ",
+        "example_sentence": "This is the ultimate goal."
+      },
+      {
+        "word": "unacceptable",
+        "part_of_speech": "adj.",
+        "english_meaning": "not allowed or too bad",
+        "gujarati": "અસ્વીકાર્ય",
+        "example_sentence": "The behaviour is unacceptable."
+      },
+      {
+        "word": "uncertainty",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of not being sure",
+        "gujarati": "અનિશ્ચિતતા",
+        "example_sentence": "There is uncertainty about the future."
+      },
+      {
+        "word": "undergo",
+        "part_of_speech": "v.",
+        "english_meaning": "to experience something",
+        "gujarati": "અનુભવવું",
+        "example_sentence": "He will undergo surgery."
+      },
+      {
+        "word": "undertake",
+        "part_of_speech": "v.",
+        "english_meaning": "to agree to do something",
+        "gujarati": "હાથમાં લેવું",
+        "example_sentence": "The company will undertake the project."
+      },
+      {
+        "word": "unfold",
+        "part_of_speech": "v.",
+        "english_meaning": "to become known gradually",
+        "gujarati": "ખુલવું",
+        "example_sentence": "The story began to unfold."
+      },
+      {
+        "word": "unfortunate",
+        "part_of_speech": "adj.",
+        "english_meaning": "having bad luck",
+        "gujarati": "દુર્ભાગ્યપૂર્ણ",
+        "example_sentence": "It was an unfortunate accident."
+      },
+      {
+        "word": "unite",
+        "part_of_speech": "v.",
+        "english_meaning": "to join together",
+        "gujarati": "એક થવું",
+        "example_sentence": "We must unite against the problem."
+      },
+      {
+        "word": "unity",
+        "part_of_speech": "n.",
+        "english_meaning": "the state of being united",
+        "gujarati": "એકતા",
+        "example_sentence": "Unity is strength."
+      },
+      {
+        "word": "universal",
+        "part_of_speech": "adj.",
+        "english_meaning": "true for everyone",
+        "gujarati": "સાર્વત્રિક",
+        "example_sentence": "Education is a universal right."
+      },
+      {
+        "word": "urgent",
+        "part_of_speech": "adj.",
+        "english_meaning": "needing immediate action",
+        "gujarati": "તાત્કાલિક",
+        "example_sentence": "This is an urgent matter."
+      },
+      {
+        "word": "usage",
+        "part_of_speech": "n.",
+        "english_meaning": "the way something is used",
+        "gujarati": "વપરાશ",
+        "example_sentence": "The usage of English is increasing."
+      },
+      {
+        "word": "useless",
+        "part_of_speech": "adj.",
+        "english_meaning": "not useful",
+        "gujarati": "વ્યર્થ",
+        "example_sentence": "The tool is useless."
+      },
+      {
+        "word": "valid",
+        "part_of_speech": "adj.",
+        "english_meaning": "legally or officially acceptable",
+        "gujarati": "માન્ય",
+        "example_sentence": "Your ticket is valid for one month."
+      },
+      {
+        "word": "variation",
+        "part_of_speech": "n.",
+        "english_meaning": "a change or difference",
+        "gujarati": "વિવિધતા",
+        "example_sentence": "There is a variation in temperature."
+      },
+      {
+        "word": "vertical",
+        "part_of_speech": "adj.",
+        "english_meaning": "straight up and down",
+        "gujarati": "ઊભું",
+        "example_sentence": "Draw a vertical line."
+      },
+      {
+        "word": "viewpoint",
+        "part_of_speech": "n.",
+        "english_meaning": "a way of thinking about something",
+        "gujarati": "દૃષ્ટિકોણ",
+        "example_sentence": "From my viewpoint, it is wrong."
+      },
+      {
+        "word": "visa",
+        "part_of_speech": "n.",
+        "english_meaning": "an official document to enter a country",
+        "gujarati": "વિઝા",
+        "example_sentence": "I applied for a visa."
+      },
+      {
+        "word": "visible",
+        "part_of_speech": "adj.",
+        "english_meaning": "able to be seen",
+        "gujarati": "દૃશ્યમાન",
+        "example_sentence": "The stars are visible tonight."
+      },
+      {
+        "word": "voluntary",
+        "part_of_speech": "adj.",
+        "english_meaning": "done because you want to",
+        "gujarati": "સ્વૈચ્છિક",
+        "example_sentence": "The work is voluntary."
+      },
+      {
+        "word": "voting",
+        "part_of_speech": "n.",
+        "english_meaning": "the act of choosing in an election",
+        "gujarati": "મતદાન",
+        "example_sentence": "Voting is your right."
+      },
+      {
+        "word": "wander",
+        "part_of_speech": "v.",
+        "english_meaning": "to walk around without a purpose",
+        "gujarati": "ભટકવું",
+        "example_sentence": "I like to wander in the park."
+      },
+      {
+        "word": "warming",
+        "part_of_speech": "n.",
+        "english_meaning": "the process of becoming warmer",
+        "gujarati": "ગરમી",
+        "example_sentence": "Global warming is a serious issue."
+      },
+      {
+        "word": "weekly",
+        "part_of_speech": "adj.",
+        "english_meaning": "happening once a week",
+        "gujarati": "સાપ્તાહિક",
+        "example_sentence": "We have a weekly meeting."
+      },
+      {
+        "word": "weird",
+        "part_of_speech": "adj.",
+        "english_meaning": "very strange",
+        "gujarati": "વિચિત્ર",
+        "example_sentence": "The dream was weird."
+      },
+      {
+        "word": "welfare",
+        "part_of_speech": "n.",
+        "english_meaning": "the health and happiness of people",
+        "gujarati": "કલ્યાણ",
+        "example_sentence": "The government looks after welfare."
+      },
+      {
+        "word": "wheat",
+        "part_of_speech": "n.",
+        "english_meaning": "a plant used to make flour",
+        "gujarati": "ઘઉં",
+        "example_sentence": "Wheat is grown in Punjab."
+      },
+      {
+        "word": "whoever",
+        "part_of_speech": "pron.",
+        "english_meaning": "any person who",
+        "gujarati": "જે કોઈ",
+        "example_sentence": "Whoever wins will get a prize."
+      },
+      {
+        "word": "widespread",
+        "part_of_speech": "adj.",
+        "english_meaning": "existing in many places",
+        "gujarati": "વ્યાપક",
+        "example_sentence": "The disease is widespread."
+      },
+      {
+        "word": "wisdom",
+        "part_of_speech": "n.",
+        "english_meaning": "knowledge and good judgment",
+        "gujarati": "બુદ્ધિમત્તા",
+        "example_sentence": "He spoke with wisdom."
+      },
+      {
+        "word": "withdraw",
+        "part_of_speech": "v.",
+        "english_meaning": "to take money out of a bank",
+        "gujarati": "ઉપાડવું",
+        "example_sentence": "I need to withdraw some cash."
+      },
+      {
+        "word": "workforce",
+        "part_of_speech": "n.",
+        "english_meaning": "all the people who work in a country or company",
+        "gujarati": "કાર્યબળ",
+        "example_sentence": "The workforce is highly skilled."
+      },
+      {
+        "word": "workplace",
+        "part_of_speech": "n.",
+        "english_meaning": "the place where you work",
+        "gujarati": "કાર્યસ્થળ",
+        "example_sentence": "The workplace is clean."
+      },
+      {
+        "word": "workshop",
+        "part_of_speech": "n.",
+        "english_meaning": "a meeting to learn or discuss something",
+        "gujarati": "વર્કશોપ",
+        "example_sentence": "I attended a writing workshop."
+      },
+      {
+        "word": "worm",
+        "part_of_speech": "n.",
+        "english_meaning": "a small animal with a long soft body",
+        "gujarati": "કીડો",
+        "example_sentence": "The bird ate a worm."
+      },
+      {
+        "word": "wrist",
+        "part_of_speech": "n.",
+        "english_meaning": "the joint between the hand and the arm",
+        "gujarati": "કાંડા",
+        "example_sentence": "I wear a watch on my wrist."
       }
     ]
   }
