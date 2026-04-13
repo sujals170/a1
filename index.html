@@ -726,11 +726,14 @@
       align-items: flex-start;
       gap: 8px;
       margin-bottom: 6px;
+      flex-wrap: wrap;
     }
 
     .row-right {
-      display: inline-flex;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: flex-end;
       gap: 8px;
       flex-shrink: 0;
     }
@@ -740,6 +743,7 @@
       font-size: 1.14rem;
       color: #1c2f45;
       line-height: 1.2;
+      word-break: break-word;
     }
 
     .level-tag {
@@ -1692,6 +1696,7 @@
           <option value="B1">B1</option>
           <option value="B2">B2</option>
           <option value="C1">C1</option>
+          <option value="Cambridge">Cambridge</option>
         </select>
         <label for="quizType">Mode:</label>
         <select id="quizType" class="quiz-select">
@@ -1732,7 +1737,8 @@
       <div class="quiz-results" id="quizResults">
         <div class="quiz-result-emoji" id="quizResultEmoji"></div>
         <h2 class="quiz-result-title">Quiz Complete!</h2>
-        <p class="quiz-result-score">You scored <strong id="quizFinalScore"></strong> out of <span id="quizTotalDisplay">10</span></p>
+        <p class="quiz-result-score">You scored <strong id="quizFinalScore"></strong> out of <span
+            id="quizTotalDisplay">10</span></p>
         <div class="quiz-result-bars">
           <div class="quiz-result-stat good">
             <span class="val" id="quizCorrectCount">0</span>
@@ -1768,6 +1774,7 @@
           <option value="A2">A2</option>
           <option value="B1">B1</option>
           <option value="B2">B2</option>
+          <option value="Cambridge">Cambridge</option>
         </select>
         <button class="quiz-btn quiz-btn-ghost" id="spellRestartBtn" type="button">Restart</button>
       </div>
@@ -2191,11 +2198,32 @@
     }
 
     async function fetchWordsJson() {
-      const response = await fetch("word.json");
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+      const [wordRes, cambridgeRes] = await Promise.all([
+        fetch("word.json").catch(() => null),
+        fetch("cambridge.json").catch(() => null)
+      ]);
+
+      let combinedJson = { levels: {} };
+
+      if (wordRes && wordRes.ok) {
+        const wordJson = await wordRes.json();
+        if (wordJson && wordJson.levels) {
+          Object.assign(combinedJson.levels, wordJson.levels);
+        }
       }
-      return response.json();
+
+      if (cambridgeRes && cambridgeRes.ok) {
+        const cambridgeJson = await cambridgeRes.json();
+        if (cambridgeJson && cambridgeJson.levels) {
+          Object.assign(combinedJson.levels, cambridgeJson.levels);
+        }
+      }
+
+      if (Object.keys(combinedJson.levels).length === 0) {
+        throw new Error("Could not load any word data.");
+      }
+
+      return combinedJson;
     }
 
     async function loadWords() {
@@ -2996,7 +3024,7 @@
       const savedTheme = localStorage.getItem(DARK_MODE_KEY);
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const isDark = savedTheme ? savedTheme === "dark" : prefersDark;
-      
+
       setTheme(isDark ? "dark" : "light");
     }
 
@@ -3024,4 +3052,3 @@
 </body>
 
 </html>
-
