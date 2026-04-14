@@ -120,6 +120,42 @@
       border-color: #2f3b4c;
     }
 
+    html[data-theme="dark"] .card-back {
+      background: linear-gradient(180deg, #152131 0%, #101a28 100%);
+    }
+
+    html[data-theme="dark"] .otp-box {
+      background: #131d2b;
+      border-color: #2f3b4c;
+      color: #e7edf5;
+      box-shadow: 0 10px 24px rgba(1, 8, 15, 0.34);
+    }
+
+    html[data-theme="dark"] .otp-box.filled {
+      border-color: #3b4f66;
+    }
+
+    html[data-theme="dark"] .otp-box.active {
+      border-color: rgba(71, 165, 178, 0.95);
+      box-shadow: 0 0 0 4px rgba(71, 165, 178, 0.2), 0 10px 24px rgba(1, 8, 15, 0.34);
+    }
+
+    html[data-theme="dark"] .otp-box.correct {
+      border-color: #22c08b;
+      background: rgba(34, 192, 139, 0.18);
+      color: #9cf0cd;
+    }
+
+    html[data-theme="dark"] .otp-box.wrong {
+      border-color: #e5534b;
+      background: rgba(229, 83, 75, 0.18);
+      color: #ffbdb9;
+    }
+
+    html[data-theme="dark"] .practice-label {
+      color: #8ad6de;
+    }
+
     html[data-theme="dark"] .quiz-opt,
     html[data-theme="dark"] .spell-tile {
       background-color: #131d2b;
@@ -718,6 +754,133 @@
 
     .card:hover .word {
       color: #0d4f72;
+    }
+
+    .practice-card {
+      cursor: pointer;
+    }
+
+    .practice-card:focus-visible {
+      outline: 3px solid rgba(31, 138, 138, 0.35);
+      outline-offset: 3px;
+    }
+
+    .card-front {
+      transition: transform 0.48s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.18s ease;
+      transform-origin: center;
+      backface-visibility: hidden;
+    }
+
+    .card-back {
+      position: absolute;
+      inset: 0;
+      padding: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+      opacity: 0;
+      pointer-events: none;
+      transform: rotateY(180deg);
+      transform-origin: center;
+      backface-visibility: hidden;
+      transition: transform 0.48s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.18s ease;
+      overflow: auto;
+    }
+
+    .practice-card.is-flipped .card-front {
+      transform: rotateY(180deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .practice-card.is-flipped .card-back {
+      transform: rotateY(0deg);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .card-back {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .otp-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .otp-box {
+      width: 34px;
+      height: 42px;
+      border-radius: 10px;
+      border: 1px solid #d7dee7;
+      background: #ffffff;
+      box-shadow: 0 6px 16px rgba(20, 47, 68, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      color: #143047;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .otp-box.filled {
+      border-color: #b7c8df;
+    }
+
+    .otp-box.active {
+      border-color: rgba(31, 138, 138, 0.9);
+      box-shadow: 0 0 0 4px rgba(31, 138, 138, 0.14), 0 6px 16px rgba(20, 47, 68, 0.06);
+    }
+
+    .otp-box.correct {
+      border-color: #22c08b;
+      background: #edfcf5;
+      color: #0b5e38;
+    }
+
+    .otp-box.wrong {
+      border-color: #e5534b;
+      background: #fff3f2;
+      color: #8c1b17;
+    }
+
+    .practice-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0f6c75;
+      margin-bottom: 6px;
+    }
+
+    .card-spell-input {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    .practice-feedback {
+      margin-top: 14px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 13px;
+      min-height: 20px;
+      color: #5b6a79;
+    }
+
+    .practice-feedback.ok {
+      color: #0f6c75;
+    }
+
+    .practice-feedback.bad {
+      color: #b24a19;
     }
 
     .row {
@@ -1707,6 +1870,7 @@
         <label for="quizLimit">Questions:</label>
         <input id="quizLimit" class="quiz-select" type="number" min="1" step="1" value="10" inputmode="numeric">
         <button class="quiz-btn quiz-btn-ghost active" id="quizAllBtn" type="button">All Words: On</button>
+        <button class="quiz-btn quiz-btn-ghost" id="quizSavedBtn" type="button">Saved Cards: Off (0)</button>
         <button class="quiz-btn quiz-btn-ghost" id="quizRestartBtn" type="button">Restart</button>
       </div>
 
@@ -1879,6 +2043,181 @@
     const PAGE_SIZE = 60;
     const MAX_PAGE_BUTTONS = 7;
     let filterDebounceId = null;
+
+    const PRACTICE_AUTO_CLOSE_DELAY_MS = 1200;
+    const PRACTICE_WRONG_RESET_DELAY_MS = 550;
+    let activePracticeCard = null;
+    let practiceAutoCloseTimerId = null;
+
+    function clearPracticeAutoCloseTimer() {
+      if (practiceAutoCloseTimerId !== null) {
+        clearTimeout(practiceAutoCloseTimerId);
+        practiceAutoCloseTimerId = null;
+      }
+    }
+
+    function practiceExpectedLetters(word) {
+      return String(word ?? "")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z]/g, "");
+    }
+
+    function ensureOtpBoxes(cardEl, length) {
+      const row = cardEl.querySelector("[data-otp]");
+      if (!row) return;
+      const len = Math.max(0, Number(length) || 0);
+      if (row.dataset.len === String(len)) return;
+      row.dataset.len = String(len);
+      row.innerHTML = "";
+      for (let i = 0; i < len; i++) {
+        const box = document.createElement("div");
+        box.className = "otp-box";
+        row.appendChild(box);
+      }
+    }
+
+    function updateOtpBoxes(cardEl, value, expectedWord) {
+      const row = cardEl.querySelector("[data-otp]");
+      if (!row) return;
+      const expected = String(expectedWord || "");
+      const expectedLen = expected.length;
+      const boxes = Array.from(row.querySelectorAll(".otp-box"));
+      const len = Math.min(boxes.length, expectedLen);
+      for (let i = 0; i < len; i++) {
+        const ch = value[i] || "";
+        const expectedChar = expected[i] || "";
+        const box = boxes[i];
+        box.textContent = ch ? ch.toUpperCase() : "";
+        const hasChar = Boolean(ch);
+        box.classList.toggle("filled", hasChar);
+        box.classList.toggle("correct", hasChar && ch === expectedChar);
+        box.classList.toggle("wrong", hasChar && ch !== expectedChar);
+        box.classList.toggle("active", i === value.length && value.length < expectedLen);
+      }
+      if (expectedLen > 0 && value.length >= expectedLen && boxes[expectedLen - 1]) {
+        boxes[expectedLen - 1].classList.remove("active");
+      }
+    }
+
+    function setPracticeFeedback(cardEl, kind, text) {
+      const feedback = cardEl.querySelector(".practice-feedback");
+      if (!feedback) return;
+      feedback.classList.toggle("ok", kind === "ok");
+      feedback.classList.toggle("bad", kind === "bad");
+      feedback.textContent = text || "";
+    }
+
+    function focusPracticeInput(cardEl) {
+      const input = cardEl.querySelector(".card-spell-input");
+      if (!input) return;
+      try {
+        input.focus({ preventScroll: true });
+      } catch {
+        input.focus();
+      }
+    }
+
+    function closePracticeCard(cardEl) {
+      clearPracticeAutoCloseTimer();
+      if (!cardEl) return;
+      cardEl.classList.remove("is-flipped");
+      const back = cardEl.querySelector(".card-back");
+      if (back) back.setAttribute("aria-hidden", "true");
+
+      const input = cardEl.querySelector(".card-spell-input");
+      const expected = input?.dataset.expected || practiceExpectedLetters(cardEl.dataset.word || "");
+      if (input) {
+        const wasFocused = document.activeElement === input;
+        input.value = "";
+        if (wasFocused) {
+          input.blur();
+          try {
+            cardEl.focus({ preventScroll: true });
+          } catch {
+            cardEl.focus();
+          }
+        }
+      }
+      setPracticeFeedback(cardEl, "", "");
+      ensureOtpBoxes(cardEl, expected.length);
+      updateOtpBoxes(cardEl, "", expected);
+
+      if (activePracticeCard === cardEl) {
+        activePracticeCard = null;
+      }
+    }
+
+    function openPracticeCard(cardEl) {
+      if (!cardEl) return;
+      clearPracticeAutoCloseTimer();
+      if (activePracticeCard && activePracticeCard !== cardEl) {
+        closePracticeCard(activePracticeCard);
+      }
+
+      const expected = practiceExpectedLetters(cardEl.dataset.word || "");
+      if (!expected) {
+        return;
+      }
+
+      activePracticeCard = cardEl;
+      cardEl.classList.add("is-flipped");
+      const back = cardEl.querySelector(".card-back");
+      if (back) back.setAttribute("aria-hidden", "false");
+
+      ensureOtpBoxes(cardEl, expected.length);
+      updateOtpBoxes(cardEl, "", expected);
+      setPracticeFeedback(cardEl, "", "");
+
+      const input = cardEl.querySelector(".card-spell-input");
+      if (input) {
+        input.value = "";
+        input.maxLength = expected.length;
+        input.dataset.expected = expected;
+      }
+
+      setTimeout(() => {
+        if (!cardEl.isConnected) return;
+        focusPracticeInput(cardEl);
+      }, 0);
+    }
+
+    function handlePracticeInput(inputEl) {
+      const cardEl = inputEl.closest(".practice-card");
+      if (!cardEl) return;
+      const expected = inputEl.dataset.expected || practiceExpectedLetters(cardEl.dataset.word || "");
+      if (!expected) return;
+
+      let value = String(inputEl.value || "").toLowerCase().replace(/[^a-z]/g, "");
+      if (value.length > expected.length) value = value.slice(0, expected.length);
+      if (value !== inputEl.value) inputEl.value = value;
+
+      updateOtpBoxes(cardEl, value, expected);
+      clearPracticeAutoCloseTimer();
+
+      if (value.length < expected.length) {
+        setPracticeFeedback(cardEl, "", "");
+        return;
+      }
+
+      if (value === expected) {
+        setPracticeFeedback(cardEl, "ok", "Correct");
+        practiceAutoCloseTimerId = setTimeout(() => {
+          if (!cardEl.isConnected) return;
+          closePracticeCard(cardEl);
+        }, PRACTICE_AUTO_CLOSE_DELAY_MS);
+        return;
+      }
+
+      setPracticeFeedback(cardEl, "bad", "Wrong - try again");
+      practiceAutoCloseTimerId = setTimeout(() => {
+        if (!cardEl.isConnected) return;
+        inputEl.value = "";
+        setPracticeFeedback(cardEl, "", "");
+        updateOtpBoxes(cardEl, "", expected);
+        focusPracticeInput(cardEl);
+      }, PRACTICE_WRONG_RESET_DELAY_MS);
+    }
     const POS_FILTERS = [
       "Noun",
       "Verb",
@@ -1999,6 +2338,7 @@
       savedToggle.textContent = state.showSavedOnly ? `Saved Only: ${count}` : `Saved: ${count}`;
       savedToggle.classList.toggle("active", state.showSavedOnly);
       savedToggle.setAttribute("aria-pressed", state.showSavedOnly ? "true" : "false");
+      updateQuizSavedButtonLabel();
     }
 
     function matchPartOfSpeech(posTextNormalized, selectedPos) {
@@ -2069,24 +2409,34 @@
     }
 
     function cardHtml(item, savedIds) {
+      const safeWord = escapeHtml(item.word);
+      const safeWordId = escapeHtml(item._id);
       return `
-        <article class="card">
-          <div class="row">
-            <h3 class="word">${escapeHtml(item.word)}</h3>
-            <div class="row-right">
-              <span class="level-tag">${escapeHtml(item.level)}</span>
-              <button class="pronounce-btn" type="button" data-speak="${escapeHtml(item.word)}" aria-label="Pronounce ${escapeHtml(item.word)}">
-                Speak
-              </button>
-              <button class="save-btn ${savedIds.has(item._id) ? "saved" : ""}" type="button" data-word-id="${escapeHtml(item._id)}">
-                ${savedIds.has(item._id) ? "Saved" : "Save"}
-              </button>
+        <article class="card practice-card" data-word-id="${safeWordId}" data-word="${safeWord}" tabindex="0" role="button" aria-label="Practice spelling for ${safeWord}">
+          <div class="card-front">
+            <div class="row">
+              <h3 class="word">${safeWord}</h3>
+              <div class="row-right">
+                <span class="level-tag">${escapeHtml(item.level)}</span>
+                <button class="pronounce-btn" type="button" data-speak="${safeWord}" aria-label="Pronounce ${safeWord}">
+                  Speak
+                </button>
+                <button class="save-btn ${savedIds.has(item._id) ? "saved" : ""}" type="button" data-word-id="${safeWordId}">
+                  ${savedIds.has(item._id) ? "Saved" : "Save"}
+                </button>
+              </div>
             </div>
+            <span class="pos">${escapeHtml(item.part_of_speech)}</span>
+            <p class="meaning">${escapeHtml(item.english_meaning)}</p>
+            <p class="gujarati">${escapeHtml(item.gujarati)}</p>
+            <p class="example">${escapeHtml(item.example_sentence)}</p>
           </div>
-          <span class="pos">${escapeHtml(item.part_of_speech)}</span>
-          <p class="meaning">${escapeHtml(item.english_meaning)}</p>
-          <p class="gujarati">${escapeHtml(item.gujarati)}</p>
-          <p class="example">${escapeHtml(item.example_sentence)}</p>
+          <div class="card-back" aria-hidden="true">
+            <div class="practice-label">Spelling Practice</div>
+            <div class="otp-row" data-otp></div>
+            <input class="card-spell-input" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="text" aria-label="Type spelling" />
+            <div class="practice-feedback" aria-live="polite"></div>
+          </div>
         </article>
       `;
     }
@@ -2153,6 +2503,9 @@
     }
 
     function renderCards() {
+      clearPracticeAutoCloseTimer();
+      activePracticeCard = null;
+
       const rows = state.filteredWords;
       if (!rows.length) {
         gridEl.innerHTML = '<div class="card"><div class="meaning">No matching words found.</div></div>';
@@ -2346,29 +2699,76 @@
       }
 
       const saveBtn = event.target.closest(".save-btn");
-      if (!saveBtn) return;
+      if (saveBtn) {
+        const wordId = saveBtn.dataset.wordId || "";
+        if (!wordId) return;
 
-      const wordId = saveBtn.dataset.wordId || "";
-      if (!wordId) return;
+        const isSaved = state.savedWordIds.has(wordId);
+        if (isSaved) {
+          state.savedWordIds.delete(wordId);
+        } else {
+          state.savedWordIds.add(wordId);
+        }
 
-      const isSaved = state.savedWordIds.has(wordId);
-      if (isSaved) {
-        state.savedWordIds.delete(wordId);
-      } else {
-        state.savedWordIds.add(wordId);
-      }
+        saveSavedWords();
+        renderStats();
+        updateSavedToggle();
 
-      saveSavedWords();
-      renderStats();
-      updateSavedToggle();
+        if (state.showSavedOnly) {
+          applyFilters();
+          return;
+        }
 
-      if (state.showSavedOnly) {
-        applyFilters();
+        saveBtn.classList.toggle("saved", !isSaved);
+        saveBtn.textContent = isSaved ? "Save" : "Saved";
         return;
       }
 
-      saveBtn.classList.toggle("saved", !isSaved);
-      saveBtn.textContent = isSaved ? "Save" : "Saved";
+      const cardEl = event.target.closest(".practice-card");
+      if (!cardEl) return;
+
+      if (cardEl.classList.contains("is-flipped")) {
+        closePracticeCard(cardEl);
+        return;
+      }
+
+      openPracticeCard(cardEl);
+    });
+
+    gridEl.addEventListener("input", (event) => {
+      const inputEl = event.target.closest(".card-spell-input");
+      if (!inputEl) return;
+      handlePracticeInput(inputEl);
+    });
+
+    gridEl.addEventListener("keydown", (event) => {
+      const inputEl = event.target.closest(".card-spell-input");
+      if (inputEl && event.key === "Escape") {
+        const cardEl = inputEl.closest(".practice-card");
+        if (cardEl) {
+          event.preventDefault();
+          closePracticeCard(cardEl);
+          try {
+            cardEl.focus({ preventScroll: true });
+          } catch {
+            cardEl.focus();
+          }
+        }
+        return;
+      }
+
+      const cardEl = event.target.closest(".practice-card");
+      if (!cardEl) return;
+      if (event.target !== cardEl) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        if (cardEl.classList.contains("is-flipped")) {
+          closePracticeCard(cardEl);
+        } else {
+          openPracticeCard(cardEl);
+        }
+      }
     });
 
     savedToggle.addEventListener("click", () => {
@@ -2399,6 +2799,7 @@
     const quizTypeSel = document.getElementById("quizType");
     const quizLimitSel = document.getElementById("quizLimit");
     const quizAllBtn = document.getElementById("quizAllBtn");
+    const quizSavedBtn = document.getElementById("quizSavedBtn");
     const quizRestartBtn = document.getElementById("quizRestartBtn");
     const quizPlayAgainBtn = document.getElementById("quizPlayAgainBtn");
     const quizResultEmoji = document.getElementById("quizResultEmoji");
@@ -2412,6 +2813,7 @@
     const QUIZ_AUTO_NEXT_DELAY_MS = 1100;
     let quizAutoNextTimerId = null;
     let quizUseAllWords = true;
+    let quizUseSavedOnly = false;
 
     const quizState = {
       questions: [],
@@ -2429,12 +2831,36 @@
       return a;
     }
 
+    function updateQuizSavedButtonLabel() {
+      const count = state.savedWordIds.size;
+      quizSavedBtn.classList.toggle("active", quizUseSavedOnly);
+      quizSavedBtn.textContent = quizUseSavedOnly
+        ? `Saved Cards: On (${count})`
+        : `Saved Cards: Off (${count})`;
+    }
+
+    function setQuizSavedMode(enabled) {
+      quizUseSavedOnly = Boolean(enabled);
+      updateQuizSavedButtonLabel();
+    }
+
+    function getSavedQuizPool(level) {
+      const savedPool = Array.from(state.savedWordIds)
+        .map((id) => state.wordsById[id])
+        .filter(Boolean);
+      if (level === "ALL") return savedPool;
+      return savedPool.filter((item) => item.level === level);
+    }
+
     function getQuizPool() {
       const level = quizLevelSel.value;
-      const pool = level === "ALL"
-        ? state.allWords
-        : (state.wordsByLevel[level] || []);
-      return pool.length >= 4 ? pool : state.allWords;
+      if (quizUseSavedOnly) {
+        return getSavedQuizPool(level);
+      }
+      if (level === "ALL") {
+        return state.allWords;
+      }
+      return state.wordsByLevel[level] || [];
     }
 
     function setQuizAllMode(enabled) {
@@ -2509,6 +2935,40 @@
     function startQuiz() {
       clearQuizRevealTimers();
       const pool = getQuizPool();
+      if (!pool.length) {
+        const level = quizLevelSel.value;
+        const savedMode = quizUseSavedOnly;
+        const emptyPrompt = savedMode
+          ? "No saved cards to quiz right now."
+          : `No words found for ${level} level.`;
+        const emptyWordText = savedMode
+          ? "Save cards in Dictionary, then try again."
+          : "Choose another level or select All Levels.";
+        const emptyTip = savedMode
+          ? "Tip: click Save on cards you want to practice in quiz."
+          : "Tip: switch level in Quiz settings to continue.";
+
+        quizState.questions = [];
+        quizState.current = 0;
+        quizState.score = 0;
+        quizState.answered = false;
+        quizTotalDisplay.textContent = "0";
+        quizResults.classList.remove("visible");
+        quizQuestion.style.display = "block";
+        quizMeta.textContent = "No questions available";
+        quizScoreBadge.textContent = "Score: 0";
+        quizProgressFill.style.width = "0%";
+        quizPrompt.textContent = emptyPrompt;
+        quizWordDisplay.textContent = emptyWordText;
+        quizPosDisplay.textContent = "POS: -";
+        quizLevelDisplay.textContent = `Level: ${quizLevelSel.value}`;
+        quizSpeakBtn.dataset.word = "";
+        quizSpeakBtn.disabled = true;
+        quizOptions.innerHTML = "";
+        quizFeedback.textContent = emptyTip;
+        quizFeedback.className = "quiz-feedback";
+        return;
+      }
       const limit = getQuizQuestionLimit(pool.length);
       quizState.questions = buildQuizQuestions(pool, limit);
       quizState.current = 0;
@@ -2688,12 +3148,17 @@
       setQuizAllMode(!quizUseAllWords);
       startQuiz();
     });
+    quizSavedBtn.addEventListener("click", () => {
+      setQuizSavedMode(!quizUseSavedOnly);
+      startQuiz();
+    });
     quizRestartBtn.addEventListener("click", startQuiz);
     quizPlayAgainBtn.addEventListener("click", startQuiz);
     quizSpeakBtn.addEventListener("click", () => {
       speakWord(quizSpeakBtn.dataset.word || "");
     });
     setQuizAllMode(true);
+    setQuizSavedMode(false);
 
     // Spelling Logic
     const spellPanel = document.getElementById("spellPanel");
@@ -3053,3 +3518,4 @@
 </body>
 
 </html>
+
