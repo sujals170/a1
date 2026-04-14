@@ -261,6 +261,18 @@
       color: #9ebdd8;
     }
 
+    html[data-theme="dark"] .quiz-opt-speak {
+      background: #1d2a3d;
+      border-color: #3b4f66;
+      color: #b6c9de;
+    }
+
+    html[data-theme="dark"] .quiz-opt-speak:hover {
+      background: #25364f;
+      border-color: #557192;
+      color: #e7edf5;
+    }
+
     html[data-theme="dark"] .level-tag {
       border-color: #1d5a69;
       background: #103541;
@@ -1281,6 +1293,49 @@
 
     .quiz-opt-main {
       font-weight: 700;
+    }
+
+    .quiz-opt-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .quiz-opt-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .quiz-opt-speak {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid #d0d9e4;
+      background: #f5f8fc;
+      color: #33516a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      line-height: 1;
+      cursor: pointer;
+      user-select: none;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease, color .18s ease;
+    }
+
+    .quiz-opt-speak:hover {
+      transform: translateY(-1px);
+      background: #eaf2fb;
+      border-color: #a8c0d8;
+      color: #153f66;
+    }
+
+    .quiz-opt:disabled .quiz-opt-speak {
+      opacity: .5;
+      cursor: default;
+      transform: none;
     }
 
     .quiz-opt-gujarati {
@@ -2982,14 +3037,21 @@
 
     function getQuizOptionHtml(opt, isWord2Meaning) {
       const mainText = isWord2Meaning ? opt.english_meaning : opt.word;
+      const pronunciationText = String(mainText || "").trim();
       const gujaratiText = String(opt.gujarati || "").trim();
-      if (!isWord2Meaning || !gujaratiText) {
-        return `<span class="quiz-opt-main">${escapeHtml(mainText)}</span>`;
-      }
+      const speakControl = pronunciationText
+        ? `<span class="quiz-opt-speak" data-speak="${escapeHtml(pronunciationText)}" title="Pronounce this option" aria-label="Pronounce this option">🔊</span>`
+        : "";
+      const gujaratiLine = isWord2Meaning && gujaratiText
+        ? `<span class="quiz-opt-gujarati">${escapeHtml(gujaratiText)}</span>`
+        : "";
 
       return `
-        <span class="quiz-opt-main">${escapeHtml(mainText)}</span>
-        <span class="quiz-opt-gujarati">${escapeHtml(gujaratiText)}</span>
+        <span class="quiz-opt-top">
+          <span class="quiz-opt-main">${escapeHtml(mainText)}</span>
+          ${speakControl}
+        </span>
+        ${gujaratiLine}
       `;
     }
 
@@ -3008,7 +3070,19 @@
         btn.className = "quiz-opt";
         btn.innerHTML = getQuizOptionHtml(opt, isWord2Meaning);
         btn.dataset.id = opt._id;
-        btn.addEventListener("click", () => handleQuizAnswer(btn, question.correct));
+        btn.addEventListener("click", (event) => {
+          const target = event.target;
+          if (target instanceof Element) {
+            const speakIcon = target.closest(".quiz-opt-speak");
+            if (speakIcon) {
+              event.preventDefault();
+              event.stopPropagation();
+              speakWord(speakIcon.dataset.speak || "");
+              return;
+            }
+          }
+          handleQuizAnswer(btn, question.correct);
+        });
         quizOptions.appendChild(btn);
       });
     }
@@ -3518,4 +3592,3 @@
 </body>
 
 </html>
-
