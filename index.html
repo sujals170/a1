@@ -2983,7 +2983,7 @@
     function getQuizOptionHtml(opt, isWord2Meaning) {
       const mainText = isWord2Meaning ? opt.english_meaning : opt.word;
       const gujaratiText = String(opt.gujarati || "").trim();
-      if (!gujaratiText) {
+      if (!isWord2Meaning || !gujaratiText) {
         return `<span class="quiz-opt-main">${escapeHtml(mainText)}</span>`;
       }
 
