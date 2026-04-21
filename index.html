@@ -186,6 +186,106 @@
       border-color: #3b4f66;
     }
 
+    /* ── First-visit modal ── */
+    .fv-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(13, 43, 54, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fv-modal {
+      background: linear-gradient(160deg, var(--hero-bg-1), var(--hero-bg-2));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 2.4rem 2.8rem 2.2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow);
+      animation: fv-pop .28s cubic-bezier(.34,1.46,.64,1) both;
+    }
+
+    @keyframes fv-pop {
+      from { opacity: 0; transform: scale(.88) translateY(12px); }
+      to   { opacity: 1; transform: scale(1)  translateY(0);    }
+    }
+
+    .fv-icon {
+      font-size: 2.8rem;
+      line-height: 1;
+      margin-bottom: .7rem;
+    }
+
+    .fv-title {
+      margin: 0 0 .55rem;
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--hero-title);
+      letter-spacing: -.01em;
+    }
+
+    .fv-body {
+      margin: 0 0 1.6rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: .95rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .fv-body strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .fv-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--active);
+      color: var(--active-ink);
+      border: none;
+      border-radius: 12px;
+      padding: .7rem 2.2rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .18s, transform .12s;
+    }
+
+    .fv-btn:hover {
+      background: #187474;
+      transform: translateY(-1px);
+    }
+
+    .fv-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Dark-mode overrides */
+    html[data-theme="dark"] .fv-overlay {
+      background: rgba(1, 8, 15, 0.72);
+    }
+
+    html[data-theme="dark"] .fv-modal {
+      border-color: #2f3b4c;
+    }
+
+    html[data-theme="dark"] .fv-body strong {
+      color: #e7edf5;
+    }
+
+    html[data-theme="dark"] .fv-btn:hover {
+      background: #2db8b8;
+    }
+
     .dark-mode-toggle {
       border: 1px solid var(--line);
       background: var(--chip);
@@ -1856,6 +1956,16 @@
 </head>
 
 <body>
+  <!-- First-visit notice -->
+  <div id="firstVisitOverlay" class="fv-overlay">
+    <div class="fv-modal">
+      <div class="fv-icon">💻</div>
+      <h2 class="fv-title">Best on Laptop or Computer</h2>
+      <p class="fv-body">For the best experience, please open this site on a <strong>laptop or computer</strong>.</p>
+      <button id="firstVisitClose" class="fv-btn">Got it</button>
+    </div>
+  </div>
+
   <main class="page">
     <section class="hero">
       <div class="hero-top">
@@ -3587,6 +3697,16 @@
     darkModeToggle.addEventListener("click", toggleDarkMode);
 
     initializeDarkMode();
+
+    // First-visit notice
+    if (!localStorage.getItem("visited")) {
+      localStorage.setItem("visited", "2");
+      document.getElementById("firstVisitOverlay").style.display = "flex";
+    }
+    document.getElementById("firstVisitClose").addEventListener("click", function () {
+      document.getElementById("firstVisitOverlay").style.display = "none";
+    });
+
     loadWords();
   </script>
 </body>
