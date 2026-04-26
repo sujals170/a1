@@ -221,6 +221,19 @@
       return String(value ?? "").toLowerCase().trim();
     }
 
+    function normalizeWordList(value) {
+      if (Array.isArray(value)) {
+        return value.map((entry) => String(entry ?? "").trim()).filter(Boolean);
+      }
+      if (typeof value === "string") {
+        return value
+          .split(",")
+          .map((entry) => entry.trim())
+          .filter(Boolean);
+      }
+      return [];
+    }
+
     const CAN_SPEAK = typeof window !== "undefined"
       && "speechSynthesis" in window
       && "SpeechSynthesisUtterance" in window;
@@ -459,12 +472,26 @@
     function cardHtml(item, savedIds) {
       const safeWord = escapeHtml(item.word);
       const safeWordId = escapeHtml(item._id);
+      const synonyms = normalizeWordList(item.synonyms);
+      const antonyms = normalizeWordList(item.antonyms);
+      const synonymBadges = synonyms
+        .map((value) => `<span class="vocab-badge syn" title="Synonym">${escapeHtml(value)}</span>`)
+        .join("");
+      const antonymBadges = antonyms
+        .map((value) => `<span class="vocab-badge ant" title="Antonym">${escapeHtml(value)}</span>`)
+        .join("");
+      const vocabMeta = (synonymBadges || antonymBadges)
+        ? `<div class="vocab-badges">${synonymBadges}${antonymBadges}</div>`
+        : "";
       return `
         <article class="card practice-card" data-word-id="${safeWordId}" data-word="${safeWord}" tabindex="0" role="button" aria-label="Practice spelling for ${safeWord}">
           <div class="card-front">
-            <div class="row">
-              <h3 class="word">${safeWord}</h3>
-              <div class="row-right">
+            <div class="card-head">
+              <div>
+                <h3 class="word">${safeWord}</h3>
+                <span class="pos">${escapeHtml(item.part_of_speech)}</span>
+              </div>
+              <div class="card-actions">
                 <span class="level-tag">${escapeHtml(item.level)}</span>
                 <button class="pronounce-btn" type="button" data-speak="${safeWord}" aria-label="Pronounce ${safeWord}">
                   Speak
@@ -474,10 +501,14 @@
                 </button>
               </div>
             </div>
-            <span class="pos">${escapeHtml(item.part_of_speech)}</span>
-            <p class="meaning">${escapeHtml(item.english_meaning)}</p>
-            <p class="gujarati">${escapeHtml(item.gujarati)}</p>
-            <p class="example">${escapeHtml(item.example_sentence)}</p>
+            <div class="card-panel">
+              <p class="meaning">${escapeHtml(item.english_meaning)}</p>
+              <p class="gujarati">${escapeHtml(item.gujarati)}</p>
+            </div>
+            <div class="card-example-wrap">
+              <p class="example">${escapeHtml(item.example_sentence)}</p>
+            </div>
+            ${vocabMeta ? `<div class="card-vocab-wrap">${vocabMeta}</div>` : ""}
           </div>
           <div class="card-back" aria-hidden="true">
             <p class="practice-label">Spelling Practice <span class="practice-close-hint">(tap outside input to close)</span></p>
@@ -665,7 +696,13 @@
         const allWords = state.levels.flatMap((level) => {
           const words = Array.isArray(levels[level]) ? levels[level] : [];
           const mapped = words.map((entry) => {
-            const item = { ...entry, level };
+            const { ielts_tip, ...entryWithoutTip } = entry || {};
+            const item = {
+              ...entryWithoutTip,
+              level,
+              synonyms: normalizeWordList(entryWithoutTip.synonyms),
+              antonyms: normalizeWordList(entryWithoutTip.antonyms)
+            };
             const id = getWordId(item);
             return {
               ...item,
@@ -677,6 +714,8 @@
                 item.english_meaning,
                 item.gujarati,
                 item.example_sentence,
+                item.synonyms.join(" "),
+                item.antonyms.join(" "),
                 item.level
               ].join(" "))
             };
@@ -848,6 +887,9 @@
     const quizSpeakBtn = document.getElementById("quizSpeakBtn");
     const quizOptions = document.getElementById("quizOptions");
     const quizFeedback = document.getElementById("quizFeedback");
+    const quizQuestionBackBtn = document.getElementById("quizQuestionBackBtn");
+    const quizPrevQuestionBtn = document.getElementById("quizPrevQuestionBtn");
+    const quizNextQuestionBtn = document.getElementById("quizNextQuestionBtn");
     const quizQuestion = document.getElementById("quizQuestion");
     const quizResults = document.getElementById("quizResults");
     const quizLevelSel = document.getElementById("quizLevel");
@@ -856,6 +898,9 @@
     const quizSavedBtn = document.getElementById("quizSavedBtn");
     const quizSeqBtn = document.getElementById("quizSeqBtn");
     const quizWrongBankBtn = document.getElementById("quizWrongBankBtn");
+    const quizSynPracticeBtn = document.getElementById("quizSynPracticeBtn");
+    const quizAntPracticeBtn = document.getElementById("quizAntPracticeBtn");
+    const quizBackBtn = document.getElementById("quizBackBtn");
     const quizRestartBtn = document.getElementById("quizRestartBtn");
     const quizReviewBtn = document.getElementById("quizReviewBtn");
     const quizPlayAgainBtn = document.getElementById("quizPlayAgainBtn");
@@ -868,8 +913,12 @@
     const quizWrongReview = document.getElementById("quizWrongReview");
 
     const QUIZ_DEFAULT_TOTAL = 10;
-    const QUIZ_AUTO_NEXT_DELAY_MS = 4000;
     let quizAutoNextTimerId = null;
+    let quizCountdownIntervalId = null;
+    let quizMaxAnsweredIndex = -1;
+    let quizFrontierIndex = 0;
+    const quizCountdown = document.getElementById("quizCountdown");
+    const quizCountdownNum = document.getElementById("quizCountdownNum");
     let quizUseSavedOnly = false;
     let quizUseWrongOnly = false;
     let quizSequentialMode = false;
@@ -1038,6 +1087,22 @@
       updateQuizSavedButtonLabel();
     }
 
+    function updateSynAntPracticeButtons() {
+      const type = quizTypeSel.value;
+      if (quizSynPracticeBtn) {
+        const isOn = type === "synonym";
+        quizSynPracticeBtn.classList.toggle("active", isOn);
+        quizSynPracticeBtn.textContent = isOn ? "Synonyms Practice: On" : "Synonyms Practice: Off";
+        quizSynPracticeBtn.setAttribute("aria-pressed", isOn ? "true" : "false");
+      }
+      if (quizAntPracticeBtn) {
+        const isOn = type === "antonym";
+        quizAntPracticeBtn.classList.toggle("active", isOn);
+        quizAntPracticeBtn.textContent = isOn ? "Antonyms Practice: On" : "Antonyms Practice: Off";
+        quizAntPracticeBtn.setAttribute("aria-pressed", isOn ? "true" : "false");
+      }
+    }
+
     function getSavedQuizPool(level) {
       const savedPool = Array.from(state.savedWordIds)
         .map((id) => state.wordsById[id])
@@ -1152,9 +1217,120 @@
 
     function formatQuizOptionText(item, type) {
       if (!item) return "-";
+      if (type === "synonym" || type === "antonym") {
+        return String(item.word || "-");
+      }
       return type === "word2meaning"
         ? String(item.english_meaning || "-")
         : String(item.word || "-");
+    }
+
+    function getSynAntValues(item, relation) {
+      const list = relation === "antonym" ? item.antonyms : item.synonyms;
+      return normalizeWordList(list);
+    }
+
+    function getSynAntQuestionPool(pool, relation = "") {
+      return pool.filter((item) => {
+        const syn = getSynAntValues(item, "synonym");
+        const ant = getSynAntValues(item, "antonym");
+        if (relation === "synonym") return syn.length > 0;
+        if (relation === "antonym") return ant.length > 0;
+        return syn.length > 0 || ant.length > 0;
+      });
+    }
+
+    function getSynAntDistractorTexts(relation, correctText, questionPool, fallbackPool = [], cap = 3) {
+      const wanted = Math.max(1, cap);
+      const usedNorm = new Set([normalize(correctText)]);
+      const distractors = [];
+      const tryPush = (text) => {
+        const clean = String(text || "").trim();
+        if (!clean) return false;
+        const key = normalize(clean);
+        if (!key || usedNorm.has(key)) return false;
+        usedNorm.add(key);
+        distractors.push(clean);
+        return distractors.length >= wanted;
+      };
+
+      const source = shuffleArray(questionPool);
+      for (let i = 0; i < source.length && distractors.length < wanted; i++) {
+        const values = getSynAntValues(source[i], relation);
+        for (let j = 0; j < values.length && distractors.length < wanted; j++) {
+          if (tryPush(values[j])) break;
+        }
+      }
+
+      const fallback = shuffleArray(fallbackPool);
+      for (let i = 0; i < fallback.length && distractors.length < wanted; i++) {
+        if (tryPush(fallback[i].word)) break;
+      }
+
+      return distractors.slice(0, wanted);
+    }
+
+    function buildSynAntQuestionForWord(correct, questionPool, forcedRelation = "") {
+      const relation = forcedRelation === "antonym" ? "antonym" : "synonym";
+      const values = shuffleArray(getSynAntValues(correct, relation));
+      const correctText = values[0];
+      if (!correctText) return null;
+
+      const distractorTexts = getSynAntDistractorTexts(
+        relation,
+        correctText,
+        questionPool.filter((item) => item._id !== correct._id),
+        state.allWords,
+        3
+      );
+      if (!distractorTexts.length) return null;
+
+      const correctOpt = {
+        _id: `synant:${relation}:${correct._id}:correct:${normalize(correctText)}`,
+        word: correctText
+      };
+      const distractorOpts = distractorTexts.map((text, idx) => ({
+        _id: `synant:${relation}:${correct._id}:d:${idx}:${normalize(text)}`,
+        word: text
+      }));
+      const options = shuffleArray([correctOpt, ...distractorOpts]);
+      return {
+        correct,
+        relation,
+        correctOption: correctOpt,
+        options
+      };
+    }
+
+    function buildSynAntQuizQuestions(pool, limit, relation, sequential = false, levelKey = "ALL") {
+      const rel = relation === "antonym" ? "antonym" : "synonym";
+      const questionPool = getSynAntQuestionPool(pool, rel);
+      if (!questionPool.length) {
+        quizSeqStartIndex = 0;
+        return [];
+      }
+
+      const targetTotal = Math.max(1, Math.min(limit, questionPool.length));
+      const questions = [];
+      const source = sequential ? questionPool : shuffleArray(questionPool);
+
+      if (sequential) {
+        const progress = loadQuizProgress(levelKey);
+        quizSeqStartIndex = source.length > 0 ? progress % source.length : 0;
+        for (let i = 0; i < source.length && questions.length < targetTotal; i++) {
+          const idx = (quizSeqStartIndex + i) % source.length;
+          const question = buildSynAntQuestionForWord(source[idx], questionPool, rel);
+          if (question) questions.push(question);
+        }
+      } else {
+        quizSeqStartIndex = 0;
+        for (let i = 0; i < source.length && questions.length < targetTotal; i++) {
+          const question = buildSynAntQuestionForWord(source[i], questionPool, rel);
+          if (question) questions.push(question);
+        }
+      }
+
+      return questions;
     }
 
     function renderQuizWrongReview() {
@@ -1199,22 +1375,31 @@
 
     function startQuiz() {
       clearQuizRevealTimers();
+      const type = quizTypeSel.value;
       const pool = getQuizPool();
-      if (!pool.length) {
+      const synAntMode = type === "synonym" || type === "antonym";
+      const synAntPool = synAntMode ? getSynAntQuestionPool(pool, type) : pool;
+      if (!synAntPool.length) {
         const level = quizLevelSel.value;
         const wrongMode = quizUseWrongOnly;
         const savedMode = quizUseSavedOnly;
-        const emptyPrompt = wrongMode
+        const emptyPrompt = synAntMode
+          ? `No ${type} data available for this selection.`
+          : wrongMode
           ? "No wrong attempts available for this level."
           : savedMode
           ? "No saved cards to quiz right now."
           : `No words found for ${level} level.`;
-        const emptyWordText = wrongMode
+        const emptyWordText = synAntMode
+          ? "Pick another level or switch mode."
+          : wrongMode
           ? "Answer some questions wrong first, then retry here."
           : savedMode
           ? "Save cards in Dictionary, then try again."
           : "Choose another level or select All Levels.";
-        const emptyTip = wrongMode
+        const emptyTip = synAntMode
+          ? `Tip: add more ${type}s in word data or choose another quiz mode.`
+          : wrongMode
           ? "Tip: set level to All or answer new quiz questions."
           : savedMode
           ? "Tip: click Save on cards you want to practice in quiz."
@@ -1224,6 +1409,8 @@
         quizState.current = 0;
         quizState.score = 0;
         quizState.answered = false;
+        quizMaxAnsweredIndex = -1;
+        quizFrontierIndex = 0;
         quizTotalDisplay.textContent = "0";
         quizResults.classList.remove("visible");
         quizQuestion.style.display = "block";
@@ -1242,13 +1429,43 @@
         renderQuizWrongReview();
         return;
       }
-      const limit = getQuizQuestionLimit(pool.length);
-      quizState.questions = quizSequentialMode
-        ? buildSequentialQuizQuestions(pool, limit, quizLevelSel.value)
-        : buildQuizQuestions(pool, limit);
+      const limit = getQuizQuestionLimit(synAntPool.length);
+      if (synAntMode) {
+        quizState.questions = buildSynAntQuizQuestions(synAntPool, limit, type, quizSequentialMode, quizLevelSel.value);
+      } else {
+        quizState.questions = quizSequentialMode
+          ? buildSequentialQuizQuestions(pool, limit, quizLevelSel.value)
+          : buildQuizQuestions(pool, limit);
+      }
+      if (!quizState.questions.length) {
+        quizState.current = 0;
+        quizState.score = 0;
+        quizState.answered = false;
+        quizMaxAnsweredIndex = -1;
+        quizFrontierIndex = 0;
+        quizTotalDisplay.textContent = "0";
+        quizResults.classList.remove("visible");
+        quizQuestion.style.display = "block";
+        quizMeta.textContent = "No questions available";
+        quizScoreBadge.textContent = "Score: 0";
+        quizProgressFill.style.width = "0%";
+        quizPrompt.textContent = "Could not build quiz options for this mode.";
+        quizWordDisplay.textContent = "Try another level or quiz mode.";
+        quizPosDisplay.textContent = "POS: -";
+        quizLevelDisplay.textContent = `Level: ${quizLevelSel.value}`;
+        quizSpeakBtn.dataset.word = "";
+        quizSpeakBtn.disabled = true;
+        quizOptions.innerHTML = "";
+        quizFeedback.textContent = "Tip: switch mode or level, then restart quiz.";
+        quizFeedback.className = "quiz-feedback";
+        renderQuizWrongReview();
+        return;
+      }
       quizState.current = 0;
       quizState.score = 0;
       quizState.answered = false;
+      quizMaxAnsweredIndex = -1;
+      quizFrontierIndex = 0;
       quizTotalDisplay.textContent = String(quizState.questions.length);
       quizResults.classList.remove("visible");
       quizQuestion.style.display = "block";
@@ -1256,14 +1473,16 @@
       renderQuizQuestion();
     }
 
-    function getQuizOptionHtml(opt, isWord2Meaning) {
+    function getQuizOptionHtml(opt, type) {
+      const isWord2Meaning = type === "word2meaning";
+      const isSynAnt = type === "synonym" || type === "antonym";
       const mainText = isWord2Meaning ? opt.english_meaning : opt.word;
       const pronunciationText = String(mainText || "").trim();
       const gujaratiText = String(opt.gujarati || "").trim();
       const speakControl = pronunciationText
         ? `<span class="quiz-opt-speak" data-speak="${escapeHtml(pronunciationText)}" title="Pronounce this option" aria-label="Pronounce this option">🔊</span>`
         : "";
-      const gujaratiLine = isWord2Meaning && gujaratiText
+      const gujaratiLine = (isWord2Meaning && !isSynAnt && gujaratiText)
         ? `<span class="quiz-opt-gujarati">${escapeHtml(gujaratiText)}</span>`
         : "";
 
@@ -1281,15 +1500,55 @@
         clearTimeout(quizAutoNextTimerId);
         quizAutoNextTimerId = null;
       }
+      if (quizCountdownIntervalId) {
+        clearInterval(quizCountdownIntervalId);
+        quizCountdownIntervalId = null;
+      }
+      if (quizCountdown) quizCountdown.hidden = true;
     }
 
-    function renderQuizOptions(question, isWord2Meaning) {
+    function startQuizCountdown() {
+      let count = 5;
+      if (quizCountdown) {
+        quizCountdown.hidden = false;
+        quizCountdownNum.textContent = String(count);
+      }
+      quizCountdownIntervalId = setInterval(() => {
+        count--;
+        if (count <= 0) {
+          clearInterval(quizCountdownIntervalId);
+          quizCountdownIntervalId = null;
+          if (quizCountdown) quizCountdown.hidden = true;
+          if (quizState.answered) advanceQuiz();
+        } else {
+          if (quizCountdownNum) quizCountdownNum.textContent = String(count);
+        }
+      }, 1000);
+    }
+
+    function updateQuizNavButtons() {
+      if (quizPrevQuestionBtn) {
+        quizPrevQuestionBtn.hidden = quizState.current <= 0;
+      }
+      if (quizNextQuestionBtn) {
+        quizNextQuestionBtn.hidden = quizState.current >= quizFrontierIndex;
+      }
+    }
+
+    function prevQuestion() {
+      if (quizState.current <= 0) return;
+      clearQuizRevealTimers();
+      quizState.current--;
+      renderQuizQuestion();
+    }
+
+    function renderQuizOptions(question, type) {
       quizOptions.innerHTML = "";
       question.options.forEach((opt) => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "quiz-opt";
-        btn.innerHTML = getQuizOptionHtml(opt, isWord2Meaning);
+        btn.innerHTML = getQuizOptionHtml(opt, type);
         btn.dataset.id = opt._id;
         btn.addEventListener("click", (event) => {
           const target = event.target;
@@ -1302,7 +1561,7 @@
               return;
             }
           }
-          handleQuizAnswer(btn, question.correct);
+          handleQuizAnswer(btn, question);
         });
         quizOptions.appendChild(btn);
       });
@@ -1314,6 +1573,7 @@
       const q = questions[current];
       const type = quizTypeSel.value;
       const isWord2Meaning = type === "word2meaning";
+      const isSynAnt = type === "synonym" || type === "antonym";
 
       if (quizSequentialMode) {
         const pool = getQuizPool();
@@ -1331,6 +1591,10 @@
       if (isWord2Meaning) {
         quizPrompt.textContent = "What does this word mean?";
         quizWordDisplay.textContent = q.correct.word;
+      } else if (isSynAnt) {
+        const relationLabel = q.relation === "antonym" ? "antonym" : "synonym";
+        quizPrompt.textContent = `Choose the ${relationLabel} of this word.`;
+        quizWordDisplay.textContent = q.correct.word;
       } else {
         quizPrompt.textContent = "Which word matches this meaning?";
         quizWordDisplay.textContent = q.correct.english_meaning;
@@ -1339,22 +1603,39 @@
       quizLevelDisplay.textContent = `Level: ${q.correct.level || "-"}`;
 
       quizSpeakBtn.dataset.word = q.correct.word || "";
-      quizSpeakBtn.disabled = !isWord2Meaning;
-      quizSpeakBtn.title = isWord2Meaning
-        ? "Pronounce this word"
-        : "Pronunciation is available in Word -> Meaning mode";
+      quizSpeakBtn.disabled = false;
+      quizSpeakBtn.title = "Pronounce this word";
 
       quizOptions.innerHTML = "";
-      renderQuizOptions(q, isWord2Meaning);
+      renderQuizOptions(q, type);
+
+      if (q.result) {
+        quizState.answered = true;
+        quizOptions.querySelectorAll(".quiz-opt").forEach(btn => {
+          btn.disabled = true;
+          if (btn.dataset.id === q.result.correctOptionId) {
+            btn.classList.add(q.result.wasCorrect ? "correct" : "reveal-correct");
+          }
+          if (!q.result.wasCorrect && btn.dataset.id === q.result.selectedId) {
+            btn.classList.add("wrong");
+          }
+        });
+        quizFeedback.textContent = q.result.feedbackText;
+        quizFeedback.className = q.result.feedbackClass;
+      }
+      updateQuizNavButtons();
     }
 
-    function handleQuizAnswer(selectedBtn, correct) {
+    function handleQuizAnswer(selectedBtn, question) {
       if (quizState.answered) return;
       if (!quizOptions.children.length) return;
       quizState.answered = true;
 
       const type = quizTypeSel.value;
-      const isCorrect = selectedBtn.dataset.id === correct._id;
+      const correct = question.correct;
+      const isSynAnt = type === "synonym" || type === "antonym";
+      const correctOption = isSynAnt ? question.correctOption : correct;
+      const isCorrect = selectedBtn.dataset.id === correctOption._id;
       const currentQuestion = quizState.questions[quizState.current];
       const selectedOption = currentQuestion && Array.isArray(currentQuestion.options)
         ? currentQuestion.options.find((opt) => opt._id === selectedBtn.dataset.id) || null
@@ -1363,7 +1644,7 @@
       // disable all options and highlight
       quizOptions.querySelectorAll(".quiz-opt").forEach(btn => {
         btn.disabled = true;
-        if (btn.dataset.id === correct._id) {
+        if (btn.dataset.id === correctOption._id) {
           btn.classList.add(isCorrect ? "correct" : "reveal-correct");
         }
       });
@@ -1376,20 +1657,36 @@
         quizFeedback.className = "quiz-feedback correct";
       } else {
         selectedBtn.classList.add("wrong");
-        const correctText = type === "word2meaning" ? correct.english_meaning : correct.word;
+        const correctText = type === "word2meaning"
+          ? correct.english_meaning
+          : isSynAnt
+          ? correctOption.word
+          : correct.word;
         quizFeedback.textContent = `Wrong! The correct answer is: "${correctText}"`;
         quizFeedback.className = "quiz-feedback wrong";
         addWrongAnswerToBank({
           prompt: type === "word2meaning"
             ? `Word: ${correct.word || "-"}`
+            : isSynAnt
+            ? `${question.relation === "antonym" ? "Antonym" : "Synonym"} of: ${correct.word || "-"}`
             : `Meaning: ${correct.english_meaning || "-"}`,
           selectedText: formatQuizOptionText(selectedOption, type),
-          correctText: formatQuizOptionText(correct, type),
+          correctText: formatQuizOptionText(correctOption, type),
           correctItemId: correct._id
         });
       }
 
       quizScoreBadge.textContent = `Score: ${quizState.score}`;
+
+      question.result = {
+        selectedId: selectedBtn.dataset.id,
+        correctOptionId: correctOption._id,
+        wasCorrect: isCorrect,
+        feedbackText: quizFeedback.textContent,
+        feedbackClass: quizFeedback.className
+      };
+      quizMaxAnsweredIndex = Math.max(quizMaxAnsweredIndex, quizState.current);
+      updateQuizNavButtons();
 
       if (quizSequentialMode) {
         const pool = getQuizPool();
@@ -1398,16 +1695,13 @@
         }
       }
 
-      quizAutoNextTimerId = setTimeout(() => {
-        if (quizState.answered) {
-          advanceQuiz();
-        }
-      }, QUIZ_AUTO_NEXT_DELAY_MS);
+      startQuizCountdown();
     }
 
     function advanceQuiz() {
       if (!quizState.answered) return;
       quizState.current++;
+      quizFrontierIndex = Math.max(quizFrontierIndex, quizState.current);
       if (quizState.current >= quizState.questions.length) {
         showQuizResults();
       } else {
@@ -1455,10 +1749,18 @@
 
     function updateSeqBtnState() {
       const levelIsAll = quizLevelSel.value === "ALL";
-      quizSeqBtn.disabled = levelIsAll;
+      const isSynAntMode = quizTypeSel.value === "synonym" || quizTypeSel.value === "antonym";
+      quizSeqBtn.disabled = levelIsAll || isSynAntMode;
       quizSeqBtn.title = "";
       if (levelIsAll) {
-        quizSeqBtn.textContent = "Sequential: pick a level ↑";
+        quizSeqBtn.textContent = "Sequential: pick a level up";
+        if (quizSequentialMode) {
+          quizSequentialMode = false;
+          quizSeqBtn.classList.remove("active");
+          quizLimitSel.disabled = false;
+        }
+      } else if (isSynAntMode) {
+        quizSeqBtn.textContent = "Sequential: unavailable in Syn/Ant mode";
         if (quizSequentialMode) {
           quizSequentialMode = false;
           quizSeqBtn.classList.remove("active");
@@ -1475,7 +1777,11 @@
       updateSeqBtnState();
       startQuiz();
     });
-    quizTypeSel.addEventListener("change", startQuiz);
+    quizTypeSel.addEventListener("change", () => {
+      updateSynAntPracticeButtons();
+      updateSeqBtnState();
+      startQuiz();
+    });
     quizLimitSel.addEventListener("change", () => {
       normalizeQuizLimitInput();
       startQuiz();
@@ -1494,8 +1800,39 @@
       setQuizWrongMode(!quizUseWrongOnly);
       startQuiz();
     });
+    if (quizSynPracticeBtn) {
+      quizSynPracticeBtn.addEventListener("click", () => {
+        quizTypeSel.value = quizTypeSel.value === "synonym" ? "word2meaning" : "synonym";
+        updateSynAntPracticeButtons();
+        updateSeqBtnState();
+        startQuiz();
+      });
+    }
+    if (quizAntPracticeBtn) {
+      quizAntPracticeBtn.addEventListener("click", () => {
+        quizTypeSel.value = quizTypeSel.value === "antonym" ? "word2meaning" : "antonym";
+        updateSynAntPracticeButtons();
+        updateSeqBtnState();
+        startQuiz();
+      });
+    }
     if (quizReviewBtn) {
       quizReviewBtn.addEventListener("click", reviewWrongAnswers);
+    }
+    if (quizBackBtn) {
+      quizBackBtn.addEventListener("click", () => switchMode("dictionary"));
+    }
+    if (quizQuestionBackBtn) {
+      quizQuestionBackBtn.addEventListener("click", () => switchMode("dictionary"));
+    }
+    if (quizPrevQuestionBtn) {
+      quizPrevQuestionBtn.addEventListener("click", prevQuestion);
+    }
+    if (quizNextQuestionBtn) {
+      quizNextQuestionBtn.addEventListener("click", () => {
+        clearQuizRevealTimers();
+        advanceQuiz();
+      });
     }
     quizRestartBtn.addEventListener("click", startQuiz);
     quizPlayAgainBtn.addEventListener("click", startQuiz);
@@ -1505,6 +1842,7 @@
     setQuizSavedMode(false);
     setQuizWrongMode(false);
     updateQuizWrongBankButton();
+    updateSynAntPracticeButtons();
     updateSeqBtnState();
 
     // Spelling Logic
@@ -1531,6 +1869,7 @@
     const spellResults = document.getElementById("spellResults");
     const spellLevelSel = document.getElementById("spellLevel");
     const spellRestartBtn = document.getElementById("spellRestartBtn");
+    const spellBackBtn = document.getElementById("spellBackBtn");
     const spellPlayAgainBtn = document.getElementById("spellPlayAgainBtn");
     const spellResultEmoji = document.getElementById("spellResultEmoji");
     const spellFinalScore = document.getElementById("spellFinalScore");
@@ -1550,6 +1889,37 @@
     };
     let activeSpellTiles = [];
     let spellAutoSubmitTimerId = null;
+    let spellCountdownIntervalId = null;
+    const spellCountdown = document.getElementById("spellCountdown");
+    const spellCountdownNum = document.getElementById("spellCountdownNum");
+
+    function clearSpellCountdown() {
+      if (spellCountdownIntervalId) {
+        clearInterval(spellCountdownIntervalId);
+        spellCountdownIntervalId = null;
+      }
+      if (spellCountdown) spellCountdown.hidden = true;
+    }
+
+    function startSpellCountdown() {
+      clearSpellCountdown();
+      let count = 5;
+      if (spellCountdown) {
+        spellCountdown.hidden = false;
+        spellCountdownNum.textContent = String(count);
+      }
+      spellCountdownIntervalId = setInterval(() => {
+        count--;
+        if (count <= 0) {
+          clearInterval(spellCountdownIntervalId);
+          spellCountdownIntervalId = null;
+          if (spellCountdown) spellCountdown.hidden = true;
+          if (spellSt.answered) advanceSpell();
+        } else {
+          if (spellCountdownNum) spellCountdownNum.textContent = String(count);
+        }
+      }, 1000);
+    }
 
     function clearSpellAutoSubmitTimer() {
       if (spellAutoSubmitTimerId) {
@@ -1586,6 +1956,7 @@
 
     function renderSpellQuestion() {
       clearSpellAutoSubmitTimer();
+      clearSpellCountdown();
       const w = spellSt.words[spellSt.current];
       spellSt.answered = false;
       spellSt.hintUsed = false;
@@ -1697,6 +2068,7 @@
         }
       }
       spellScoreBadge.textContent = `Score: ${Math.round(spellSt.score)}`;
+      startSpellCountdown();
     }
 
     function useSpellHint() {
@@ -1742,11 +2114,13 @@
       }
       spellFeedback.textContent = `Skipped! The word was: "${w.word}"`;
       spellFeedback.className = "spell-feedback wrong";
+      startSpellCountdown();
     }
 
     function advanceSpell() {
       if (!spellSt.answered) return;
       clearSpellAutoSubmitTimer();
+      clearSpellCountdown();
       spellSt.current++;
       if (spellSt.current >= spellSt.words.length) {
         showSpellResults();
@@ -1804,6 +2178,9 @@
     spellSkipBtn.addEventListener("click", skipSpell);
     spellNextBtn.addEventListener("click", advanceSpell);
     spellRestartBtn.addEventListener("click", startSpell);
+    if (spellBackBtn) {
+      spellBackBtn.addEventListener("click", () => switchMode("dictionary"));
+    }
     spellPlayAgainBtn.addEventListener("click", startSpell);
     spellSpeakBtn.addEventListener("click", () => {
       speakWord(spellSpeakBtn.dataset.word || "");
@@ -1862,3 +2239,7 @@
 
     initializeDarkMode();
     loadWords();
+
+
+
+
