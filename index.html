@@ -10,6 +10,17 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EY23Q0HYZR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EY23Q0HYZR');
+</script>
 </head>
 
 <body>
@@ -67,27 +78,41 @@
       </div>
 
       <div class="quiz-settings">
-        <label for="quizLevel">Level:</label>
-        <select id="quizLevel" class="quiz-select">
-          <option value="ALL">All Levels</option>
-          <option value="A1">A1</option>
-          <option value="A2">A2</option>
-          <option value="B1">B1</option>
-          <option value="B2">B2</option>
-          <option value="C1">C1</option>
-          <option value="Cambridge">Cambridge</option>
-        </select>
-        <label for="quizType">Mode:</label>
-        <select id="quizType" class="quiz-select">
-          <option value="word2meaning">Word -> Meaning</option>
-          <option value="meaning2word">Meaning -> Word</option>
-        </select>
-        <label for="quizLimit">Questions:</label>
-        <input id="quizLimit" class="quiz-select" type="number" min="1" step="1" value="10" inputmode="numeric">
-        <button class="quiz-btn quiz-btn-ghost" id="quizSavedBtn" type="button">Saved Cards: Off (0)</button>
-        <button class="quiz-btn quiz-btn-ghost" id="quizSeqBtn" type="button">Sequential: Off</button>
-        <button class="quiz-btn quiz-btn-ghost" id="quizWrongBankBtn" type="button">Wrong Attempts: 0</button>
-        <button class="quiz-btn quiz-btn-ghost" id="quizRestartBtn" type="button">Restart</button>
+        <div class="quiz-config-row">
+          <div class="quiz-config-group">
+            <label for="quizLevel">Level</label>
+            <select id="quizLevel" class="quiz-select">
+              <option value="ALL">All Levels</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2</option>
+              <option value="C1">C1</option>
+              <option value="Cambridge">Cambridge</option>
+            </select>
+          </div>
+          <div class="quiz-config-group">
+            <label for="quizType">Mode</label>
+            <select id="quizType" class="quiz-select">
+              <option value="word2meaning">Word → Meaning</option>
+              <option value="meaning2word">Meaning → Word</option>
+              <option value="synonym">Synonym Practice</option>
+              <option value="antonym">Antonym Practice</option>
+            </select>
+          </div>
+          <div class="quiz-config-group">
+            <label for="quizLimit">Questions</label>
+            <input id="quizLimit" class="quiz-select quiz-limit-input" type="number" min="1" step="1" value="10" inputmode="numeric">
+          </div>
+          <button class="quiz-btn quiz-btn-primary quiz-restart-inline" id="quizRestartBtn" type="button">Restart</button>
+        </div>
+        <div class="quiz-toggle-row">
+          <button class="quiz-btn quiz-btn-ghost" id="quizSavedBtn" type="button">Saved Cards: Off (0)</button>
+          <button class="quiz-btn quiz-btn-ghost" id="quizSeqBtn" type="button">Sequential: Off</button>
+          <button class="quiz-btn quiz-btn-ghost" id="quizWrongBankBtn" type="button">Wrong Attempts: 0</button>
+          <button class="quiz-btn quiz-btn-ghost" id="quizSynPracticeBtn" type="button">Synonyms Practice</button>
+          <button class="quiz-btn quiz-btn-ghost" id="quizAntPracticeBtn" type="button">Antonyms Practice</button>
+        </div>
       </div>
 
       <!-- Question view -->
@@ -97,6 +122,9 @@
         </div>
 
         <div class="quiz-word-card">
+          <div class="quiz-countdown" id="quizCountdown" hidden>
+            Next in <span id="quizCountdownNum">5</span>s
+          </div>
           <p class="quiz-prompt" id="quizPrompt">What does this word mean?</p>
           <div class="quiz-word" id="quizWordDisplay"></div>
           <div class="quiz-word-meta">
@@ -111,6 +139,11 @@
         <div class="quiz-options" id="quizOptions"></div>
 
         <div class="quiz-feedback" id="quizFeedback"></div>
+
+        <div class="quiz-actions">
+          <button class="quiz-btn quiz-btn-ghost" id="quizPrevQuestionBtn" type="button" hidden>← Prev</button>
+          <button class="quiz-btn quiz-btn-ghost" id="quizNextQuestionBtn" type="button" hidden>Next →</button>
+        </div>
 
       </div>
 
@@ -158,6 +191,7 @@
           <option value="Cambridge">Cambridge</option>
         </select>
         <button class="quiz-btn quiz-btn-ghost" id="spellRestartBtn" type="button">Restart</button>
+        <button class="quiz-btn quiz-btn-ghost" id="spellBackBtn" type="button">Back</button>
       </div>
 
       <!-- Question view -->
@@ -189,6 +223,9 @@
 
         <div class="spell-hint-used" id="spellHintUsed"></div>
         <div class="spell-feedback" id="spellFeedback"></div>
+        <div class="quiz-countdown" id="spellCountdown" hidden>
+          Next in <span id="spellCountdownNum">5</span>s
+        </div>
 
         <div class="spell-actions">
           <button class="quiz-btn spell-btn-hint" id="spellHintBtn" type="button">Hint (-1pt)</button>
@@ -223,6 +260,7 @@
     </section>
   </main>
   <script src="app.js"></script>
+
 </body>
 
 </html>
