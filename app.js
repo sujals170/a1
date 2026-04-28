@@ -1653,7 +1653,9 @@
         selectedBtn.classList.add("correct");
         quizState.score++;
         removeWrongAnswerFromBank(correct._id);
-        quizFeedback.textContent = "Correct! Well done.";
+        const correctEngMeaning = isSynAnt && correctOption.english_meaning ? ` • ${correctOption.english_meaning}` : correct.english_meaning ? ` • ${correct.english_meaning}` : "";
+        const correctGujarati = isSynAnt && correctOption.gujarati ? ` • ${correctOption.gujarati}` : correct.gujarati ? ` • ${correct.gujarati}` : "";
+        quizFeedback.textContent = `Correct! Well done.${correctEngMeaning}${correctGujarati}`;
         quizFeedback.className = "quiz-feedback correct";
       } else {
         selectedBtn.classList.add("wrong");
@@ -1662,7 +1664,9 @@
           : isSynAnt
           ? correctOption.word
           : correct.word;
-        quizFeedback.textContent = `Wrong! The correct answer is: "${correctText}"`;
+        const engMeaning = isSynAnt && correctOption.english_meaning ? ` • ${correctOption.english_meaning}` : correct.english_meaning ? ` • ${correct.english_meaning}` : "";
+        const gujarati = isSynAnt && correctOption.gujarati ? ` • ${correctOption.gujarati}` : correct.gujarati ? ` • ${correct.gujarati}` : "";
+        quizFeedback.textContent = `Wrong! The correct answer is: "${correctText}"${engMeaning}${gujarati}`;
         quizFeedback.className = "quiz-feedback wrong";
         addWrongAnswerToBank({
           prompt: type === "word2meaning"
