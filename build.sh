@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Generates config.js from Render environment variables.
+# Injects Firebase config as an inline script into index.html
 set -e
 
-cat > config.js << EOF
+cat > /tmp/firebase_config.js << EOF
 window.APP_CONFIG = {
   firebase: {
     apiKey: "${apiKey:-}",
@@ -16,4 +16,12 @@ window.APP_CONFIG = {
 };
 EOF
 
-echo "config.js generated from environment variables"
+python3 -c "
+content = open('index.html').read()
+config = open('/tmp/firebase_config.js').read()
+inline = '<script>' + config + '</script>'
+content = content.replace('<!-- FIREBASE_CONFIG -->', inline)
+open('index.html', 'w').write(content)
+"
+
+echo "Firebase config injected into index.html"
