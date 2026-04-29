@@ -36,6 +36,10 @@
       <div id="streakBanner" class="streak-banner" hidden>
         <span id="streakText">Day 1 streak!</span>
       </div>
+      <div id="visitorBadge" class="visitor-badge" hidden>
+        <span class="visitor-dot"></span>
+        <span id="visitorCount">1</span> online now
+      </div>
       <div id="stats" class="stats"></div>
       <div class="mode-tabs">
         <button class="mode-tab active" id="tabDictionary" type="button">Dictionary</button>
@@ -259,6 +263,12 @@
       </div>
     </section>
   </main>
+  <!-- Firebase SDK (loaded only if config.js provides credentials) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <!-- App config: gitignored locally, generated from env vars on Render -->
+  <script>window.APP_CONFIG = window.APP_CONFIG || {};</script>
+  <script src="config.js" onerror="void 0"></script>
   <script src="app.js"></script>
 
 </body>
