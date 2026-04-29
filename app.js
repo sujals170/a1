@@ -2214,6 +2214,35 @@
     updateSavedToggle();
     initStreak();
 
+    // Live visitor counter — requires Firebase config in config.js
+    (function initLiveVisitors() {
+      try {
+        const cfg = window.APP_CONFIG && window.APP_CONFIG.firebase;
+        if (!cfg || !cfg.apiKey || !cfg.databaseURL) return;
+        if (typeof firebase === "undefined") return;
+
+        const app = firebase.apps.length ? firebase.app() : firebase.initializeApp(cfg);
+        const db = firebase.database(app);
+        const sessionId = Math.random().toString(36).slice(2) + Date.now().toString(36);
+        const myRef = db.ref("visitors/" + sessionId);
+
+        db.ref(".info/connected").on("value", (snap) => {
+          if (!snap.val()) return;
+          myRef.onDisconnect().remove();
+          myRef.set({ ts: firebase.database.ServerValue.TIMESTAMP });
+        });
+
+        db.ref("visitors").on("value", (snap) => {
+          const count = snap.numChildren();
+          const badge = document.getElementById("visitorBadge");
+          const countEl = document.getElementById("visitorCount");
+          if (!badge || !countEl) return;
+          countEl.textContent = count;
+          badge.removeAttribute("hidden");
+        });
+      } catch (_) {}
+    })();
+
     // Dark Mode Initialization and Toggle
     function initializeDarkMode() {
       const savedTheme = localStorage.getItem(DARK_MODE_KEY);
