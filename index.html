@@ -36,11 +36,13 @@
       <div id="streakBanner" class="streak-banner" hidden>
         <span id="streakText">Day 1 streak!</span>
       </div>
+     
       <div id="stats" class="stats"></div>
       <div class="mode-tabs">
         <button class="mode-tab active" id="tabDictionary" type="button">Dictionary</button>
         <button class="mode-tab" id="tabQuiz" type="button">Quiz Mode</button>
-        <button class="mode-tab" id="tabSpell" type="button">Spelling</button>
+        <button class="mode-tab" id="tabRoom" type="button">Multiplayer</button>
+        <button class="mode-tab" id="tabPlan" type="button">Personalized Plan</button>
       </div>
     </section>
 
@@ -68,6 +70,34 @@
       </div>
 
       <div id="status"></div>
+    </section>
+
+    <section class="panel study-plan-panel" id="studyPlanSection">
+      <div class="study-plan-card" id="studyPlanCard">
+        <p class="filter-title">Personalized Plan</p>
+        <div class="study-plan-grid">
+          <div class="quiz-config-group">
+            <label for="studyPlanName">Your Name</label>
+            <input id="studyPlanName" class="quiz-select" type="text" maxlength="24" placeholder="Enter your name">
+          </div>
+          <div class="quiz-config-group">
+            <label for="studyPlanLevel">Target Level</label>
+            <select id="studyPlanLevel" class="quiz-select">
+              <option value="ALL">All Levels</option>
+            </select>
+          </div>
+          <div class="quiz-config-group">
+            <label for="studyPlanDays">Days to Finish</label>
+            <input id="studyPlanDays" class="quiz-select quiz-limit-input" type="number" min="1" step="1" value="30" inputmode="numeric">
+          </div>
+          <div class="study-plan-action-wrap">
+            <button id="studyPlanBtn" class="quiz-btn quiz-btn-primary" type="button">Make My Plan</button>
+          </div>
+        </div>
+        <div id="studyPlanOutput" class="study-plan-output" hidden></div>
+        <div id="studyPlanBadges" class="study-plan-badges"></div>
+        <div id="studyPlanCards" class="study-plan-cards"></div>
+      </div>
     </section>
 
     <!-- Quiz Panel -->
@@ -122,9 +152,7 @@
         </div>
 
         <div class="quiz-word-card">
-          <div class="quiz-countdown" id="quizCountdown" hidden>
-            <span id="quizCountdownNum">5</span>s
-          </div>
+         
           <p class="quiz-prompt" id="quizPrompt">What does this word mean?</p>
           <div class="quiz-word" id="quizWordDisplay"></div>
           <div class="quiz-word-meta">
@@ -146,6 +174,11 @@
         </div>
 
       </div>
+
+        <div class="quiz-room-results" id="quizRoomLiveResults" hidden>
+          <h3>Live Scoreboard</h3>
+          <div class="quiz-room-results-list" id="quizRoomLiveResultsList"></div>
+        </div>
 
       <!-- Results view -->
       <div class="quiz-results" id="quizResults">
@@ -169,93 +202,92 @@
         </div>
         <div class="quiz-actions">
           <button class="quiz-btn quiz-btn-primary" id="quizPlayAgainBtn" type="button">Play Again</button>
+          <button class="quiz-room-leave-btn" id="quizResultsLeaveRoomBtn" type="button" hidden>Leave Room</button>
         </div>
       </div>
     </section>
 
-    <!-- Spelling Panel -->
-    <section class="spell-panel" id="spellPanel">
-      <div class="quiz-header">
-        <span class="quiz-meta" id="spellMeta">Word 1 of 10</span>
-        <span class="quiz-score-badge" id="spellScoreBadge">Score: 0</span>
-      </div>
+    <!-- Multiplayer Panel -->
+    <section class="room-panel" id="roomPanel">
+      <div class="room-panel-inner">
 
-      <div class="quiz-settings">
-        <label for="spellLevel">Level:</label>
-        <select id="spellLevel" class="quiz-select">
-          <option value="ALL">All Levels</option>
-          <option value="A1">A1</option>
-          <option value="A2">A2</option>
-          <option value="B1">B1</option>
-          <option value="B2">B2</option>
-          <option value="Cambridge">Cambridge</option>
-        </select>
-        <button class="quiz-btn quiz-btn-ghost" id="spellRestartBtn" type="button">Restart</button>
-        <button class="quiz-btn quiz-btn-ghost" id="spellBackBtn" type="button">Back</button>
-      </div>
-
-      <!-- Question view -->
-      <div id="spellQuestion">
-        <div class="quiz-progress-bar">
-          <div class="quiz-progress-fill" id="spellProgressFill" style="width:0%"></div>
-        </div>
-
-        <div class="spell-clue-card">
-          <p class="spell-clue-label">Spell this word</p>
-          <p class="spell-clue-meaning" id="spellClueMeaning"></p>
-          <p class="spell-clue-example" id="spellClueExample"></p>
-          <div class="spell-clue-meta">
-            <span class="spell-chip level" id="spellClueLevel"></span>
-            <span class="spell-chip" id="spellCluePos"></span>
-            <span class="spell-chip" id="spellClueLetters"></span>
+        <div class="quiz-room-card">
+          <div class="quiz-room-head">
+            <div class="quiz-room-title-group">
+              <span class="quiz-room-pulse-dot"></span>
+              <div>
+                <p class="quiz-room-label">Multiplayer Room</p>
+                <p class="quiz-room-help">Challenge a friend — same quiz, live scores.</p>
+              </div>
+            </div>
+            <span class="quiz-room-badge" id="quizRoomBadge">Solo Mode</span>
           </div>
-          <button id="spellSpeakBtn" class="speak-btn" type="button">Pronounce</button>
-        </div>
 
-        <div class="spell-tiles" id="spellTiles"></div>
-        <p class="spell-count-hint" id="spellCountHint"></p>
-
-        <div class="spell-input-row">
-          <input id="spellInput" type="text" placeholder="Type the word here..." autocomplete="off" autocorrect="off"
-     
-          spellcheck="false">
-        </div>
-
-        <div class="spell-hint-used" id="spellHintUsed"></div>
-        <div class="spell-feedback" id="spellFeedback"></div>
-        <div class="quiz-countdown" id="spellCountdown" hidden>
-          Next in <span id="spellCountdownNum">5</span>s
-        </div>
-
-        <div class="spell-actions">
-          <button class="quiz-btn spell-btn-hint" id="spellHintBtn" type="button">Hint (-1pt)</button>
-          <button class="quiz-btn spell-btn-skip" id="spellSkipBtn" type="button">Skip -></button>
-          <button class="quiz-btn spell-btn-next" id="spellNextBtn" type="button" disabled>Next -></button>
-        </div>
-      </div>
-
-      <!-- Spelling Results -->
-      <div class="quiz-results" id="spellResults">
-        <div class="quiz-result-emoji" id="spellResultEmoji"></div>
-        <h2 class="quiz-result-title">Spelling Complete!</h2>
-        <p class="quiz-result-score">You scored <strong id="spellFinalScore"></strong> out of 10</p>
-        <div class="quiz-result-bars">
-          <div class="quiz-result-stat good">
-            <span class="val" id="spellCorrectCount">0</span>
-            <span class="lbl">Correct</span>
+          <div class="quiz-room-arena">
+            <div class="quiz-room-side">
+              <p class="quiz-room-side-label">Host a Game</p>
+              <div class="quiz-config-group">
+                <label for="quizPlayerName">Your Name</label>
+                <input id="quizPlayerName" class="quiz-select quiz-room-input" type="text" maxlength="24" placeholder="Enter your name">
+              </div>
+              <div class="room-create-form" id="roomCreateForm">
+                <div class="quiz-config-group">
+                  <label for="roomCreateLevel">Level</label>
+                  <select id="roomCreateLevel" class="quiz-select quiz-room-input"></select>
+                </div>
+                <div class="quiz-config-group">
+                  <label for="roomCreateMode">Mode</label>
+                  <select id="roomCreateMode" class="quiz-select quiz-room-input"></select>
+                </div>
+                <div class="quiz-config-group">
+                  <label for="roomCreateCount">Question Count</label>
+                  <input id="roomCreateCount" class="quiz-select quiz-room-input" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g. 50">
+                </div>
+                <div class="room-create-form-actions">
+                  <button class="quiz-btn quiz-btn-primary" id="roomCreateConfirmBtn" type="button">Create Room</button>
+                </div>
+              </div>
+            </div>
+            <div class="quiz-room-or"><span>or</span></div>
+            <div class="quiz-room-side">
+              <p class="quiz-room-side-label">Join a Game</p>
+              <div class="quiz-config-group">
+                <label for="quizJoinPlayerName">Your Name</label>
+                <input id="quizJoinPlayerName" class="quiz-select quiz-room-input" type="text" maxlength="24" placeholder="Enter your name">
+              </div>
+              <div class="quiz-config-group">
+                <label for="quizRoomCodeInput">Room Code</label>
+                <input id="quizRoomCodeInput" class="quiz-select quiz-room-input quiz-room-code-input" type="text" maxlength="8" placeholder="e.g. ABC123">
+              </div>
+              <button class="quiz-btn quiz-room-join-btn" id="quizJoinRoomBtn" type="button">Join Room</button>
+            </div>
           </div>
-          <div class="quiz-result-stat bad">
-            <span class="val" id="spellWrongCount">0</span>
-            <span class="lbl">Wrong</span>
+
+          <div class="quiz-room-bar">
+            <div class="quiz-room-status-row">
+              <span class="quiz-room-status-dot"></span>
+              <div class="quiz-room-status" id="quizRoomStatus">Room features are ready when Firebase is connected.</div>
+            </div>
+            <div class="quiz-room-bar-btns">
+              <button class="quiz-btn quiz-btn-ghost quiz-room-sm-btn" id="quizCopyRoomBtn" type="button" disabled>Copy Code</button>
+              <button class="quiz-room-leave-btn" id="quizLeaveRoomBtn" type="button" disabled>Leave Room</button>
+            </div>
           </div>
-          <div class="quiz-result-stat">
-            <span class="val" id="spellAccuracy">0%</span>
-            <span class="lbl">Accuracy</span>
-          </div>
+
+          <div class="quiz-room-players" id="quizRoomPlayers"></div>
         </div>
-        <div class="quiz-actions">
-          <button class="quiz-btn quiz-btn-primary" id="spellPlayAgainBtn" type="button">Play Again</button>
+
+        <div class="room-go-quiz" id="roomGoQuiz" hidden>
+          <p class="room-go-quiz-text">Room is active — head to Quiz Mode to answer questions and sync your score live.</p>
+          <button class="quiz-btn quiz-btn-primary" id="roomGoToQuizBtn" type="button">Open Quiz Mode →</button>
         </div>
+
+        <div class="room-how-to" id="roomHowTo">
+          <div class="room-how-step"><span class="room-how-num">1</span><span>Enter your name and click <strong>Create Room</strong> to generate a code.</span></div>
+          <div class="room-how-step"><span class="room-how-num">2</span><span>Share the room code with a friend — they enter it and click <strong>Join Room</strong>.</span></div>
+          <div class="room-how-step"><span class="room-how-num">3</span><span>Both of you switch to <strong>Quiz Mode</strong> and answer the same questions. Live scores update instantly.</span></div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -263,6 +295,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
   <!-- FIREBASE_CONFIG -->
+  <script src="config.js"></script>
   <script src="app.js"></script>
 
 </body>
