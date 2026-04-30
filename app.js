@@ -1907,7 +1907,7 @@
 
     function startSpellCountdown() {
       clearSpellCountdown();
-      let count = 5;
+      let count = 1;
       if (spellCountdown) {
         spellCountdown.hidden = false;
         spellCountdownNum.textContent = String(count);
