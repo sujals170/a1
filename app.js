@@ -28,12 +28,21 @@
     const pageNumbers = document.getElementById("pageNumbers");
     const pageNextBtn = document.getElementById("pageNextBtn");
     const statusEl = document.getElementById("status");
+    const studyPlanNameInput = document.getElementById("studyPlanName");
+    const studyPlanLevelSel = document.getElementById("studyPlanLevel");
+    const studyPlanDaysInput = document.getElementById("studyPlanDays");
+    const studyPlanBtn = document.getElementById("studyPlanBtn");
+    const studyPlanOutput = document.getElementById("studyPlanOutput");
+    const studyPlanBadges = document.getElementById("studyPlanBadges");
+    const studyPlanCards = document.getElementById("studyPlanCards");
     const darkModeToggle = document.getElementById("darkModeToggle");
     const DARK_MODE_KEY = "darkMode";
     const SAVED_KEY = "savedWords";
     const STREAK_KEY = "studyStreak";
+    const STUDY_PLAN_KEY = "studyPlanPrefs";
     const QUIZ_PROGRESS_KEY = "quizProgress";
     const QUIZ_WRONG_KEY = "quizWrongAnswers";
+    const QUIZ_NAME_KEY = "quizPlayerName";
     const QUIZ_WRONG_TTL_MS = 24 * 60 * 60 * 1000;
     const SEARCH_DEBOUNCE_MS = 120;
     const PAGE_SIZE = 60;
@@ -366,6 +375,12 @@
       } catch {}
     }
 
+    function getQuizProgressKey(levelKey = "ALL", typeKey = "word2meaning") {
+      const safeLevel = String(levelKey || "ALL");
+      const safeType = String(typeKey || "word2meaning");
+      return `${safeLevel}::${safeType}`;
+    }
+
     function initStreak() {
       let streak = { count: 0, lastDate: "" };
       try {
@@ -392,6 +407,125 @@
         text.textContent = `Day ${streak.count} streak!`;
         banner.removeAttribute("hidden");
       }
+    }
+
+    function loadStudyPlanPrefs() {
+      try {
+        const raw = localStorage.getItem(STUDY_PLAN_KEY);
+        const parsed = raw ? JSON.parse(raw) : {};
+        return parsed && typeof parsed === "object" ? parsed : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveStudyPlanPrefs(next) {
+      try {
+        localStorage.setItem(STUDY_PLAN_KEY, JSON.stringify(next));
+      } catch {}
+    }
+
+    function getStudyPlanSignature(name, level, days) {
+      return `${String(name || "").trim().toLowerCase()}|${String(level || "ALL")}|${Math.max(1, Math.round(Number(days) || 1))}`;
+    }
+
+    function renderStudyPlanLevels() {
+      if (!studyPlanLevelSel) return;
+      const pending = String(studyPlanLevelSel.dataset.pendingLevel || "");
+      const current = String(studyPlanLevelSel.value || pending || "ALL");
+      studyPlanLevelSel.innerHTML = '<option value="ALL">All Levels</option>';
+      state.levels.forEach((level) => {
+        const opt = document.createElement("option");
+        opt.value = level;
+        opt.textContent = level;
+        studyPlanLevelSel.appendChild(opt);
+      });
+      studyPlanLevelSel.value = state.levels.includes(current) || current === "ALL" ? current : "ALL";
+      studyPlanLevelSel.dataset.pendingLevel = "";
+    }
+
+    function buildPersonalizedPlan() {
+      if (!studyPlanNameInput || !studyPlanLevelSel || !studyPlanDaysInput || !studyPlanOutput || !studyPlanBadges || !studyPlanCards) return;
+      const name = String(studyPlanNameInput.value || "").trim().slice(0, 24);
+      const level = String(studyPlanLevelSel.value || "ALL");
+      const days = Math.max(1, Math.round(Number(studyPlanDaysInput.value) || 0));
+      studyPlanDaysInput.value = String(days);
+      if (!name) {
+        studyPlanOutput.hidden = true;
+        studyPlanBadges.innerHTML = "";
+        studyPlanCards.innerHTML = "";
+        studyPlanNameInput.focus();
+        return;
+      }
+      const totalWords = level === "ALL"
+        ? state.allWords.length
+        : (state.levelCounts[level] || 0);
+      if (totalWords < 1) {
+        studyPlanOutput.hidden = true;
+        studyPlanBadges.innerHTML = "";
+        studyPlanCards.innerHTML = "";
+        return;
+      }
+      const wordsPerDay = Math.ceil(totalWords / days);
+      const extraDays = totalWords % days;
+      const finishDate = new Date();
+      finishDate.setDate(finishDate.getDate() + days - 1);
+      const finishLabel = finishDate.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+      const levelLabel = level === "ALL" ? "all levels" : `${level} level`;
+      const distribution = extraDays === 0
+        ? `${wordsPerDay} words every day`
+        : `${extraDays} day(s) with ${wordsPerDay} words, remaining ${days - extraDays} day(s) with ${Math.max(wordsPerDay - 1, 1)} words`;
+      studyPlanOutput.hidden = true;
+      const prefs = loadStudyPlanPrefs();
+      const signature = getStudyPlanSignature(name, level, days);
+      const doneByPlan = (prefs.doneByPlan && typeof prefs.doneByPlan === "object") ? prefs.doneByPlan : {};
+      const doneSet = new Set(Array.isArray(doneByPlan[signature]) ? doneByPlan[signature].map((n) => Number(n)).filter(Number.isFinite) : []);
+      const badges = [
+        `Name: ${name}`,
+        `Level: ${level}`,
+        `Total: ${totalWords}`,
+        `Days: ${days}`,
+        `Daily: ${wordsPerDay}`,
+        `Split: ${extraDays}x${wordsPerDay}, ${days - extraDays}x${Math.max(wordsPerDay - 1, 1)}`,
+        `Finish: ${finishLabel}`
+      ];
+      studyPlanBadges.innerHTML = badges.map((text) => `<span class="badge">${escapeHtml(text)}</span>`).join("");
+      const base = Math.floor(totalWords / days);
+      let remainder = totalWords % days;
+      let start = 1;
+      const dayCards = [];
+      for (let day = 1; day <= days; day++) {
+        const count = base + (remainder > 0 ? 1 : 0);
+        if (remainder > 0) remainder--;
+        const end = start + count - 1;
+        const isDone = doneSet.has(day);
+        dayCards.push(`
+          <article class="study-plan-day-card${isDone ? " is-done" : ""}" data-day="${day}">
+            <div class="study-plan-day-title">Day ${day}</div>
+            <div class="study-plan-day-main">${count} words</div>
+            <div class="study-plan-day-sub">Words ${start}-${end}${isDone ? " • Done" : ""}</div>
+          </article>
+        `);
+        start = end + 1;
+      }
+      studyPlanCards.innerHTML = dayCards.join("");
+      saveStudyPlanPrefs({ ...prefs, name, level, days, doneByPlan });
+    }
+
+    function initializeStudyPlanForm() {
+      if (!studyPlanNameInput || !studyPlanLevelSel || !studyPlanDaysInput) return;
+      const prefs = loadStudyPlanPrefs();
+      const savedQuizName = (() => {
+        try {
+          return String(localStorage.getItem(QUIZ_NAME_KEY) || "").trim();
+        } catch {
+          return "";
+        }
+      })();
+      studyPlanNameInput.value = String(prefs.name || savedQuizName || "").slice(0, 24);
+      studyPlanDaysInput.value = String(Math.max(1, Math.round(Number(prefs.days) || 30)));
+      studyPlanLevelSel.dataset.pendingLevel = String(prefs.level || "ALL");
+      studyPlanLevelSel.value = "ALL";
     }
 
     function updateSavedToggle() {
@@ -741,6 +875,8 @@
         renderStats();
         renderLevelFilters();
         renderPosFilters();
+        renderStudyPlanLevels();
+        buildPersonalizedPlan();
         applyFilters();
       } catch (error) {
         statusEl.style.display = "block";
@@ -763,6 +899,41 @@
       clearTimeout(filterDebounceId);
       applyFilters();
     });
+
+    if (studyPlanBtn) {
+      studyPlanBtn.addEventListener("click", buildPersonalizedPlan);
+    }
+    if (studyPlanDaysInput) {
+      studyPlanDaysInput.addEventListener("change", () => {
+        const days = Math.max(1, Math.round(Number(studyPlanDaysInput.value) || 1));
+        studyPlanDaysInput.value = String(days);
+      });
+    }
+    if (studyPlanCards) {
+      studyPlanCards.addEventListener("click", (event) => {
+        const card = event.target.closest(".study-plan-day-card");
+        if (!card || !studyPlanNameInput || !studyPlanLevelSel || !studyPlanDaysInput) return;
+        const day = Number(card.dataset.day);
+        if (!Number.isFinite(day) || day < 1) return;
+        const name = String(studyPlanNameInput.value || "").trim().slice(0, 24);
+        const level = String(studyPlanLevelSel.value || "ALL");
+        const days = Math.max(1, Math.round(Number(studyPlanDaysInput.value) || 1));
+        if (!name) return;
+        const signature = getStudyPlanSignature(name, level, days);
+        const prefs = loadStudyPlanPrefs();
+        const doneByPlan = (prefs.doneByPlan && typeof prefs.doneByPlan === "object") ? prefs.doneByPlan : {};
+        const list = Array.isArray(doneByPlan[signature]) ? doneByPlan[signature].map((n) => Number(n)).filter(Number.isFinite) : [];
+        const set = new Set(list);
+        if (set.has(day)) {
+          set.delete(day);
+        } else {
+          set.add(day);
+        }
+        doneByPlan[signature] = Array.from(set).sort((a, b) => a - b);
+        saveStudyPlanPrefs({ ...prefs, name, level, days, doneByPlan });
+        buildPersonalizedPlan();
+      });
+    }
 
     pagePrevBtn.addEventListener("click", () => {
       if (state.currentPage <= 1) return;
@@ -875,8 +1046,10 @@
     // Quiz Logic
     const quizPanel = document.getElementById("quizPanel");
     const dictionaryPanel = document.querySelector(".panel");
+    const studyPlanSection = document.getElementById("studyPlanSection");
     const tabDictionary = document.getElementById("tabDictionary");
     const tabQuiz = document.getElementById("tabQuiz");
+    const tabPlan = document.getElementById("tabPlan");
     const quizMeta = document.getElementById("quizMeta");
     const quizScoreBadge = document.getElementById("quizScoreBadge");
     const quizProgressFill = document.getElementById("quizProgressFill");
@@ -904,6 +1077,7 @@
     const quizRestartBtn = document.getElementById("quizRestartBtn");
     const quizReviewBtn = document.getElementById("quizReviewBtn");
     const quizPlayAgainBtn = document.getElementById("quizPlayAgainBtn");
+    const quizResultsLeaveRoomBtn = document.getElementById("quizResultsLeaveRoomBtn");
     const quizResultEmoji = document.getElementById("quizResultEmoji");
     const quizFinalScore = document.getElementById("quizFinalScore");
     const quizTotalDisplay = document.getElementById("quizTotalDisplay");
@@ -911,8 +1085,26 @@
     const quizWrongCount = document.getElementById("quizWrongCount");
     const quizAccuracy = document.getElementById("quizAccuracy");
     const quizWrongReview = document.getElementById("quizWrongReview");
+    const quizPlayerNameInput = document.getElementById("quizPlayerName");
+    const quizJoinPlayerNameInput = document.getElementById("quizJoinPlayerName");
+    const quizRoomCodeInput = document.getElementById("quizRoomCodeInput");
+    const quizJoinRoomBtn = document.getElementById("quizJoinRoomBtn");
+    const quizCopyRoomBtn = document.getElementById("quizCopyRoomBtn");
+    const quizLeaveRoomBtn = document.getElementById("quizLeaveRoomBtn");
+    const quizRoomStatus = document.getElementById("quizRoomStatus");
+    const quizRoomBadge = document.getElementById("quizRoomBadge");
+    const quizRoomPlayers = document.getElementById("quizRoomPlayers");
+    const quizRoomResults = document.getElementById("quizRoomResults");
+    const quizRoomResultsList = document.getElementById("quizRoomResultsList");
+    const quizRoomLiveResults = document.getElementById("quizRoomLiveResults");
+    const quizRoomLiveResultsList = document.getElementById("quizRoomLiveResultsList");
+    const roomCreateLevelSel = document.getElementById("roomCreateLevel");
+    const roomCreateModeSel = document.getElementById("roomCreateMode");
+    const roomCreateCountSel = document.getElementById("roomCreateCount");
+    const roomCreateConfirmBtn = document.getElementById("roomCreateConfirmBtn");
 
     const QUIZ_DEFAULT_TOTAL = 10;
+    const QUIZ_ROOM_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     let quizAutoNextTimerId = null;
     let quizCountdownIntervalId = null;
     let quizMaxAnsweredIndex = -1;
@@ -931,6 +1123,273 @@
       answered: false,
       wrongAnswers: []
     };
+    const quizRoomState = {
+      db: null,
+      roomRef: null,
+      roomCode: "",
+      playerId: "",
+      playerName: "",
+      isHost: false,
+      listener: null,
+      lastAppliedQuizKey: "",
+      latestRoomValue: null
+    };
+
+    function getFirebaseDb() {
+      try {
+        if (typeof firebase === "undefined") return null;
+        const cfg = window.APP_CONFIG && window.APP_CONFIG.firebase;
+        if (!cfg || !cfg.apiKey || !cfg.databaseURL) return null;
+        if (!quizRoomState.db) {
+          const app = firebase.apps.length ? firebase.app() : firebase.initializeApp(cfg);
+          quizRoomState.db = firebase.database(app);
+        }
+        return quizRoomState.db;
+      } catch {
+        return null;
+      }
+    }
+
+    function setQuizRoomStatus(message) {
+      if (quizRoomStatus) {
+        quizRoomStatus.textContent = String(message || "");
+      }
+    }
+
+    function normalizeRoomCode(value) {
+      return String(value || "")
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, "")
+        .slice(0, 8);
+    }
+
+    function loadQuizPlayerName() {
+      let stored = "";
+      try {
+        stored = localStorage.getItem(QUIZ_NAME_KEY) || "";
+      } catch {}
+      return String(stored || "").trim();
+    }
+
+    function saveQuizPlayerName(value) {
+      const name = String(value || "").trim().slice(0, 24);
+      try {
+        localStorage.setItem(QUIZ_NAME_KEY, name);
+      } catch {}
+      return name;
+    }
+
+    function getQuizPlayerName() {
+      return saveQuizPlayerName(quizPlayerNameInput ? quizPlayerNameInput.value : "");
+    }
+
+    function generateQuizRoomCode(length = 6) {
+      let code = "";
+      for (let i = 0; i < length; i++) {
+        const index = Math.floor(Math.random() * QUIZ_ROOM_CODE_ALPHABET.length);
+        code += QUIZ_ROOM_CODE_ALPHABET[index];
+      }
+      return code;
+    }
+
+    function isQuizRoomActive() {
+      return Boolean(quizRoomState.roomCode && quizRoomState.roomRef && quizRoomState.playerId);
+    }
+
+    function serializeQuizOption(opt) {
+      if (!opt || typeof opt !== "object") return null;
+      return {
+        _id: String(opt._id || ""),
+        word: String(opt.word || ""),
+        english_meaning: String(opt.english_meaning || ""),
+        gujarati: String(opt.gujarati || ""),
+        part_of_speech: String(opt.part_of_speech || ""),
+        level: String(opt.level || "")
+      };
+    }
+
+    function hydrateQuizOption(raw) {
+      if (!raw || typeof raw !== "object") return null;
+      const refId = String(raw._id || "");
+      if (refId && state.wordsById[refId]) {
+        return state.wordsById[refId];
+      }
+      return {
+        _id: refId,
+        word: String(raw.word || ""),
+        english_meaning: String(raw.english_meaning || ""),
+        gujarati: String(raw.gujarati || ""),
+        part_of_speech: String(raw.part_of_speech || ""),
+        level: String(raw.level || "")
+      };
+    }
+
+    function serializeQuizQuestion(question) {
+      if (!question || typeof question !== "object") return null;
+      return {
+        correct: serializeQuizOption(question.correct),
+        correctOption: serializeQuizOption(question.correctOption || question.correct),
+        relation: String(question.relation || ""),
+        options: Array.isArray(question.options) ? question.options.map(serializeQuizOption).filter(Boolean) : []
+      };
+    }
+
+    function hydrateQuizQuestion(raw) {
+      if (!raw || typeof raw !== "object") return null;
+      const options = Array.isArray(raw.options) ? raw.options.map(hydrateQuizOption).filter(Boolean) : [];
+      const correct = hydrateQuizOption(raw.correct);
+      const correctOption = hydrateQuizOption(raw.correctOption) || correct;
+      if (!correct || !options.length) return null;
+      return {
+        correct,
+        correctOption,
+        relation: String(raw.relation || ""),
+        options
+      };
+    }
+
+    function getCurrentQuizSettings() {
+      return {
+        level: quizLevelSel.value,
+        type: quizTypeSel.value,
+        limit: normalizeQuizLimitInput(),
+        useSavedOnly: quizUseSavedOnly,
+        useWrongOnly: quizUseWrongOnly,
+        sequential: quizSequentialMode
+      };
+    }
+
+    function syncRoomCreateFormOptions() {
+      if (!roomCreateLevelSel || !roomCreateModeSel || !roomCreateCountSel || !quizLevelSel || !quizTypeSel || !quizLimitSel) return;
+      roomCreateLevelSel.innerHTML = quizLevelSel.innerHTML;
+      roomCreateModeSel.innerHTML = quizTypeSel.innerHTML;
+      roomCreateLevelSel.value = quizLevelSel.value || "ALL";
+      roomCreateModeSel.value = quizTypeSel.value || "word2meaning";
+      roomCreateCountSel.value = quizLimitSel.value || String(QUIZ_DEFAULT_TOTAL);
+    }
+
+    function applyQuizSettingsSnapshot(settings) {
+      if (!settings || typeof settings !== "object") return;
+      quizLevelSel.value = settings.level || "ALL";
+      quizTypeSel.value = settings.type || "word2meaning";
+      quizLimitSel.value = String(settings.limit || QUIZ_DEFAULT_TOTAL);
+      quizUseSavedOnly = Boolean(settings.useSavedOnly);
+      quizUseWrongOnly = Boolean(settings.useWrongOnly);
+      updateQuizSavedButtonLabel();
+      quizWrongBankBtn.classList.toggle("active", quizUseWrongOnly);
+      quizWrongBankBtn.textContent = quizUseWrongOnly ? "Wrong Attempts: Room Quiz" : "Wrong Attempts: Off";
+      quizSequentialMode = Boolean(settings.sequential);
+      updateSynAntPracticeButtons();
+      updateSeqBtnState();
+      quizSeqBtn.classList.toggle("active", quizSequentialMode && !quizSeqBtn.disabled);
+      if (!quizSeqBtn.disabled) {
+        quizSeqBtn.textContent = quizSequentialMode ? "Sequential: On" : "Sequential: Off";
+      }
+    }
+
+    function setQuizConfigDisabled(disabled) {
+      const next = Boolean(disabled);
+      [
+        quizLevelSel,
+        quizTypeSel,
+        quizLimitSel,
+        quizSavedBtn,
+        quizSeqBtn,
+        quizWrongBankBtn,
+        quizSynPracticeBtn,
+        quizAntPracticeBtn,
+        quizRestartBtn,
+        quizPlayAgainBtn
+      ].forEach((el) => {
+        if (el) el.disabled = next;
+      });
+    }
+
+    function getAnsweredQuizCount() {
+      return quizState.questions.filter((question) => question && question.result).length;
+    }
+
+    function renderQuizRoomPlayers(players) {
+      if (!quizRoomPlayers) return;
+      const entries = Object.entries(players || {});
+      if (!entries.length) {
+        quizRoomPlayers.innerHTML = "";
+        if (quizRoomResultsList) quizRoomResultsList.innerHTML = "";
+        if (quizRoomResults) quizRoomResults.hidden = true;
+        if (quizRoomLiveResultsList) quizRoomLiveResultsList.innerHTML = "";
+        if (quizRoomLiveResults) quizRoomLiveResults.hidden = true;
+        return;
+      }
+      const sorted = entries.sort((a, b) => {
+        const aJoined = Number(a[1] && a[1].joinedAt) || 0;
+        const bJoined = Number(b[1] && b[1].joinedAt) || 0;
+        return aJoined - bJoined;
+      });
+      const cardHtml = sorted.map(([id, player]) => {
+        const safeName = escapeHtml(player && player.name ? player.name : "Player");
+        const score = Number(player && player.score) || 0;
+        const total = Number(player && player.total) || quizState.questions.length || 0;
+        const answered = Number(player && player.answeredCount) || 0;
+        const finished = player && player.finished;
+        const isMe = id === quizRoomState.playerId;
+        const status = finished
+          ? "Finished ✔"
+          : total > 0
+          ? `Q ${Math.min(answered + 1, total)} of ${total}`
+          : "Waiting…";
+        const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
+        const initials = safeName.replace(/&amp;/g, "&").replace(/&#39;/g, "'")
+          .split(/\s+/).filter(Boolean).slice(0, 2)
+          .map(w => w[0]).join("").toUpperCase() || "?";
+        return `
+          <div class="quiz-room-player${isMe ? " is-me" : ""}${finished ? " is-finished" : ""}">
+            <div class="quiz-room-avatar">${escapeHtml(initials)}</div>
+            <div class="quiz-room-player-body">
+              <div class="quiz-room-player-name">${safeName}${isMe ? " <em style='font-style:normal;opacity:.6;font-weight:600;font-size:11px'>(You)</em>" : ""}</div>
+              <div class="quiz-room-player-meta">${escapeHtml(status)}</div>
+              <div class="quiz-room-progress-track"><div class="quiz-room-progress-fill" style="width:${pct}%"></div></div>
+            </div>
+            <div class="quiz-room-player-score">${score}<span>/ ${total || "-"}</span></div>
+          </div>
+        `;
+      }).join("");
+      quizRoomPlayers.innerHTML = cardHtml;
+      if (quizRoomResultsList) quizRoomResultsList.innerHTML = cardHtml;
+      if (quizRoomLiveResultsList) quizRoomLiveResultsList.innerHTML = cardHtml;
+      if (quizRoomResults) quizRoomResults.hidden = false;
+      if (quizRoomLiveResults) quizRoomLiveResults.hidden = !isQuizRoomActive();
+    }
+
+    function updateQuizRoomUi() {
+      const active = isQuizRoomActive();
+      const card = quizRoomBadge && quizRoomBadge.closest(".quiz-room-card");
+      if (card) card.classList.toggle("is-active", active);
+      if (quizRoomBadge) {
+        quizRoomBadge.textContent = active ? `Room ${quizRoomState.roomCode}` : "Solo Mode";
+        quizRoomBadge.classList.toggle("is-active", active);
+      }
+      if (roomCreateConfirmBtn) roomCreateConfirmBtn.disabled = active;
+      if (quizJoinRoomBtn) quizJoinRoomBtn.disabled = active;
+      if (quizCopyRoomBtn) quizCopyRoomBtn.disabled = !active;
+      if (quizLeaveRoomBtn) quizLeaveRoomBtn.disabled = !active;
+      if (quizRoomCodeInput) quizRoomCodeInput.disabled = active;
+      if (quizRoomLiveResults) quizRoomLiveResults.hidden = !active;
+      if (quizResultsLeaveRoomBtn) quizResultsLeaveRoomBtn.hidden = !active;
+      if (typeof updateRoomPanelUi === "function") updateRoomPanelUi();
+    }
+
+    function getQuizRoomPlayerPayload(extra = {}) {
+      return {
+        name: quizRoomState.playerName || getQuizPlayerName(),
+        score: quizState.score,
+        answeredCount: getAnsweredQuizCount(),
+        current: quizState.current,
+        total: quizState.questions.length,
+        finished: false,
+        updatedAt: firebase.database.ServerValue.TIMESTAMP,
+        ...extra
+      };
+    }
 
     function normalizeWrongAnswerEntry(entry) {
       if (!entry || typeof entry !== "object") return null;
@@ -1201,7 +1660,7 @@
     }
 
     function buildSequentialQuizQuestions(pool, limit, levelKey = "ALL") {
-      const progress = loadQuizProgress(levelKey);
+      const progress = loadQuizProgress(getQuizProgressKey(levelKey, quizTypeSel.value));
       quizSeqStartIndex = pool.length > 0 ? progress % pool.length : 0;
       const questions = [];
       const targetTotal = Math.max(1, limit);
@@ -1315,7 +1774,7 @@
       const source = sequential ? questionPool : shuffleArray(questionPool);
 
       if (sequential) {
-        const progress = loadQuizProgress(levelKey);
+        const progress = loadQuizProgress(getQuizProgressKey(levelKey, rel));
         quizSeqStartIndex = source.length > 0 ? progress % source.length : 0;
         for (let i = 0; i < source.length && questions.length < targetTotal; i++) {
           const idx = (quizSeqStartIndex + i) % source.length;
@@ -1373,8 +1832,268 @@
       quizFeedback.className = "quiz-feedback";
     }
 
+    function resetQuizWithQuestions(questions) {
+      quizState.questions = Array.isArray(questions) ? questions : [];
+      quizState.current = 0;
+      quizState.score = 0;
+      quizState.answered = false;
+      quizMaxAnsweredIndex = -1;
+      quizFrontierIndex = 0;
+      quizTotalDisplay.textContent = String(quizState.questions.length);
+      quizResults.classList.remove("visible");
+      quizQuestion.style.display = "block";
+      renderQuizWrongReview();
+      renderQuizQuestion();
+    }
+
+    function renderQuizEmptyState(prompt, wordText, tip) {
+      quizState.questions = [];
+      quizState.current = 0;
+      quizState.score = 0;
+      quizState.answered = false;
+      quizMaxAnsweredIndex = -1;
+      quizFrontierIndex = 0;
+      quizTotalDisplay.textContent = "0";
+      quizResults.classList.remove("visible");
+      quizQuestion.style.display = "block";
+      quizMeta.textContent = "No questions available";
+      quizScoreBadge.textContent = "Score: 0";
+      quizProgressFill.style.width = "0%";
+      quizPrompt.textContent = prompt;
+      quizWordDisplay.textContent = wordText;
+      quizPosDisplay.textContent = "POS: -";
+      quizLevelDisplay.textContent = `Level: ${quizLevelSel.value}`;
+      quizSpeakBtn.dataset.word = "";
+      quizSpeakBtn.disabled = true;
+      quizOptions.innerHTML = "";
+      quizFeedback.textContent = tip;
+      quizFeedback.className = "quiz-feedback";
+      renderQuizWrongReview();
+    }
+
+    function syncQuizRoomProgress(extra = {}) {
+      if (!isQuizRoomActive() || !quizRoomState.roomRef) return;
+      const payload = getQuizRoomPlayerPayload(extra);
+      quizRoomState.roomRef.child(`players/${quizRoomState.playerId}`).update(payload).catch(() => {});
+    }
+
+    function applyQuizRoomQuestions(roomValue) {
+      if (!roomValue || !roomValue.quizKey || roomValue.quizKey === quizRoomState.lastAppliedQuizKey) return;
+      const hydrated = Array.isArray(roomValue.questions)
+        ? roomValue.questions.map(hydrateQuizQuestion).filter(Boolean)
+        : [];
+      if (!hydrated.length) return;
+      applyQuizSettingsSnapshot(roomValue.settings || {});
+      setQuizConfigDisabled(true);
+      resetQuizWithQuestions(hydrated);
+      quizRoomState.lastAppliedQuizKey = String(roomValue.quizKey);
+      syncQuizRoomProgress({ finished: false });
+    }
+
+    function handleQuizRoomSnapshot(snapshot) {
+      const roomValue = snapshot && snapshot.val ? snapshot.val() : null;
+      quizRoomState.latestRoomValue = roomValue;
+      if (!roomValue) {
+        const wasActive = isQuizRoomActive();
+        leaveQuizRoom({ preserveQuestions: true, preserveStatus: wasActive ? "Room closed." : "" });
+        return;
+      }
+      if (quizRoomCodeInput) {
+        quizRoomCodeInput.value = quizRoomState.roomCode;
+      }
+      renderQuizRoomPlayers(roomValue.players || {});
+      applyQuizRoomQuestions(roomValue);
+      const playerCount = roomValue.players ? Object.keys(roomValue.players).length : 0;
+      const hostMessage = quizRoomState.isHost && playerCount < 2
+        ? "Share the code with your friend so they can join."
+        : playerCount >= 2
+        ? "Both players are in the room. Start answering."
+        : "Waiting for room data...";
+      setQuizRoomStatus(hostMessage);
+    }
+
+    function detachQuizRoomListener() {
+      if (quizRoomState.roomRef && quizRoomState.listener) {
+        quizRoomState.roomRef.off("value", quizRoomState.listener);
+      }
+      quizRoomState.listener = null;
+    }
+
+    async function leaveQuizRoom(options = {}) {
+      const preserveQuestions = Boolean(options.preserveQuestions);
+      const preserveStatus = String(options.preserveStatus || "");
+      detachQuizRoomListener();
+      if (quizRoomState.roomRef && quizRoomState.playerId) {
+        try {
+          await quizRoomState.roomRef.child(`players/${quizRoomState.playerId}`).remove();
+        } catch {}
+        if (quizRoomState.isHost) {
+          try {
+            await quizRoomState.roomRef.remove();
+          } catch {}
+        }
+      }
+      quizRoomState.roomRef = null;
+      quizRoomState.roomCode = "";
+      quizRoomState.playerId = "";
+      quizRoomState.playerName = "";
+      quizRoomState.isHost = false;
+      quizRoomState.lastAppliedQuizKey = "";
+      quizRoomState.latestRoomValue = null;
+      setQuizConfigDisabled(false);
+      updateQuizSavedButtonLabel();
+      updateQuizWrongBankButton();
+      updateSeqBtnState();
+      updateSynAntPracticeButtons();
+      renderQuizRoomPlayers({});
+      updateQuizRoomUi();
+      setQuizRoomStatus(preserveStatus || "Solo mode is active.");
+      if (quizRoomCodeInput && !preserveQuestions) {
+        quizRoomCodeInput.value = "";
+      }
+    }
+
+    async function attachToQuizRoom(roomCode, playerId, isHost) {
+      const db = getFirebaseDb();
+      if (!db) {
+        setQuizRoomStatus("Firebase room sync is not available right now.");
+        return false;
+      }
+      const roomRef = db.ref(`quizRooms/${roomCode}`);
+      quizRoomState.roomRef = roomRef;
+      quizRoomState.roomCode = roomCode;
+      quizRoomState.playerId = playerId;
+      quizRoomState.playerName = getQuizPlayerName();
+      quizRoomState.isHost = Boolean(isHost);
+      quizRoomState.lastAppliedQuizKey = "";
+      detachQuizRoomListener();
+      roomRef.child(`players/${playerId}`).onDisconnect().remove();
+      quizRoomState.listener = (snapshot) => {
+        handleQuizRoomSnapshot(snapshot);
+      };
+      roomRef.on("value", quizRoomState.listener);
+      updateQuizRoomUi();
+      return true;
+    }
+
+    async function createQuizRoom() {
+      if (isQuizRoomActive()) return;
+      const db = getFirebaseDb();
+      if (!db) {
+        setQuizRoomStatus("Add working Firebase config to use multiplayer rooms.");
+        return;
+      }
+      const enteredName = getQuizPlayerName();
+      if (!enteredName) {
+        setQuizRoomStatus("Enter your name before creating a room.");
+        if (quizPlayerNameInput) quizPlayerNameInput.focus();
+        return;
+      }
+      startQuiz();
+      if (!quizState.questions.length) {
+        setQuizRoomStatus("Build a quiz first, then create a room.");
+        return;
+      }
+      const roomCode = generateQuizRoomCode();
+      const playerId = `p_${Math.random().toString(36).slice(2, 10)}`;
+      const roomRef = db.ref(`quizRooms/${roomCode}`);
+      const roomPayload = {
+        createdAt: firebase.database.ServerValue.TIMESTAMP,
+        hostId: playerId,
+        quizKey: `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+        settings: getCurrentQuizSettings(),
+        questions: quizState.questions.map(serializeQuizQuestion).filter(Boolean),
+        players: {
+          [playerId]: {
+            name: enteredName,
+            score: 0,
+            answeredCount: 0,
+            current: 0,
+            total: quizState.questions.length,
+            finished: false,
+            joinedAt: firebase.database.ServerValue.TIMESTAMP,
+            updatedAt: firebase.database.ServerValue.TIMESTAMP
+          }
+        }
+      };
+      await roomRef.set(roomPayload);
+      await attachToQuizRoom(roomCode, playerId, true);
+      if (quizRoomCodeInput) {
+        quizRoomCodeInput.value = roomCode;
+      }
+      setQuizConfigDisabled(true);
+      setQuizRoomStatus("Room created. Share the code with your friend.");
+      switchMode("quiz");
+    }
+
+    async function joinQuizRoom() {
+      if (isQuizRoomActive()) return;
+      const db = getFirebaseDb();
+      if (!db) {
+        setQuizRoomStatus("Add working Firebase config to use multiplayer rooms.");
+        return;
+      }
+      const enteredName = saveQuizPlayerName(quizJoinPlayerNameInput ? quizJoinPlayerNameInput.value : "");
+      if (!enteredName) {
+        setQuizRoomStatus("Enter your name before joining a room.");
+        if (quizJoinPlayerNameInput) quizJoinPlayerNameInput.focus();
+        return;
+      }
+      const roomCode = normalizeRoomCode(quizRoomCodeInput ? quizRoomCodeInput.value : "");
+      if (!roomCode) {
+        setQuizRoomStatus("Enter a room code first.");
+        if (quizRoomCodeInput) quizRoomCodeInput.focus();
+        return;
+      }
+      const roomRef = db.ref(`quizRooms/${roomCode}`);
+      const snapshot = await roomRef.once("value");
+      if (!snapshot.exists()) {
+        setQuizRoomStatus("That room code was not found.");
+        return;
+      }
+      const roomValue = snapshot.val() || {};
+      if (!Array.isArray(roomValue.questions) || !roomValue.questions.length) {
+        setQuizRoomStatus("This room does not have a quiz loaded.");
+        return;
+      }
+      const playerCount = roomValue.players ? Object.keys(roomValue.players).length : 0;
+      if (playerCount >= 2) {
+        setQuizRoomStatus("This room already has two players.");
+        return;
+      }
+      const playerId = `p_${Math.random().toString(36).slice(2, 10)}`;
+      await roomRef.child(`players/${playerId}`).set({
+        name: enteredName,
+        score: 0,
+        answeredCount: 0,
+        current: 0,
+        total: roomValue.questions.length,
+        finished: false,
+        joinedAt: firebase.database.ServerValue.TIMESTAMP,
+        updatedAt: firebase.database.ServerValue.TIMESTAMP
+      });
+      await attachToQuizRoom(roomCode, playerId, false);
+      setQuizConfigDisabled(true);
+      setQuizRoomStatus("Joined room. You now have the same quiz questions.");
+      switchMode("quiz");
+    }
+
+    async function copyQuizRoomCode() {
+      if (!isQuizRoomActive()) return;
+      try {
+        await navigator.clipboard.writeText(quizRoomState.roomCode);
+        setQuizRoomStatus(`Room code copied: ${quizRoomState.roomCode}`);
+      } catch {
+        setQuizRoomStatus(`Room code: ${quizRoomState.roomCode}`);
+      }
+    }
+
     function startQuiz() {
       clearQuizRevealTimers();
+      if (isQuizRoomActive()) {
+        setQuizRoomStatus(`Room ${quizRoomState.roomCode} is active. Leave the room to change quiz settings.`);
+        return;
+      }
       const type = quizTypeSel.value;
       const pool = getQuizPool();
       const synAntMode = type === "synonym" || type === "antonym";
@@ -1404,29 +2123,7 @@
           : savedMode
           ? "Tip: click Save on cards you want to practice in quiz."
           : "Tip: switch level in Quiz settings to continue.";
-
-        quizState.questions = [];
-        quizState.current = 0;
-        quizState.score = 0;
-        quizState.answered = false;
-        quizMaxAnsweredIndex = -1;
-        quizFrontierIndex = 0;
-        quizTotalDisplay.textContent = "0";
-        quizResults.classList.remove("visible");
-        quizQuestion.style.display = "block";
-        quizMeta.textContent = "No questions available";
-        quizScoreBadge.textContent = "Score: 0";
-        quizProgressFill.style.width = "0%";
-        quizPrompt.textContent = emptyPrompt;
-        quizWordDisplay.textContent = emptyWordText;
-        quizPosDisplay.textContent = "POS: -";
-        quizLevelDisplay.textContent = `Level: ${quizLevelSel.value}`;
-        quizSpeakBtn.dataset.word = "";
-        quizSpeakBtn.disabled = true;
-        quizOptions.innerHTML = "";
-        quizFeedback.textContent = emptyTip;
-        quizFeedback.className = "quiz-feedback";
-        renderQuizWrongReview();
+        renderQuizEmptyState(emptyPrompt, emptyWordText, emptyTip);
         return;
       }
       const limit = getQuizQuestionLimit(synAntPool.length);
@@ -1438,39 +2135,14 @@
           : buildQuizQuestions(pool, limit);
       }
       if (!quizState.questions.length) {
-        quizState.current = 0;
-        quizState.score = 0;
-        quizState.answered = false;
-        quizMaxAnsweredIndex = -1;
-        quizFrontierIndex = 0;
-        quizTotalDisplay.textContent = "0";
-        quizResults.classList.remove("visible");
-        quizQuestion.style.display = "block";
-        quizMeta.textContent = "No questions available";
-        quizScoreBadge.textContent = "Score: 0";
-        quizProgressFill.style.width = "0%";
-        quizPrompt.textContent = "Could not build quiz options for this mode.";
-        quizWordDisplay.textContent = "Try another level or quiz mode.";
-        quizPosDisplay.textContent = "POS: -";
-        quizLevelDisplay.textContent = `Level: ${quizLevelSel.value}`;
-        quizSpeakBtn.dataset.word = "";
-        quizSpeakBtn.disabled = true;
-        quizOptions.innerHTML = "";
-        quizFeedback.textContent = "Tip: switch mode or level, then restart quiz.";
-        quizFeedback.className = "quiz-feedback";
-        renderQuizWrongReview();
+        renderQuizEmptyState(
+          "Could not build quiz options for this mode.",
+          "Try another level or quiz mode.",
+          "Tip: switch mode or level, then restart quiz."
+        );
         return;
       }
-      quizState.current = 0;
-      quizState.score = 0;
-      quizState.answered = false;
-      quizMaxAnsweredIndex = -1;
-      quizFrontierIndex = 0;
-      quizTotalDisplay.textContent = String(quizState.questions.length);
-      quizResults.classList.remove("visible");
-      quizQuestion.style.display = "block";
-      renderQuizWrongReview();
-      renderQuizQuestion();
+      resetQuizWithQuestions(quizState.questions);
     }
 
     function getQuizOptionHtml(opt, type) {
@@ -1508,7 +2180,7 @@
     }
 
     function startQuizCountdown() {
-      let count = 5;
+      let count = 1;
       if (quizCountdown) {
         quizCountdown.hidden = false;
         quizCountdownNum.textContent = String(count);
@@ -1692,13 +2364,15 @@
       quizMaxAnsweredIndex = Math.max(quizMaxAnsweredIndex, quizState.current);
       updateQuizNavButtons();
 
-      if (quizSequentialMode) {
+      if (quizSequentialMode && !isQuizRoomActive()) {
         const pool = getQuizPool();
         if (pool.length > 0) {
-          saveQuizProgress(quizLevelSel.value, (quizSeqStartIndex + quizState.current + 1) % pool.length);
+          const nextIndex = (quizSeqStartIndex + quizState.current + 1) % pool.length;
+          saveQuizProgress(getQuizProgressKey(quizLevelSel.value, quizTypeSel.value), nextIndex);
         }
       }
 
+      syncQuizRoomProgress({ finished: false });
       startQuizCountdown();
     }
 
@@ -1706,6 +2380,7 @@
       if (!quizState.answered) return;
       quizState.current++;
       quizFrontierIndex = Math.max(quizFrontierIndex, quizState.current);
+      syncQuizRoomProgress({ finished: false });
       if (quizState.current >= quizState.questions.length) {
         showQuizResults();
       } else {
@@ -1729,9 +2404,14 @@
       quizWrongCount.textContent = wrong;
       quizAccuracy.textContent = `${pct}%`;
       renderQuizWrongReview();
+      syncQuizRoomProgress({ finished: true, current: total });
 
       const emoji = pct === 100 ? "A+" : pct >= 80 ? "A" : pct >= 60 ? "B" : pct >= 40 ? "C" : "Keep Going";
       quizResultEmoji.textContent = emoji;
+      if (quizResultsLeaveRoomBtn) quizResultsLeaveRoomBtn.hidden = !isQuizRoomActive();
+      if (isQuizRoomActive()) {
+        setQuizRoomStatus("Your result is saved. Waiting for the room scoreboard to update.");
+      }
     }
 
     function switchMode(mode) {
@@ -1739,15 +2419,19 @@
       if (mode === "quiz") {
         if (state.allWords.length < 4) return;
         dictionaryPanel.style.display = "none";
+        if (studyPlanSection) studyPlanSection.style.display = "none";
         quizPanel.classList.add("visible");
         tabDictionary.classList.remove("active");
         tabQuiz.classList.add("active");
+        if (tabPlan) tabPlan.classList.remove("active");
         startQuiz();
       } else {
         dictionaryPanel.style.display = "";
+        if (studyPlanSection) studyPlanSection.style.display = "none";
         quizPanel.classList.remove("visible");
         tabDictionary.classList.add("active");
         tabQuiz.classList.remove("active");
+        if (tabPlan) tabPlan.classList.remove("active");
       }
     }
 
@@ -1840,6 +2524,67 @@
     }
     quizRestartBtn.addEventListener("click", startQuiz);
     quizPlayAgainBtn.addEventListener("click", startQuiz);
+    if (quizResultsLeaveRoomBtn) {
+      quizResultsLeaveRoomBtn.addEventListener("click", () => {
+        leaveQuizRoom({ preserveStatus: "You left the room." }).catch(() => {
+          setQuizRoomStatus("Could not leave the room cleanly, but solo mode is available.");
+        });
+      });
+    }
+    if (quizPlayerNameInput) {
+      quizPlayerNameInput.value = loadQuizPlayerName();
+      quizPlayerNameInput.addEventListener("change", () => {
+        const saved = saveQuizPlayerName(quizPlayerNameInput.value);
+        quizPlayerNameInput.value = saved;
+        if (quizJoinPlayerNameInput) quizJoinPlayerNameInput.value = saved;
+      });
+    }
+    if (quizJoinPlayerNameInput) {
+      quizJoinPlayerNameInput.value = loadQuizPlayerName();
+      quizJoinPlayerNameInput.addEventListener("change", () => {
+        const saved = saveQuizPlayerName(quizJoinPlayerNameInput.value);
+        quizJoinPlayerNameInput.value = saved;
+        if (quizPlayerNameInput) quizPlayerNameInput.value = saved;
+      });
+    }
+    if (quizRoomCodeInput) {
+      quizRoomCodeInput.addEventListener("input", () => {
+        quizRoomCodeInput.value = normalizeRoomCode(quizRoomCodeInput.value);
+      });
+    }
+    if (roomCreateConfirmBtn) {
+      roomCreateConfirmBtn.addEventListener("click", () => {
+        if (isQuizRoomActive()) return;
+        if (roomCreateLevelSel && quizLevelSel) quizLevelSel.value = roomCreateLevelSel.value;
+        if (roomCreateModeSel && quizTypeSel) quizTypeSel.value = roomCreateModeSel.value;
+        if (roomCreateCountSel && quizLimitSel) quizLimitSel.value = roomCreateCountSel.value;
+        normalizeQuizLimitInput();
+        updateSynAntPracticeButtons();
+        updateSeqBtnState();
+        createQuizRoom().catch(() => {
+          setQuizRoomStatus("Could not create the room. Please try again.");
+        });
+      });
+    }
+    if (quizJoinRoomBtn) {
+      quizJoinRoomBtn.addEventListener("click", () => {
+        joinQuizRoom().catch(() => {
+          setQuizRoomStatus("Could not join that room. Please try again.");
+        });
+      });
+    }
+    if (quizCopyRoomBtn) {
+      quizCopyRoomBtn.addEventListener("click", () => {
+        copyQuizRoomCode();
+      });
+    }
+    if (quizLeaveRoomBtn) {
+      quizLeaveRoomBtn.addEventListener("click", () => {
+        leaveQuizRoom({ preserveStatus: "You left the room." }).catch(() => {
+          setQuizRoomStatus("Could not leave the room cleanly, but solo mode is available.");
+        });
+      });
+    }
     quizSpeakBtn.addEventListener("click", () => {
       speakWord(quizSpeakBtn.dataset.word || "");
     });
@@ -1848,367 +2593,57 @@
     updateQuizWrongBankButton();
     updateSynAntPracticeButtons();
     updateSeqBtnState();
+    syncRoomCreateFormOptions();
+    updateQuizRoomUi();
+    setQuizRoomStatus(getFirebaseDb()
+      ? "Create a room or join one with a code."
+      : "Room features are ready when Firebase is connected.");
 
-    // Spelling Logic
-    const spellPanel = document.getElementById("spellPanel");
-    const tabSpell = document.getElementById("tabSpell");
-    const spellMeta = document.getElementById("spellMeta");
-    const spellScoreBadge = document.getElementById("spellScoreBadge");
-    const spellProgressFill = document.getElementById("spellProgressFill");
-    const spellClueMeaning = document.getElementById("spellClueMeaning");
-    const spellClueExample = document.getElementById("spellClueExample");
-    const spellClueLevel = document.getElementById("spellClueLevel");
-    const spellCluePos = document.getElementById("spellCluePos");
-    const spellClueLetters = document.getElementById("spellClueLetters");
-    const spellSpeakBtn = document.getElementById("spellSpeakBtn");
-    const spellTiles = document.getElementById("spellTiles");
-    const spellCountHint = document.getElementById("spellCountHint");
-    const spellInput = document.getElementById("spellInput");
-    const spellFeedback = document.getElementById("spellFeedback");
-    const spellHintUsed = document.getElementById("spellHintUsed");
-    const spellHintBtn = document.getElementById("spellHintBtn");
-    const spellSkipBtn = document.getElementById("spellSkipBtn");
-    const spellNextBtn = document.getElementById("spellNextBtn");
-    const spellQuestion = document.getElementById("spellQuestion");
-    const spellResults = document.getElementById("spellResults");
-    const spellLevelSel = document.getElementById("spellLevel");
-    const spellRestartBtn = document.getElementById("spellRestartBtn");
-    const spellBackBtn = document.getElementById("spellBackBtn");
-    const spellPlayAgainBtn = document.getElementById("spellPlayAgainBtn");
-    const spellResultEmoji = document.getElementById("spellResultEmoji");
-    const spellFinalScore = document.getElementById("spellFinalScore");
-    const spellCorrectCount = document.getElementById("spellCorrectCount");
-    const spellWrongCount = document.getElementById("spellWrongCount");
-    const spellAccuracy = document.getElementById("spellAccuracy");
+    // Multiplayer Panel
+    const roomPanel = document.getElementById("roomPanel");
+    const tabRoom = document.getElementById("tabRoom");
+    const roomGoToQuizBtn = document.getElementById("roomGoToQuizBtn");
+    const roomGoQuiz = document.getElementById("roomGoQuiz");
+    const roomHowTo = document.getElementById("roomHowTo");
 
-    const SPELL_TOTAL = 10;
-    const SPELL_AUTO_SUBMIT_DELAY_MS = 140;
-    const spellSt = {
-      words: [],
-      current: 0,
-      score: 0,
-      answered: false,
-      hintUsed: false,
-      hintsRevealedCount: 0
-    };
-    let activeSpellTiles = [];
-    let spellAutoSubmitTimerId = null;
-    let spellCountdownIntervalId = null;
-    const spellCountdown = document.getElementById("spellCountdown");
-    const spellCountdownNum = document.getElementById("spellCountdownNum");
-
-    function clearSpellCountdown() {
-      if (spellCountdownIntervalId) {
-        clearInterval(spellCountdownIntervalId);
-        spellCountdownIntervalId = null;
-      }
-      if (spellCountdown) spellCountdown.hidden = true;
+    function updateRoomPanelUi() {
+      const active = isQuizRoomActive();
+      const goQuiz = document.getElementById("roomGoQuiz");
+      const howTo = document.getElementById("roomHowTo");
+      if (goQuiz) goQuiz.hidden = !active;
+      if (howTo) howTo.hidden = active;
     }
-
-    function startSpellCountdown() {
-      clearSpellCountdown();
-      let count = 1;
-      if (spellCountdown) {
-        spellCountdown.hidden = false;
-        spellCountdownNum.textContent = String(count);
-      }
-      spellCountdownIntervalId = setInterval(() => {
-        count--;
-        if (count <= 0) {
-          clearInterval(spellCountdownIntervalId);
-          spellCountdownIntervalId = null;
-          if (spellCountdown) spellCountdown.hidden = true;
-          if (spellSt.answered) advanceSpell();
-        } else {
-          if (spellCountdownNum) spellCountdownNum.textContent = String(count);
-        }
-      }, 1000);
-    }
-
-    function clearSpellAutoSubmitTimer() {
-      if (spellAutoSubmitTimerId) {
-        clearTimeout(spellAutoSubmitTimerId);
-        spellAutoSubmitTimerId = null;
-      }
-    }
-
-    function getSpellPool() {
-      const level = spellLevelSel.value;
-      const pool = level === "ALL"
-        ? state.cleanWords
-        : (state.cleanWordsByLevel[level] || []);
-      return pool.length >= 4 ? pool : state.cleanWords;
-    }
-
-    function buildSpellWords() {
-      const pool = getSpellPool();
-      return shuffleArray(pool).slice(0, Math.min(SPELL_TOTAL, pool.length));
-    }
-
-    function startSpell() {
-      clearSpellAutoSubmitTimer();
-      spellSt.words = buildSpellWords();
-      spellSt.current = 0;
-      spellSt.score = 0;
-      spellSt.answered = false;
-      spellSt.hintUsed = false;
-      spellSt.hintsRevealedCount = 0;
-      spellResults.classList.remove("visible");
-      spellQuestion.style.display = "block";
-      renderSpellQuestion();
-    }
-
-    function renderSpellQuestion() {
-      clearSpellAutoSubmitTimer();
-      clearSpellCountdown();
-      const w = spellSt.words[spellSt.current];
-      spellSt.answered = false;
-      spellSt.hintUsed = false;
-      spellSt.hintsRevealedCount = 0;
-
-      spellMeta.textContent = `Word ${spellSt.current + 1} of ${spellSt.words.length}`;
-      spellScoreBadge.textContent = `Score: ${spellSt.score}`;
-      spellProgressFill.style.width = `${(spellSt.current / spellSt.words.length) * 100}%`;
-
-      spellClueMeaning.textContent = w.english_meaning;
-      const blankLength = w.word.length;
-      const blank = "_".repeat(blankLength);
-      const exRaw = w.example_sentence || "";
-      const exBlanked = exRaw.replace(new RegExp(w.word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), blank);
-      spellClueExample.textContent = exBlanked || "-";
-      spellClueLevel.textContent = w.level;
-      spellCluePos.textContent = w.part_of_speech;
-      spellClueLetters.textContent = `${w.word.length} letters`;
-      spellSpeakBtn.dataset.word = w.word || "";
-      spellSpeakBtn.disabled = false;
-
-      buildTiles(w.word.length);
-      spellCountHint.textContent = `${"-".repeat(w.word.length)} (${w.word.length} letters)`;
-
-      spellInput.value = "";
-      spellInput.disabled = false;
-      spellInput.focus();
-      spellFeedback.textContent = "";
-      spellFeedback.className = "spell-feedback";
-      spellHintUsed.textContent = "";
-      spellHintBtn.disabled = false;
-      spellSkipBtn.disabled = false;
-      spellNextBtn.disabled = true;
-    }
-
-    function buildTiles(count) {
-      spellTiles.innerHTML = "";
-      activeSpellTiles = [];
-      for (let i = 0; i < count; i++) {
-        const div = document.createElement("div");
-        div.className = "spell-tile";
-        spellTiles.appendChild(div);
-        activeSpellTiles.push(div);
-      }
-    }
-
-    function updateTiles(typed, correctWord) {
-      const len = correctWord.length;
-      for (let i = 0; i < len; i++) {
-        const tile = activeSpellTiles[i];
-        if (!tile) continue;
-        if (i < typed.length) {
-          tile.textContent = typed[i].toUpperCase();
-          tile.className = "spell-tile filled";
-        } else {
-          tile.textContent = "";
-          tile.className = "spell-tile";
-        }
-      }
-    }
-
-    function showTileResult(typed, correctWord) {
-      const len = correctWord.length;
-      for (let i = 0; i < len; i++) {
-        const tile = activeSpellTiles[i];
-        if (!tile) continue;
-        const typedChar = (typed[i] || "").toLowerCase();
-        const correctChar = correctWord[i].toLowerCase();
-        tile.textContent = typedChar ? typedChar.toUpperCase() : "_";
-        tile.className = "spell-tile " + (typedChar === correctChar ? "correct" : "wrong");
-      }
-    }
-
-    function checkSpelling() {
-      if (spellSt.answered) return;
-      clearSpellAutoSubmitTimer();
-      const w = spellSt.words[spellSt.current];
-      const typed = spellInput.value.trim().toLowerCase();
-      const correct = w.word.toLowerCase();
-
-      if (!typed) {
-        spellInput.focus();
-        return;
-      }
-
-      spellSt.answered = true;
-      spellInput.disabled = true;
-      spellHintBtn.disabled = true;
-      spellSkipBtn.disabled = true;
-      spellNextBtn.disabled = false;
-
-      showTileResult(typed, w.word);
-
-      if (typed === correct) {
-        const pts = spellSt.hintUsed ? Math.max(0, 1 - (spellSt.hintsRevealedCount * 0.5)) : 1;
-        spellSt.score += pts;
-        spellFeedback.textContent = spellSt.hintUsed
-          ? `Correct! (+${pts.toFixed(1)} pt, hint used)`
-          : "Correct! Well done!";
-        spellFeedback.className = "spell-feedback correct";
-      } else {
-        spellFeedback.textContent = `Incorrect! The word was: "${w.word}"`;
-        spellFeedback.className = "spell-feedback wrong";
-        for (let i = 0; i < w.word.length; i++) {
-          const tile = activeSpellTiles[i];
-          if (!tile) continue;
-          tile.textContent = w.word[i].toUpperCase();
-          tile.className = "spell-tile reveal";
-        }
-      }
-      spellScoreBadge.textContent = `Score: ${Math.round(spellSt.score)}`;
-      startSpellCountdown();
-    }
-
-    function useSpellHint() {
-      if (spellSt.answered) return;
-      const w = spellSt.words[spellSt.current];
-      spellSt.hintUsed = true;
-      spellSt.hintsRevealedCount++;
-      const revealCount = spellSt.hintsRevealedCount;
-
-      const revealed = w.word.slice(0, revealCount).toUpperCase();
-      spellInput.value = w.word.slice(0, revealCount);
-      updateTiles(spellInput.value, w.word);
-
-      for (let i = 0; i < revealCount; i++) {
-        const tile = activeSpellTiles[i];
-        if (tile) tile.className = "spell-tile reveal";
-      }
-
-      spellHintUsed.textContent = `Hint: First ${revealCount} letter${revealCount > 1 ? "s" : ""} revealed: "${revealed}" (penalty: -${revealCount * 0.5} pts/word)`;
-
-      if (revealCount >= Math.ceil(w.word.length / 2)) {
-        spellHintBtn.disabled = true;
-      }
-      spellInput.focus();
-    }
-
-    function skipSpell() {
-      if (spellSt.answered) return;
-      clearSpellAutoSubmitTimer();
-      const w = spellSt.words[spellSt.current];
-      spellSt.answered = true;
-      spellInput.disabled = true;
-      spellHintBtn.disabled = true;
-      spellSkipBtn.disabled = true;
-      spellNextBtn.disabled = false;
-
-      for (let i = 0; i < w.word.length; i++) {
-        const tile = activeSpellTiles[i];
-        if (tile) {
-          tile.textContent = w.word[i].toUpperCase();
-          tile.className = "spell-tile reveal";
-        }
-      }
-      spellFeedback.textContent = `Skipped! The word was: "${w.word}"`;
-      spellFeedback.className = "spell-feedback wrong";
-      startSpellCountdown();
-    }
-
-    function advanceSpell() {
-      if (!spellSt.answered) return;
-      clearSpellAutoSubmitTimer();
-      clearSpellCountdown();
-      spellSt.current++;
-      if (spellSt.current >= spellSt.words.length) {
-        showSpellResults();
-      } else {
-        renderSpellQuestion();
-      }
-    }
-
-    function showSpellResults() {
-      clearSpellAutoSubmitTimer();
-      const total = spellSt.words.length;
-      const roundScore = Math.min(Math.round(spellSt.score), total);
-      const wrong = total - roundScore;
-      const pct = Math.round((roundScore / total) * 100);
-
-      spellProgressFill.style.width = "100%";
-      spellQuestion.style.display = "none";
-      spellResults.classList.add("visible");
-
-      spellFinalScore.textContent = `${Math.round(spellSt.score * 10) / 10} / ${total}`;
-      spellCorrectCount.textContent = roundScore;
-      spellWrongCount.textContent = wrong;
-      spellAccuracy.textContent = `${pct}%`;
-
-      const badge = pct === 100 ? "A+" : pct >= 80 ? "A" : pct >= 60 ? "B" : pct >= 40 ? "C" : "Keep Going";
-      spellResultEmoji.textContent = badge;
-    }
-
-    spellInput.addEventListener("input", () => {
-      if (spellSt.answered || !spellSt.words.length) return;
-      const w = spellSt.words[spellSt.current];
-      if (spellInput.value.length > w.word.length) {
-        spellInput.value = spellInput.value.slice(0, w.word.length);
-      }
-      updateTiles(spellInput.value, w.word);
-
-      clearSpellAutoSubmitTimer();
-      if (spellInput.value.trim().length === w.word.length) {
-        spellAutoSubmitTimerId = setTimeout(() => {
-          if (!spellSt.answered) {
-            checkSpelling();
-          }
-        }, SPELL_AUTO_SUBMIT_DELAY_MS);
-      }
-    });
-
-    spellInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        if (!spellSt.answered) checkSpelling();
-        else advanceSpell();
-      }
-    });
-
-    spellHintBtn.addEventListener("click", useSpellHint);
-    spellSkipBtn.addEventListener("click", skipSpell);
-    spellNextBtn.addEventListener("click", advanceSpell);
-    spellRestartBtn.addEventListener("click", startSpell);
-    if (spellBackBtn) {
-      spellBackBtn.addEventListener("click", () => switchMode("dictionary"));
-    }
-    spellPlayAgainBtn.addEventListener("click", startSpell);
-    spellSpeakBtn.addEventListener("click", () => {
-      speakWord(spellSpeakBtn.dataset.word || "");
-    });
-    tabSpell.addEventListener("click", () => switchMode("spell"));
 
     const _origSwitchMode = switchMode;
     switchMode = function (mode) {
-      clearSpellAutoSubmitTimer();
-      spellPanel.classList.remove("visible");
-      tabSpell.classList.remove("active");
-      if (mode === "spell") {
-        if (state.allWords.length < 4) return;
+      roomPanel.classList.remove("visible");
+      tabRoom.classList.remove("active");
+      if (mode === "room") {
         dictionaryPanel.style.display = "none";
+        if (studyPlanSection) studyPlanSection.style.display = "none";
         quizPanel.classList.remove("visible");
-        spellPanel.classList.add("visible");
+        roomPanel.classList.add("visible");
         tabDictionary.classList.remove("active");
         tabQuiz.classList.remove("active");
-        tabSpell.classList.add("active");
-        startSpell();
+        if (tabPlan) tabPlan.classList.remove("active");
+        tabRoom.classList.add("active");
+        updateRoomPanelUi();
+      } else if (mode === "plan") {
+        dictionaryPanel.style.display = "none";
+        quizPanel.classList.remove("visible");
+        if (studyPlanSection) studyPlanSection.style.display = "block";
+        tabDictionary.classList.remove("active");
+        tabQuiz.classList.remove("active");
+        tabRoom.classList.remove("active");
+        if (tabPlan) tabPlan.classList.add("active");
       } else {
         _origSwitchMode(mode);
       }
     };
+
+    if (tabRoom) tabRoom.addEventListener("click", () => switchMode("room"));
+    if (tabPlan) tabPlan.addEventListener("click", () => switchMode("plan"));
+    if (roomGoToQuizBtn) roomGoToQuizBtn.addEventListener("click", () => switchMode("quiz"));
 
     loadSavedWords();
     updateSavedToggle();
@@ -2217,12 +2652,8 @@
     // Live visitor counter — requires Firebase config in config.js
     (function initLiveVisitors() {
       try {
-        const cfg = window.APP_CONFIG && window.APP_CONFIG.firebase;
-        if (!cfg || !cfg.apiKey || !cfg.databaseURL) return;
-        if (typeof firebase === "undefined") return;
-
-        const app = firebase.apps.length ? firebase.app() : firebase.initializeApp(cfg);
-        const db = firebase.database(app);
+        const db = getFirebaseDb();
+        if (!db) return;
         const sessionId = Math.random().toString(36).slice(2) + Date.now().toString(36);
         const myRef = db.ref("visitors/" + sessionId);
 
@@ -2271,8 +2702,5 @@
     darkModeToggle.addEventListener("click", toggleDarkMode);
 
     initializeDarkMode();
+    initializeStudyPlanForm();
     loadWords();
-
-
-
-
