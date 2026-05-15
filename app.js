@@ -1135,6 +1135,203 @@
       latestRoomValue: null
     };
 
+    const webrtcState = {
+      pc: null,
+      localStream: null,
+      status: "idle",        // idle | calling | ringing | connected
+      isCaller: false,
+      _pendingCallData: null,
+      _signalRef: null,
+      _signalFn: null,
+      _addedCandidates: new Set()
+    };
+
+    const CALL_STUN = [
+      { urls: "stun:stun.l.google.com:19302" },
+      { urls: "stun:stun1.l.google.com:19302" }
+    ];
+
+    function getCallRef() {
+      return quizRoomState.roomRef ? quizRoomState.roomRef.child("call") : null;
+    }
+
+    function updateCallUi() {
+      const container = document.getElementById("quizRoomCall");
+      const overlay = document.getElementById("callOverlay");
+      const roomReady = isQuizRoomActive();
+
+      if (container) container.hidden = !roomReady;
+
+      const { status } = webrtcState;
+
+      // Floating overlay: show only when this player is receiving a call
+      if (overlay) overlay.hidden = status !== "ringing";
+
+      const callBtn = document.getElementById("quizCallBtn");
+      const answerBtn = document.getElementById("quizAnswerCallBtn");
+      const endBtn = document.getElementById("quizEndCallBtn");
+      const muteBtn = document.getElementById("quizMuteBtn");
+      const statusEl = document.getElementById("quizCallStatus");
+      const dotEl = document.getElementById("quizCallStatusDot");
+
+      if (callBtn) callBtn.hidden = status !== "idle";
+      if (answerBtn) answerBtn.hidden = status !== "ringing";
+      if (endBtn) endBtn.hidden = status === "idle" || status === "ringing";
+      if (muteBtn) muteBtn.hidden = status !== "connected";
+
+      const labels = { idle: "Voice call available", calling: "Calling…", ringing: "Incoming call…", connected: "Voice connected" };
+      if (statusEl) statusEl.textContent = labels[status] || "";
+      if (dotEl) {
+        dotEl.className = "quiz-call-status-dot" + (status === "connected" ? " is-active" : status !== "idle" ? " is-ringing" : "");
+      }
+    }
+
+    async function startVoiceCall() {
+      if (!isQuizRoomActive() || webrtcState.status !== "idle") return;
+      const ref = getCallRef();
+      if (!ref) return;
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        webrtcState.localStream = stream;
+        webrtcState.isCaller = true;
+        webrtcState.status = "calling";
+        webrtcState._addedCandidates = new Set();
+
+        const pc = new RTCPeerConnection({ iceServers: CALL_STUN });
+        webrtcState.pc = pc;
+        stream.getTracks().forEach(t => pc.addTrack(t, stream));
+
+        pc.onicecandidate = async ({ candidate }) => {
+          if (candidate) ref.child("callerCandidates").push(candidate.toJSON()).catch(() => {});
+        };
+        pc.ontrack = ({ streams }) => {
+          const audio = document.getElementById("quizCallRemoteAudio");
+          if (audio && streams[0]) audio.srcObject = streams[0];
+        };
+        pc.onconnectionstatechange = () => {
+          const s = pc.connectionState;
+          if (s === "connected" && webrtcState.status !== "idle") { webrtcState.status = "connected"; updateCallUi(); }
+          else if (["failed", "disconnected", "closed"].includes(s)) hangUpCall(false);
+        };
+
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+        await ref.set({ status: "calling", offer: { type: offer.type, sdp: offer.sdp } });
+
+        const fn = ref.on("value", async (snap) => {
+          const data = snap.val();
+          if (!data || data.status === "ended") { hangUpCall(false); return; }
+          if (data.answer && webrtcState.pc && !webrtcState.pc.currentRemoteDescription) {
+            try { await webrtcState.pc.setRemoteDescription(data.answer); } catch {}
+          }
+          for (const [id, c] of Object.entries(data.calleeCandidates || {})) {
+            if (!webrtcState._addedCandidates.has(id) && webrtcState.pc) {
+              webrtcState._addedCandidates.add(id);
+              try { await webrtcState.pc.addIceCandidate(c); } catch {}
+            }
+          }
+        });
+        webrtcState._signalRef = ref;
+        webrtcState._signalFn = fn;
+        updateCallUi();
+      } catch {
+        setQuizRoomStatus("Microphone access denied or call failed to start.");
+        hangUpCall(false);
+      }
+    }
+
+    async function answerVoiceCall() {
+      if (webrtcState.status !== "ringing" || !webrtcState._pendingCallData) return;
+      const ref = getCallRef();
+      if (!ref) return;
+      const callData = webrtcState._pendingCallData;
+      webrtcState._pendingCallData = null;
+      webrtcState._addedCandidates = new Set();
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        webrtcState.localStream = stream;
+        webrtcState.isCaller = false;
+
+        const pc = new RTCPeerConnection({ iceServers: CALL_STUN });
+        webrtcState.pc = pc;
+        stream.getTracks().forEach(t => pc.addTrack(t, stream));
+
+        pc.onicecandidate = async ({ candidate }) => {
+          if (candidate) ref.child("calleeCandidates").push(candidate.toJSON()).catch(() => {});
+        };
+        pc.ontrack = ({ streams }) => {
+          const audio = document.getElementById("quizCallRemoteAudio");
+          if (audio && streams[0]) audio.srcObject = streams[0];
+        };
+        pc.onconnectionstatechange = () => {
+          const s = pc.connectionState;
+          if (s === "connected" && webrtcState.status !== "idle") { webrtcState.status = "connected"; updateCallUi(); }
+          else if (["failed", "disconnected", "closed"].includes(s)) hangUpCall(false);
+        };
+
+        await pc.setRemoteDescription(callData.offer);
+        for (const [id, c] of Object.entries(callData.callerCandidates || {})) {
+          webrtcState._addedCandidates.add(id);
+          try { await pc.addIceCandidate(c); } catch {}
+        }
+
+        const answer = await pc.createAnswer();
+        await pc.setLocalDescription(answer);
+        await ref.update({ answer: { type: answer.type, sdp: answer.sdp }, status: "connected" });
+
+        const fn = ref.on("value", async (snap) => {
+          const data = snap.val();
+          if (!data || data.status === "ended") { hangUpCall(false); return; }
+          for (const [id, c] of Object.entries(data.callerCandidates || {})) {
+            if (!webrtcState._addedCandidates.has(id) && webrtcState.pc) {
+              webrtcState._addedCandidates.add(id);
+              try { await webrtcState.pc.addIceCandidate(c); } catch {}
+            }
+          }
+        });
+        webrtcState._signalRef = ref;
+        webrtcState._signalFn = fn;
+        webrtcState.status = "connected";
+        updateCallUi();
+      } catch {
+        setQuizRoomStatus("Microphone access denied or call failed.");
+        hangUpCall(false);
+      }
+    }
+
+    async function hangUpCall(writeToDb = true) {
+      if (webrtcState._signalRef && webrtcState._signalFn) {
+        webrtcState._signalRef.off("value", webrtcState._signalFn);
+      }
+      webrtcState._signalRef = null;
+      webrtcState._signalFn = null;
+      if (webrtcState.localStream) { webrtcState.localStream.getTracks().forEach(t => t.stop()); webrtcState.localStream = null; }
+      if (webrtcState.pc) { webrtcState.pc.close(); webrtcState.pc = null; }
+      const audio = document.getElementById("quizCallRemoteAudio");
+      if (audio) audio.srcObject = null;
+      if (writeToDb) {
+        const ref = getCallRef();
+        if (ref) {
+          try { await ref.set({ status: "ended" }); } catch {}
+          setTimeout(() => ref.remove().catch(() => {}), 3000);
+        }
+      }
+      webrtcState.status = "idle";
+      webrtcState.isCaller = false;
+      webrtcState._pendingCallData = null;
+      webrtcState._addedCandidates = new Set();
+      updateCallUi();
+    }
+
+    function toggleCallMute() {
+      if (!webrtcState.localStream) return;
+      const track = webrtcState.localStream.getAudioTracks()[0];
+      if (!track) return;
+      track.enabled = !track.enabled;
+      const btn = document.getElementById("quizMuteBtn");
+      if (btn) btn.textContent = track.enabled ? "Mute" : "Unmute";
+    }
+
     function getFirebaseDb() {
       try {
         if (typeof firebase === "undefined") return null;
@@ -1376,6 +1573,7 @@
       if (quizRoomLiveResults) quizRoomLiveResults.hidden = !active;
       if (quizResultsLeaveRoomBtn) quizResultsLeaveRoomBtn.hidden = !active;
       if (typeof updateRoomPanelUi === "function") updateRoomPanelUi();
+      updateCallUi();
     }
 
     function getQuizRoomPlayerPayload(extra = {}) {
@@ -1910,6 +2108,17 @@
         ? "Both players are in the room. Start answering."
         : "Waiting for room data...";
       setQuizRoomStatus(hostMessage);
+
+      // Voice call signaling detection
+      const callData = roomValue.call;
+      if (callData && callData.status === "calling" && webrtcState.status === "idle" && !webrtcState.isCaller) {
+        webrtcState.status = "ringing";
+        webrtcState._pendingCallData = callData;
+        updateCallUi();
+      } else if (callData && callData.status === "ended" && webrtcState.status !== "idle") {
+        hangUpCall(false);
+      }
+      updateCallUi();
     }
 
     function detachQuizRoomListener() {
@@ -1922,6 +2131,7 @@
     async function leaveQuizRoom(options = {}) {
       const preserveQuestions = Boolean(options.preserveQuestions);
       const preserveStatus = String(options.preserveStatus || "");
+      await hangUpCall(false);
       detachQuizRoomListener();
       if (quizRoomState.roomRef && quizRoomState.playerId) {
         try {
@@ -2585,6 +2795,21 @@
         });
       });
     }
+
+    // Voice call button listeners
+    const quizCallBtn = document.getElementById("quizCallBtn");
+    const quizAnswerCallBtn = document.getElementById("quizAnswerCallBtn");
+    const quizEndCallBtn = document.getElementById("quizEndCallBtn");
+    const quizMuteBtn = document.getElementById("quizMuteBtn");
+    const callOverlayAnswer = document.getElementById("callOverlayAnswer");
+    const callOverlayDecline = document.getElementById("callOverlayDecline");
+    if (quizCallBtn) quizCallBtn.addEventListener("click", () => startVoiceCall().catch(() => setQuizRoomStatus("Call failed.")));
+    if (quizAnswerCallBtn) quizAnswerCallBtn.addEventListener("click", () => answerVoiceCall().catch(() => setQuizRoomStatus("Could not answer call.")));
+    if (quizEndCallBtn) quizEndCallBtn.addEventListener("click", () => hangUpCall(true));
+    if (quizMuteBtn) quizMuteBtn.addEventListener("click", toggleCallMute);
+    if (callOverlayAnswer) callOverlayAnswer.addEventListener("click", () => answerVoiceCall().catch(() => setQuizRoomStatus("Could not answer call.")));
+    if (callOverlayDecline) callOverlayDecline.addEventListener("click", () => hangUpCall(true));
+
     quizSpeakBtn.addEventListener("click", () => {
       speakWord(quizSpeakBtn.dataset.word || "");
     });
