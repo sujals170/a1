@@ -2824,3 +2824,168 @@
       background: rgba(49, 165, 165, 0.1);
       border-color: rgba(49, 165, 165, 0.3);
     }
+
+    /* ── Incoming Call Overlay ── */
+    .call-overlay {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      animation: callSlideIn 0.3s ease;
+    }
+
+    @keyframes callSlideIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .call-overlay-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1.5px solid rgba(31, 138, 138, 0.4);
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      min-width: 280px;
+    }
+
+    .call-overlay-icon {
+      font-size: 1.6rem;
+      animation: callRing 0.6s ease infinite alternate;
+      flex-shrink: 0;
+    }
+
+    @keyframes callRing {
+      from { transform: rotate(-15deg); }
+      to   { transform: rotate(15deg); }
+    }
+
+    .call-overlay-info {
+      flex: 1;
+    }
+
+    .call-overlay-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 2px;
+    }
+
+    .call-overlay-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .call-overlay-btns {
+      display: flex;
+      gap: 7px;
+      flex-shrink: 0;
+    }
+
+    .call-overlay-answer {
+      background: #22c55e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .call-overlay-answer:hover { background: #16a34a; }
+
+    .call-overlay-decline {
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .call-overlay-decline:hover { background: #dc2626; }
+
+    html[data-theme="dark"] .call-overlay-card {
+      background: #0d2030;
+      border-color: rgba(31, 138, 138, 0.4);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 480px) {
+      .call-overlay {
+        top: auto;
+        bottom: 20px;
+        right: 12px;
+        left: 12px;
+      }
+      .call-overlay-card { min-width: unset; }
+    }
+
+    /* ── Voice Call UI ── */
+    .quiz-room-call {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--line);
+      padding: 10px 16px;
+      background: rgba(31, 138, 138, 0.05);
+    }
+
+    .quiz-room-call[hidden] { display: none !important; }
+
+    .quiz-room-call-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-room-call-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .quiz-call-status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--line);
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+
+    .quiz-call-status-dot.is-active {
+      background: #22c55e;
+      animation: visitor-pulse 2s ease infinite;
+    }
+
+    .quiz-call-status-dot.is-ringing {
+      background: #f59e0b;
+      animation: visitor-pulse 1s ease infinite;
+    }
+
+    .quiz-call-status {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .quiz-room-call-btns {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    html[data-theme="dark"] .quiz-room-call {
+      background: rgba(31, 138, 138, 0.08);
+      border-color: rgba(31, 138, 138, 0.2);
+    }
