@@ -275,6 +275,23 @@
           </div>
 
           <div class="quiz-room-players" id="quizRoomPlayers"></div>
+
+          <!-- Voice Call (shown only when both players are in the room) -->
+          <div class="quiz-room-call" id="quizRoomCall" hidden>
+            <audio id="quizCallRemoteAudio" autoplay playsinline></audio>
+            <div class="quiz-room-call-bar">
+              <div class="quiz-room-call-left">
+                <span class="quiz-call-status-dot" id="quizCallStatusDot"></span>
+                <span class="quiz-call-status" id="quizCallStatus"></span>
+              </div>
+              <div class="quiz-room-call-btns">
+                <button id="quizCallBtn" class="quiz-btn quiz-btn-primary quiz-room-sm-btn" type="button">📞 Call</button>
+                <button id="quizAnswerCallBtn" class="quiz-btn quiz-btn-primary quiz-room-sm-btn" type="button" hidden>Answer</button>
+                <button id="quizMuteBtn" class="quiz-btn quiz-btn-ghost quiz-room-sm-btn" type="button" hidden>Mute</button>
+                <button id="quizEndCallBtn" class="quiz-btn quiz-room-leave-btn quiz-room-sm-btn" type="button" hidden>End Call</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="room-go-quiz" id="roomGoQuiz" hidden>
@@ -291,6 +308,21 @@
       </div>
     </section>
   </main>
+
+  <!-- Incoming call overlay (floats over any tab) -->
+  <div class="call-overlay" id="callOverlay" hidden>
+    <div class="call-overlay-card">
+      <div class="call-overlay-icon">📞</div>
+      <div class="call-overlay-info">
+        <p class="call-overlay-title">Incoming Voice Call</p>
+        <p class="call-overlay-sub" id="callOverlaySub">Your opponent wants to talk</p>
+      </div>
+      <div class="call-overlay-btns">
+        <button id="callOverlayAnswer" class="call-overlay-answer" type="button">Answer</button>
+        <button id="callOverlayDecline" class="call-overlay-decline" type="button">Decline</button>
+      </div>
+    </div>
+  </div>
   <!-- Firebase SDK (loaded only if config.js provides credentials) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
