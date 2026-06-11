@@ -40,6 +40,8 @@
     const SAVED_KEY = "savedWords";
     const STREAK_KEY = "studyStreak";
     const STUDY_PLAN_KEY = "studyPlanPrefs";
+    const CUSTOM_WORDS_KEY = "customEnglishWords";
+    const SHARED_WORDS_PATH = "customEnglishWords";
     const QUIZ_PROGRESS_KEY = "quizProgress";
     const QUIZ_WRONG_KEY = "quizWrongAnswers";
     const QUIZ_NAME_KEY = "quizPlayerName";
@@ -294,6 +296,69 @@
         item.part_of_speech ?? "",
         item.english_meaning ?? ""
       ].join("|");
+    }
+
+    function customWordEntriesToLevels(entries) {
+      if (!Array.isArray(entries)) return {};
+      return entries.reduce((levels, entry) => {
+        const word = String(entry && entry.word || "").trim();
+        const level = String(entry && entry.level || "Custom").trim() || "Custom";
+        if (!word) return levels;
+        if (!Array.isArray(levels[level])) levels[level] = [];
+        levels[level].push({
+          word,
+          part_of_speech: String(entry.part_of_speech || "").trim(),
+          english_meaning: String(entry.english_meaning || "").trim(),
+          gujarati: String(entry.gujarati || "").trim(),
+          example_sentence: String(entry.example_sentence || "").trim(),
+          synonyms: normalizeWordList(entry.synonyms),
+          antonyms: normalizeWordList(entry.antonyms)
+        });
+        return levels;
+      }, {});
+    }
+
+    function normalizeSharedWordEntries(value) {
+      if (Array.isArray(value)) return value.filter(Boolean);
+      if (value && typeof value === "object") return Object.values(value).filter(Boolean);
+      return [];
+    }
+
+    function loadLocalCustomWordLevels() {
+      try {
+        const raw = localStorage.getItem(CUSTOM_WORDS_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return customWordEntriesToLevels(Array.isArray(parsed) ? parsed : []);
+      } catch (error) {
+        return {};
+      }
+    }
+
+    async function loadSharedCustomWordLevels() {
+      const db = getFirebaseDb();
+      if (!db) return {};
+      try {
+        const snap = await db.ref(SHARED_WORDS_PATH).once("value");
+        const entries = normalizeSharedWordEntries(snap.val());
+        localStorage.setItem(CUSTOM_WORDS_KEY, JSON.stringify(entries));
+        return customWordEntriesToLevels(entries);
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function mergeWordLevels(targetLevels, customLevels) {
+      Object.keys(customLevels).forEach((level) => {
+        const existing = Array.isArray(targetLevels[level]) ? targetLevels[level] : [];
+        const seen = new Set(existing.map((entry) => getWordId({ ...entry, level }).toLowerCase()));
+        const additions = customLevels[level].filter((entry) => {
+          const id = getWordId({ ...entry, level }).toLowerCase();
+          if (seen.has(id)) return false;
+          seen.add(id);
+          return true;
+        });
+        targetLevels[level] = [...existing, ...additions];
+      });
     }
 
     function saveSavedWords() {
@@ -820,7 +885,9 @@
           embedded.remove();
         }
 
-        const levels = json && json.levels ? json.levels : {};
+        const levels = json && json.levels ? { ...json.levels } : {};
+        mergeWordLevels(levels, loadLocalCustomWordLevels());
+        mergeWordLevels(levels, await loadSharedCustomWordLevels());
         state.levels = Object.keys(levels).sort();
         state.levelCounts = {};
         state.wordsByLevel = {};
@@ -883,6 +950,15 @@
         statusEl.textContent = `Could not load word.json (${error.message}). Run with a local server.`;
         metaEl.textContent = "Failed to load data.";
       }
+    }
+
+    let reloadWordsTimerId = null;
+
+    function scheduleReloadWords() {
+      clearTimeout(reloadWordsTimerId);
+      reloadWordsTimerId = setTimeout(() => {
+        loadWords();
+      }, 120);
     }
 
     searchInput.addEventListener("input", (event) => {
@@ -2645,6 +2721,11 @@
       }
     }
 
+    async function openQuizMode() {
+      await loadWords();
+      switchMode("quiz");
+    }
+
     function updateSeqBtnState() {
       const levelIsAll = quizLevelSel.value === "ALL";
       const isSynAntMode = quizTypeSel.value === "synonym" || quizTypeSel.value === "antonym";
@@ -2670,7 +2751,7 @@
     }
 
     tabDictionary.addEventListener("click", () => switchMode("dictionary"));
-    tabQuiz.addEventListener("click", () => switchMode("quiz"));
+    tabQuiz.addEventListener("click", () => openQuizMode().catch(() => switchMode("quiz")));
     quizLevelSel.addEventListener("change", () => {
       updateSeqBtnState();
       startQuiz();
@@ -2868,7 +2949,7 @@
 
     if (tabRoom) tabRoom.addEventListener("click", () => switchMode("room"));
     if (tabPlan) tabPlan.addEventListener("click", () => switchMode("plan"));
-    if (roomGoToQuizBtn) roomGoToQuizBtn.addEventListener("click", () => switchMode("quiz"));
+    if (roomGoToQuizBtn) roomGoToQuizBtn.addEventListener("click", () => openQuizMode().catch(() => switchMode("quiz")));
 
     loadSavedWords();
     updateSavedToggle();
@@ -2925,6 +3006,14 @@
     }
 
     darkModeToggle.addEventListener("click", toggleDarkMode);
+    window.addEventListener("storage", (event) => {
+      if (event.key === CUSTOM_WORDS_KEY || event.key === SHARED_WORDS_PATH) {
+        scheduleReloadWords();
+      }
+    });
+    window.addEventListener("focus", () => {
+      scheduleReloadWords();
+    });
 
     initializeDarkMode();
     initializeStudyPlanForm();
