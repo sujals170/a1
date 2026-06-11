@@ -5,10 +5,10 @@ services:
     buildCommand: "bash build.sh"
     staticPublishPath: .
     headers:
-      - path: "/*.js"
+      - path: "/**/*.js"
         name: Content-Type
         value: application/javascript; charset=utf-8
-      - path: "/*.css"
+      - path: "/**/*.css"
         name: Content-Type
         value: text/css; charset=utf-8
     envVars:
