@@ -11,6 +11,7 @@ _appId=$(echo "${FIREBASE_APP_ID:-}" | tr -d '\r\n\t ')
 
 node -e "
 const fs = require('fs');
+
 const config = \`window.APP_CONFIG = {
   firebase: {
     apiKey: '${_apiKey}',
@@ -22,9 +23,15 @@ const config = \`window.APP_CONFIG = {
     appId: '${_appId}'
   }
 };\`;
+
+const tag = '<script>' + config + '<\/script>';
+
 const html = fs.readFileSync('index.html', 'utf8');
 const admin = fs.readFileSync('admin.html', 'utf8');
-fs.writeFileSync('index.html', html.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '<\/script>'));
-fs.writeFileSync('admin.html', admin.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '<\/script>'));
-console.log('Firebase config injected successfully');
+
+// ✅ Each file uses its OWN content
+fs.writeFileSync('index.html', html.replace('<!-- FIREBASE_CONFIG -->', tag));
+fs.writeFileSync('admin.html', admin.replace('<!-- FIREBASE_CONFIG -->', tag));
+
+console.log('Firebase config injected into index.html and admin.html');
 "
