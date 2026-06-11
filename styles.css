@@ -594,6 +594,18 @@
       flex-wrap: wrap;
     }
 
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-wrap: wrap;
+    }
+
+    .hero-top .admin-link {
+      text-decoration: none;
+    }
+
     .hero-kicker {
       display: inline-block;
       font-size: 11px;
@@ -1398,6 +1410,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      text-decoration: none;
     }
 
     .mode-tab:hover {
@@ -2988,4 +3001,359 @@
     html[data-theme="dark"] .quiz-room-call {
       background: rgba(31, 138, 138, 0.08);
       border-color: rgba(31, 138, 138, 0.2);
+    }
+
+    .admin-page {
+      max-width: 760px;
+    }
+
+    .admin-hero h1 {
+      margin-bottom: 10px;
+    }
+
+    .admin-panel {
+      margin-top: 18px;
+    }
+
+    .admin-section-panel {
+      margin-bottom: 18px;
+    }
+
+    .admin-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .admin-form[hidden] {
+      display: none !important;
+    }
+
+    .admin-section-form {
+      margin-top: 12px;
+    }
+
+    .admin-section-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .admin-section-item {
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--box-shadow);
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 16px;
+      gap: 12px;
+    }
+
+    .admin-section-actions {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .admin-section-item.is-active {
+      border-color: rgba(31, 138, 138, 0.35);
+      box-shadow: 0 14px 30px rgba(31, 138, 138, 0.12);
+    }
+
+    .admin-section-item .meaning {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin: 4px 0 0;
+    }
+
+    .admin-enter-btn {
+      white-space: nowrap;
+    }
+
+    .admin-delete-section-btn {
+      white-space: nowrap;
+    }
+
+    .admin-modal {
+      align-items: center;
+      display: flex;
+      inset: 0;
+      justify-content: center;
+      padding: 24px;
+      position: fixed;
+      z-index: 1000;
+    }
+
+    .admin-modal[hidden] {
+      display: none !important;
+    }
+
+    .admin-modal-backdrop {
+      background: rgba(7, 13, 22, 0.6);
+      inset: 0;
+      position: absolute;
+    }
+
+    .admin-modal-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+      max-width: 420px;
+      padding: 22px;
+      position: relative;
+      width: min(420px, 100%);
+      z-index: 1;
+    }
+
+    .admin-modal-card h2 {
+      color: var(--hero-title);
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 22px;
+      margin: 0 0 10px;
+    }
+
+    .admin-modal-card p {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .admin-modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    html[data-theme="dark"] .admin-modal-backdrop {
+      background: rgba(0, 0, 0, 0.72);
+    }
+
+    .admin-word-form {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-form label {
+      color: var(--ink);
+      display: grid;
+      font-size: 13px;
+      font-weight: 800;
+      gap: 7px;
+    }
+
+    .admin-pos-field {
+      position: relative;
+    }
+
+    .admin-pos-label {
+      align-items: center;
+      display: inline-flex;
+      gap: 8px;
+    }
+
+    .admin-pos-info {
+      align-items: center;
+      background: var(--accent);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 999px;
+      color: #fff;
+      cursor: help;
+      display: inline-flex;
+      flex: 0 0 auto;
+      font-size: 11px;
+      font-weight: 900;
+      height: 18px;
+      justify-content: center;
+      line-height: 1;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      width: 18px;
+    }
+
+    .admin-pos-tooltip {
+      background: #102233;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      left: 50%;
+      line-height: 1.45;
+      opacity: 0;
+      padding: 10px 12px;
+      pointer-events: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      transform: translateX(-50%) translateY(-4px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      width: 240px;
+      z-index: 4;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .admin-pos-tooltip code {
+      color: #ffd9b8;
+    }
+
+    .admin-pos-info:hover .admin-pos-tooltip,
+    .admin-pos-info:focus .admin-pos-tooltip,
+    .admin-pos-info:focus-within .admin-pos-tooltip,
+    .admin-pos-field:focus-within .admin-pos-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    html[data-theme="dark"] .admin-pos-info {
+      background: #ff9b5f;
+      color: #0b1118;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="dark"] .admin-pos-tooltip {
+      background: #eaf2ff;
+      border-color: rgba(11, 17, 24, 0.12);
+      color: #102233;
+    }
+
+    html[data-theme="dark"] .admin-pos-tooltip code {
+      color: #8c3f00;
+    }
+
+    .admin-form label[hidden] {
+      display: none !important;
+    }
+
+    .admin-form textarea {
+      min-height: 74px;
+      resize: vertical;
+    }
+
+    .admin-fetch-wrap {
+      align-items: end;
+      display: grid;
+      gap: 7px;
+    }
+
+    .admin-fetch-status {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      min-height: 18px;
+    }
+
+    .admin-form code,
+    .admin-help code {
+      background: var(--chip);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 1px 5px;
+    }
+
+    .admin-wide {
+      grid-column: 1 / -1;
+    }
+
+    .admin-form-head,
+    .admin-toolbar,
+    .admin-list-head,
+    .admin-actions {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    .admin-help {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .admin-status {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      min-height: 20px;
+    }
+
+    .admin-list-head {
+      border-top: 1px solid var(--line);
+      margin-top: 22px;
+      padding-top: 18px;
+    }
+
+    .admin-word-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .admin-word-item,
+    .admin-empty {
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .admin-word-item {
+      align-items: start;
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr auto;
+    }
+
+    .admin-word-title {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .admin-word-title strong {
+      color: var(--hero-title);
+      font-size: 18px;
+    }
+
+    .admin-delete-btn {
+      white-space: nowrap;
+    }
+
+    html[data-theme="dark"] .admin-form textarea,
+    html[data-theme="dark"] .admin-form input,
+    html[data-theme="dark"] .admin-form select {
+      background-color: #131d2b;
+      border-color: #2f3b4c;
+      color: #e7edf5;
+    }
+
+    html[data-theme="dark"] .admin-word-item,
+    html[data-theme="dark"] .admin-empty {
+      background: rgba(18, 28, 42, 0.72);
+      border-color: #2f3b4c;
+    }
+
+    @media (max-width: 720px) {
+      .admin-word-form {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-toolbar,
+      .admin-list-head,
+      .admin-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .admin-word-item {
+        grid-template-columns: 1fr;
+      }
     }
