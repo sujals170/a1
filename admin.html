@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add English Words</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body>
+  <main class="page admin-page">
+    <section class="panel admin-panel" id="loginPanel">
+      <form class="admin-form" id="loginForm">
+        <div class="admin-form-head">
+          <p class="filter-title">Admin Login</p>
+        </div>
+        <label>
+          Email
+          <input id="emailInput" class="quiz-select" type="email" autocomplete="email" value="admin12@gmail.com" required>
+        </label>
+        <label>
+          Password
+          <input id="passwordInput" class="quiz-select" type="password" autocomplete="current-password" required>
+        </label>
+        <div class="admin-actions admin-wide">
+          <button class="quiz-btn quiz-btn-primary" type="submit">Login</button>
+          <a class="quiz-btn quiz-btn-ghost" href="index.html">Back to Dictionary</a>
+        </div>
+        <div class="admin-status" id="loginStatus" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="panel admin-panel" id="wordPanel" hidden>
+      <div class="admin-toolbar">
+        <div>
+          <p class="filter-title">New Word</p>
+        </div>
+        <button class="quiz-btn quiz-btn-ghost" id="logoutBtn" type="button">Logout</button>
+      </div>
+
+      <section class="admin-section-panel">
+        <div class="admin-toolbar">
+          <div>
+            <p class="filter-title">Section Creation</p>
+          </div>
+          <span class="badge" id="activeSectionBadge">No section selected</span>
+        </div>
+        <div class="admin-form admin-section-form">
+          <label class="admin-wide">
+            Section Name
+            <input id="sectionNameInput" class="quiz-select" type="text" placeholder="e.g. Business English">
+          </label>
+          <div class="admin-actions admin-wide">
+            <button class="quiz-btn quiz-btn-primary" id="createSectionBtn" type="button">Create Section</button>
+          </div>
+          <div class="admin-status admin-wide" id="sectionStatus" aria-live="polite"></div>
+        </div>
+        <div class="admin-list-head">
+          <p class="filter-title">Sections</p>
+          <span class="badge" id="sectionCount">0 sections</span>
+        </div>
+        <div class="admin-section-list" id="sectionList"></div>
+      </section>
+
+      <form class="admin-form admin-word-form" id="wordForm" hidden>
+        <label>
+          Word
+          <input id="wordInput" class="quiz-select" type="text" required>
+        </label>
+        <div class="admin-fetch-wrap">
+          <button class="quiz-btn quiz-btn-ghost" id="fetchWordBtn" type="button">Fetch Details</button>
+          <span class="admin-fetch-status" id="fetchWordStatus" aria-live="polite"></span>
+        </div>
+        <label>
+          Level
+          <input id="levelInput" class="quiz-select" type="text" value="Custom" readonly>
+          <small class="admin-help">This field is filled from the created section name.</small>
+        </label>
+        <label class="admin-pos-field">
+          <span class="admin-pos-label">
+            Part of Speech
+            <span class="admin-pos-info" tabindex="0" aria-label="Part of speech format help">
+              i
+              <span class="admin-pos-tooltip" role="tooltip">Use comma-separated values like <code>noun, verb</code>. You can also type abbreviations like <code>n., v.</code> and they will be normalized.</span>
+            </span>
+          </span>
+          <input id="posInput" class="quiz-select" type="text" placeholder="e.g. noun, verb" required>
+        </label>
+        <label class="admin-wide">
+          English Meaning
+          <textarea id="meaningInput" class="quiz-select" rows="3" required></textarea>
+        </label>
+        <label class="admin-wide">
+          Gujarati
+          <textarea id="gujaratiInput" class="quiz-select" rows="2" required></textarea>
+        </label>
+        <label class="admin-wide">
+          Example Sentence
+          <textarea id="exampleInput" class="quiz-select" rows="3" required></textarea>
+        </label>
+        <label>
+          Synonyms
+          <input id="synonymsInput" class="quiz-select" type="text" placeholder="comma separated">
+        </label>
+        <label>
+          Antonyms
+          <input id="antonymsInput" class="quiz-select" type="text" placeholder="comma separated">
+        </label>
+        <div class="admin-actions admin-wide">
+          <button class="quiz-btn quiz-btn-primary" type="submit">Add Word</button>
+          <button class="quiz-btn quiz-btn-ghost" id="clearFormBtn" type="button">Clear</button>
+        </div>
+        <div class="admin-status admin-wide" id="wordStatus" aria-live="polite"></div>
+      </form>
+
+      <div class="admin-list-head">
+        <p class="filter-title">Added Words</p>
+        <span class="badge" id="customCount">0 words</span>
+      </div>
+      <div class="admin-word-list" id="customWordList"></div>
+    </section>
+  </main>
+
+  <div class="admin-modal" id="confirmModal" hidden aria-hidden="true">
+    <div class="admin-modal-backdrop" data-close-confirm></div>
+    <div class="admin-modal-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmMessage">
+      <h2 id="confirmTitle">Confirm action</h2>
+      <p id="confirmMessage">Are you sure you want to continue?</p>
+      <div class="admin-modal-actions">
+        <button class="quiz-btn quiz-btn-ghost" id="confirmCancelBtn" type="button">Cancel</button>
+        <button class="quiz-btn quiz-btn-primary" id="confirmActionBtn" type="button">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>
