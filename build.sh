@@ -26,7 +26,8 @@ const config = \`window.APP_CONFIG = {
 let html = fs.readFileSync('index.html', 'utf8');
 let admin = fs.readFileSync('admin.html', 'utf8');
 html = html.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '</script>');
+admin = html.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '</script>');
 fs.writeFileSync('index.html', html);
-fs.writeFileSync('admin.html', html);
+fs.writeFileSync('admin.html', admin);
 console.log('Firebase config injected successfully');
 "
