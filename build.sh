@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-# Strip any accidental newlines or whitespace from env vars
-_apiKey=$(echo "${apiKey:-}" | tr -d '\r\n\t ')
-_authDomain=$(echo "${authDomain:-}" | tr -d '\r\n\t ')
-_databaseURL=$(echo "${databaseURL:-}" | tr -d '\r\n\t ')
-_projectId=$(echo "${projectId:-}" | tr -d '\r\n\t ')
-_storageBucket=$(echo "${storageBucket:-}" | tr -d '\r\n\t ')
-_messagingSenderId=$(echo "${messagingSenderId:-}" | tr -d '\r\n\t ')
-_appId=$(echo "${appId:-}" | tr -d '\r\n\t ')
+_apiKey=$(echo "${FIREBASE_API_KEY:-}" | tr -d '\r\n\t ')
+_authDomain=$(echo "${FIREBASE_AUTH_DOMAIN:-}" | tr -d '\r\n\t ')
+_databaseURL=$(echo "${FIREBASE_DATABASE_URL:-}" | tr -d '\r\n\t ')
+_projectId=$(echo "${FIREBASE_PROJECT_ID:-}" | tr -d '\r\n\t ')
+_storageBucket=$(echo "${FIREBASE_STORAGE_BUCKET:-}" | tr -d '\r\n\t ')
+_messagingSenderId=$(echo "${FIREBASE_MESSAGING_SENDER_ID:-}" | tr -d '\r\n\t ')
+_appId=$(echo "${FIREBASE_APP_ID:-}" | tr -d '\r\n\t ')
 
 node -e "
 const fs = require('fs');
@@ -23,11 +22,9 @@ const config = \`window.APP_CONFIG = {
     appId: '${_appId}'
   }
 };\`;
-let html = fs.readFileSync('index.html', 'utf8');
-let admin = fs.readFileSync('admin.html', 'utf8');
-html = html.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '</script>');
-admin = html.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '</script>');
-fs.writeFileSync('index.html', html);
-fs.writeFileSync('admin.html', admin);
+const html = fs.readFileSync('index.html', 'utf8');
+const admin = fs.readFileSync('admin.html', 'utf8');
+fs.writeFileSync('index.html', html.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '<\/script>'));
+fs.writeFileSync('admin.html', admin.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '<\/script>'));
 console.log('Firebase config injected successfully');
 "
