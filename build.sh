@@ -1,16 +1,11 @@
-#!/usr/bin/env bash
+]#!/usr/bin/env bash
 set -e
 
-# Function to clean environment variable values (stripping extra quotes, commas, and newlines)
 clean_value() {
   local val="$1"
-  # 1. Remove leading/trailing whitespace
-  # 2. Remove leading/trailing " or '
-  # 3. Remove trailing comma or \n (literal backslash-n)
-  echo "$val" | sed -E 's/^[[:space:]"'\'' ]+//; s/[[:space:]"'\', ]+$//; s/\\n$//' | xargs echo -n
+  echo "$val" | sed -E "s/^[[:space:]\"']+//; s/[[:space:]\"',]+\$//; s/\\\\n\$//" | tr -d '\n'
 }
 
-# Collect values from both styles of environment variables
 _apiKey=$(clean_value "${FIREBASE_API_KEY:-${apiKey:-}}")
 _authDomain=$(clean_value "${FIREBASE_AUTH_DOMAIN:-${authDomain:-}}")
 _databaseURL=$(clean_value "${FIREBASE_DATABASE_URL:-${databaseURL:-}}")
@@ -22,20 +17,20 @@ _measurementId=$(clean_value "${FIREBASE_MEASUREMENT_ID:-${measurementId:-}}")
 
 echo "Building project and injecting Firebase configuration..."
 
-node -e "
+node << 'EOF'
 const fs = require('fs');
-const config = \`window.APP_CONFIG = {
+const config = `window.APP_CONFIG = {
   firebase: {
-    apiKey: '${_apiKey}',
-    authDomain: '${_authDomain}',
-    databaseURL: '${_databaseURL}',
-    projectId: '${_projectId}',
-    storageBucket: '${_storageBucket}',
-    messagingSenderId: '${_messagingSenderId}',
-    appId: '${_appId}',
-    measurementId: '${_measurementId}'
+    apiKey: '${process.env._apiKey}',
+    authDomain: '${process.env._authDomain}',
+    databaseURL: '${process.env._databaseURL}',
+    projectId: '${process.env._projectId}',
+    storageBucket: '${process.env._storageBucket}',
+    messagingSenderId: '${process.env._messagingSenderId}',
+    appId: '${process.env._appId}',
+    measurementId: '${process.env._measurementId}'
   }
-};\`;
+};`;
 
 ['index.html', 'admin.html'].forEach(file => {
   if (fs.existsSync(file)) {
@@ -49,6 +44,6 @@ const config = \`window.APP_CONFIG = {
     }
   }
 });
-"
+EOF
 
 echo "Build complete."
