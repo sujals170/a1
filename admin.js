@@ -91,7 +91,7 @@ function getFirebaseApp() {
   try {
     if (typeof firebase === "undefined") return null;
     const cfg = window.APP_CONFIG && window.APP_CONFIG.firebase;
-    if (!cfg || !cfg.apiKey) return null;
+    if (!cfg || !cfg.apiKey || !cfg.databaseURL) return null;
     return firebase.apps.length ? firebase.app() : firebase.initializeApp(cfg);
   } catch (error) {
     return null;
