@@ -10,18 +10,18 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/favicon-32x32.png" type="image/x-icon">
+  <link rel="icon" href="/favicon-32x32.png" type="image/x-icon">
 
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EY23Q0HYZR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EY23Q0HYZR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-EY23Q0HYZR');
-</script>
+    gtag('config', 'G-EY23Q0HYZR');
+  </script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
       <div id="streakBanner" class="streak-banner" hidden>
         <span id="streakText">Day 1 streak!</span>
       </div>
-     
+
       <div id="stats" class="stats"></div>
       <div class="mode-tabs">
         <button class="mode-tab active" id="tabDictionary" type="button">Dictionary</button>
@@ -92,7 +92,8 @@
           </div>
           <div class="quiz-config-group">
             <label for="studyPlanDays">Days to Finish</label>
-            <input id="studyPlanDays" class="quiz-select quiz-limit-input" type="number" min="1" step="1" value="30" inputmode="numeric">
+            <input id="studyPlanDays" class="quiz-select quiz-limit-input" type="number" min="1" step="1" value="30"
+              inputmode="numeric">
           </div>
           <div class="study-plan-action-wrap">
             <button id="studyPlanBtn" class="quiz-btn quiz-btn-primary" type="button">Make My Plan</button>
@@ -136,9 +137,11 @@
           </div>
           <div class="quiz-config-group">
             <label for="quizLimit">Questions</label>
-            <input id="quizLimit" class="quiz-select quiz-limit-input" type="number" min="1" step="1" value="10" inputmode="numeric">
+            <input id="quizLimit" class="quiz-select quiz-limit-input" type="number" min="1" step="1" value="10"
+              inputmode="numeric">
           </div>
-          <button class="quiz-btn quiz-btn-primary quiz-restart-inline" id="quizRestartBtn" type="button">Restart</button>
+          <button class="quiz-btn quiz-btn-primary quiz-restart-inline" id="quizRestartBtn"
+            type="button">Restart</button>
         </div>
         <div class="quiz-toggle-row">
           <button class="quiz-btn quiz-btn-ghost" id="quizSavedBtn" type="button">Saved Cards: Off (0)</button>
@@ -156,7 +159,7 @@
         </div>
 
         <div class="quiz-word-card">
-         
+
           <p class="quiz-prompt" id="quizPrompt">What does this word mean?</p>
           <div class="quiz-word" id="quizWordDisplay"></div>
           <div class="quiz-word-meta">
@@ -179,10 +182,10 @@
 
       </div>
 
-        <div class="quiz-room-results" id="quizRoomLiveResults" hidden>
-          <h3>Live Scoreboard</h3>
-          <div class="quiz-room-results-list" id="quizRoomLiveResultsList"></div>
-        </div>
+      <div class="quiz-room-results" id="quizRoomLiveResults" hidden>
+        <h3>Live Scoreboard</h3>
+        <div class="quiz-room-results-list" id="quizRoomLiveResultsList"></div>
+      </div>
 
       <!-- Results view -->
       <div class="quiz-results" id="quizResults">
@@ -232,7 +235,8 @@
               <p class="quiz-room-side-label">Host a Game</p>
               <div class="quiz-config-group">
                 <label for="quizPlayerName">Your Name</label>
-                <input id="quizPlayerName" class="quiz-select quiz-room-input" type="text" maxlength="24" placeholder="Enter your name">
+                <input id="quizPlayerName" class="quiz-select quiz-room-input" type="text" maxlength="24"
+                  placeholder="Enter your name">
               </div>
               <div class="room-create-form" id="roomCreateForm">
                 <div class="quiz-config-group">
@@ -245,7 +249,8 @@
                 </div>
                 <div class="quiz-config-group">
                   <label for="roomCreateCount">Question Count</label>
-                  <input id="roomCreateCount" class="quiz-select quiz-room-input" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g. 50">
+                  <input id="roomCreateCount" class="quiz-select quiz-room-input" type="number" min="1" step="1"
+                    inputmode="numeric" placeholder="e.g. 50">
                 </div>
                 <div class="room-create-form-actions">
                   <button class="quiz-btn quiz-btn-primary" id="roomCreateConfirmBtn" type="button">Create Room</button>
@@ -257,11 +262,13 @@
               <p class="quiz-room-side-label">Join a Game</p>
               <div class="quiz-config-group">
                 <label for="quizJoinPlayerName">Your Name</label>
-                <input id="quizJoinPlayerName" class="quiz-select quiz-room-input" type="text" maxlength="24" placeholder="Enter your name">
+                <input id="quizJoinPlayerName" class="quiz-select quiz-room-input" type="text" maxlength="24"
+                  placeholder="Enter your name">
               </div>
               <div class="quiz-config-group">
                 <label for="quizRoomCodeInput">Room Code</label>
-                <input id="quizRoomCodeInput" class="quiz-select quiz-room-input quiz-room-code-input" type="text" maxlength="8" placeholder="e.g. ABC123">
+                <input id="quizRoomCodeInput" class="quiz-select quiz-room-input quiz-room-code-input" type="text"
+                  maxlength="8" placeholder="e.g. ABC123">
               </div>
               <button class="quiz-btn quiz-room-join-btn" id="quizJoinRoomBtn" type="button">Join Room</button>
             </div>
@@ -270,10 +277,12 @@
           <div class="quiz-room-bar">
             <div class="quiz-room-status-row">
               <span class="quiz-room-status-dot"></span>
-              <div class="quiz-room-status" id="quizRoomStatus">Room features are ready when Firebase is connected.</div>
+              <div class="quiz-room-status" id="quizRoomStatus">Room features are ready when Firebase is connected.
+              </div>
             </div>
             <div class="quiz-room-bar-btns">
-              <button class="quiz-btn quiz-btn-ghost quiz-room-sm-btn" id="quizCopyRoomBtn" type="button" disabled>Copy Code</button>
+              <button class="quiz-btn quiz-btn-ghost quiz-room-sm-btn" id="quizCopyRoomBtn" type="button" disabled>Copy
+                Code</button>
               <button class="quiz-room-leave-btn" id="quizLeaveRoomBtn" type="button" disabled>Leave Room</button>
             </div>
           </div>
@@ -289,24 +298,32 @@
                 <span class="quiz-call-status" id="quizCallStatus"></span>
               </div>
               <div class="quiz-room-call-btns">
-                <button id="quizCallBtn" class="quiz-btn quiz-btn-primary quiz-room-sm-btn" type="button">📞 Call</button>
-                <button id="quizAnswerCallBtn" class="quiz-btn quiz-btn-primary quiz-room-sm-btn" type="button" hidden>Answer</button>
-                <button id="quizMuteBtn" class="quiz-btn quiz-btn-ghost quiz-room-sm-btn" type="button" hidden>Mute</button>
-                <button id="quizEndCallBtn" class="quiz-btn quiz-room-leave-btn quiz-room-sm-btn" type="button" hidden>End Call</button>
+                <button id="quizCallBtn" class="quiz-btn quiz-btn-primary quiz-room-sm-btn" type="button">📞
+                  Call</button>
+                <button id="quizAnswerCallBtn" class="quiz-btn quiz-btn-primary quiz-room-sm-btn" type="button"
+                  hidden>Answer</button>
+                <button id="quizMuteBtn" class="quiz-btn quiz-btn-ghost quiz-room-sm-btn" type="button"
+                  hidden>Mute</button>
+                <button id="quizEndCallBtn" class="quiz-btn quiz-room-leave-btn quiz-room-sm-btn" type="button"
+                  hidden>End Call</button>
               </div>
             </div>
           </div>
         </div>
 
         <div class="room-go-quiz" id="roomGoQuiz" hidden>
-          <p class="room-go-quiz-text">Room is active — head to Quiz Mode to answer questions and sync your score live.</p>
+          <p class="room-go-quiz-text">Room is active — head to Quiz Mode to answer questions and sync your score live.
+          </p>
           <button class="quiz-btn quiz-btn-primary" id="roomGoToQuizBtn" type="button">Open Quiz Mode →</button>
         </div>
 
         <div class="room-how-to" id="roomHowTo">
-          <div class="room-how-step"><span class="room-how-num">1</span><span>Enter your name and click <strong>Create Room</strong> to generate a code.</span></div>
-          <div class="room-how-step"><span class="room-how-num">2</span><span>Share the room code with a friend — they enter it and click <strong>Join Room</strong>.</span></div>
-          <div class="room-how-step"><span class="room-how-num">3</span><span>Both of you switch to <strong>Quiz Mode</strong> and answer the same questions. Live scores update instantly.</span></div>
+          <div class="room-how-step"><span class="room-how-num">1</span><span>Enter your name and click <strong>Create
+                Room</strong> to generate a code.</span></div>
+          <div class="room-how-step"><span class="room-how-num">2</span><span>Share the room code with a friend — they
+              enter it and click <strong>Join Room</strong>.</span></div>
+          <div class="room-how-step"><span class="room-how-num">3</span><span>Both of you switch to <strong>Quiz
+                Mode</strong> and answer the same questions. Live scores update instantly.</span></div>
         </div>
 
       </div>
@@ -327,15 +344,13 @@
       </div>
     </div>
   </div>
-  <!-- Firebase SDK (loaded only if config.js provides credentials) -->
+  <!-- Firebase SDK (requires config.js — generated at deploy time or copied from config.example.js locally) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-  <!-- FIREBASE_CONFIG -->
   <script src="config.js"></script>
   <script src="app.js"></script>
+
 
 </body>
 
 </html>
-
-
