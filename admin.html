@@ -22,7 +22,8 @@
         </div>
         <label>
           Email
-          <input id="emailInput" class="quiz-select" type="email" autocomplete="email" value="admin12@gmail.com" required>
+          <input id="emailInput" class="quiz-select" type="email" autocomplete="email" value="admin12@gmail.com"
+            required>
         </label>
         <label>
           Password
@@ -87,7 +88,8 @@
             Part of Speech
             <span class="admin-pos-info" tabindex="0" aria-label="Part of speech format help">
               i
-              <span class="admin-pos-tooltip" role="tooltip">Use comma-separated values like <code>noun, verb</code>. You can also type abbreviations like <code>n., v.</code> and they will be normalized.</span>
+              <span class="admin-pos-tooltip" role="tooltip">Use comma-separated values like <code>noun, verb</code>.
+                You can also type abbreviations like <code>n., v.</code> and they will be normalized.</span>
             </span>
           </span>
           <input id="posInput" class="quiz-select" type="text" placeholder="e.g. noun, verb" required>
@@ -129,7 +131,8 @@
 
   <div class="admin-modal" id="confirmModal" hidden aria-hidden="true">
     <div class="admin-modal-backdrop" data-close-confirm></div>
-    <div class="admin-modal-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmMessage">
+    <div class="admin-modal-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle"
+      aria-describedby="confirmMessage">
       <h2 id="confirmTitle">Confirm action</h2>
       <p id="confirmMessage">Are you sure you want to continue?</p>
       <div class="admin-modal-actions">
@@ -142,7 +145,8 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
- 
+  <!-- FIREBASE_CONFIG -->
+  <script src="config.js"></script>
   <script src="admin.js"></script>
 </body>
 
