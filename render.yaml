@@ -26,3 +26,5 @@ services:
         sync: false
       - key: FIREBASE_APP_ID
         sync: false
+      - key: FIREBASE_MEASUREMENT_ID
+        sync: false
