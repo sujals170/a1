@@ -509,6 +509,21 @@
       studyPlanLevelSel.dataset.pendingLevel = "";
     }
 
+    function renderQuizLevelOptions() {
+      if (!quizLevelSel) return;
+      const current = String(quizLevelSel.value || "ALL");
+      quizLevelSel.innerHTML = '<option value="ALL">All Levels</option>';
+      state.levels.forEach((level) => {
+        const opt = document.createElement("option");
+        opt.value = level;
+        opt.textContent = level;
+        quizLevelSel.appendChild(opt);
+      });
+      quizLevelSel.value = state.levels.includes(current) || current === "ALL" ? current : "ALL";
+      syncRoomCreateFormOptions();
+      updateSeqBtnState();
+    }
+
     function buildPersonalizedPlan() {
       if (!studyPlanNameInput || !studyPlanLevelSel || !studyPlanDaysInput || !studyPlanOutput || !studyPlanBadges || !studyPlanCards) return;
       const name = String(studyPlanNameInput.value || "").trim().slice(0, 24);
@@ -943,6 +958,7 @@
         renderLevelFilters();
         renderPosFilters();
         renderStudyPlanLevels();
+        renderQuizLevelOptions();
         buildPersonalizedPlan();
         applyFilters();
       } catch (error) {
@@ -1532,6 +1548,43 @@
       };
     }
 
+    function formatQuizLevelLabel(level) {
+      const value = String(level || "ALL");
+      return value === "ALL" ? "All Levels" : value;
+    }
+
+    function formatQuizModeLabel(type) {
+      const labels = {
+        word2meaning: "Word → Meaning",
+        meaning2word: "Meaning → Word",
+        synonym: "Synonym Practice",
+        antonym: "Antonym Practice"
+      };
+      return labels[String(type || "")] || String(type || "Quiz");
+    }
+
+    function formatQuizRoomSettingsLabel(settings) {
+      if (!settings || typeof settings !== "object") return "";
+      const level = formatQuizLevelLabel(settings.level);
+      const mode = formatQuizModeLabel(settings.type);
+      const limit = Math.max(1, Number(settings.limit) || QUIZ_DEFAULT_TOTAL);
+      return `${level} · ${mode} · ${limit} Qs`;
+    }
+
+    function applyRoomCreateSettings() {
+      if (roomCreateLevelSel && quizLevelSel) quizLevelSel.value = roomCreateLevelSel.value;
+      if (roomCreateModeSel && quizTypeSel) quizTypeSel.value = roomCreateModeSel.value;
+      if (roomCreateCountSel && quizLimitSel) quizLimitSel.value = roomCreateCountSel.value;
+      normalizeQuizLimitInput();
+      updateSynAntPracticeButtons();
+      updateSeqBtnState();
+    }
+
+    function getRoomCreateQuizSettings() {
+      applyRoomCreateSettings();
+      return getCurrentQuizSettings();
+    }
+
     function syncRoomCreateFormOptions() {
       if (!roomCreateLevelSel || !roomCreateModeSel || !roomCreateCountSel || !quizLevelSel || !quizTypeSel || !quizLimitSel) return;
       roomCreateLevelSel.innerHTML = quizLevelSel.innerHTML;
@@ -1546,6 +1599,7 @@
       quizLevelSel.value = settings.level || "ALL";
       quizTypeSel.value = settings.type || "word2meaning";
       quizLimitSel.value = String(settings.limit || QUIZ_DEFAULT_TOTAL);
+      syncRoomCreateFormOptions();
       quizUseSavedOnly = Boolean(settings.useSavedOnly);
       quizUseWrongOnly = Boolean(settings.useWrongOnly);
       updateQuizSavedButtonLabel();
@@ -1638,7 +1692,14 @@
       const card = quizRoomBadge && quizRoomBadge.closest(".quiz-room-card");
       if (card) card.classList.toggle("is-active", active);
       if (quizRoomBadge) {
-        quizRoomBadge.textContent = active ? `Room ${quizRoomState.roomCode}` : "Solo Mode";
+        const settings = quizRoomState.latestRoomValue && quizRoomState.latestRoomValue.settings;
+        const level = settings && settings.level
+          ? formatQuizLevelLabel(settings.level)
+          : quizRoomState.latestRoomValue && quizRoomState.latestRoomValue.level
+          ? formatQuizLevelLabel(quizRoomState.latestRoomValue.level)
+          : "";
+        const levelSuffix = active && level ? ` · ${level}` : "";
+        quizRoomBadge.textContent = active ? `Room ${quizRoomState.roomCode}${levelSuffix}` : "Solo Mode";
         quizRoomBadge.classList.toggle("is-active", active);
       }
       if (roomCreateConfirmBtn) roomCreateConfirmBtn.disabled = active;
@@ -2177,12 +2238,15 @@
       }
       renderQuizRoomPlayers(roomValue.players || {});
       applyQuizRoomQuestions(roomValue);
+      updateQuizRoomUi();
       const playerCount = roomValue.players ? Object.keys(roomValue.players).length : 0;
+      const roomDetails = formatQuizRoomSettingsLabel(roomValue.settings || { level: roomValue.level });
+      const detailsSuffix = roomDetails ? ` (${roomDetails})` : "";
       const hostMessage = quizRoomState.isHost && playerCount < 2
-        ? "Share the code with your friend so they can join."
+        ? `Share the code with your friend so they can join.${detailsSuffix}`
         : playerCount >= 2
-        ? "Both players are in the room. Start answering."
-        : "Waiting for room data...";
+        ? `Both players are in the room. Start answering.${detailsSuffix}`
+        : `Waiting for room data...${detailsSuffix}`;
       setQuizRoomStatus(hostMessage);
 
       // Voice call signaling detection
@@ -2275,9 +2339,10 @@
         if (quizPlayerNameInput) quizPlayerNameInput.focus();
         return;
       }
+      const roomSettings = getRoomCreateQuizSettings();
       startQuiz();
       if (!quizState.questions.length) {
-        setQuizRoomStatus("Build a quiz first, then create a room.");
+        setQuizRoomStatus(`No words found for ${formatQuizLevelLabel(roomSettings.level)}. Pick another level or mode.`);
         return;
       }
       const roomCode = generateQuizRoomCode();
@@ -2287,7 +2352,8 @@
         createdAt: firebase.database.ServerValue.TIMESTAMP,
         hostId: playerId,
         quizKey: `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-        settings: getCurrentQuizSettings(),
+        level: roomSettings.level,
+        settings: roomSettings,
         questions: quizState.questions.map(serializeQuizQuestion).filter(Boolean),
         players: {
           [playerId]: {
@@ -2308,7 +2374,7 @@
         quizRoomCodeInput.value = roomCode;
       }
       setQuizConfigDisabled(true);
-      setQuizRoomStatus("Room created. Share the code with your friend.");
+      setQuizRoomStatus(`Room created (${formatQuizRoomSettingsLabel(roomSettings)}). Share the code with your friend.`);
       switchMode("quiz");
     }
 
@@ -2846,12 +2912,6 @@
     if (roomCreateConfirmBtn) {
       roomCreateConfirmBtn.addEventListener("click", () => {
         if (isQuizRoomActive()) return;
-        if (roomCreateLevelSel && quizLevelSel) quizLevelSel.value = roomCreateLevelSel.value;
-        if (roomCreateModeSel && quizTypeSel) quizTypeSel.value = roomCreateModeSel.value;
-        if (roomCreateCountSel && quizLimitSel) quizLimitSel.value = roomCreateCountSel.value;
-        normalizeQuizLimitInput();
-        updateSynAntPracticeButtons();
-        updateSeqBtnState();
         createQuizRoom().catch(() => {
           setQuizRoomStatus("Could not create the room. Please try again.");
         });
@@ -2947,7 +3007,10 @@
       }
     };
 
-    if (tabRoom) tabRoom.addEventListener("click", () => switchMode("room"));
+    if (tabRoom) tabRoom.addEventListener("click", () => {
+      syncRoomCreateFormOptions();
+      switchMode("room");
+    });
     if (tabPlan) tabPlan.addEventListener("click", () => switchMode("plan"));
     if (roomGoToQuizBtn) roomGoToQuizBtn.addEventListener("click", () => openQuizMode().catch(() => switchMode("quiz")));
 
