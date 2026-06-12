@@ -1,17 +1,29 @@
 #!/usr/bin/env bash
 set -e
 
-_apiKey=$(echo "${FIREBASE_API_KEY:-}" | tr -d '\r\n\t ')
-_authDomain=$(echo "${FIREBASE_AUTH_DOMAIN:-}" | tr -d '\r\n\t ')
-_databaseURL=$(echo "${FIREBASE_DATABASE_URL:-}" | tr -d '\r\n\t ')
-_projectId=$(echo "${FIREBASE_PROJECT_ID:-}" | tr -d '\r\n\t ')
-_storageBucket=$(echo "${FIREBASE_STORAGE_BUCKET:-}" | tr -d '\r\n\t ')
-_messagingSenderId=$(echo "${FIREBASE_MESSAGING_SENDER_ID:-}" | tr -d '\r\n\t ')
-_appId=$(echo "${FIREBASE_APP_ID:-}" | tr -d '\r\n\t ')
+# Function to clean environment variable values (stripping extra quotes, commas, and newlines)
+clean_value() {
+  local val="$1"
+  # 1. Remove leading/trailing whitespace
+  # 2. Remove leading/trailing " or '
+  # 3. Remove trailing comma or \n (literal backslash-n)
+  echo "$val" | sed -E 's/^[[:space:]"'\'' ]+//; s/[[:space:]"'\', ]+$//; s/\\n$//' | xargs echo -n
+}
+
+# Collect values from both styles of environment variables
+_apiKey=$(clean_value "${FIREBASE_API_KEY:-${apiKey:-}}")
+_authDomain=$(clean_value "${FIREBASE_AUTH_DOMAIN:-${authDomain:-}}")
+_databaseURL=$(clean_value "${FIREBASE_DATABASE_URL:-${databaseURL:-}}")
+_projectId=$(clean_value "${FIREBASE_PROJECT_ID:-${projectId:-}}")
+_storageBucket=$(clean_value "${FIREBASE_STORAGE_BUCKET:-${storageBucket:-}}")
+_messagingSenderId=$(clean_value "${FIREBASE_MESSAGING_SENDER_ID:-${messagingSenderId:-}}")
+_appId=$(clean_value "${FIREBASE_APP_ID:-${appId:-}}")
+_measurementId=$(clean_value "${FIREBASE_MEASUREMENT_ID:-${measurementId:-}}")
+
+echo "Building project and injecting Firebase configuration..."
 
 node -e "
 const fs = require('fs');
-
 const config = \`window.APP_CONFIG = {
   firebase: {
     apiKey: '${_apiKey}',
@@ -20,18 +32,23 @@ const config = \`window.APP_CONFIG = {
     projectId: '${_projectId}',
     storageBucket: '${_storageBucket}',
     messagingSenderId: '${_messagingSenderId}',
-    appId: '${_appId}'
+    appId: '${_appId}',
+    measurementId: '${_measurementId}'
   }
 };\`;
 
-const tag = '<script>' + config + '<\/script>';
-
-const html = fs.readFileSync('index.html', 'utf8');
-const admin = fs.readFileSync('admin.html', 'utf8');
-
-// ✅ Each file uses its OWN content
-fs.writeFileSync('index.html', html.replace('<!-- FIREBASE_CONFIG -->', tag));
-fs.writeFileSync('admin.html', admin.replace('<!-- FIREBASE_CONFIG -->', tag));
-
-console.log('Firebase config injected into index.html and admin.html');
+['index.html', 'admin.html'].forEach(file => {
+  if (fs.existsSync(file)) {
+    let content = fs.readFileSync(file, 'utf8');
+    if (content.includes('<!-- FIREBASE_CONFIG -->')) {
+      content = content.replace('<!-- FIREBASE_CONFIG -->', '<script>' + config + '</script>');
+      fs.writeFileSync(file, content);
+      console.log('Injected into ' + file);
+    } else {
+      console.warn('Warning: Placeholder not found in ' + file);
+    }
+  }
+});
 "
+
+echo "Build complete."
