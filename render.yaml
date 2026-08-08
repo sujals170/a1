@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: oxford-word-boxes
+    name: wordbox-space
     runtime: static
     buildCommand: "bash build.sh"
     staticPublishPath: .
