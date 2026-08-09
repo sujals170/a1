@@ -11,6 +11,21 @@ services:
       - path: "/*.css"
         name: Content-Type
         value: text/css; charset=utf-8
+      - path: "/*"
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: "/*"
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: "/*"
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: "/robots.txt"
+        name: Content-Type
+        value: text/plain; charset=utf-8
+      - path: "/sitemap.xml"
+        name: Content-Type
+        value: application/xml; charset=utf-8
     envVars:
       - key: FIREBASE_API_KEY
         sync: false
