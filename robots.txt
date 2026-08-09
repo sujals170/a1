@@ -1,0 +1,14 @@
+# robots.txt for WordBox.space
+
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /admin.html
+Disallow: /admin.js
+
+# Sitemap location
+Sitemap: https://wordbox.space/sitemap.xml
+
+# Crawl delay (optional, 1 second between requests)
+Crawl-delay: 1
