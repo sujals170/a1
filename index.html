@@ -4,18 +4,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WordBox</title>
-  <meta name="description" content="WordBox.space is an English-Gujarati dictionary with vocabulary practice, quizzes, and personalized study plans.">
+  
+  <!-- Primary Meta Tags -->
+  <title>WordBox - English-Gujarati Dictionary | Free Vocabulary Learning & Quizzes</title>
+  <meta name="title" content="WordBox - English-Gujarati Dictionary | Free Vocabulary Learning & Quizzes">
+  <meta name="description" content="Learn English vocabulary with Gujarati meanings. Free dictionary with 1000+ words, interactive quizzes, multiplayer mode, and personalized study plans. Perfect for Gujarati speakers learning English.">
+  <meta name="keywords" content="English Gujarati dictionary, vocabulary learning, English to Gujarati, Gujarati to English, vocabulary quiz, language learning, English learning app, Gujarati dictionary online, free dictionary, vocabulary builder">
+  <meta name="author" content="WordBox">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  
+  <!-- Canonical URL -->
   <link rel="canonical" href="https://wordbox.space/">
-  <meta property="og:title" content="WordBox.space — English-Gujarati Dictionary">
-  <meta property="og:description" content="Build your English vocabulary with Gujarati meanings, quizzes, and study plans.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WordBox">
+  <meta property="og:title" content="WordBox - English-Gujarati Dictionary | Free Vocabulary Learning">
+  <meta property="og:description" content="Learn English vocabulary with Gujarati meanings. Free dictionary with 1000+ words, interactive quizzes, multiplayer mode, and personalized study plans.">
   <meta property="og:url" content="https://wordbox.space/">
+  <meta property="og:image" content="https://wordbox.space/og-image.png">
+  <meta property="og:image:alt" content="WordBox - English-Gujarati Dictionary with vocabulary learning and quizzes">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WordBox - English-Gujarati Dictionary | Free Vocabulary Learning">
+  <meta name="twitter:description" content="Learn English vocabulary with Gujarati meanings. Free dictionary with 1000+ words, interactive quizzes, and personalized study plans.">
+  <meta name="twitter:image" content="https://wordbox.space/og-image.png">
+  <meta name="twitter:image:alt" content="WordBox - English-Gujarati Dictionary">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="theme-color" content="#ffffff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WordBox">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="/favicon-32x32.png" type="image/x-icon">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon-32x32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/favicon-32x32.png">
+  <link rel="shortcut icon" href="/favicon-32x32.png">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "WordBox",
+    "alternateName": "WordBox Dictionary",
+    "url": "https://wordbox.space",
+    "description": "Free English-Gujarati dictionary with vocabulary learning, interactive quizzes, multiplayer mode, and personalized study plans for Gujarati speakers learning English.",
+    "applicationCategory": "EducationalApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "inLanguage": ["en", "gu"],
+    "featureList": [
+      "English to Gujarati dictionary",
+      "Vocabulary quizzes",
+      "Multiplayer quiz mode",
+      "Personalized study plans",
+      "Word pronunciation",
+      "Part of speech filtering",
+      "Difficulty level filtering"
+    ],
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student"
+    }
+  }
+  </script>
 
   <!-- Google Analytics -->
   <!-- Google tag (gtag.js) -->
@@ -30,13 +101,16 @@
 </head>
 
 <body>
-  <main class="page">
-    <section class="hero">
+  <!-- Skip to main content for accessibility and SEO -->
+  <a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;z-index:999;padding:1em;background:white;color:black;text-decoration:none;" onfocus="this.style.left='10px'" onblur="this.style.left='-9999px'">Skip to main content</a>
+  
+  <main class="page" id="main-content" role="main">
+    <section class="hero" role="banner">
       <div class="hero-top">
         <span class="hero-kicker">WordBox.space</span>
         <div class="hero-actions">
-          <button class="dark-mode-toggle" id="darkModeToggle" type="button" title="Toggle dark mode">🌙 Dark</button>
-          <a class="dark-mode-toggle admin-link" href="admin.html">Login</a>
+          <button class="dark-mode-toggle" id="darkModeToggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">🌙 Dark</button>
+          <a class="dark-mode-toggle admin-link" href="admin.html" aria-label="Login to admin panel">Login</a>
         </div>
       </div>
       <h1>English-Gujarati Dictionary</h1>
@@ -47,15 +121,15 @@
       </div>
 
       <div id="stats" class="stats"></div>
-      <div class="mode-tabs">
-        <button class="mode-tab active" id="tabDictionary" type="button">Dictionary</button>
-        <button class="mode-tab" id="tabQuiz" type="button">Quiz Mode</button>
-        <button class="mode-tab" id="tabRoom" type="button">Multiplayer</button>
-        <button class="mode-tab" id="tabPlan" type="button">Personalized Plan</button>
+      <div class="mode-tabs" role="navigation" aria-label="Main navigation">
+        <button class="mode-tab active" id="tabDictionary" type="button" aria-label="Dictionary mode">Dictionary</button>
+        <button class="mode-tab" id="tabQuiz" type="button" aria-label="Quiz mode">Quiz Mode</button>
+        <button class="mode-tab" id="tabRoom" type="button" aria-label="Multiplayer mode">Multiplayer</button>
+        <button class="mode-tab" id="tabPlan" type="button" aria-label="Personalized study plan">Personalized Plan</button>
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" role="search" aria-label="Dictionary search">
       <div class="search-row">
         <input id="searchInput" type="text" placeholder="Search words, meaning, Gujarati, example...">
         <button id="clearSearch" type="button">Clear</button>
