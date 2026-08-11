@@ -6,15 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>WordBox - English-Gujarati Dictionary | Free Vocabulary Learning & Quizzes</title>
-  <meta name="title" content="WordBox - English-Gujarati Dictionary | Free Vocabulary Learning & Quizzes">
-  <meta name="description" content="Learn English vocabulary with Gujarati meanings. Free dictionary with 1000+ words, interactive quizzes, multiplayer mode, and personalized study plans. Perfect for Gujarati speakers learning English.">
-  <meta name="keywords" content="English Gujarati dictionary, vocabulary learning, English to Gujarati, Gujarati to English, vocabulary quiz, language learning, English learning app, Gujarati dictionary online, free dictionary, vocabulary builder">
+  <title>WordBox | Free English-Gujarati Dictionary & Vocabulary App</title>
+  <meta name="title" content="WordBox | Free English-Gujarati Dictionary & Vocabulary App">
+  <meta name="description" content="WordBox is a free online English-Gujarati dictionary with 1000+ words, interactive quizzes, multiplayer mode, and personalized study plans. Master English vocabulary easily.">
+  <meta name="keywords" content="WordBox, WordBox dictionary, WordBox app, wordbox, WordBox space, wordbox.space, English Gujarati dictionary, vocabulary learning, English to Gujarati, Gujarati to English, vocabulary quiz, language learning, English learning app, Gujarati dictionary online, free dictionary, vocabulary builder">
   <meta name="author" content="WordBox">
+  <meta name="application-name" content="WordBox">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
   <meta name="revisit-after" content="7 days">
-
+  
+  <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="W-DMBHtnDLDScHHeEgu_zQY-647VGdbCLcADKNUZByY" />
   
   <!-- Canonical URL -->
@@ -23,8 +25,8 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="WordBox">
-  <meta property="og:title" content="WordBox - English-Gujarati Dictionary | Free Vocabulary Learning">
-  <meta property="og:description" content="Learn English vocabulary with Gujarati meanings. Free dictionary with 1000+ words, interactive quizzes, multiplayer mode, and personalized study plans.">
+  <meta property="og:title" content="WordBox | Free English-Gujarati Dictionary & Vocabulary App">
+  <meta property="og:description" content="WordBox is a free online English-Gujarati dictionary with 1000+ words, interactive quizzes, multiplayer mode, and personalized study plans.">
   <meta property="og:url" content="https://wordbox.space/">
   <meta property="og:image" content="https://wordbox.space/og-image.png">
   <meta property="og:image:alt" content="WordBox - English-Gujarati Dictionary with vocabulary learning and quizzes">
@@ -34,8 +36,8 @@
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WordBox - English-Gujarati Dictionary | Free Vocabulary Learning">
-  <meta name="twitter:description" content="Learn English vocabulary with Gujarati meanings. Free dictionary with 1000+ words, interactive quizzes, and personalized study plans.">
+  <meta name="twitter:title" content="WordBox | Free English-Gujarati Dictionary & Vocabulary App">
+  <meta name="twitter:description" content="WordBox is a free online English-Gujarati dictionary with 1000+ words, interactive quizzes, and personalized study plans.">
   <meta name="twitter:image" content="https://wordbox.space/og-image.png">
   <meta name="twitter:image:alt" content="WordBox - English-Gujarati Dictionary">
   
@@ -56,37 +58,60 @@
   <link rel="apple-touch-icon" href="/favicon-32x32.png">
   <link rel="shortcut icon" href="/favicon-32x32.png">
   
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data (JSON-LD Graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "WordBox",
-    "alternateName": "WordBox Dictionary",
-    "url": "https://wordbox.space",
-    "description": "Free English-Gujarati dictionary with vocabulary learning, interactive quizzes, multiplayer mode, and personalized study plans for Gujarati speakers learning English.",
-    "applicationCategory": "EducationalApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "operatingSystem": "Any",
-    "browserRequirements": "Requires JavaScript. Requires HTML5.",
-    "inLanguage": ["en", "gu"],
-    "featureList": [
-      "English to Gujarati dictionary",
-      "Vocabulary quizzes",
-      "Multiplayer quiz mode",
-      "Personalized study plans",
-      "Word pronunciation",
-      "Part of speech filtering",
-      "Difficulty level filtering"
-    ],
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalRole": "student"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://wordbox.space/#website",
+        "url": "https://wordbox.space/",
+        "name": "WordBox",
+        "alternateName": ["WordBox Space", "WordBox Dictionary", "WordBox App", "wordbox"],
+        "description": "WordBox is a free English-Gujarati dictionary and vocabulary builder.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://wordbox.space/#organization",
+        "name": "WordBox",
+        "url": "https://wordbox.space/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://wordbox.space/favicon-32x32.png"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://wordbox.space/#webapp",
+        "name": "WordBox",
+        "alternateName": ["WordBox Dictionary", "WordBox Space"],
+        "url": "https://wordbox.space",
+        "description": "Free English-Gujarati dictionary with vocabulary learning, interactive quizzes, multiplayer mode, and personalized study plans for Gujarati speakers learning English.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "inLanguage": ["en", "gu"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@id": "https://wordbox.space/#organization"
+        },
+        "featureList": [
+          "English to Gujarati dictionary",
+          "Vocabulary quizzes",
+          "Multiplayer quiz mode",
+          "Personalized study plans",
+          "Word pronunciation",
+          "Part of speech filtering",
+          "Difficulty level filtering"
+        ]
+      }
+    ]
   }
   </script>
 
@@ -115,7 +140,7 @@
           <a class="dark-mode-toggle admin-link" href="admin.html" aria-label="Login to admin panel">Login</a>
         </div>
       </div>
-      <h1>English-Gujarati Dictionary</h1>
+      <h1>WordBox - English-Gujarati Dictionary</h1>
       <p>Search beginner-friendly vocabulary with quick part-of-speech filters, Gujarati meanings, and short example
         sentences.</p>
       <div id="streakBanner" class="streak-banner" hidden>
@@ -404,6 +429,26 @@
       </div>
     </section>
   </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>WordBox</h2>
+        <p>The official English-Gujarati Dictionary & Vocabulary Learning App. Build your vocabulary with dictionary search, interactive quizzes, multiplayer games, and custom study plans.</p>
+      </div>
+      <div class="footer-links">
+        <span class="footer-title">Navigation</span>
+        <a href="https://wordbox.space/#dictionary">Dictionary</a>
+        <a href="https://wordbox.space/#quiz">Quiz Mode</a>
+        <a href="https://wordbox.space/#multiplayer">Multiplayer</a>
+        <a href="https://wordbox.space/#study-plan">Study Plan</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 <strong>WordBox</strong> (wordbox.space). All rights reserved. Free English to Gujarati Learning Platform.</p>
+    </div>
+  </footer>
 
   <!-- Incoming call overlay (floats over any tab) -->
   <div class="call-overlay" id="callOverlay" hidden>
